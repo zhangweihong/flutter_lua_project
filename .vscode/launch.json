@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+  
+        {
+            "name": "project_lua",
+            "cwd": "project_lua",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args":["--no-sound-null-safety"]
+        },
+        {
+            "name": "project_lua (profile mode)",
+            "cwd": "project_lua",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/main.dart",
+            "args":["--no-sound-null-safety"]
+        }
+    ]
+}

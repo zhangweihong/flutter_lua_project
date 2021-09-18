@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_lua_dardo/index.dart';
 
 void main() {
-  loadLua();
   runApp(const MyApp());
+  loadLua();
 }
 
 void loadLua() async {
   String src = await rootBundle.loadString("assets/lua/test.lua");
-  print(src);
+  LuaState state = LuaState.newState();
+// 加载标准库
+  state.openLibs();
+  state.loadString(src);
+  state.call(0, 0);
 }
 
 class MyApp extends StatelessWidget {
