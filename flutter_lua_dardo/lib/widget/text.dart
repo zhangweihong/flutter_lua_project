@@ -1,24 +1,69 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_lua_dardo/widget/enumerate.dart';
 import 'package:lua_dardo/lua.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'parameter_exception.dart';
 
-
-
-class FlutterText{
+class FlutterText {
   static const Map<String, DartFunction> _TextWrap = {
     "new": _newText,
-    "rich":null
+    "rich": null
   };
 
-  static const Map<String, DartFunction> _TextMembers = {
-    "id": null};
+  static const Map<String, DartFunction> _TextMembers = {"id": null};
 
-  static int _newText(LuaState ls){
-    if(ls.getTop()>0){
-      var data = ls.toStr(-1);
+  static int _newText(LuaState ls) {
+    String first;
+    if (ls.isString(-1)) {
+      first = ls.toStr(-1);
+    } else if (ls.isTable(-1)) {
+      first = ls.toStr(-2);
+    } else {
+      throw ParameterError(
+          name: 'first',
+          type: 'TextStyleType',
+          expected: "String",
+          source: "FlutterText _assetText");
+    }
+    if (ls.getTop() > 0) {
+      var fieldType = ls.getField(-1, "style");
+      double _fontSize = 14;
+      Color _colors = Colors.black;
+      FontWeight _fontWeight = FontWeight.normal;
+      if (fieldType == LuaType.luaTable) {
+        fieldType = ls.getField(-1, "fontSize");
+        if (fieldType == LuaType.luaNumber) {
+          _fontSize = ls.toNumberX(-1);
+          ls.pop(1);
+        } else {
+          throw ParameterError(
+              name: 'fontSize',
+              type: 'TextStyleType',
+              expected: "String",
+              source: "FlutterText fontSize");
+        }
+        fieldType = ls.getField(-1, "fontWeight");
+        if (fieldType == LuaType.luaNumber) {
+          _fontWeight = FlutterFontWeight.get(ls.toIntegerX(-1));
+          ls.pop(1);
+        }
+      } else if (fieldType == LuaType.luaNil) {
+        ls.pop(1);
+      } else {
+        throw ParameterError(
+            name: 'textStyle',
+            type: ls.typeName(fieldType),
+            expected: "style",
+            source: "Text");
+      }
+
       Userdata u = ls.newUserdata<Text>();
-      u.data = Text(data);
-      ls.getMetatableAux('TextClass');
-      ls.setMetatable(-2);
+      u.data = Text(
+        first,
+        style: TextStyle(
+            color: _colors, fontSize: _fontSize, fontWeight: _fontWeight),
+      );
     }
 
     return 1;
@@ -34,8 +79,49 @@ class FlutterText{
     return 1;
   }
 
-  static void require(LuaState ls){
+  static void require(LuaState ls) {
     ls.requireF("Text", _openTextLib, true);
     ls.pop(1);
+  }
+}
+
+class FlutterTextStyle {
+  static const Map<String, DartFunction> _TextStyleWrap = {
+    "new": _newTextStyle
+  };
+  static const Map<String, DartFunction> _TextStyleMembers = {
+    "id": null,
+  };
+
+  static void require(LuaState ls) {
+    ls.requireF("TextStyle", _openTextStyleLib, true);
+    ls.pop(1);
+  }
+
+  static int _openTextStyleLib(LuaState ls) {
+    ls.newMetatable("TextStyleClass");
+    ls.pushValue(-1);
+    ls.setField(-2, "__index");
+    ls.setFuncs(_TextStyleMembers, 0);
+
+    ls.newLib(_TextStyleWrap);
+    return 1;
+  }
+
+  static int _newTextStyle(LuaState ls) {
+    if (ls.getTop() > 0) {
+      var fieldType = ls.getField(-1, "fontSize");
+      double _fontSize = 14;
+      Color _colors = Colors.white;
+      if (fieldType == LuaType.luaNumber) {
+        _fontSize = ls.toNumberX(-1);
+      }
+
+      Userdata u = ls.newUserdata<TextStyle>();
+      u.data = TextStyle(color: _colors, fontSize: _fontSize);
+      ls.getMetatableAux('TextStyleClass');
+      ls.setMetatable(-2);
+    }
+    return 1;
   }
 }

@@ -31,6 +31,8 @@ dependencies:
     sdk: flutter
   flutter_lua_dardo:
     path: ../flutter_lua_dardo
+  flutter_screenutil: ^5.0.0+2
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
