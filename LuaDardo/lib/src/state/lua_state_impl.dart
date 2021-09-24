@@ -807,6 +807,7 @@ class LuaStateImpl implements LuaState, LuaVM {
       return ThreadStatus.lua_ok;
     } catch (e) {
       if (msgh != 0) {
+        print(e.toString());
         throw e;
       }
       while (_stack != caller) {

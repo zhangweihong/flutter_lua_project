@@ -641,8 +641,6 @@ scanvalue = function(str, pos, nullval, objectmeta, arraymeta)
     return scanstring(str, pos)
   else
     local pstart, pend = strfind(str, "^%-?[%d%.]+[eE]?[%+%-]?%d*", pos)
-    print(pstart)
-    print(pend)
     if pstart then
       local number = str2num(strsub(str, pstart, pend))
       if number then

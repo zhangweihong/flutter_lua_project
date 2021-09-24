@@ -345,13 +345,13 @@ class StringLib {
     if (init > 1) {
       tail = s.substring(init - 1);
     }
-    pattern = pattern.replaceAll("%", "\\");
     int start = -1;
     int end = -1;
     if (plain) {
       start = tail.indexOf(pattern);
       end = start + pattern.length - 1;
     } else {
+      pattern = pattern.replaceAll("%", "\\"); //lua 是使用%进行正则使用 \\替换成dart使用的
       var re = RegExp(pattern); //fix bug for regExp
       var fr = re.firstMatch(tail);
       start = tail.indexOf(RegExp(pattern));
