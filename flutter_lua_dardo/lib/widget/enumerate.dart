@@ -29,7 +29,7 @@ class FlutterMainAxisSize {
 class FlutterMainAxisAlign {
   static const List<String> _members = [
     "start",
-    "end",
+    "bottom",
     "center",
     "spaceBetween",
     "spaceAround",
@@ -44,7 +44,7 @@ class FlutterMainAxisAlign {
       ls.setField(-2, _members[i]);
     }
 
-    ls.setGlobal("MainAxisAlign");
+    ls.setGlobal("MainAxisAlignment");
   }
 
   static MainAxisAlignment get(int idx) {
@@ -58,7 +58,7 @@ class FlutterMainAxisAlign {
 class FlutterCrossAxisAlign {
   static const List<String> _members = [
     "start",
-    "end",
+    "bottom",
     "center",
     "stretch",
     "baseline"
@@ -72,7 +72,7 @@ class FlutterCrossAxisAlign {
       ls.setField(-2, _members[i]);
     }
 
-    ls.setGlobal("CrossAxisAlign");
+    ls.setGlobal("CrossAxisAlignment");
   }
 
   static CrossAxisAlignment get(int idx) {

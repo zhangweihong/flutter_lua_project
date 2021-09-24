@@ -2,20 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_lua/common_stateful_wiget.dart';
+import 'package:project_lua/lua_manager.dart';
 
 void main() {
   runApp(const MyApp());
-}
-
-loadLua() async {
-  String src = await rootBundle.loadString("assets/lua/test.lua");
-  LuaState state = LuaState.newState();
-// 加载标准库
-  state.openLibs(); //标准库 会覆盖print
-  FlutterWidget.open(state);
-  FlutterUtils.open(state);
-  state.doString(src);
-  return 0;
 }
 
 class MyApp extends StatelessWidget {
@@ -25,31 +16,59 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: loadLua(),
+        future: LuaManager.initLuaState(),
         builder: (context, snapshot) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              // This is the theme of your application.
-              //
-              // Try running your application with "flutter run". You'll see the
-              // application has a blue toolbar. Then, without quitting the app, try
-              // changing the primarySwatch below to Colors.green and then invoke
-              // "hot reload" (press "r" in the console where you ran "flutter run",
-              // or simply save your changes to "hot reload" in a Flutter IDE).
-              // Notice that the counter didn't reset back to zero; the application
-              // is not restarted.
-              primarySwatch: Colors.blue,
-            ),
-            builder: (context, child) {
-              FlutterWidget.init(
-                  context, Size(1334, 750), Orientation.landscape);
-              return Material(
-                child: child,
-              );
-            },
-            home: FlutterWidget.findViewByName<Widget>("app"),
-          );
+          if (snapshot.data != null) {
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                // This is the theme of your application.
+                //
+                // Try running your application with "flutter run". You'll see the
+                // application has a blue toolbar. Then, without quitting the app, try
+                // changing the primarySwatch below to Colors.green and then invoke
+                // "hot reload" (press "r" in the console where you ran "flutter run",
+                // or simply save your changes to "hot reload" in a Flutter IDE).
+                // Notice that the counter didn't reset back to zero; the application
+                // is not restarted.
+                primarySwatch: Colors.blue,
+              ),
+              builder: (context, child) {
+                FlutterWidget.init(
+                    context, Size(1334, 750), Orientation.landscape);
+                return Material(
+                  child: child,
+                );
+              },
+              home: MyHomePage(
+                title: "HomePage",
+              ),
+            );
+          } else {
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                // This is the theme of your application.
+                //
+                // Try running your application with "flutter run". You'll see the
+                // application has a blue toolbar. Then, without quitting the app, try
+                // changing the primarySwatch below to Colors.green and then invoke
+                // "hot reload" (press "r" in the console where you ran "flutter run",
+                // or simply save your changes to "hot reload" in a Flutter IDE).
+                // Notice that the counter didn't reset back to zero; the application
+                // is not restarted.
+                primarySwatch: Colors.blue,
+              ),
+              builder: (context, child) {
+                FlutterWidget.init(
+                    context, Size(1334, 750), Orientation.landscape);
+                return Material(
+                  child: child,
+                );
+              },
+              home: CircularProgressIndicator(),
+            );
+          }
         });
   }
 }
@@ -74,7 +93,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -133,7 +151,10 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            FlutterWidget.findViewByName<Widget>("app")
+            CommonStatefulWidget(
+              pagePath: "assets/lua/app.lua",
+              widgetName: "app",
+            )
           ],
         ),
       ),

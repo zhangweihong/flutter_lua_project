@@ -345,14 +345,20 @@ class StringLib {
     if (init > 1) {
       tail = s.substring(init - 1);
     }
-
-    int start;
+    pattern = pattern.replaceAll("%", "\\");
+    int start = -1;
+    int end = -1;
     if (plain) {
       start = tail.indexOf(pattern);
+      end = start + pattern.length - 1;
     } else {
+      var re = RegExp(pattern); //fix bug for regExp
+      var fr = re.firstMatch(tail);
       start = tail.indexOf(RegExp(pattern));
+      if (fr != null) {
+        end = start + fr.end - 1;
+      }
     }
-    var end = start + pattern.length - 1;
 
     if (start >= 0) {
       start += s.length - tail.length + 1;

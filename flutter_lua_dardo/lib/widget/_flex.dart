@@ -48,7 +48,7 @@ class FlutterFlex {
           source: subclass + " newFlex");
     }
 
-    fieldType = ls.getField(-1, "mainAxisAlign");
+    fieldType = ls.getField(-1, "mainAxisAlignment");
     if (fieldType == LuaType.luaNumber) {
       mainAxisAlignment = FlutterMainAxisAlign.get(ls.toIntegerX(-1));
       ls.pop(1);
@@ -57,13 +57,13 @@ class FlutterFlex {
       ls.pop(1);
     } else {
       throw ParameterError(
-          name: 'mainAxisAlign',
+          name: 'mainAxisAlignment',
           type: ls.typeName(fieldType),
           expected: "int",
           source: subclass + " newFlex");
     }
 
-    fieldType = ls.getField(-1, "crossAxisAlign");
+    fieldType = ls.getField(-1, "crossAxisAlignment");
     if (fieldType == LuaType.luaNumber) {
       crossAxisAlignment = FlutterCrossAxisAlign.get(ls.toIntegerX(-1));
       ls.pop(1);
@@ -72,7 +72,7 @@ class FlutterFlex {
       ls.pop(1);
     } else {
       throw ParameterError(
-          name: 'crossAxisAlign',
+          name: 'crossAxisAlignment',
           type: ls.typeName(fieldType),
           expected: "int",
           source: subclass + " newFlex");
