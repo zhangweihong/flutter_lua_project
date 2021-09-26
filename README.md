@@ -11,6 +11,9 @@
 ## 1.编辑器
 **使用VSCode进行开发，因为进行了一些简单的代码补全联想设置 在 complete.code-snippets 文件中**
 
+**推荐这三个插件**
+
+![微信截图_20210926145031](https://user-images.githubusercontent.com/6658343/134796976-fe062b4e-3ca4-4db2-bf19-a4135ad7b464.png)
 
 ## 2.LuaDardo 和 flutter_lua_dardo 
  **集成的 @arcticfox1919 的两个开源代码，在此基础上修改和增加一些功能。**
@@ -28,6 +31,7 @@
   ***为flutter的一些内置方法和组件使用lua的形式书写出来***
   ### 3.project_lua
   ***为工作空间，使用lua进行全局的项目开发，逐步完善中...***
+
 
 
   
