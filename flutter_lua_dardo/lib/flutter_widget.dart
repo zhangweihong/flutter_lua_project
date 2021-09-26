@@ -1,10 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_lua_dardo/widget/InitWidget.dart';
 import 'package:flutter_lua_dardo/widget/align.dart';
 import 'package:flutter_lua_dardo/widget/column.dart';
 import 'package:flutter_lua_dardo/widget/enumerate.dart';
 import 'package:flutter_lua_dardo/widget/gesture_detector.dart';
 import 'package:flutter_lua_dardo/widget/image.dart';
 import 'package:flutter_lua_dardo/widget/row.dart';
+import 'package:flutter_lua_dardo/widget/scaffold.dart';
 import 'package:flutter_lua_dardo/widget/text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lua_dardo/lua.dart';
@@ -24,13 +26,33 @@ class FlutterWidget {
     FlutterImage.require(ls);
     FlutterGestureDetector.require(ls);
     FlutterAlignment.require(ls);
+    FlutterScaffold.require(ls);
     FlutterAlign.require(ls);
     registerUtil();
   }
 
+  static T doLuaViewByName<T extends Widget>(String name) {
+    if (_ls == null) {
+      return InitWidget() as T;
+    }
+    _ls.getGlobal(name);
+    var fieldType = _ls.getField(-1, "build");
+    if (fieldType == LuaType.luaFunction) {
+      _ls.pCall(0, 1, 1);
+      if (_ls.isUserdata(-1)) {
+        var w = _ls.toUserdata<T>(-1).data;
+        _ls.setTop(0);
+        return w;
+      }
+    } else if (fieldType == LuaType.luaNil) {
+      throw Exception("Cannot find $name build Function, "
+          "please check the function name in the Lua script.");
+    }
+  }
+
   static T findViewByName<T extends Widget>(String name) {
     if (_ls == null) {
-      return Text("") as T;
+      return InitWidget() as T;
     }
 
     _ls.getGlobal(name);

@@ -5,6 +5,6 @@ class InitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("初始化");
+    return Text("没有结果的Widget");
   }
 }

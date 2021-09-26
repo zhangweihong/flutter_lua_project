@@ -1,31 +1,21 @@
-function app()
-	return Align:new({
-		child = Text:new('222',{
-			style={
-				fontSize = sp(100),
-				fontWeight = FontWeight.bold
-			}
+app = {};
+local a = 1;
+function app.init()
+	print("app.init");
+end;
+function app.build()
+	return Scaffold:new({
+		body = GestureDetector:new({
+			child = Align:new({
+				alignment = Alignment.center,
+				child = Text:new("数字" .. a, {
+					style = {
+						fontSize = sp(50),
+						fontWeight = FontWeight.bold
+					}
+				})
+			})
 		})
 	});
-end
-require("assets/lua/dkjson.lua");
-local a = {
-	b = "123",
-	c = "456",
-	d = -789,
-	e = -789.99,
-	f = "张三"
-};
-local js = DKJson.encode(a);
-debugPrint(js);
-
-local _decode = DKJson.decode(js);
-debugPrint(_decode.b);
-debugPrint(_decode.e);
-debugPrint(_decode.f);
-debugPrint(type(_decode));
-debugPrint(type(_decode.b));
-debugPrint(type(_decode.e));
-
-
-debugPrint("hello world");
+end;
+return app;

@@ -1,6 +1,7 @@
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/widget/InitWidget.dart';
+import 'package:flutter_lua_dardo/widget/enumerate.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 
 class FlutterAlign {
@@ -27,8 +28,8 @@ class FlutterAlign {
     }
 
     fieldType = ls.getField(-1, "alignment");
-    if (fieldType == LuaType.luaUserdata) {
-      alignment = ls.toUserdata(-1).data as AlignmentGeometry;
+    if (fieldType == LuaType.luaNumber) {
+      alignment = FlutterAlignment.get(ls.toIntegerX(-1));
       ls.pop(1);
     } else if (fieldType == LuaType.luaNil) {
       ls.pop(1);
