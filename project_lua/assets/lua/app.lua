@@ -1,5 +1,12 @@
 function app()
-	return Text:new("d", {});
+	return Align:new({
+		child = Text:new('222',{
+			style={
+				fontSize = sp(100),
+				fontWeight = FontWeight.bold
+			}
+		})
+	});
 end
 require("assets/lua/dkjson.lua");
 local a = {
@@ -22,4 +29,3 @@ debugPrint(type(_decode.e));
 
 
 debugPrint("hello world");
-})

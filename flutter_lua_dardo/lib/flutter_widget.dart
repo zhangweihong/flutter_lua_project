@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_lua_dardo/widget/align.dart';
 import 'package:flutter_lua_dardo/widget/column.dart';
 import 'package:flutter_lua_dardo/widget/enumerate.dart';
 import 'package:flutter_lua_dardo/widget/gesture_detector.dart';
@@ -22,6 +23,8 @@ class FlutterWidget {
     FlutterText.require(ls);
     FlutterImage.require(ls);
     FlutterGestureDetector.require(ls);
+    FlutterAlignment.require(ls);
+    FlutterAlign.require(ls);
     registerUtil();
   }
 
