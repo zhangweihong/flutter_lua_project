@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lua_dardo/widget/enumerate.dart';
+import 'package:flutter_lua_dardo/widget/common_flutter_class.dart';
 import 'package:lua_dardo/lua.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'parameter_exception.dart';
@@ -12,7 +12,6 @@ class FlutterText {
   };
 
   static const Map<String, DartFunction> _TextMembers = {"id": null};
-
   static int _newText(LuaState ls) {
     String first;
     if (ls.isString(-1)) {

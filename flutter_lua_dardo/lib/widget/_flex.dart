@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 
-import 'enumerate.dart';
+import 'common_flutter_class.dart';
 
 class FlutterFlex {
   static const className = "FlexClass";

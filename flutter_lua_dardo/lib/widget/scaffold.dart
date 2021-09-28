@@ -10,8 +10,8 @@ class FlutterScaffold {
 
   static int _newScaffold(LuaState ls) {
     if (ls.getTop() > 0) {
-      Widget body = InitWidget();
-      Widget appbar = AppBar();
+      Widget body = null;
+      Widget appbar = null;
       var fieldTye = ls.getField(-1, "body");
       if (fieldTye == LuaType.luaUserdata) {
         body = ls.toUserdata(-1).data as Widget;
