@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/widget/InitWidget.dart';
 import 'package:flutter_lua_dardo/widget/align.dart';
+import 'package:flutter_lua_dardo/widget/appbar.dart';
 import 'package:flutter_lua_dardo/widget/column.dart';
 import 'package:flutter_lua_dardo/widget/enumerate.dart';
 import 'package:flutter_lua_dardo/widget/gesture_detector.dart';
@@ -26,8 +27,10 @@ class FlutterWidget {
     FlutterImage.require(ls);
     FlutterGestureDetector.require(ls);
     FlutterAlignment.require(ls);
-    FlutterScaffold.require(ls);
     FlutterAlign.require(ls);
+    FlutterAppBar.require(ls);
+    FlutterColors.require(ls);
+    FlutterScaffold.require(ls);
     registerUtil();
   }
 
@@ -44,10 +47,9 @@ class FlutterWidget {
         _ls.setTop(0);
         return w;
       }
-    } else if (fieldType == LuaType.luaNil) {
-      throw Exception("Cannot find $name build Function, "
-          "please check the function name in the Lua script.");
     }
+    throw Exception("Cannot find $name build Function, "
+        "please check the function name in the Lua script.");
   }
 
   static T findViewByName<T extends Widget>(String name) {

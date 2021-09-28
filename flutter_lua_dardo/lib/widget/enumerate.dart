@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lua_dardo/lua.dart';
 
@@ -202,5 +203,21 @@ class FlutterAlignment {
         return Alignment.bottomRight;
     }
     return Alignment.topLeft;
+  }
+}
+
+class FlutterColors {
+  static void require(LuaState ls) {
+    ls.register("Color", _colorsWrap);
+  }
+
+  static int _colorsWrap(LuaState ls) {
+    String s = ls.checkString(1);
+    if (s.isNotEmpty) {
+      Userdata userdata = ls.newUserdata<Color>();
+      int color = int.tryParse(s.replaceAll("#", "0x"));
+      userdata.data = Color(color);
+    }
+    return 1;
   }
 }

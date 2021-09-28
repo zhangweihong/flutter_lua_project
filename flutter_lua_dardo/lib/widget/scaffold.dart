@@ -24,9 +24,9 @@ class FlutterScaffold {
             expected: "FlutterScaffold body null",
             source: "FlutterScaffold");
       }
-      fieldTye = ls.getField(-1, "appbar");
+      fieldTye = ls.getField(-1, "appBar");
       if (fieldTye == LuaType.luaUserdata) {
-        appbar = ls.toUserdata(-1).data as Widget;
+        appbar = ls.toUserdata(-1).data as AppBar;
         ls.pop(1);
       } else {
         appbar = null;
