@@ -22,9 +22,17 @@ function app.build()
 				bottom = 10,
 				right = 10
 			}),
-			child = CommonStatefulWidget:new({
-				widgetName = "my_stateful_widget",
-				path = "assets/lua/component/my_stateful_widget.lua"
+			child = Column:new({
+				children = {
+					CommonStatefulWidget:new({
+						widgetName = "my_stateful_widget",
+						path = "assets/lua/component/my_stateful_widget.lua"
+					}),
+					CommonStatelessWidget:new({
+						widgetName = "my_stateless_widget",
+						path = "assets/lua/component/my_stateless_widget.lua"
+					})
+				}
 			}),
 			decoration = BoxDecoration:new({
 				borderRadius = BorderRadius.all(sp(40)),

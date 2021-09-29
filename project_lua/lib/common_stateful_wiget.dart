@@ -40,7 +40,7 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
         LuaManager.luaState?.setFuncs(_r, 0);
       } else {
         throw ParameterError(
-            name: "Stateful Widget",
+            name: "没找到 " + widget.name,
             type: "Widget Error",
             expected: "Common Stateful Expected",
             source: "CommonStatefulWidget");

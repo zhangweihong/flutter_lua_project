@@ -9,7 +9,7 @@ import 'package:project_lua/common_stateful_wiget.dart';
 import 'package:project_lua/common_stateless_wiget.dart';
 
 class FlutterCommonStatelessWidget {
-  static const Map<String, DartFunction> _sfWrap = {"new": _newCommonStateless};
+  static const Map<String, DartFunction> _slWrap = {"new": _newCommonStateless};
 
   static int _newCommonStateless(LuaState ls) {
     if (ls.getTop() > 0) {
@@ -20,9 +20,9 @@ class FlutterCommonStatelessWidget {
         ls.pop(1);
       } else {
         throw ParameterError(
-            name: "FlutterCommonStatefulWidget widgetName Error",
+            name: "CommonStatelessWidget widgetName Error",
             type: "widgetName null",
-            expected: "CommonStatefulWidget",
+            expected: "CommonStatelessWidget",
             source: "");
       }
       String path = "";
@@ -32,9 +32,9 @@ class FlutterCommonStatelessWidget {
         ls.pop(1);
       } else {
         throw ParameterError(
-            name: "FlutterCommonStatefulWidget path Error",
+            name: "CommonStatelessWidget path Error",
             type: "path null",
-            expected: "CommonStatefulWidget",
+            expected: "CommonStatelessWidget",
             source: "");
       }
       Userdata userdata = ls.newUserdata<Widget>();
@@ -50,7 +50,7 @@ class FlutterCommonStatelessWidget {
   }
 
   static int _openCommonStatelessLib(LuaState ls) {
-    ls.newLib(_sfWrap);
+    ls.newLib(_slWrap);
     return 1;
   }
 
@@ -130,7 +130,7 @@ class LuaManager {
       _state!.openLibs(); //标准库 会覆盖print
     }
     _state!.register("require", _requireWrap);
-    FlutterWidget.open(_state);
+    FlutterWidget.open(_state!);
     FlutterCommonStatefulWidget.require(_state!);
     FlutterCommonStatelessWidget.require(_state!);
     FlutterUtils.open(_state);
@@ -143,7 +143,8 @@ class LuaManager {
     var _luaArry = [
       "assets/lua/dkjson.lua",
       "assets/lua/app.lua",
-      "assets/lua/component/my_stateful_widget.lua"
+      "assets/lua/component/my_stateful_widget.lua",
+      "assets/lua/component/my_stateless_widget.lua"
     ];
 
     for (var item in _luaArry) {
@@ -186,9 +187,9 @@ class LuaManager {
     } catch (e) {
       throw ParameterError(
           name: path,
-          type: "File Error",
+          type: "File Content is NUll ",
           source: e.toString(),
-          expected: 'File');
+          expected: 'File Content');
     }
   }
 }

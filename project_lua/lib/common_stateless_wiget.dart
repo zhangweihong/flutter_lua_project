@@ -18,7 +18,7 @@ class CommonStatelessWidget extends StatelessWidget {
         LuaManager.luaState?.setFuncs(_wrap, 0);
       } else {
         throw ParameterError(
-            name: "Stateless Widget",
+            name: "Stateless Widget 没找到 " + name,
             type: "Widget Error",
             expected: "Common Stateless Expected",
             source: "CommonStatelessWidget");
