@@ -32,7 +32,7 @@
   ### 3.project_lua
   ***为工作空间，使用lua进行全局的项目开发，逐步完善中...***
 
-## 3. app.lua 是一个主入口
+## 3. assets/lua/app.lua 是一个主入口
   ```
   app = {};
     local a = 1;
