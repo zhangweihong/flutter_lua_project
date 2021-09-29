@@ -31,8 +31,7 @@
   ***为flutter的一些内置方法和组件使用lua的形式书写出来***
   ### 3.project_lua
   ***为工作空间，使用lua进行全局的项目开发，逐步完善中...***
-
-## 3. assets/lua/app.lua 是一个主入口
+  ##### 1. assets/lua/app.lua 是一个主入口
   ```
   app = {};
   local a = 1;
