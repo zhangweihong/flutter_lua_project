@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                 );
               },
               home: CommonStatelessWidget(
-                  widgetName: "app", pagePath: "assets/lua/app.lua"),
+                  name: "app", path: "assets/lua/app.lua"),
             );
           } else {
             return MaterialApp(

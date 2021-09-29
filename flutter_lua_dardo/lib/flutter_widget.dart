@@ -7,6 +7,7 @@ import 'package:flutter_lua_dardo/widget/common_flutter_class.dart';
 import 'package:flutter_lua_dardo/widget/container.dart';
 import 'package:flutter_lua_dardo/widget/gesture_detector.dart';
 import 'package:flutter_lua_dardo/widget/image.dart';
+import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 import 'package:flutter_lua_dardo/widget/row.dart';
 import 'package:flutter_lua_dardo/widget/scaffold.dart';
 import 'package:flutter_lua_dardo/widget/text.dart';
@@ -40,22 +41,28 @@ class FlutterWidget {
     registerUtil();
   }
 
-  static T doLuaViewByName<T extends Widget>(String name) {
+  static T doLuaViewByName<T extends Widget>(String name, String path) {
     if (_ls == null) {
       return InitWidget() as T;
     }
-    _ls.getGlobal(name);
-    var fieldType = _ls.getField(-1, "build");
-    if (fieldType == LuaType.luaFunction) {
-      _ls.pCall(0, 1, 1);
-      if (_ls.isUserdata(-1)) {
-        var w = _ls.toUserdata<T>(-1).data;
-        _ls.setTop(0);
-        return w;
+
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "build");
+      if (fieldType == LuaType.luaFunction) {
+        _ls.pCall(0, 1, 1);
+        if (_ls.isUserdata(-1)) {
+          var w = _ls.toUserdata<T>(-1).data;
+          _ls.setTop(0);
+          return w;
+        }
       }
     }
-    throw Exception("Cannot find $name build Function, "
-        "please check the function name in the Lua script.");
+    throw ParameterError(
+        name: "doLuaViewByName $name",
+        type: "not Luatable",
+        expected: "expected null",
+        source: path);
   }
 
   static T findViewByName<T extends Widget>(String name) {

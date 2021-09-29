@@ -64,6 +64,7 @@ flutter:
   assets:
     - assets/lua/app.lua
     - assets/lua/dkjson.lua
+    - assets/lua/component/my_stateful_widget.lua
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg
 

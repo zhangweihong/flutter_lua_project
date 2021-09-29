@@ -1,43 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
+import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 import 'package:project_lua/lua_manager.dart';
 
 // ignore: must_be_immutable
 class CommonStatelessWidget extends StatelessWidget {
-  CommonStatelessWidget(
-      {Key? key, required this.widgetName, required this.pagePath})
+  CommonStatelessWidget({Key? key, required this.name, required this.path})
       : super(key: key);
-  final String widgetName;
-  final String pagePath;
-
+  final String name;
+  final String path;
   void register() {
-    Map<String, DartFunction> _r = {
-      "init": _init,
-    };
+    Map<String, DartFunction> _wrap = {};
 
     if (LuaManager.luaState != null) {
-      var type = LuaManager.luaState?.getGlobal(widgetName);
-      if (type == LuaType.luaTable) {
-        LuaManager.luaState?.setFuncs(_r, 0);
+      LuaType _t = LuaManager.luaState!.getGlobal(name);
+      if (_t == LuaType.luaTable) {
+        LuaManager.luaState?.setFuncs(_wrap, 0);
+      } else {
+        throw ParameterError(
+            name: "Stateless Widget",
+            type: "Widget Error",
+            expected: "Common Stateless Expected",
+            source: "CommonStatelessWidget");
       }
-      type = LuaManager.luaState?.getField(-1, "init");
+      var type = LuaManager.luaState?.getField(-1, "init");
       if (type == LuaType.luaFunction) {
         LuaManager.luaState?.pCall(0, 0, 1);
-        LuaManager.luaState?.pop(1);
-      } else {
-        LuaManager.luaState?.pop(1);
       }
     }
   }
 
-  int _init(LuaState ls) {
-    print(widgetName + "_init");
-    return 1;
-  }
-
   void loadLuaContent() {
-    if (!LuaManager.checkLuaLoaded(pagePath)) {
-      LuaManager.loadLuaContent(pagePath);
+    if (!LuaManager.checkLuaLoaded(path)) {
+      LuaManager.loadLuaContent(path);
       register();
     }
   }
@@ -45,6 +40,6 @@ class CommonStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     this.loadLuaContent();
-    return FlutterWidget.doLuaViewByName<Widget>(widgetName);
+    return FlutterWidget.doLuaViewByName<Widget>(name, path);
   }
 }
