@@ -1,7 +1,7 @@
 my_stateful_widget = {};
 function my_stateful_widget.init()
 	print("my_stateful_widget init");
-end; 
+end;
 function my_stateful_widget.build()
 	return Container:new({
 		child = GestureDetector:new({

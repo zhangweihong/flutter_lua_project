@@ -22,6 +22,23 @@ class FlutterContainer {
           expected: "Container child",
           source: "FlutterContainer child not Widget");
     }
+    double width = null;
+    fieldType = ls.getField(-1, "width");
+    if (fieldType == LuaType.luaNumber) {
+      width = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    double height = null;
+    fieldType = ls.getField(-1, "height");
+    if (fieldType == LuaType.luaNumber) {
+      height = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     var margin = EdgeInsets.all(0);
     fieldType = ls.getField(-1, "margin");
     if (fieldType == LuaType.luaUserdata) {
@@ -49,7 +66,10 @@ class FlutterContainer {
     } else if (fieldType == LuaType.luaUserdata) {
       Decoration decoration = ls.toUserdata(-1).data as BoxDecoration;
       Userdata userdata = ls.newUserdata<Widget>();
+      BoxConstraints constraints =
+          BoxConstraints.tightFor(width: width, height: height);
       userdata.data = Container(
+        constraints: constraints,
         child: child,
         margin: margin,
         padding: padding,

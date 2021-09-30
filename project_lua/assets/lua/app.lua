@@ -15,6 +15,7 @@ function app.build()
 			})
 		}),
 		body = Container:new({
+			height = sp(350),
 			padding = EdgeInsets.all(sp(30)),
 			margin = EdgeInsets.only({
 				top = 10,
@@ -25,12 +26,12 @@ function app.build()
 			child = Column:new({
 				children = {
 					CommonStatefulWidget:new({
-						widgetName = "my_stateful_widget",
-						path = "assets/lua/component/my_stateful_widget.lua"
+						widgetName = "my_stateful_widget", --组件中的lua的对象实例
+						path = "assets/lua/component/my_stateful_widget.lua" --组件的lua文件
 					}),
 					CommonStatelessWidget:new({
-						widgetName = "my_stateless_widget",
-						path = "assets/lua/component/my_stateless_widget.lua"
+						widgetName = "my_stateless_widget", --组件中的lua的对象实例
+						path = "assets/lua/component/my_stateless_widget.lua" --组件的lua文件
 					})
 				}
 			}),
