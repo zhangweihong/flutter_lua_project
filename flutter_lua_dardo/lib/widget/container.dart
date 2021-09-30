@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 
@@ -55,19 +56,31 @@ class FlutterContainer {
     } else {
       ls.pop(1);
     }
+    BoxConstraints constraints =
+        BoxConstraints.tightFor(width: width, height: height);
     fieldType = ls.getField(-1, "decoration");
     if (fieldType == LuaType.luaNil) {
+      ls.pop(1);
+      Color _color = Colors.white;
+      fieldType = ls.getField(-1, "color");
+      if (fieldType == LuaType.luaUserdata) {
+        _color = ls.toUserdata(-1).data as Color;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
       Userdata userdata = ls.newUserdata<Widget>();
       userdata.data = Container(
         child: child,
         margin: margin,
         padding: padding,
+        color: _color,
       );
     } else if (fieldType == LuaType.luaUserdata) {
       Decoration decoration = ls.toUserdata(-1).data as BoxDecoration;
+      ls.pop(1);
       Userdata userdata = ls.newUserdata<Widget>();
-      BoxConstraints constraints =
-          BoxConstraints.tightFor(width: width, height: height);
+
       userdata.data = Container(
         constraints: constraints,
         child: child,

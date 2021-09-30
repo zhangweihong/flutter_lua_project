@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               ),
               builder: (context, child) {
                 FlutterWidget.init(
-                    context, Size(1334, 750), Orientation.landscape);
+                    context, Size(750, 1334), Orientation.portrait);
                 return Material(
                   child: child,
                 );

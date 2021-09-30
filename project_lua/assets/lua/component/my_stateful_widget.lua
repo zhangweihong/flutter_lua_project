@@ -7,7 +7,7 @@ function my_stateful_widget.build()
 		child = GestureDetector:new({
 			child = Text:new("my_stateful_widget", {
 				style = {
-					fontSize = sp(90),
+					fontSize = sp(50),
 					fontWeight = FontWeight.w400
 				}
 			}),

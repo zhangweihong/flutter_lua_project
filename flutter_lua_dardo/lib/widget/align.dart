@@ -1,6 +1,6 @@
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lua_dardo/widget/InitWidget.dart';
+import 'package:flutter_lua_dardo/widget/init_widget.dart';
 import 'package:flutter_lua_dardo/widget/common_flutter_class.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 

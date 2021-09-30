@@ -8,15 +8,15 @@ function app.build()
 		appBar = AppBar:new({
 			title = Text:new("标题", {
 				style = {
-					fontSize = sp(40),
+					fontSize = sp(20),
 					color = Color("#ffffff"),
 					fontWeight = FontWeight.w400
 				}
 			})
 		}),
 		body = Container:new({
-			height = sp(350),
-			padding = EdgeInsets.all(sp(30)),
+			padding = EdgeInsets.all(sp(20)),
+			width = w(750),
 			margin = EdgeInsets.only({
 				top = 10,
 				left = 10,
@@ -26,12 +26,51 @@ function app.build()
 			child = Column:new({
 				children = {
 					CommonStatefulWidget:new({
-						widgetName = "my_stateful_widget", --组件中的lua的对象实例
-						path = "assets/lua/component/my_stateful_widget.lua" --组件的lua文件
+						widgetName = "my_stateful_widget",
+						path = "assets/lua/component/my_stateful_widget.lua"
 					}),
 					CommonStatelessWidget:new({
-						widgetName = "my_stateless_widget", --组件中的lua的对象实例
-						path = "assets/lua/component/my_stateless_widget.lua" --组件的lua文件
+						widgetName = "my_stateless_widget",
+						path = "assets/lua/component/my_stateless_widget.lua"
+					}),
+					Container:new({
+						child = InkWell:new({
+							child = Text:new("InkWell", {
+								style = {
+									fontSize = sp(50),
+									fontWeight = FontWeight.w400
+								}
+							}),
+							onTap = function()
+								print("InkWell");
+							end
+						})
+					}),
+					Icon:new(Icons.ac_unit, {
+						color = Color("#ff0000")
+					}),
+					IconButton:new({
+						icon = Icon:new(Icons.ac_unit, {
+							color = Color("#0000ff")
+						}),
+						iconSize = sp(30),
+						onPressed = function()
+							print("IconButton");
+						end
+					}),
+					ElevatedButton:new({
+						child = Text:new("ElevatedButton", {
+							style = {
+								fontSize = sp(40),
+								fontWeight = FontWeight.w400
+							}
+						}),
+						onPressed = function()
+							print("ElevatedButton onPressed");
+						end,
+						onLongPress = function()
+							print("ElevatedButton onLongPress");
+						end
 					})
 				}
 			}),
