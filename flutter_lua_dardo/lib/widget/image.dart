@@ -13,7 +13,6 @@ class FlutterImage {
     "file": _file,
     "memory": _memory,
     "network": _network,
-    "new": null,
   };
 
   static const Map<String, DartFunction> _ImageMembers = {"id": null};

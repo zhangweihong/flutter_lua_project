@@ -297,6 +297,39 @@
 		],
 		"description": "Icons"
 	},
+	"Icons.arrow_back": {
+		"scope": "lua",
+		"prefix": "Icons.ac_unit",
+		"body": [
+			"Icons.ac_unit"
+		],
+		"description": "Icons.ac_unit"
+	},
+	"Icons.ac_unit": {
+		"scope": "lua",
+		"prefix": "Icons.ac_unit",
+		"body": [
+			"Icons.ac_unit"
+		],
+		"description": "Icons.ac_unit"
+	},
+	"Icons.arrow_downward": {
+		"scope": "lua",
+		"prefix": "Icons.arrow_downward",
+		"body": [
+			"Icons.arrow_downward"
+		],
+		"description": "Icons.arrow_downward"
+	},
+	"Icons.arrow_forward": {
+		"scope": "lua",
+		"prefix": "Icons.arrow_forward",
+		"body": [
+			"Icons.arrow_forward"
+		],
+		"description": "Icons.arrow_forward"
+	},
+
 	"Color": {
 		"scope": "lua",
 		"prefix": "Color",
@@ -421,7 +454,7 @@
 		"scope": "lua",
 		"prefix": "ElevatedButton:new",
 		"body": [
-			"ElevatedButton:new({\n\tchild = $1,\n\tonPressed = $2,\n\tonLongPress = $3 \n})"
+			"ElevatedButton:new({\n\tchild = $1,\n\tonPressed = $2,\n\tonLongPress = $3\n})"
 		],
 		"description": "ElevatedButton:new"
 	},
@@ -429,9 +462,73 @@
 		"scope": "lua",
 		"prefix": "GestureDetector:new",
 		"body": [
-			"GestureDetector:new({\n\tchild = $1,\n\tonTap = $2,\n\tonDoubleTap = $3 \n})"
+			"GestureDetector:new({\n\tchild = $1,\n\tonTap = $2,\n\tonDoubleTap = $3\n})"
 		],
 		"description": "GestureDetector:new"
+	},
+	"IconButton:new": {
+		"scope": "lua",
+		"prefix": "IconButton:new",
+		"body": [
+			"IconButton:new({\n\ticon = $1,\n\ticonSize = $2,\n\tonPressed = $3\n})"
+		],
+		"description": "IconButton:new"
+	},
+	"Icon:new": {
+		"scope": "lua",
+		"prefix": "Icon:new",
+		"body": [
+			"Icon:new({$1,\n\tsize = $2,\n\tcolor = $3\n})"
+		],
+		"description": "Icon:new"
+	},
+	"Image.asset": {
+		"scope": "lua",
+		"prefix": "Image.asset",
+		"body": [
+			"Image.asset({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+		],
+		"description": "Image.asset"
+	},
+	"Image.file": {
+		"scope": "lua",
+		"prefix": "Image.file",
+		"body": [
+			"Image.file({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+		],
+		"description": "Image.file"
+	},
+	"Image.network": {
+		"scope": "lua",
+		"prefix": "Image.network",
+		"body": [
+			"Image.network({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+		],
+		"description": "Image.network"
+	},
+	"InkWell:new": {
+		"scope": "lua",
+		"prefix": "InkWell:new",
+		"body": [
+			"InkWell:new({\n\tchild = $1,\n\tonTap = $2,\n\tonDoubleTap = $3\n})"
+		],
+		"description": "InkWell:new"
+	},
+	"Scaffold:new": {
+		"scope": "lua",
+		"prefix": "Scaffold:new",
+		"body": [
+			"Scaffold:new({\n\tbody = $1,\n\tappBar = $2\n})"
+		],
+		"description": "Scaffold:new"
+	},
+	"Text:new": {
+		"scope": "lua",
+		"prefix": "Text:new",
+		"body": [
+			"Text:new({$1,\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
+		],
+		"description": "Text:new"
 	}
 
 }
