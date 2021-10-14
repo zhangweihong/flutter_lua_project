@@ -1,0 +1,83 @@
+{
+
+	"Align:new": {
+		"scope": "lua",
+		"prefix": "Align",
+		"body": [
+			"Align:new(\n\tchild = $1,\n\talignment = $2\n)"
+		],
+		"description": "Align:new"
+	},
+	"Alignment.topLeft": {
+		"scope": "lua",
+		"prefix": "Alignment.topLeft",
+		"body": [
+			"Alignment.topLeft"
+		],
+		"description": "Alignment.topLeft"
+	},
+	"Alignment.topCenter": {
+		"scope": "lua",
+		"prefix": "Alignment.topCenter",
+		"body": [
+			"Alignment.topCenter"
+		],
+		"description": "Alignment.topCenter"
+	},
+	"Alignment.topRight": {
+		"scope": "lua",
+		"prefix": "Alignment.topRight",
+		"body": [
+			"Alignment.topRight"
+		],
+		"description": "Alignment.topRight"
+	},
+	"Alignment.centerLeft": {
+		"scope": "lua",
+		"prefix": "Alignment.centerLeft",
+		"body": [
+			"Alignment.centerLeft"
+		],
+		"description": "Alignment.centerLeft"
+	},
+	"Alignment.center": {
+		"scope": "lua",
+		"prefix": "Alignment.center",
+		"body": [
+			"Alignment.center"
+		],
+		"description": "Alignment.center"
+	},
+	"Alignment.centerRight": {
+		"scope": "lua",
+		"prefix": "Alignment.centerRight",
+		"body": [
+			"Alignment.centerRight"
+		],
+		"description": "Alignment.centerRight"
+	},
+	"Alignment.bottomLeft": {
+		"scope": "lua",
+		"prefix": "Alignment.bottomLeft",
+		"body": [
+			"Alignment.bottomLeft"
+		],
+		"description": "Alignment.bottomLeft"
+	},
+	"Alignment.bottomCenter": {
+		"scope": "lua",
+		"prefix": "Alignment.bottomCenter",
+		"body": [
+			"Alignment.bottomCenter"
+		],
+		"description": "Alignment.bottomCenter"
+	},
+	"Alignment.bottomRight": {
+		"scope": "lua",
+		"prefix": "Alignment.bottomRight",
+		"body": [
+			"Alignment.bottomRight"
+		],
+		"description": "Alignment.bottomRight"
+	}
+}
