@@ -30,6 +30,7 @@ class FlutterText {
       double _fontSize = 14;
       Color _colors = Colors.black;
       FontWeight _fontWeight = FontWeight.normal;
+      String _fontFamily = "Arial";
       if (fieldType == LuaType.luaTable) {
         fieldType = ls.getField(-1, "fontSize");
         if (fieldType == LuaType.luaNumber) {
@@ -45,6 +46,14 @@ class FlutterText {
         fieldType = ls.getField(-1, "fontWeight");
         if (fieldType == LuaType.luaNumber) {
           _fontWeight = FlutterFontWeight.get(ls.toIntegerX(-1));
+          ls.pop(1);
+        } else {
+          ls.pop(1);
+        }
+
+        fieldType = ls.getField(-1, "fontFamily");
+        if (fieldType == LuaType.luaString) {
+          _fontFamily = ls.toStr(-1);
           ls.pop(1);
         } else {
           ls.pop(1);
@@ -70,7 +79,10 @@ class FlutterText {
       u.data = Text(
         first,
         style: TextStyle(
-            color: _colors, fontSize: _fontSize, fontWeight: _fontWeight),
+            fontFamily: _fontFamily,
+            color: _colors,
+            fontSize: _fontSize,
+            fontWeight: _fontWeight),
       );
     }
 

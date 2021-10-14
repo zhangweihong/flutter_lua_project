@@ -92,7 +92,7 @@
 		"scope": "lua",
 		"prefix": "Column:new",
 		"body": [
-			"Column:new({\n\tchildren = $1,\n\tmainAxisAlignment = $2,\n\tcrossAxisAlignment = $3\n})"
+			"Column:new({\n\tchildren = $1,\n\tmainAxisAlignment = MainAxisAlignment.start$2,\n\tcrossAxisAlignment = CrossAxisAlignment.start$3\n})"
 		],
 		"description": "Column:new"
 	},
@@ -100,10 +100,26 @@
 		"scope": "lua",
 		"prefix": "Row:new",
 		"body": [
-			"Row:new({\n\tchildren = $1,\n\tmainAxisAlignment = $2,\n\tcrossAxisAlignment = $3\n})"
+			"Row:new({\n\tchildren = $1,\n\tmainAxisAlignment = MainAxisAlignment.start$2,\n\tcrossAxisAlignment = CrossAxisAlignment.start$3\n})"
 		],
 		"description": "Row:new"
 
+	},
+	"mainAxisAlignment = ": {
+		"scope": "lua",
+		"prefix": "mainAxisAlignment = ",
+		"body": [
+			"mainAxisAlignment = "
+		],
+		"description": "mainAxisAlignment = "
+	},
+	"crossAxisAlignment = ": {
+		"scope": "lua",
+		"prefix": "crossAxisAlignment = ",
+		"body": [
+			"crossAxisAlignment = "
+		],
+		"description": "crossAxisAlignment = "
 	},
 	"FontWeight.w400": {
 		"scope": "lua",
@@ -473,6 +489,26 @@
 			"IconButton:new({\n\ticon = $1,\n\ticonSize = $2,\n\tonPressed = $3\n})"
 		],
 		"description": "IconButton:new"
+	},
+	"onDoubleTap =": {
+		"scope": "lua",
+		"prefix": "onDoubleTap =",
+		"body": [
+			"onDoubleTap = function()",
+			"   $1",
+			"end"
+		],
+		"description": "onDoubleTap ="
+	},
+	"onTap =": {
+		"scope": "lua",
+		"prefix": "onTap =",
+		"body": [
+			"onTap = function()",
+			"   $1",
+			"end$0"
+		],
+		"description": "onTap ="
 	},
 	"Icon:new": {
 		"scope": "lua",

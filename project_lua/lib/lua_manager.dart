@@ -1,4 +1,6 @@
 // ignore: unused_import
+import 'dart:io';
+
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_lua_dardo/index.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:project_lua/common_stateful_wiget.dart';
 import 'package:project_lua/common_stateless_wiget.dart';
 
@@ -123,7 +126,7 @@ class LuaManager {
   static Map<String, String> _luaContentMap = Map<String, String>();
   static Map<String, bool> _luaLoadedMap = Map<String, bool>();
 
-  static initLuaState() async {
+  static initLuaState({bool fromNet = false}) async {
     _luaContentMap = Map<String, String>();
     if (_state == null) {
       _state = LuaState.newState();
@@ -135,22 +138,32 @@ class LuaManager {
     FlutterCommonStatefulWidget.require(_state!);
     FlutterCommonStatelessWidget.require(_state!);
     FlutterUtils.open(_state);
-    await _loadAllLuaContent();
+    await _loadAllLuaContent(fromNet: fromNet);
     return true;
   }
 
-  static _loadAllLuaContent() async {
+  static _loadAllLuaContent({bool fromNet = false}) async {
     //为了测试方便现阶段 本地加载 后期考虑网络缓存后加载
-    var _luaArry = [
-      "assets/lua/dkjson.lua",
-      "assets/lua/app.lua",
-      "assets/lua/component/my_stateful_widget.lua",
-      "assets/lua/component/my_stateless_widget.lua"
-    ];
 
-    for (var item in _luaArry) {
-      String src = await rootBundle.loadString(item);
-      _luaContentMap[item] = src;
+    if (!fromNet) {
+      var _luaArry = [
+        "lua/dkjson.lua",
+        "lua/app.lua",
+        "lua/component/my_stateful_widget.lua",
+        "lua/component/my_stateless_widget.lua"
+      ];
+      for (var item in _luaArry) {
+        String src = await rootBundle.loadString("assets/$item");
+        _luaContentMap[item] = src;
+      }
+    } else {
+      // var dir = await getApplicationDocumentsDirectory();
+      // String luaPath = dir.path + "/lua/";
+      // var _luaNetArry = []; //从网络中获取到最新的资源列表
+      // Directory luaDir = Directory(luaPath);
+      // luaDir.listSync().forEach((element) {
+      //   print(element.path); // 使用  _luaNetArry 和 本地的脚本进行比对
+      // });
     }
   }
 
@@ -188,9 +201,9 @@ class LuaManager {
     } catch (e) {
       throw ParameterError(
           name: path,
-          type: "File Content is NUll ",
+          type: "$path luaContentMap not find Key",
           source: e.toString(),
-          expected: 'File Content');
+          expected: 'File Content Is Null');
     }
   }
 }

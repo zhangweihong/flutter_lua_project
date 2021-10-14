@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
                   child: child,
                 );
               },
-              home: CommonStatelessWidget(
-                  name: "app", path: "assets/lua/app.lua"),
+              home: CommonStatelessWidget(name: "app", path: "lua/app.lua"),
             );
           } else {
             return MaterialApp(

@@ -3,7 +3,6 @@ function my_stateful_widget.initState()--state 初始化
 	print("my_stateful_widget init");
 end;
 function my_stateful_widget.build()
-	
 	return Container:new({
 		child = GestureDetector:new({
 			child = Text:new("my_stateful_widget", {

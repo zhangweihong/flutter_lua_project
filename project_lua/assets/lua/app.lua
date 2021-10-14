@@ -1,3 +1,4 @@
+
 -- test JSON
 -- local dkJson = require("assets/lua/dkjson.lua")
 -- local testJson = {}
@@ -42,11 +43,11 @@ function app.build()
 				children = {
 					CommonStatefulWidget:new({
 						widgetName = "my_stateful_widget",
-						path = "assets/lua/component/my_stateful_widget.lua"
+						path = "lua/component/my_stateful_widget.lua"
 					}),
 					CommonStatelessWidget:new({
 						widgetName = "my_stateless_widget",
-						path = "assets/lua/component/my_stateless_widget.lua"
+						path = "lua/component/my_stateless_widget.lua"
 					}),
 					Text:new("字体", {
 						style = {
