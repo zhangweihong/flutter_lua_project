@@ -526,9 +526,67 @@
 		"scope": "lua",
 		"prefix": "Text:new",
 		"body": [
-			"Text:new({$1,\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
+			"Text:new($1,{\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
 		],
 		"description": "Text:new"
+	},
+	"CommonStatefulWidget:new": {
+		"scope": "lua",
+		"prefix": "CommonStatefulWidget:new",
+		"body": [
+			"CommonStatefulWidget:new({\n\twidgetName = $1,\n\tpath = $2\n})"
+		],
+		"description": "CommonStatefulWidget:new"
+	},
+	"CommonStatelessWidget:new": {
+		"scope": "lua",
+		"prefix": "CommonStatelessWidget:new",
+		"body": [
+			"CommonStatelessWidget:new({\n\twidgetName = $1,\n\tpath = $2\n})"
+		],
+		"description": "CommonStatelessWidget:new"
+	},
+	".initState()": {
+		"scope": "lua",
+		"prefix": ".initState()",
+		"body": [
+			".initState()"
+		],
+		"description": ".initState()"
+	},
+	".build()": {
+		"scope": "lua",
+		"prefix": ".build()",
+		"body": [
+			".build()"
+		],
+		"description": ".build()"
+	},
+	".init()": {
+		"scope": "lua",
+		"prefix": ".init()",
+		"body": [
+			".init()"
+		],
+		"description": ".init()"
+	},
+	".encode()": {
+		"scope": "lua",
+		"prefix": ".encode()",
+		"body": [
+			".encode($1)"
+		],
+		"description": ".encode()"
+	},
+	".decode()": {
+		"scope": "lua",
+		"prefix": ".decode()",
+		"body": [
+			".decode($1)"
+		],
+		"description": ".decode()"
 	}
+
+
 
 }

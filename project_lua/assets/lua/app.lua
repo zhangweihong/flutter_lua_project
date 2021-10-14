@@ -1,3 +1,18 @@
+-- test JSON
+-- local dkJson = require("assets/lua/dkjson.lua")
+-- local testJson = {}
+-- testJson.a = 1
+-- testJson.b= "str"
+-- testJson.c= {2,3,4}
+-- testJson.d = testJson.c
+
+-- local jsStr = dkJson.encode(testJson)
+-- print(jsStr)
+
+-- local testJs = dkJson.decode(jsStr)
+-- print(testJs.a)
+
+
 app = {};
 local a = 1;
 function app.init()
@@ -32,6 +47,12 @@ function app.build()
 					CommonStatelessWidget:new({
 						widgetName = "my_stateless_widget",
 						path = "assets/lua/component/my_stateless_widget.lua"
+					}),
+					Text:new("字体", {
+						style = {
+							fontSize = sp(150),
+							fontWeight = FontWeight.w400
+						}
 					}),
 					Container:new({
 						child = InkWell:new({
