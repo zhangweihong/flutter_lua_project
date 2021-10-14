@@ -13,7 +13,6 @@ dependencies:
   flutter_screenutil: ^5.0.0+2
   lua_dardo:
     path: ../LuaDardo
-      publish_to: none
 
 dev_dependencies:
   flutter_test:

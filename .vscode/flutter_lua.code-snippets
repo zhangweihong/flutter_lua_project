@@ -4,7 +4,7 @@
 		"scope": "lua",
 		"prefix": "Align",
 		"body": [
-			"Align:new(\n\tchild = $1,\n\talignment = $2\n)"
+			"Align:new({\n\tchild = $1,\n\talignment = $2\n})"
 		],
 		"description": "Align:new"
 	},
@@ -79,5 +79,359 @@
 			"Alignment.bottomRight"
 		],
 		"description": "Alignment.bottomRight"
+	},
+	"AppBar:new": {
+		"scope": "lua",
+		"prefix": "AppBar:new",
+		"body": [
+			"AppBar:new({\n\tleading = $1,\n\ttitle = $2,\n\tactions = $3\n})"
+		],
+		"description": "AppBar:new"
+	},
+	"Column:new": {
+		"scope": "lua",
+		"prefix": "Column:new",
+		"body": [
+			"Column:new({\n\tchildren = $1,\n\tmainAxisAlignment = $2,\n\tcrossAxisAlignment = $3\n})"
+		],
+		"description": "Column:new"
+	},
+	"Row:new": {
+		"scope": "lua",
+		"prefix": "Row:new",
+		"body": [
+			"Row:new({\n\tchildren = $1,\n\tmainAxisAlignment = $2,\n\tcrossAxisAlignment = $3\n})"
+		],
+		"description": "Row:new"
+
+	},
+	"FontWeight.w400": {
+		"scope": "lua",
+		"prefix": "FontWeight.w400",
+		"body": [
+			"FontWeight.w400"
+		],
+		"description": "FontWeight.w400"
+	},
+	"FontWeight.normal": {
+		"scope": "lua",
+		"prefix": "FontWeight.normal",
+		"body": [
+			"FontWeight.normal"
+		],
+		"description": "FontWeight.normal"
+	},
+	"FontWeight.bold": {
+		"scope": "lua",
+		"prefix": "FontWeight.bold",
+		"body": [
+			"FontWeight.bold"
+		],
+		"description": "FontWeight.bold"
+	},
+	"BoxFit.fill": {
+		"scope": "lua",
+		"prefix": "BoxFit.fill",
+		"body": [
+			"BoxFit.fill"
+		],
+		"description": "BoxFit.fill"
+	},
+	"BoxFit.contain": {
+		"scope": "lua",
+		"prefix": "BoxFit.contain",
+		"body": [
+			"BoxFit.contain"
+		],
+		"description": "BoxFit.contain"
+	},
+	"BoxFit.cover": {
+		"scope": "lua",
+		"prefix": "BoxFit.cover",
+		"body": [
+			"BoxFit.cover"
+		],
+		"description": "BoxFit.cover"
+	},
+	"BoxFit.fitWidth": {
+		"scope": "lua",
+		"prefix": "BoxFit.fitWidth",
+		"body": [
+			"BoxFit.fitWidth"
+		],
+		"description": "BoxFit.fitWidth"
+	},
+	"BoxFit.fitHeight": {
+		"scope": "lua",
+		"prefix": "BoxFit.fitHeight",
+		"body": [
+			"BoxFit.fitHeight"
+		],
+		"description": "BoxFit.fitHeight"
+	},
+	"BoxFit.none": {
+		"scope": "lua",
+		"prefix": "BoxFit.none",
+		"body": [
+			"BoxFit.none"
+		],
+		"description": "BoxFit.none"
+	},
+	"BoxFit.scaleDown": {
+		"scope": "lua",
+		"prefix": "BoxFit.scaleDown",
+		"body": [
+			"BoxFit.scaleDown"
+		],
+		"description": "BoxFit.scaleDown"
+	},
+	"CrossAxisAlignment.start": {
+		"scope": "lua",
+		"prefix": "CrossAxisAlignment.start",
+		"body": [
+			"CrossAxisAlignment.start"
+		],
+		"description": "CrossAxisAlignment.start"
+	},
+	"CrossAxisAlignment.bottom": {
+		"scope": "lua",
+		"prefix": "CrossAxisAlignment.bottom",
+		"body": [
+			"CrossAxisAlignment.bottom"
+		],
+		"description": "CrossAxisAlignment.bottom"
+	},
+	"CrossAxisAlignment.center": {
+		"scope": "lua",
+		"prefix": "CrossAxisAlignment.center",
+		"body": [
+			"CrossAxisAlignment.center"
+		],
+		"description": "CrossAxisAlignment.center"
+	},
+	"CrossAxisAlignment.stretch": {
+		"scope": "lua",
+		"prefix": "CrossAxisAlignment.stretch",
+		"body": [
+			"CrossAxisAlignment.stretch"
+		],
+		"description": "CrossAxisAlignment.stretch"
+	},
+	"CrossAxisAlignment.baseline": {
+		"scope": "lua",
+		"prefix": "CrossAxisAlignment.baseline",
+		"body": [
+			"CrossAxisAlignment.baseline"
+		],
+		"description": "CrossAxisAlignment.baseline"
+	},
+	"MainAxisAlignment.start": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.start",
+		"body": [
+			"MainAxisAlignment.start"
+		],
+		"description": "MainAxisAlignment.start"
+	},
+	"MainAxisAlignment.bottom": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.bottom",
+		"body": [
+			"MainAxisAlignment.bottom"
+		],
+		"description": "MainAxisAlignment.bottom"
+	},
+	"MainAxisAlignment.center": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.center",
+		"body": [
+			"MainAxisAlignment.center"
+		],
+		"description": "MainAxisAlignment.center"
+	},
+	"MainAxisAlignment.spaceBetween": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.spaceBetween",
+		"body": [
+			"MainAxisAlignment.spaceBetween"
+		],
+		"description": "MainAxisAlignment.spaceBetween"
+	},
+	"MainAxisAlignment.spaceAround": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.spaceAround",
+		"body": [
+			"MainAxisAlignment.spaceAround"
+		],
+		"description": "MainAxisAlignment.spaceAround"
+	},
+	"MainAxisAlignment.spaceEvenly": {
+		"scope": "lua",
+		"prefix": "MainAxisAlignment.spaceEvenly",
+		"body": [
+			"MainAxisAlignment.spaceEvenly"
+		],
+		"description": "MainAxisAlignment.spaceEvenly"
+	},
+	"MainAxisSize.min": {
+		"scope": "lua",
+		"prefix": "MainAxisSize.min",
+		"body": [
+			"MainAxisSize.min"
+		],
+		"description": "MainAxisSize.min"
+	},
+	"MainAxisSize.max": {
+		"scope": "lua",
+		"prefix": "MainAxisSize.max",
+		"body": [
+			"MainAxisSize.max"
+		],
+		"description": "MainAxisSize.max"
+	},
+	"Icons": {
+		"scope": "lua",
+		"prefix": "Icons",
+		"body": [
+			"Icons"
+		],
+		"description": "Icons"
+	},
+	"Color": {
+		"scope": "lua",
+		"prefix": "Color",
+		"body": [
+			"Color('#fff')"
+		],
+		"description": "Color"
+	},
+	"EdgeInsets.only": {
+		"scope": "lua",
+		"prefix": "EdgeInsets.only",
+		"body": [
+			"EdgeInsets.only({\n\ttop = $1,\n\tleft = $2,\n\tbottom = $3,\n\tright = $4\n})"
+		],
+		"description": "EdgeInsets.only"
+	},
+	"EdgeInsets.all": {
+		"scope": "lua",
+		"prefix": "EdgeInsets.all",
+		"body": [
+			"EdgeInsets.all($1)"
+		],
+		"description": "EdgeInsets.all"
+	},
+	"sp()": {
+		"scope": "lua",
+		"prefix": "sp()",
+		"body": [
+			"sp($1)"
+		],
+		"description": "sp()"
+	},
+	"Border:new": {
+		"scope": "lua",
+		"prefix": "Border:new",
+		"body": [
+			"Border:new({\n\ttop = $1,\n\tbottom = $2,\n\tleft = $3,\n\tright = $4\n})"
+		],
+		"description": "Border:new"
+	},
+	"Border.all": {
+		"scope": "lua",
+		"prefix": "Border:all",
+		"body": [
+			"Border.all({\n\twidth = $1,\n\tcolor = $2\n})"
+		],
+		"description": "Border:new"
+	},
+	"BoxDecoration:new": {
+		"scope": "lua",
+		"prefix": "BoxDecoration:new",
+		"body": [
+			"BoxDecoration:new({\n\tcolor = $1,\n\tborderRadius = $2,\n\tborder = $3\n})"
+		],
+		"description": "Border:new"
+	},
+	"borderRadius": {
+		"scope": "lua",
+		"prefix": "borderRadius",
+		"body": [
+			"borderRadius"
+		],
+		"description": "Border:new"
+	},
+	"Container:new": {
+		"scope": "lua",
+		"prefix": "Container:new",
+		"body": [
+			"Container:new({\n\tchild = $1\n})"
+		],
+		"description": "Border:new"
+	},
+	"width:": {
+		"scope": "lua",
+		"prefix": "width:",
+		"body": [
+			"width:"
+		],
+		"description": "width:"
+	},
+	"height:": {
+		"scope": "lua",
+		"prefix": "height:",
+		"body": [
+			"height:"
+		],
+		"description": "height:"
+	},
+	"margin:": {
+		"scope": "lua",
+		"prefix": "margin:",
+		"body": [
+			"margin:"
+		],
+		"description": "margin:"
+	},
+	"padding:": {
+		"scope": "lua",
+		"prefix": "padding:",
+		"body": [
+			"padding:"
+		],
+		"description": "padding:"
+	},
+	"decoration:": {
+		"scope": "lua",
+		"prefix": "decoration:",
+		"body": [
+			"decoration:"
+		],
+		"description": "decoration:"
+	},
+	"color:": {
+		"scope": "lua",
+		"prefix": "color:",
+		"body": [
+			"color:"
+		],
+		"description": "color:"
+	},
+	"ElevatedButton:new": {
+		"scope": "lua",
+		"prefix": "ElevatedButton:new",
+		"body": [
+			"ElevatedButton:new({\n\tchild = $1,\n\tonPressed = $2,\n\tonLongPress = $3 \n})"
+		],
+		"description": "ElevatedButton:new"
+	},
+	"GestureDetector:new": {
+		"scope": "lua",
+		"prefix": "GestureDetector:new",
+		"body": [
+			"GestureDetector:new({\n\tchild = $1,\n\tonTap = $2,\n\tonDoubleTap = $3 \n})"
+		],
+		"description": "GestureDetector:new"
 	}
+
 }
