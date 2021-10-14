@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/index.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:project_lua/common_stateful_wiget.dart';
 import 'package:project_lua/common_stateless_wiget.dart';
 import 'package:project_lua/lua_manager.dart';
 
