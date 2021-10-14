@@ -18,8 +18,13 @@ class CommonStatefulWidget extends StatefulWidget {
 class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
   @override
   void initState() {
-    loadLuaContent(); //注册初始化函数
     super.initState();
+    loadLuaContent(); //注册初始化函数
+    var type = LuaManager.luaState?.getField(-1, "initState");
+    if (type == LuaType.luaFunction) {
+      //呼叫lua的initState
+      LuaManager.luaState?.pCall(0, 0, 1);
+    }
   }
 
   void loadLuaContent() {
@@ -44,10 +49,6 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
             type: "Widget Error",
             expected: "Common Stateful Expected",
             source: "CommonStatefulWidget");
-      }
-      var type = LuaManager.luaState?.getField(-1, "init");
-      if (type == LuaType.luaFunction) {
-        LuaManager.luaState?.pCall(0, 0, 1);
       }
     }
   }

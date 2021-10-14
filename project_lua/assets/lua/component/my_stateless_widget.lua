@@ -1,5 +1,5 @@
 my_stateless_widget = {};
-function my_stateless_widget.init()
+function my_stateless_widget.init()--初始化
 	print("my_stateless_widget init");
 end;
 function my_stateless_widget.build()

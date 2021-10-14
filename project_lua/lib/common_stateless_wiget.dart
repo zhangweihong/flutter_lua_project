@@ -23,7 +23,8 @@ class CommonStatelessWidget extends StatelessWidget {
             expected: "Common Stateless Expected",
             source: "CommonStatelessWidget");
       }
-      var type = LuaManager.luaState?.getField(-1, "init");
+      var type =
+          LuaManager.luaState?.getField(-1, "init"); // 注册一次call Lua的 init
       if (type == LuaType.luaFunction) {
         LuaManager.luaState?.pCall(0, 0, 1);
       }
