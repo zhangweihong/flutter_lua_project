@@ -52,7 +52,7 @@ function app.build()
 					Text:new("字体", {
 						style = {
 							fontSize = sp(150),
-							fontWeight = FontWeight.w400
+							fontWeight = FontWeight.w400,
 						}
 					}),
 					Container:new({

@@ -621,6 +621,15 @@
 			".decode($1)"
 		],
 		"description": ".decode()"
+	
+	},
+	"fontFamily = ": {
+		"scope": "lua",
+		"prefix": "fontFamily = ",
+		"body": [
+			"fontFamily = $1"
+		],
+		"description": "fontFamily = "
 	}
 
 
