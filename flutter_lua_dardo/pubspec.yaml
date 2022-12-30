@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_screenutil: ^5.0.0+2
+  flutter_screenutil: ^5.6.0
   lua_dardo:
     path: ../LuaDardo
 

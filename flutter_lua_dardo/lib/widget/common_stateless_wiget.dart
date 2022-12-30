@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/index.dart';
+import 'package:flutter_lua_dardo/lua_manager.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
-import 'package:project_lua/lua_manager.dart';
 
 // ignore: must_be_immutable
 class CommonStatelessWidget extends StatelessWidget {
-  CommonStatelessWidget({Key? key, required this.name, required this.path})
-      : super(key: key);
+  CommonStatelessWidget({Key key, this.name, this.path}) : super(key: key);
   final String name;
   final String path;
   void register() {
     Map<String, DartFunction> _wrap = {};
 
     if (LuaManager.luaState != null) {
-      LuaType _t = LuaManager.luaState!.getGlobal(name);
+      LuaType _t = LuaManager.luaState.getGlobal(name);
       if (_t == LuaType.luaTable) {
         LuaManager.luaState?.setFuncs(_wrap, 0);
       } else {

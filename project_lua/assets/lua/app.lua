@@ -1,19 +1,3 @@
-
--- test JSON
--- local dkJson = require("assets/lua/dkjson.lua")
--- local testJson = {}
--- testJson.a = 1
--- testJson.b= "str"
--- testJson.c= {2,3,4}
--- testJson.d = testJson.c
-
--- local jsStr = dkJson.encode(testJson)
--- print(jsStr)
-
--- local testJs = dkJson.decode(jsStr)
--- print(testJs.a)
-
-
 app = {};
 local a = 1;
 function app.init()
@@ -31,7 +15,7 @@ function app.build()
 			})
 		}),
 		body = Container:new({
-			padding = EdgeInsets.all(sp(20)),
+			padding = EdgeInsets.all(sp(10)),
 			width = w(750),
 			margin = EdgeInsets.only({
 				top = 10,
@@ -51,15 +35,15 @@ function app.build()
 					}),
 					Text:new("字体", {
 						style = {
-							fontSize = sp(150),
-							fontWeight = FontWeight.w400,
+							fontSize = sp(30),
+							fontWeight = FontWeight.w400
 						}
 					}),
 					Container:new({
 						child = InkWell:new({
 							child = Text:new("InkWell", {
 								style = {
-									fontSize = sp(50),
+									fontSize = sp(40),
 									fontWeight = FontWeight.w400
 								}
 							}),
@@ -75,7 +59,7 @@ function app.build()
 						icon = Icon:new(Icons.ac_unit, {
 							color = Color("#0000ff")
 						}),
-						iconSize = sp(30),
+						iconSize = sp(20),
 						onPressed = function()
 							print("IconButton");
 						end
@@ -97,7 +81,7 @@ function app.build()
 				}
 			}),
 			decoration = BoxDecoration:new({
-				borderRadius = BorderRadius.all(sp(40)),
+				borderRadius = BorderRadius.all(sp(10)),
 				border = Border.all({
 					width = 5,
 					color = Color("#000000")

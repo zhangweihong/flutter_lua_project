@@ -6,11 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/index.dart';
+import 'package:flutter_lua_dardo/widget/common_stateful_wiget.dart';
+import 'package:flutter_lua_dardo/widget/common_stateless_wiget.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:project_lua/common_stateful_wiget.dart';
-import 'package:project_lua/common_stateless_wiget.dart';
 
 class FlutterCommonStatelessWidget {
   static const Map<String, DartFunction> _slWrap = {"new": _newCommonStateless};
@@ -117,42 +116,40 @@ class FlutterCommonStatefulWidget {
 }
 
 class LuaManager {
-  static LuaState? _state;
+  static LuaState _state;
 
-  static LuaState? get luaState {
+  static LuaState get luaState {
     return _state;
   }
 
-  static Map<String, String> _luaContentMap = Map<String, String>();
-  static Map<String, bool> _luaLoadedMap = Map<String, bool>();
+  static Map<String, String> _luaContentMap = <String, String>{};
+  static Map<String, bool> _luaLoadedMap = <String, bool>{};
 
-  static initLuaState({bool fromNet = false}) async {
-    _luaContentMap = Map<String, String>();
+  static initLuaState({bool fromNet = false, List<String> preLoadLua}) async {
+    _luaContentMap = <String, String>{};
     if (_state == null) {
       _state = LuaState.newState();
       // 加载标准库
-      _state!.openLibs(); //标准库 会覆盖print
+      _state?.openLibs(); //标准库 会覆盖print
     }
-    _state!.register("require", _requireWrap);
-    FlutterWidget.open(_state!);
-    FlutterCommonStatefulWidget.require(_state!);
-    FlutterCommonStatelessWidget.require(_state!);
+    _state?.register("require", _requireWrap);
+    FlutterWidget.open(_state);
+    FlutterCommonStatefulWidget.require(_state);
+    FlutterCommonStatelessWidget.require(_state);
     FlutterUtils.open(_state);
-    await _loadAllLuaContent(fromNet: fromNet);
+    await _loadAllLuaContent(fromNet: fromNet, preLoadLua: preLoadLua);
     return true;
   }
 
-  static _loadAllLuaContent({bool fromNet = false}) async {
+  static _loadAllLuaContent(
+      {bool fromNet = false, List<String> preLoadLua}) async {
     //为了测试方便现阶段 本地加载 后期考虑网络缓存后加载
 
     if (!fromNet) {
-      var _luaArry = [
-        "lua/dkjson.lua",
-        "lua/app.lua",
-        "lua/component/my_stateful_widget.lua",
-        "lua/component/my_stateless_widget.lua"
-      ];
-      for (var item in _luaArry) {
+      if (preLoadLua == null) {
+        preLoadLua = List.empty(growable: true);
+      }
+      for (var item in preLoadLua) {
         String src = await rootBundle.loadString("assets/$item");
         _luaContentMap[item] = src;
       }
@@ -176,7 +173,7 @@ class LuaManager {
   static bool checkLuaLoaded(String path) {
     if (_luaLoadedMap.containsKey(path) &&
         _luaLoadedMap[path] != null &&
-        _luaLoadedMap[path]!) {
+        _luaLoadedMap[path]) {
       return true;
     }
     return false;
@@ -184,13 +181,13 @@ class LuaManager {
 
   static bool loadLuaContent(String path) {
     try {
-      String? src = _luaContentMap[path];
-      if (src!.isEmpty) {
+      String src = _luaContentMap[path];
+      if (src.isEmpty) {
         debugPrint(path + " _luaContentMap not find");
         return false;
       }
 
-      bool _load = _state!.doString(src);
+      bool _load = _state.doString(src);
       _luaLoadedMap[path] = _load;
       if (_load) {
         debugPrint(path + " Is Loaded Success");

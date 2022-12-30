@@ -7,14 +7,14 @@ function my_stateful_widget.build()
 		child = GestureDetector:new({
 			child = Text:new("my_stateful_widget", {
 				style = {
-					fontSize = sp(50),
+					fontSize = sp(20),
 					fontWeight = FontWeight.w400
 				}
 			}),
 			onTap = function()
 				my_stateful_widget.setState({
 					callback = function()
-						print("my_stateful_widget");
+						print("my_stateful_widget update state");
 					end
 				});
 			end

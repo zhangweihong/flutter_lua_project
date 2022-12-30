@@ -1,3 +1,6 @@
+# Flutter SDK version
+     flutter_windows_3.0.2-stable
+
 # flutter_lua_project
 
 # 使用Lua代码来进行热更新适配

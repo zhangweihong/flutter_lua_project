@@ -7,7 +7,7 @@ function my_stateless_widget.build()
 	return Container:new({
 		child = Text:new("my_stateless_widget", {
 			style = {
-				fontSize = sp(50),
+				fontSize = sp(20),
 				fontWeight = FontWeight.w400
 			}
 		})

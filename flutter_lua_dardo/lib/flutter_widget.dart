@@ -93,11 +93,9 @@ class FlutterWidget {
   static init(BuildContext context, Size size, Orientation orientation) {
     //初始化
     ScreenUtil.init(
-        BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width,
-            maxHeight: MediaQuery.of(context).size.height),
-        designSize: size,
-        orientation: Orientation.landscape);
+      context,
+      designSize: size,
+    );
   }
 
   static void registerUtil() {
