@@ -83,6 +83,10 @@
   end;
   return app;
   ```
+  对应的都是真实flutter中的组件，性能绝对对比原生
+  ![image](https://user-images.githubusercontent.com/6658343/210043209-2f32b014-5cf2-455b-8587-9d6466ccc5e8.png)
+
+![image](https://user-images.githubusercontent.com/6658343/210041172-3ca11aef-24fb-4664-baaa-b61902904966.png)
 
 
 
