@@ -398,7 +398,15 @@
 		"scope": "lua",
 		"prefix": "BoxDecoration:new",
 		"body": [
-			"BoxDecoration:new({\n\tcolor = $1,\n\tborderRadius = $2,\n\tborder = $3\n})"
+			"BoxDecoration:new({\n\tcolor = $1,\n\tborderRadius = $2,\n\tborder = $3,\n\timage = $4,\n})"
+		],
+		"description": "Border:new"
+	},
+	"DecorationImage:new": {
+		"scope": "lua",
+		"prefix": "DecorationImage:new",
+		"body": [
+			"DecorationImage:new({\n\timage = $1,\n\tfit = $2})"
 		],
 		"description": "Border:new"
 	},
@@ -522,7 +530,7 @@
 		"scope": "lua",
 		"prefix": "Image.asset",
 		"body": [
-			"Image.asset({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+			"Image.asset($1,{\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
 		],
 		"description": "Image.asset"
 	},
@@ -530,7 +538,7 @@
 		"scope": "lua",
 		"prefix": "Image.file",
 		"body": [
-			"Image.file({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+			"Image.file($1,{\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
 		],
 		"description": "Image.file"
 	},
@@ -538,7 +546,7 @@
 		"scope": "lua",
 		"prefix": "Image.network",
 		"body": [
-			"Image.network({$1,\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
+			"Image.network($1,{\n\twidth = $2,\n\theight = $3,\n\tfit = $4\n})"
 		],
 		"description": "Image.network"
 	},
@@ -562,10 +570,59 @@
 		"scope": "lua",
 		"prefix": "Text:new",
 		"body": [
-			"Text:new($1,{\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
+			"Text:new($1,{\n\ttextAlign = TextAlign.left,\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
 		],
 		"description": "Text:new"
 	},
+	"TextAlign.left": {
+		"scope": "lua",
+		"prefix": "TextAlign.left",
+		"body": [
+			"TextAlign.left"
+		],
+		"description": "BoxFit.fill"
+	},
+	"TextAlign.right": {
+		"scope": "lua",
+		"prefix": "TextAlign.right",
+		"body": [
+			"TextAlign.right"
+		],
+		"description": "TextAlign.right"
+	},
+	"TextAlign.center": {
+		"scope": "lua",
+		"prefix": "TextAlign.center",
+		"body": [
+			"TextAlign.center"
+		],
+		"description": "TextAlign.center"
+	},
+	"TextAlign.justify": {
+		"scope": "lua",
+		"prefix": "TextAlign.justify",
+		"body": [
+			"TextAlign.justify"
+		],
+		"description": "TextAlign.justify"
+	},
+	"TextAlign.start": {
+		"scope": "lua",
+		"prefix": "TextAlign.start",
+		"body": [
+			"TextAlign.start"
+		],
+		"description": "TextAlign.start"
+	},
+	"TextAlign.end": {
+		"scope": "lua",
+		"prefix": "TextAlign.end",
+		"body": [
+			"TextAlign.end"
+		],
+		"description": "TextAlign.end"
+	},
+	
 	"CommonStatefulWidget:new": {
 		"scope": "lua",
 		"prefix": "CommonStatefulWidget:new",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lua_dardo/widget/common_flutter_class.dart';
+import 'package:flutter_lua_dardo/widget/font_weight.dart';
+import 'package:flutter_lua_dardo/widget/text_align.dart';
 import 'package:lua_dardo/lua.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'parameter_exception.dart';
@@ -62,6 +63,7 @@ class FlutterText {
         fieldType = ls.getField(-1, "color");
         if (fieldType == LuaType.luaUserdata) {
           _colors = ls.toUserdata(-1).data as Color;
+          ls.pop(1);
         } else {
           ls.pop(1);
         }
@@ -74,10 +76,20 @@ class FlutterText {
             expected: "style",
             source: "Text");
       }
+      ls.pop(1);
 
+      fieldType = ls.getField(-1, "textAlign");
+      TextAlign al = TextAlign.left;
+      if (fieldType == LuaType.luaNumber) {
+        al = FlutterTextAlign.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
       Userdata u = ls.newUserdata<Text>();
       u.data = Text(
         first,
+        textAlign: al,
         style: TextStyle(
             fontFamily: _fontFamily,
             color: _colors,

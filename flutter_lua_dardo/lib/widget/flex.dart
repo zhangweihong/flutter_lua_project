@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_lua_dardo/widget/cross_axis_align.dart';
+import 'package:flutter_lua_dardo/widget/main_axis_align.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 
-import 'common_flutter_class.dart';
+import 'main_axis_size.dart';
 
 class FlutterFlex {
   static const className = "FlexClass";

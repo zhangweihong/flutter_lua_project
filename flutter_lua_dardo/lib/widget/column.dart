@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lua_dardo/widget/_flex.dart';
+import 'package:flutter_lua_dardo/widget/flex.dart';
 import 'package:lua_dardo/lua.dart';
 
 class FlutterColumn {

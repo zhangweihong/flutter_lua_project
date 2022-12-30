@@ -17,6 +17,7 @@ function app.build()
 		body = Container:new({
 			padding = EdgeInsets.all(sp(10)),
 			width = w(750),
+			alignment = Alignment.center,
 			margin = EdgeInsets.only({
 				top = 10,
 				left = 10,

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
+import 'package:flutter_lua_dardo/widget/align.dart';
+import 'package:flutter_lua_dardo/widget/alignment.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 
 class FlutterContainer {
@@ -56,6 +58,15 @@ class FlutterContainer {
     } else {
       ls.pop(1);
     }
+
+    fieldType = ls.getField(-1, "alignment");
+    var alignment = Alignment.topLeft;
+    if (fieldType == LuaType.luaNumber) {
+      alignment = FlutterAlignment.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
     BoxConstraints constraints =
         BoxConstraints.tightFor(width: width, height: height);
     fieldType = ls.getField(-1, "decoration");
@@ -82,6 +93,7 @@ class FlutterContainer {
       Userdata userdata = ls.newUserdata<Widget>();
 
       userdata.data = Container(
+        alignment: alignment,
         constraints: constraints,
         child: child,
         margin: margin,

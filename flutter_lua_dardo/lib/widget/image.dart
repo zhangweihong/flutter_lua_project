@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lua_dardo/widget/common_flutter_class.dart';
+import 'package:flutter_lua_dardo/widget/box_fit.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 
@@ -37,6 +37,19 @@ class FlutterImage {
     if (ls.getTop() > 0) {
       double width, height;
       BoxFit fit;
+
+      String first;
+      if (ls.isString(-1)) {
+        first = ls.toStr(-1);
+      } else if (ls.isTable(-1)) {
+        first = ls.toStr(-2);
+      } else {
+        throw ParameterError(
+            name: 'image First Error',
+            type: "",
+            expected: "String",
+            source: "FlutterImage _assetText");
+      }
 
       var fieldType = ls.getField(-1, "width");
       if (fieldType == LuaType.luaNumber) {
@@ -77,19 +90,6 @@ class FlutterImage {
             name: 'fit',
             type: ls.typeName(fieldType),
             expected: "double",
-            source: "FlutterImage _assetText");
-      }
-
-      String first;
-      if (ls.isString(-1)) {
-        first = ls.toStr(-1);
-      } else if (ls.isTable(-1)) {
-        first = ls.toStr(-2);
-      } else {
-        throw ParameterError(
-            name: 'first',
-            type: ls.typeName(fieldType),
-            expected: "String",
             source: "FlutterImage _assetText");
       }
 
