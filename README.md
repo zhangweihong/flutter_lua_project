@@ -1,9 +1,12 @@
 # Flutter SDK version
      flutter_windows_3.0.2-stable
+# 对应的都是真实flutter中的组件，性能绝对对比原生
+![image](https://user-images.githubusercontent.com/6658343/210043209-2f32b014-5cf2-455b-8587-9d6466ccc5e8.png)
+
+![image](https://user-images.githubusercontent.com/6658343/210054478-7498681e-4473-42c9-b01a-5d4b00c7965f.png)
 
 # flutter_lua_project
-
-# 使用Lua代码来进行hotfix代码
+# 使用Lua代码操作dart来进行hotfix代码，lua只起到了运算和解析作用
 正在持续更新中
 
 ---------
@@ -83,10 +86,7 @@
   end;
   return app;
   ```
-  对应的都是真实flutter中的组件，性能绝对对比原生
-  ![image](https://user-images.githubusercontent.com/6658343/210043209-2f32b014-5cf2-455b-8587-9d6466ccc5e8.png)
 
-![image](https://user-images.githubusercontent.com/6658343/210041172-3ca11aef-24fb-4664-baaa-b61902904966.png)
 
 
 
