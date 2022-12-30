@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: LuaManager.initLuaState(fromNet: false, preLoadLua: [
-          "lua/dkjson.lua",
-          "lua/app.lua",
-          "lua/component/my_stateful_widget.lua",
-          "lua/component/my_stateless_widget.lua"
+        future: LuaManager.initLuaState(fromNet: false, allLua: [
+          "assets/lua/dkjson.lua",
+          "assets/lua/app.lua",
+          "assets/lua/component/my_stateful_widget.lua",
+          "assets/lua/component/my_stateless_widget.lua"
         ]),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
                   child: child,
                 );
               },
-              home: CommonStatelessWidget(name: "app", path: "lua/app.lua"),
+              home: CommonStatelessWidget(
+                  name: "app", path: "assets/lua/app.lua"),
             );
           } else {
             return MaterialApp(

@@ -27,11 +27,11 @@ function app.build()
 				children = {
 					CommonStatefulWidget:new({
 						widgetName = "my_stateful_widget",
-						path = "lua/component/my_stateful_widget.lua"
+						path = "assets/lua/component/my_stateful_widget.lua"
 					}),
 					CommonStatelessWidget:new({
 						widgetName = "my_stateless_widget",
-						path = "lua/component/my_stateless_widget.lua"
+						path = "assets/lua/component/my_stateless_widget.lua"
 					}),
 					Text:new("字体", {
 						style = {
@@ -67,7 +67,7 @@ function app.build()
 					ElevatedButton:new({
 						child = Text:new("ElevatedButton", {
 							style = {
-								fontSize = sp(40),
+								fontSize = sp(10),
 								fontWeight = FontWeight.w400
 							}
 						}),

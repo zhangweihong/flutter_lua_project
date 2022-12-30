@@ -124,34 +124,44 @@ class LuaManager {
 
   static Map<String, String> _luaContentMap = <String, String>{};
   static Map<String, bool> _luaLoadedMap = <String, bool>{};
-
-  static initLuaState({bool fromNet = false, List<String> preLoadLua}) async {
+  /**
+   * 初始化luastate
+   */
+  static initLuaState({bool fromNet = false, List<String> allLua}) async {
     _luaContentMap = <String, String>{};
     if (_state == null) {
       _state = LuaState.newState();
       // 加载标准库
-      _state?.openLibs(); //标准库 会覆盖print
+      _state?.openLibs();
     }
     _state?.register("require", _requireWrap);
     FlutterWidget.open(_state);
     FlutterCommonStatefulWidget.require(_state);
     FlutterCommonStatelessWidget.require(_state);
     FlutterUtils.open(_state);
-    await _loadAllLuaContent(fromNet: fromNet, preLoadLua: preLoadLua);
+    await _loadAllLuaContent(fromNet: fromNet, allLua: allLua);
     return true;
   }
 
-  static _loadAllLuaContent(
-      {bool fromNet = false, List<String> preLoadLua}) async {
+  static _loadAllLuaContent({bool fromNet = false, List<String> allLua}) async {
     //为了测试方便现阶段 本地加载 后期考虑网络缓存后加载
-
     if (!fromNet) {
-      if (preLoadLua == null) {
-        preLoadLua = List.empty(growable: true);
+      if (allLua == null) {
+        allLua = List.empty(growable: true);
       }
-      for (var item in preLoadLua) {
-        String src = await rootBundle.loadString("assets/$item");
-        _luaContentMap[item] = src;
+      for (String item in allLua) {
+        // String src = await rootBundle.loadString("assets/$item");
+        // if (src.isNotEmpty) {
+        //   _luaContentMap[item] = src;
+        // } else {
+        //   throw ParameterError(
+        //     name: item,
+        //     type: "$item is empty",
+        //     source: "",
+        //     expected: 'File Content Is empty',
+        //   );
+        // }
+        await dynamicLoadLuaContent(fromNet: false, luaPath: item);
       }
     } else {
       // var dir = await getApplicationDocumentsDirectory();
@@ -161,6 +171,26 @@ class LuaManager {
       // luaDir.listSync().forEach((element) {
       //   print(element.path); // 使用  _luaNetArry 和 本地的脚本进行比对
       // });
+    }
+  }
+
+  static dynamicLoadLuaContent({bool fromNet = false, String luaPath}) async {
+    var mapContent = _luaContentMap[luaPath];
+    if (mapContent != null && mapContent.isNotEmpty) {
+      return mapContent;
+    }
+    if (!fromNet) {
+      String src = await rootBundle.loadString("$luaPath");
+      if (src != null && src.isNotEmpty) {
+        _luaContentMap[luaPath] = src;
+      } else {
+        throw ParameterError(
+          name: luaPath,
+          type: "$luaPath is empty",
+          source: "",
+          expected: 'File Content Is empty',
+        );
+      }
     }
   }
 
