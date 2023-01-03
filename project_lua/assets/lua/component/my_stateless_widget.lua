@@ -3,7 +3,6 @@ function my_stateless_widget.init()--初始化
 	print("my_stateless_widget init");
 end;
 function my_stateless_widget.build()
-	
 	return Container:new({
 		width = sp(300),
 		height = sp(100),
@@ -22,7 +21,7 @@ function my_stateless_widget.build()
 						}),
 					}),
 					left = 100,
-					top = 5
+					top = 100
 				}),
 				Text:new("my_stateless_widget Stack 1", {
 					style = {

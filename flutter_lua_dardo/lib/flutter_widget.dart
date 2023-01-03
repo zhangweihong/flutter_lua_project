@@ -6,6 +6,8 @@ import 'package:flutter_lua_dardo/widget/border.dart';
 import 'package:flutter_lua_dardo/widget/borderradius.dart';
 import 'package:flutter_lua_dardo/widget/box_fit.dart';
 import 'package:flutter_lua_dardo/widget/boxdecoration.dart';
+import 'package:flutter_lua_dardo/widget/fittedbox.dart';
+import 'package:flutter_lua_dardo/widget/sizedbox.dart';
 import 'package:flutter_lua_dardo/widget/colors.dart';
 import 'package:flutter_lua_dardo/widget/cross_axis_align.dart';
 import 'package:flutter_lua_dardo/widget/decorationimage.dart';
@@ -54,6 +56,8 @@ class FlutterWidget {
     FlutterTextAlign.require(ls);
     FlutterText.require(ls);
     FlutterImage.require(ls);
+    FlutterFittedBox.require(ls);
+    FlutterSizedBox.require(ls);
     FlutterContainer.require(ls);
     FlutterBoxDecoration.require(ls);
     FlutterEdgeInsets.require(ls);

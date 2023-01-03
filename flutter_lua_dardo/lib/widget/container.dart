@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
-import 'package:flutter_lua_dardo/widget/align.dart';
 import 'package:flutter_lua_dardo/widget/alignment.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 
@@ -19,6 +17,7 @@ class FlutterContainer {
       child = ls.toUserdata(-1).data as Widget;
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'FlutterContainer child',
           type: ls.typeName(fieldType),

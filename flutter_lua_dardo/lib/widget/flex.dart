@@ -43,6 +43,7 @@ class FlutterFlex {
       mainAxisSize = MainAxisSize.max;
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'mainAxisSize',
           type: ls.typeName(fieldType),
@@ -58,6 +59,7 @@ class FlutterFlex {
       mainAxisAlignment = MainAxisAlignment.start;
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'mainAxisAlignment',
           type: ls.typeName(fieldType),
@@ -73,6 +75,7 @@ class FlutterFlex {
       crossAxisAlignment = CrossAxisAlignment.center;
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'crossAxisAlignment',
           type: ls.typeName(fieldType),
@@ -94,6 +97,7 @@ class FlutterFlex {
     } else if (fieldType == LuaType.luaNil) {
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'children',
           type: ls.typeName(fieldType),

@@ -28,7 +28,9 @@ class FlutterIcon {
             expected: "FlutterIcon Error",
             source: "");
       }
+      ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: "Flutter Icon",
           type: "iconData is Null",

@@ -33,12 +33,13 @@ class FlutterElevatedButton {
           expected: "",
           source: "");
     }
-
+    ls.pop(1);
     int long_pressId = -1;
     fieldType = ls.getField(-1, "onLongPress");
     if (fieldType == LuaType.luaFunction) {
       long_pressId = ls.ref(lua_registryindex);
     }
+    ls.pop(1);
 
     Userdata userdata = ls.newUserdata<ElevatedButton>();
     userdata.data = ElevatedButton(

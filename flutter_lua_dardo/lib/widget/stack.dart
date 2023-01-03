@@ -26,6 +26,7 @@ class FlutterStack {
     } else if (fieldType == LuaType.luaNil) {
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'FlutterStack Error',
           type: ls.typeName(fieldType),

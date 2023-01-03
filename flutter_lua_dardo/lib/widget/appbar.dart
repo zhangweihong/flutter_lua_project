@@ -40,7 +40,7 @@ class FlutterAppBar {
         }
         ls.pop(1);
       }
-      titleW = ls.toUserdata(-1).data as Widget;
+      ls.pop(1);
     } else {
       ls.pop(1);
     }

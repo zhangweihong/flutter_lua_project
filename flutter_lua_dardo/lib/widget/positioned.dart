@@ -16,6 +16,7 @@ class FlutterPositioned {
       child = ls.toUserdata(-1).data as Widget;
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'FlutterContainer child',
           type: ls.typeName(fieldType),

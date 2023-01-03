@@ -590,6 +590,14 @@
 		],
 		"description": "Image.network"
 	},
+	"FittedBox:new":{
+		"scope": "lua",
+		"prefix": "FittedBox:new",
+		"body": [
+			"FittedBox:new({\n\tchild = $1,\n\tfit = $2,\n\talignment = $3\n})"
+		],
+		"description": "FittedBox:new"
+	},
 	"InkWell:new": {
 		"scope": "lua",
 		"prefix": "InkWell:new",

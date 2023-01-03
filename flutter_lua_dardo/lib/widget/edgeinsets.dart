@@ -46,7 +46,9 @@ class FlutterEdgeInsets {
     if (fieldType == LuaType.luaNumber) {
       right = ls.toNumberX(-1);
       ls.pop(1);
-    } else {}
+    } else {
+      ls.pop(1);
+    }
 
     Userdata userdata = ls.newUserdata<EdgeInsets>();
     userdata.data =
@@ -62,6 +64,7 @@ class FlutterEdgeInsets {
       value = ls.toNumberX(-1);
       ls.pop(1);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'EdgeInsets Value',
           type: "Number ",

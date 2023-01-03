@@ -23,20 +23,28 @@ class FlutterBorderRadius {
     if (fieldType == LuaType.luaNumber) {
       tl = ls.toNumberX(-1);
       ls.pop(1);
+    } else {
+      ls.pop(1);
     }
     fieldType = ls.getField(-1, "topRight");
     if (fieldType == LuaType.luaNumber) {
       tr = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
       ls.pop(1);
     }
     fieldType = ls.getField(-1, "bottomLeft");
     if (fieldType == LuaType.luaNumber) {
       bl = ls.toNumberX(-1);
       ls.pop(1);
+    } else {
+      ls.pop(1);
     }
     fieldType = ls.getField(-1, "bottomRight");
     if (fieldType == LuaType.luaNumber) {
       br = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
       ls.pop(1);
     }
 

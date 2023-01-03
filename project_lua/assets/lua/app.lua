@@ -12,8 +12,27 @@ function app.build()
 					color = Color("#ffffff"),
 					fontWeight = FontWeight.w400
 				}
-			})
+			}),
+			actions = {
+				InkWell:new({
+					child = Text:new("btn1",{
+						textAlign = TextAlign.left,
+						style = {
+							fontSize = sp(20),
+							fontWeight = FontWeight.w400,
+							color = Color('#fff')
+						}
+					}),
+					onTap = function ()
+						print("ontap")
+					end,
+					onDoubleTap = function ()
+						print("onDoubleTap")
+					end
+				})
+			}
 		}),
+		
 		body = Container:new({
 			padding = EdgeInsets.all(sp(10)),
 			width = w(750),
@@ -56,15 +75,15 @@ function app.build()
 					-- Icon:new(Icons.ac_unit, {
 					-- 	color = Color("#ff0000")
 					-- }),
-					IconButton:new({
-						icon = Icon:new(Icons.ac_unit, {
-							color = Color("#0000ff")
-						}),
-						iconSize = sp(20),
-						onPressed = function()
-							print("IconButton");
-						end
-					}),
+					-- IconButton:new({
+					-- 	icon = Icon:new(Icons.ac_unit, {
+					-- 		color = Color("#0000ff")
+					-- 	}),
+					-- 	iconSize = sp(20),
+					-- 	onPressed = function()
+					-- 		print("IconButton");
+					-- 	end
+					-- }),
 					ElevatedButton:new({
 						child = Text:new("ElevatedButton", {
 							style = {
@@ -78,6 +97,13 @@ function app.build()
 						onLongPress = function()
 							print("ElevatedButton onLongPress");
 						end
+					}),
+					FittedBox:new({
+						child = Image.asset("assets/img/R-C.jfif",{
+							width = sp(320),
+							height = sp(60),
+							fit = BoxFit.contain
+						}),
 					})
 				}
 			}),

@@ -20,6 +20,7 @@ class FlutterText {
     } else if (ls.isTable(-1)) {
       first = ls.toStr(-2);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: 'first',
           type: 'TextStyleType',
@@ -38,6 +39,7 @@ class FlutterText {
           _fontSize = ls.toNumberX(-1);
           ls.pop(1);
         } else {
+          ls.pop(1);
           throw ParameterError(
               name: 'fontSize',
               type: 'TextStyleType',
@@ -70,6 +72,7 @@ class FlutterText {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'textStyle',
             type: ls.typeName(fieldType),

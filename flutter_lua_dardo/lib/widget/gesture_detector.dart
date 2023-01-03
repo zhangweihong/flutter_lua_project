@@ -19,6 +19,7 @@ class FlutterGestureDetector {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'onTap',
             type: ls.typeName(fieldType),
@@ -32,6 +33,7 @@ class FlutterGestureDetector {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'onDoubleTap',
             type: ls.typeName(fieldType),
@@ -47,6 +49,7 @@ class FlutterGestureDetector {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'child',
             type: ls.typeName(fieldType),

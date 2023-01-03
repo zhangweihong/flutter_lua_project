@@ -44,6 +44,7 @@ class FlutterImage {
       } else if (ls.isTable(-1)) {
         first = ls.toStr(-2);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'image First Error',
             type: "",
@@ -58,6 +59,7 @@ class FlutterImage {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'width',
             type: ls.typeName(fieldType),
@@ -72,6 +74,7 @@ class FlutterImage {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'height',
             type: ls.typeName(fieldType),
@@ -86,6 +89,7 @@ class FlutterImage {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'fit',
             type: ls.typeName(fieldType),

@@ -11,10 +11,11 @@ class FlutterInWell {
       int onDTapId = -1;
       var fieldType = ls.getField(-1, "onTap");
       if (fieldType == LuaType.luaFunction) {
-        onTapId = ls.ref(lua_registryindex);
+        onTapId = ls.ref(lua_registryindex); //自带pop
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'onTap',
             type: ls.typeName(fieldType),
@@ -36,6 +37,7 @@ class FlutterInWell {
       } else if (fieldType == LuaType.luaNil) {
         ls.pop(1);
       } else {
+        ls.pop(1);
         throw ParameterError(
             name: 'child',
             type: ls.typeName(fieldType),

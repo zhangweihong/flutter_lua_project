@@ -20,6 +20,7 @@ class FlutterAlign {
       child = ls.toUserdata(-1).data as Widget;
       ls.pop(1);
     } else if (fieldType == LuaType.luaNil) {
+      ls.pop(1);
       throw ParameterError(
           name: 'FlutterAlign',
           type: ls.typeName(fieldType),
