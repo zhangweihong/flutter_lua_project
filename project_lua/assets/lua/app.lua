@@ -14,9 +14,16 @@ function app.init()
 		end
 	});
 	readFile({
-		path = "D:\\Download\\234.wb",
+		path = "D:\\Download\\2434.wb",
 		callback = function (exists,value)
 			print(exists,value)
+		end
+	})
+	saveFile({
+		path = "D:\\Download\\2345.wb",
+		content = "我是2345",
+		callback = function (flag,reason)
+			print(flag,reason)
 		end
 	})
 	delayFun({
@@ -32,7 +39,7 @@ function app.init()
 
 		end
 	});
-	print("DKJson",DKJson.encode({aa = 1}))
+	debugPrint("DKJson",DKJson.encode({aa = 1}))
 end;
 
 

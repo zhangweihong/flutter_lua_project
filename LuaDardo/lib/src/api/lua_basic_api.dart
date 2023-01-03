@@ -69,6 +69,8 @@ abstract class LuaBasicAPI {
 
   String toStr(int idx);
 
+  String toStr2(int idx);
+
   DartFunction toDartFunction(int idx);
 
   Object toPointer(int idx);
