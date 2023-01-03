@@ -15,8 +15,7 @@ function app.init()
 	readFile({
 		path = "D:\\Download\\234.wb",
 		callback = function (exists,value)
-			print(exists)
-			print(value)
+			print({exists,value})
 		end
 	})
 	delayFun({

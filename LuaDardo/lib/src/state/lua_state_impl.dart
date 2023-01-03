@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:typed_data';
 import 'dart:io';
 
@@ -24,6 +25,7 @@ import '../vm/instruction.dart';
 import '../vm/opcodes.dart';
 import 'arithmetic.dart';
 import 'comparison.dart';
+import 'lua_stack.dart';
 import 'lua_stack.dart';
 import 'lua_table.dart';
 import 'lua_value.dart';
@@ -336,7 +338,7 @@ class LuaStateImpl implements LuaState, LuaVM {
     Object val = _stack.get(idx);
     if (val is String) {
       return val;
-    } else if (val is int || val is double) {
+    } else if (val is int || val is double || val is bool || val is Float) {
       return val.toString();
     } else {
       return null;
