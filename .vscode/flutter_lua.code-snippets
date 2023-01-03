@@ -88,6 +88,30 @@
 		],
 		"description": "AppBar:new"
 	},
+	"asyncFun()": {
+		"scope": "lua",
+		"prefix": "asyncFun()",
+		"body": [
+			"asyncFun({\n\ttask = $1,\n\tcallback = $2\n})"
+		],
+		"description": "asyncFun()"
+	},
+	"delayFun()": {
+		"scope": "lua",
+		"prefix": "asyncFun()",
+		"body": [
+			"asyncFun({\n\ttask = $1,\n\ttime = $2,\n\tcallback = $3\n})"
+		],
+		"description": "asyncFun()"
+	},
+	"readFile()": {
+		"scope": "lua",
+		"prefix": "readFile()",
+		"body": [
+			"readFile({\n\tpath = $1,\n\tcallback = $2\n})"
+		],
+		"description": "asyncFun()"
+	},
 	"Column:new": {
 		"scope": "lua",
 		"prefix": "Column:new",

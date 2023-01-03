@@ -2,7 +2,40 @@ app = {};
 local a = 1;
 function app.init()
 	print("app.init");
+	asyncFun({
+		task = function ()
+			print("asyncFun")
+			print(os.time())
+		end,
+		callback = function ()
+			print("asyncFun callback")
+			print(os.time())
+		end
+	});
+	readFile({
+		path = "D:\\Download\\234.wb",
+		callback = function (exists,value)
+			print(exists)
+			print(value)
+		end
+	})
+	delayFun({
+		task = function ()
+			print("_delayFun")
+			print(os.time())
+		end,
+		time = 1500,
+		callback = function ()
+			print("_delayFun callback")
+			print(os.time())
+			print(a)
+
+		end
+	});
 end;
+
+
+
 function app.build()
 	return Scaffold:new({
 		appBar = AppBar:new({

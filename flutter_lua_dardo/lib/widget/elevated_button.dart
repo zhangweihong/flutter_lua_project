@@ -27,19 +27,21 @@ class FlutterElevatedButton {
     if (fieldType == LuaType.luaFunction) {
       pressId = ls.ref(lua_registryindex);
     } else {
+      ls.pop(1);
       throw ParameterError(
           name: "FlutterElevatedButton onPressed Is Null",
           type: "FlutterElevatedButton Error",
           expected: "",
           source: "");
     }
-    ls.pop(1);
+
     int long_pressId = -1;
     fieldType = ls.getField(-1, "onLongPress");
     if (fieldType == LuaType.luaFunction) {
       long_pressId = ls.ref(lua_registryindex);
+    } else {
+      ls.pop(1);
     }
-    ls.pop(1);
 
     Userdata userdata = ls.newUserdata<ElevatedButton>();
     userdata.data = ElevatedButton(

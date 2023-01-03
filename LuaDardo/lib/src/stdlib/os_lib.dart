@@ -26,7 +26,7 @@ class OSLib {
 // http://www.lua.org/manual/5.3/manual.html#pdf-os.clock
 // lua-5.3.4/src/loslib.c#os_clock()
   static int _osClock(LuaState ls) {
-    ls.pushNumber(DateTime.now().millisecondsSinceEpoch/1000);
+    ls.pushNumber(DateTime.now().millisecondsSinceEpoch / 1000);
     return 1;
   }
 
@@ -122,14 +122,15 @@ class OSLib {
     return 1;
   }
 
-  static int _getYearDay(DateTime date){
-    var monthDay = [31,28,31,30,31,30,31,31,30,31,30,31];
+  static int _getYearDay(DateTime date) {
+    var monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-    if(date.year%4==0 && date.year%100!=0) monthDay[1] = 29;
-    else if(date.year%400==0) monthDay[1] = 29;
+    if (date.year % 4 == 0 && date.year % 100 != 0)
+      monthDay[1] = 29;
+    else if (date.year % 400 == 0) monthDay[1] = 29;
 
-    int sum=0;
-    for(var i = 0;i<=date.month-2;i++){
+    int sum = 0;
+    for (var i = 0; i <= date.month - 2; i++) {
       sum += monthDay[i];
     }
 
@@ -200,11 +201,11 @@ class OSLib {
   static int _osExecute(LuaState ls) {
     var cmd = ls.checkString(1);
     var args = cmd.split(" ");
-    if(args.length > 1){
+    if (args.length > 1) {
       var comm = args.removeAt(0);
-      Process.runSync(comm,args);
-    }else{
-      Process.runSync(cmd,[]);
+      Process.runSync(comm, args);
+    } else {
+      Process.runSync(cmd, []);
     }
     return 0;
   }
