@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_lua_dardo/flutter_lua.dart';
+import 'package:flutter_lua_dardo/lua_manager.dart';
 import 'package:flutter_lua_dardo/widget/alignment.dart';
 import 'package:flutter_lua_dardo/widget/border.dart';
 import 'package:flutter_lua_dardo/widget/borderradius.dart';
@@ -24,8 +26,11 @@ import 'package:flutter_lua_dardo/widget/inwell.dart';
 import 'package:flutter_lua_dardo/widget/main_axis_align.dart';
 import 'package:flutter_lua_dardo/widget/main_axis_size.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
+import 'package:flutter_lua_dardo/widget/positioned.dart';
 import 'package:flutter_lua_dardo/widget/row.dart';
 import 'package:flutter_lua_dardo/widget/scaffold.dart';
+import 'package:flutter_lua_dardo/widget/stack.dart';
+import 'package:flutter_lua_dardo/widget/stackfit.dart';
 import 'package:flutter_lua_dardo/widget/text.dart';
 import 'package:flutter_lua_dardo/widget/text_align.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,6 +48,9 @@ class FlutterWidget {
     FlutterDecorationImage.require(ls);
     FlutterRow.require(ls);
     FlutterColumn.require(ls);
+    FlutterPositioned.require(ls);
+    FlutterStack.require(ls);
+    FlutterStackFit.require(ls);
     FlutterTextAlign.require(ls);
     FlutterText.require(ls);
     FlutterImage.require(ls);
@@ -62,6 +70,9 @@ class FlutterWidget {
     FlutterAppBar.require(ls);
     FlutterColors.require(ls);
     FlutterScaffold.require(ls);
+    FlutterCommonStatefulWidget.require(ls);
+    FlutterCommonStatelessWidget.require(ls);
+    FlutterUtils.open(ls);
     registerUtil();
   }
 

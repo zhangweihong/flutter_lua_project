@@ -32,9 +32,9 @@ class CommonStatelessWidget extends StatelessWidget {
     }
   }
 
-  void loadLuaContent() {
+  void loadLuaContent() async {
     if (!LuaManager.checkLuaLoaded(path)) {
-      LuaManager.loadLuaContent(path);
+      await LuaManager.loadLuaContent(path);
       register();
     }
   }

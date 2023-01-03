@@ -29,7 +29,7 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
     }
   }
 
-  void loadLuaContent() {
+  void loadLuaContent() async {
     if (!LuaManager.checkLuaLoaded(widget.path)) {
       LuaManager.loadLuaContent(widget.path);
       register();

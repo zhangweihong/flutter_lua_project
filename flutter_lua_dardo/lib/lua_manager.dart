@@ -136,9 +136,6 @@ class LuaManager {
     }
     _state?.register("require", _requireWrap);
     FlutterWidget.open(_state);
-    FlutterCommonStatefulWidget.require(_state);
-    FlutterCommonStatelessWidget.require(_state);
-    FlutterUtils.open(_state);
     await _loadAllLuaContent(fromNet: fromNet, allLua: allLua);
     return true;
   }
@@ -209,14 +206,13 @@ class LuaManager {
     return false;
   }
 
-  static bool loadLuaContent(String path) {
+  static Future<bool> loadLuaContent(String path) async {
     try {
       String src = _luaContentMap[path];
-      if (src.isEmpty) {
-        debugPrint(path + " _luaContentMap not find");
+      if (src == null || src.isEmpty) {
+        debugPrint(path + "  not find in _luaContentMap");
         return false;
       }
-
       bool _load = _state.doString(src);
       _luaLoadedMap[path] = _load;
       if (_load) {

@@ -40,22 +40,22 @@ function app.build()
 							fontWeight = FontWeight.w400
 						}
 					}),
-					Container:new({
-						child = InkWell:new({
-							child = Text:new("InkWell", {
-								style = {
-									fontSize = sp(40),
-									fontWeight = FontWeight.w400
-								}
-							}),
-							onTap = function()
-								print("InkWell");
-							end
-						})
-					}),
-					Icon:new(Icons.ac_unit, {
-						color = Color("#ff0000")
-					}),
+					-- Container:new({
+					-- 	child = InkWell:new({
+					-- 		child = Text:new("InkWell", {
+					-- 			style = {
+					-- 				fontSize = sp(40),
+					-- 				fontWeight = FontWeight.w400
+					-- 			}
+					-- 		}),
+					-- 		onTap = function()
+					-- 			print("InkWell");
+					-- 		end
+					-- 	})
+					-- }),
+					-- Icon:new(Icons.ac_unit, {
+					-- 	color = Color("#ff0000")
+					-- }),
 					IconButton:new({
 						icon = Icon:new(Icons.ac_unit, {
 							color = Color("#0000ff")

@@ -145,6 +145,30 @@
 		],
 		"description": "FontWeight.bold"
 	},
+	"StackFit.loose": {
+		"scope": "lua",
+		"prefix": "StackFit.loose",
+		"body": [
+			"StackFit.loose"
+		],
+		"description": "StackFit.loose"
+	},
+	"StackFit.expand": {
+		"scope": "lua",
+		"prefix": "StackFit.expand",
+		"body": [
+			"StackFit.expand"
+		],
+		"description": "StackFit.expand"
+	},
+	"StackFit.passthrough": {
+		"scope": "lua",
+		"prefix": "StackFit.passthrough",
+		"body": [
+			"StackFit.passthrough"
+		],
+		"description": "StackFit.passthrough"
+	},
 	"BoxFit.fill": {
 		"scope": "lua",
 		"prefix": "BoxFit.fill",
@@ -400,7 +424,7 @@
 		"body": [
 			"BoxDecoration:new({\n\tcolor = $1,\n\tborderRadius = $2,\n\tborder = $3,\n\timage = $4,\n})"
 		],
-		"description": "Border:new"
+		"description": "BoxDecoration:new"
 	},
 	"DecorationImage:new": {
 		"scope": "lua",
@@ -408,7 +432,7 @@
 		"body": [
 			"DecorationImage:new({\n\timage = $1,\n\tfit = $2})"
 		],
-		"description": "Border:new"
+		"description": "DecorationImage:new"
 	},
 	"borderRadius": {
 		"scope": "lua",
@@ -416,7 +440,7 @@
 		"body": [
 			"borderRadius"
 		],
-		"description": "Border:new"
+		"description": "borderRadius:new"
 	},
 	"Container:new": {
 		"scope": "lua",
@@ -424,55 +448,71 @@
 		"body": [
 			"Container:new({\n\tchild = $1\n})"
 		],
-		"description": "Border:new"
+		"description": "Container:new"
 	},
-	"width:": {
+	"Stack:new": {
 		"scope": "lua",
-		"prefix": "width:",
+		"prefix": "Stack:new",
 		"body": [
-			"width:"
+			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft\n})"
 		],
-		"description": "width:"
+		"description": "Stack:new"
 	},
-	"height:": {
+	"Positioned:new":{
 		"scope": "lua",
-		"prefix": "height:",
+		"prefix": "Positioned:new",
 		"body": [
-			"height:"
+			"Positioned:new({\n\tchild = $1,\n\tleft = $2,\n\ttop = $3,\n\tright = $4,\n\tbottom = $5,\n\twidth = $6,\n\theight = $7\n})"
 		],
-		"description": "height:"
+		"description": "Positioned:new"
 	},
-	"margin:": {
+	"width =": {
 		"scope": "lua",
-		"prefix": "margin:",
+		"prefix": "width =",
 		"body": [
-			"margin:"
+			"width ="
 		],
-		"description": "margin:"
+		"description": "width ="
 	},
-	"padding:": {
+	"height =": {
 		"scope": "lua",
-		"prefix": "padding:",
+		"prefix": "height =",
 		"body": [
-			"padding:"
+			"height ="
 		],
-		"description": "padding:"
+		"description": "height ="
 	},
-	"decoration:": {
+	"margin =": {
 		"scope": "lua",
-		"prefix": "decoration:",
+		"prefix": "margin =",
 		"body": [
-			"decoration:"
+			"margin ="
 		],
-		"description": "decoration:"
+		"description": "margin ="
 	},
-	"color:": {
+	"padding =": {
 		"scope": "lua",
-		"prefix": "color:",
+		"prefix": "padding =",
 		"body": [
-			"color:"
+			"padding ="
 		],
-		"description": "color:"
+		"description": "padding ="
+	},
+	"decoration =": {
+		"scope": "lua",
+		"prefix": "decoration =",
+		"body": [
+			"decoration ="
+		],
+		"description": "decoration ="
+	},
+	"color =": {
+		"scope": "lua",
+		"prefix": "color =",
+		"body": [
+			"color ="
+		],
+		"description": "color ="
 	},
 	"ElevatedButton:new": {
 		"scope": "lua",
@@ -580,7 +620,7 @@
 		"body": [
 			"TextAlign.left"
 		],
-		"description": "BoxFit.fill"
+		"description": "TextAlign.left"
 	},
 	"TextAlign.right": {
 		"scope": "lua",

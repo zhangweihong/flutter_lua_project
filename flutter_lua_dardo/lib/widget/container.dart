@@ -67,8 +67,8 @@ class FlutterContainer {
     } else {
       ls.pop(1);
     }
-    BoxConstraints constraints =
-        BoxConstraints.tightFor(width: width, height: height);
+    // BoxConstraints constraints =
+    //     BoxConstraints.tightFor(width: width, height: height);
     fieldType = ls.getField(-1, "decoration");
     if (fieldType == LuaType.luaNil) {
       ls.pop(1);
@@ -94,7 +94,9 @@ class FlutterContainer {
 
       userdata.data = Container(
         alignment: alignment,
-        constraints: constraints,
+        // constraints: constraints,
+        width: width,
+        height: height,
         child: child,
         margin: margin,
         padding: padding,
