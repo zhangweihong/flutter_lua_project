@@ -1,4 +1,5 @@
 app = {};
+require("assets/lua/dkjson.lua")
 local a = 1;
 function app.init()
 	print("app.init");
@@ -15,7 +16,7 @@ function app.init()
 	readFile({
 		path = "D:\\Download\\234.wb",
 		callback = function (exists,value)
-			print({exists,value})
+			print(exists,value)
 		end
 	})
 	delayFun({
@@ -31,6 +32,7 @@ function app.init()
 
 		end
 	});
+	print("DKJson",DKJson.encode({aa = 1}))
 end;
 
 

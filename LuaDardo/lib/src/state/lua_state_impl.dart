@@ -338,7 +338,11 @@ class LuaStateImpl implements LuaState, LuaVM {
     Object val = _stack.get(idx);
     if (val is String) {
       return val;
-    } else if (val is int || val is double || val is bool || val is Float) {
+    } else if (val is int ||
+        val is double ||
+        val is bool ||
+        val is Float ||
+        val is LuaTable) {
       return val.toString();
     } else {
       return null;

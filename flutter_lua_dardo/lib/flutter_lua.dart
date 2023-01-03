@@ -20,26 +20,20 @@ class FlutterUtils {
 
   static int _printWrap(LuaState ls) {
     try {
-      if (ls.isTable(-1)) {
-        var len = ls.len2(-1);
-        var str = '';
-        for (int i = 1; i <= len; i++) {
-          if (ls.rawGetI(-1, i) != LuaType.luaNone) {
-            String s = ls.toStr(-1);
-            if (i == 1) {
-              str = "arg$i.(" + str + s + ")";
-            } else {
-              str = str + "      arg$i.(" + s + ")";
-            }
-          }
-          ls.pop(1);
+      var str = '';
+      int i = 0;
+      bool isNone = ls.isNoneOrNil(-1);
+      while (ls.getTop() > 0) {
+        var s = ls.toStr(-1);
+        if (i == 0) {
+          str = str + s;
+        } else {
+          str = str + "    " + s;
         }
-        print(str);
-      } else {
-        ls.checkAny(-1);
-        String s = ls.toString2(-1);
-        print(s);
+        i++;
+        ls.pop(1);
       }
+      print(str);
     } catch (e) {
       throw e;
     }
