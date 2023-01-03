@@ -98,11 +98,11 @@
 	},
 	"delayFun()": {
 		"scope": "lua",
-		"prefix": "asyncFun()",
+		"prefix": "delayFun()",
 		"body": [
-			"asyncFun({\n\ttask = $1,\n\ttime = $2,\n\tcallback = $3\n})"
+			"delayFun({\n\ttask = $1,\n\ttime = $2,\n\tcallback = $3\n})"
 		],
-		"description": "asyncFun()"
+		"description": "delayFun()"
 	},
 	"readFile()": {
 		"scope": "lua",
@@ -110,7 +110,15 @@
 		"body": [
 			"readFile({\n\tpath = $1,\n\tcallback = $2\n})"
 		],
-		"description": "asyncFun()"
+		"description": "readFile()"
+	},
+	"saveFile()": {
+		"scope": "lua",
+		"prefix": "saveFile()",
+		"body": [
+			"saveFile({\n\tpath = $1,\n\tcontent = $2,\n\tcallback = $3\n})"
+		],
+		"description": "saveFile()"
 	},
 	"Column:new": {
 		"scope": "lua",
