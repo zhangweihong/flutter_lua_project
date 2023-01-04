@@ -49,27 +49,27 @@ class FlutterInWell {
       if (onDTapId != -1) {
         u.data = InkWell(
             child: child,
-            onDoubleTap: () {
-              if (onDTapId != -1) {
-                ls.rawGetI(lua_registryindex, onDTapId);
-                ls.pCall(0, 0, 1);
-              }
-            },
-            onTap: () {
-              if (onTapId != -1) {
-                ls.rawGetI(lua_registryindex, onTapId);
-                ls.pCall(0, 0, 1);
-              }
-            });
+            onDoubleTap: onDTapId != -1
+                ? () {
+                    ls.rawGetI(lua_registryindex, onDTapId);
+                    ls.pCall(0, 0, 1);
+                  }
+                : null,
+            onTap: onTapId != -1
+                ? () {
+                    ls.rawGetI(lua_registryindex, onTapId);
+                    ls.pCall(0, 0, 1);
+                  }
+                : null);
       } else {
         u.data = InkWell(
             child: child,
-            onTap: () {
-              if (onTapId != -1) {
-                ls.rawGetI(lua_registryindex, onTapId);
-                ls.pCall(0, 0, 1);
-              }
-            });
+            onTap: onTapId != -1
+                ? () {
+                    ls.rawGetI(lua_registryindex, onTapId);
+                    ls.pCall(0, 0, 1);
+                  }
+                : null);
       }
     }
     return 1;

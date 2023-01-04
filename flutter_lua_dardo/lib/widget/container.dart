@@ -18,11 +18,6 @@ class FlutterContainer {
       ls.pop(1);
     } else {
       ls.pop(1);
-      throw ParameterError(
-          name: 'FlutterContainer child',
-          type: ls.typeName(fieldType),
-          expected: "Container child",
-          source: "FlutterContainer child not Widget");
     }
     double width = null;
     fieldType = ls.getField(-1, "width");
@@ -85,6 +80,8 @@ class FlutterContainer {
         margin: margin,
         padding: padding,
         color: _color,
+        width: width,
+        height: height,
       );
     } else if (fieldType == LuaType.luaUserdata) {
       Decoration decoration = ls.toUserdata(-1).data as BoxDecoration;

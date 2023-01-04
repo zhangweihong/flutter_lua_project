@@ -20,9 +20,9 @@ class FlutterStack {
         if (ls.rawGetI(-1, i) == LuaType.luaUserdata) {
           children.add(ls.toUserdata(-1).data as Widget);
         }
-
         ls.pop(1);
       }
+      ls.pop(1);
     } else if (fieldType == LuaType.luaNil) {
       ls.pop(1);
     } else {
@@ -33,7 +33,6 @@ class FlutterStack {
           expected: "",
           source: "stack.dart");
     }
-    ls.pop(1);
 
     Alignment alignment = Alignment.topLeft;
     fieldType = ls.getField(-1, "alignment");

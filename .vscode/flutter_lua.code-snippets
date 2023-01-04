@@ -145,6 +145,14 @@
 		],
 		"description": "mainAxisAlignment = "
 	},
+	"ClipRRect:new": {
+		"scope": "lua",
+		"prefix": "ClipRRect:new",
+		"body": [
+			"ClipRRect:new({\n\tchild = $1,\n\tborderRadius = $2\n})"
+		],
+		"description": "ClipRRect:new"
+	},
 	"crossAxisAlignment = ": {
 		"scope": "lua",
 		"prefix": "crossAxisAlignment = ",
@@ -466,13 +474,21 @@
 		],
 		"description": "DecorationImage:new"
 	},
-	"borderRadius": {
+	"BorderRadius.only": {
 		"scope": "lua",
-		"prefix": "borderRadius",
+		"prefix": "BorderRadius.only",
 		"body": [
-			"borderRadius"
+			"BorderRadius.only({\n\ttopLeft = $1,\n\ttopRight = $2,\n\tbottomLeft = $3,\n\tbottomRight = $4})"
 		],
-		"description": "borderRadius:new"
+		"description": "BorderRadius.only"
+	},
+	"BorderRadius.all": {
+		"scope": "lua",
+		"prefix": "BorderRadius.all",
+		"body": [
+			"BorderRadius.all($1)"
+		],
+		"description": "BorderRadius.all"
 	},
 	"Container:new": {
 		"scope": "lua",
@@ -489,6 +505,70 @@
 			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft\n})"
 		],
 		"description": "Stack:new"
+	},
+	"PageView:new": {
+		"scope": "lua",
+		"prefix": "PageView:new",
+		"body": [
+			"PageView:new({\n\tchildren = $1,\n\tcontroller = $2,\n\tonPageChanged = $3\n})"
+		],
+		"description": "PageView:new"
+	},
+	"BouncingScrollPhysics()": {
+		"scope": "lua",
+		"prefix": "BouncingScrollPhysics()",
+		"body": [
+			"BouncingScrollPhysics({\n\tparent = $1\n})"
+		],
+		"description": "BouncingScrollPhysics()"
+	},
+	"ClampingScrollPhysics()": {
+		"scope": "lua",
+		"prefix": "ClampingScrollPhysics()",
+		"body": [
+			"ClampingScrollPhysics({\n\tparent = $1\n})"
+		],
+		"description": "ClampingScrollPhysics()"
+	},
+	"NeverScrollableScrollPhysics()": {
+		"scope": "lua",
+		"prefix": "NeverScrollableScrollPhysics()",
+		"body": [
+			"NeverScrollableScrollPhysics({\n\tparent = $1\n})"
+		],
+		"description": "NeverScrollableScrollPhysics()"
+	},
+	"AlwaysScrollableScrollPhysics()": {
+		"scope": "lua",
+		"prefix": "AlwaysScrollableScrollPhysics()",
+		"body": [
+			"AlwaysScrollableScrollPhysics({\n\tparent = $1\n})"
+		],
+		"description": "AlwaysScrollableScrollPhysics()"
+	},
+	"PageController()": {
+		"scope": "lua",
+		"prefix": "PageController()",
+		"body": [
+			"PageController({\n\tinitialPage = 0,\n\tkeepPage = true,\n\tviewportFraction = 1\n})"
+		],
+		"description": "PageController()"
+	},
+	"PageJumpToPage()": {
+		"scope": "lua",
+		"prefix": "PageJumpToPage()",
+		"body": [
+			"PageJumpToPage(controller$1,1$2)"
+		],
+		"description": "PageJumpToPage()"
+	},
+	"PageJumpTo()": {
+		"scope": "lua",
+		"prefix": "PageJumpTo()",
+		"body": [
+			"PageJumpTo(controller$1,1$2)"
+		],
+		"description": "PageJumpTo()"
 	},
 	"Positioned:new":{
 		"scope": "lua",
@@ -735,6 +815,30 @@
 		],
 		"description": ".build()"
 	},
+	".dispose()": {
+		"scope": "lua",
+		"prefix": ".dispose()",
+		"body": [
+			".dispose()"
+		],
+		"description": ".dispose()"
+	},
+	".didUpdateWidget()": {
+		"scope": "lua",
+		"prefix": ".didUpdateWidget()",
+		"body": [
+			".didUpdateWidget(oldWidget)"
+		],
+		"description": ".didUpdateWidget()"
+	},
+	".didChangeDependencies()": {
+		"scope": "lua",
+		"prefix": ".didChangeDependencies()",
+		"body": [
+			".didChangeDependencies()"
+		],
+		"description": ".didChangeDependencies()"
+	},
 	".init()": {
 		"scope": "lua",
 		"prefix": ".init()",
@@ -767,7 +871,32 @@
 			"fontFamily = $1"
 		],
 		"description": "fontFamily = "
-	}
+	},
+	"stl": {
+		"scope": "lua",
+		"prefix": "stl",
+		"body": [
+			"stl$1 = {}\nfunction stl$2.init()\n\nend\nfunction stl$3.build(ctx)\n\nend\nreturn stl$4\n"
+		],
+		"description": "stl"
+	},
+	"stf": {
+		"scope": "lua",
+		"prefix": "stf",
+		"body": [
+			"stf$1 = {}\nfunction stf$2.initState()\n\nend\nfunction stf$3.build(ctx)\n\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
+		],
+		"description": "stf"
+	},
+	"navPush()": {
+		"scope": "lua",
+		"prefix": "navPush()",
+		"body": [
+			"navPush({\n\tctx = $1,\n\twidget = $2\n})"
+		],
+		"description": "navPush()"
+	},
+
 
 
 

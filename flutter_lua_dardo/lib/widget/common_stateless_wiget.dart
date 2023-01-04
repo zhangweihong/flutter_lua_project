@@ -29,12 +29,13 @@ class CommonStatelessWidget extends StatelessWidget {
       if (type == LuaType.luaFunction) {
         LuaManager.luaState?.pCall(0, 0, 1);
       }
+      LuaManager.luaState?.pop(1);
     }
   }
 
-  void loadLuaContent() async {
+  void loadLuaContent() {
     if (!LuaManager.checkLuaLoaded(path)) {
-      await LuaManager.loadLuaContent(path);
+      LuaManager.loadLuaContent(path);
       register();
     }
   }
@@ -42,6 +43,6 @@ class CommonStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     this.loadLuaContent();
-    return FlutterWidget.doLuaViewByName<Widget>(name, path);
+    return FlutterWidget.doLuaBuild<Widget>(name, path, context);
   }
 }

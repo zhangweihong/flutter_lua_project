@@ -206,7 +206,7 @@ class LuaManager {
     return false;
   }
 
-  static Future<bool> loadLuaContent(String path) async {
+  static bool loadLuaContent(String path) {
     try {
       String src = _luaContentMap[path];
       if (src == null || src.isEmpty) {

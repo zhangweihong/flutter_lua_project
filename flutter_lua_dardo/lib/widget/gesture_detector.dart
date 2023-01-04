@@ -60,18 +60,22 @@ class FlutterGestureDetector {
       Userdata u = ls.newUserdata<GestureDetector>();
       u.data = GestureDetector(
           child: child,
-          onDoubleTap: () {
-            if (onDTapId != -1) {
-              ls.rawGetI(lua_registryindex, onDTapId);
-              ls.pCall(0, 0, 1);
-            }
-          },
-          onTap: () {
-            if (onTapId != -1) {
-              ls.rawGetI(lua_registryindex, onTapId);
-              ls.pCall(0, 0, 1);
-            }
-          });
+          onDoubleTap: onDTapId != -1
+              ? () {
+                  if (onDTapId != -1) {
+                    ls.rawGetI(lua_registryindex, onDTapId);
+                    ls.pCall(0, 0, 1);
+                  }
+                }
+              : null,
+          onTap: onTapId != -1
+              ? () {
+                  if (onTapId != -1) {
+                    ls.rawGetI(lua_registryindex, onTapId);
+                    ls.pCall(0, 0, 1);
+                  }
+                }
+              : null);
       ls.getMetatableAux('GestureDetectorClass');
       ls.setMetatable(-2);
     }

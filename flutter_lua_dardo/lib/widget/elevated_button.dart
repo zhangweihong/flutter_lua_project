@@ -45,18 +45,18 @@ class FlutterElevatedButton {
 
     Userdata userdata = ls.newUserdata<ElevatedButton>();
     userdata.data = ElevatedButton(
-      onLongPress: () {
-        if (long_pressId != -1) {
-          ls.rawGetI(lua_registryindex, long_pressId);
-          ls.pCall(0, 0, 1);
-        }
-      },
-      onPressed: () {
-        if (pressId != -1) {
-          ls.rawGetI(lua_registryindex, pressId);
-          ls.pCall(0, 0, 1);
-        }
-      },
+      onLongPress: long_pressId != -1
+          ? () {
+              ls.rawGetI(lua_registryindex, long_pressId);
+              ls.pCall(0, 0, 1);
+            }
+          : null,
+      onPressed: pressId != -1
+          ? () {
+              ls.rawGetI(lua_registryindex, pressId);
+              ls.pCall(0, 0, 1);
+            }
+          : null,
       child: child,
     );
 

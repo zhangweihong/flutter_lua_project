@@ -2,14 +2,15 @@ my_stateful_widget = {};
 function my_stateful_widget.initState()--state 初始化
 	print("my_stateful_widget init");
 end;
-function my_stateful_widget.build()
+local count = 1;
+function my_stateful_widget.build(ctx)
 	return Container:new({
 		child = GestureDetector:new({
 			child = Container:new({
 				height = sp(100),
 				width = sp(200),
 				alignment = Alignment.center,
-				child = Text:new("my_stateful_widget", {
+				child = Text:new("my_stateful_widget ".. count, {
 					textAlign = TextAlign.center,
 					style = {
 						fontSize = sp(20),
@@ -32,6 +33,7 @@ function my_stateful_widget.build()
 			onTap = function()
 				my_stateful_widget.setState({
 					callback = function()
+						count = count + 1
 						print("my_stateful_widget update state");
 					end
 				});
@@ -39,4 +41,11 @@ function my_stateful_widget.build()
 		})
 	});
 end;
+function my_stateful_widget.didChangeDependencies()
+	print("didChangeDependencies")
+end
+
+function my_stateful_widget.didUpdateWidget(oldWidget)
+	print("didUpdateWidget")
+end
 return my_stateful_widget;

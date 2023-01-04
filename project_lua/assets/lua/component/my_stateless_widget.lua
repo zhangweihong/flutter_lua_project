@@ -2,7 +2,7 @@ my_stateless_widget = {};
 function my_stateless_widget.init()--初始化
 	print("my_stateless_widget init");
 end;
-function my_stateless_widget.build()
+function my_stateless_widget.build(ctx)
 	return Container:new({
 		width = sp(300),
 		height = sp(100),

@@ -6,7 +6,11 @@ import 'package:flutter_lua_dardo/widget/border.dart';
 import 'package:flutter_lua_dardo/widget/borderradius.dart';
 import 'package:flutter_lua_dardo/widget/box_fit.dart';
 import 'package:flutter_lua_dardo/widget/boxdecoration.dart';
+import 'package:flutter_lua_dardo/widget/clip_rrect.dart';
+import 'package:flutter_lua_dardo/widget/drag_start_behavior.dart';
 import 'package:flutter_lua_dardo/widget/fittedbox.dart';
+import 'package:flutter_lua_dardo/widget/pageview.dart';
+import 'package:flutter_lua_dardo/widget/scrollphysics.dart';
 import 'package:flutter_lua_dardo/widget/sizedbox.dart';
 import 'package:flutter_lua_dardo/widget/colors.dart';
 import 'package:flutter_lua_dardo/widget/cross_axis_align.dart';
@@ -74,13 +78,18 @@ class FlutterWidget {
     FlutterAppBar.require(ls);
     FlutterColors.require(ls);
     FlutterScaffold.require(ls);
+    FlutterPageView.require(ls);
+    FlutterDragStartBehavior.require(ls);
+    FlutterScrollPhysics.require(ls);
+    FlutterClipRRect.require(ls);
     FlutterCommonStatefulWidget.require(ls);
     FlutterCommonStatelessWidget.require(ls);
     FlutterUtils.open(ls);
     registerUtil();
   }
 
-  static T doLuaViewByName<T extends Widget>(String name, String path) {
+  static T doLuaBuild<T extends Widget>(
+      String name, String path, BuildContext context) {
     if (_ls == null) {
       return InitWidget() as T;
     }
@@ -89,7 +98,9 @@ class FlutterWidget {
     if (_t == LuaType.luaTable) {
       var fieldType = _ls.getField(-1, "build");
       if (fieldType == LuaType.luaFunction) {
-        _ls.pCall(0, 1, 1);
+        Userdata userdata = _ls.newUserdata<BuildContext>();
+        userdata.data = context;
+        _ls.pCall(1, 1, 1);
         if (_ls.isUserdata(-1)) {
           var w = _ls.toUserdata<T>(-1).data;
           _ls.setTop(0);
@@ -98,10 +109,97 @@ class FlutterWidget {
       }
     }
     throw ParameterError(
-        name: "doLuaViewByName $name",
+        name: "doLuaBuild $name",
         type: "not Luatable",
         expected: "expected null",
         source: path);
+  }
+
+  static void doLuaDispose(String name) {
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "dispose");
+      if (fieldType == LuaType.luaFunction) {
+        _ls.pCall(0, 0, 1);
+      }
+      _ls.pop(1);
+    } else {
+      throw ParameterError(
+          name: "doLuaDispose $name",
+          type: "not Luatable",
+          expected: "expected null",
+          source: name);
+    }
+  }
+
+  static void doLuaDeactivate(String name) {
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "deactivate");
+      if (fieldType == LuaType.luaFunction) {
+        _ls.pCall(0, 0, 1);
+      }
+      _ls.pop(1);
+    } else {
+      throw ParameterError(
+          name: "doLuaDeactivate $name",
+          type: "not Luatable",
+          expected: "expected null",
+          source: name);
+    }
+  }
+
+  static void doLuaActivate(String name) {
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "activate");
+      if (fieldType == LuaType.luaFunction) {
+        _ls.pCall(0, 0, 1);
+      }
+      _ls.pop(1);
+    } else {
+      throw ParameterError(
+          name: "doLuaActivate $name",
+          type: "not Luatable",
+          expected: "expected null",
+          source: name);
+    }
+  }
+
+  static void doLuaDidChangeDependencies(String name) {
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "didChangeDependencies");
+      if (fieldType == LuaType.luaFunction) {
+        _ls.pCall(0, 0, 1);
+      }
+      _ls.pop(1);
+    } else {
+      throw ParameterError(
+          name: "doLuaDidChangeDependencies $name",
+          type: "not Luatable",
+          expected: "expected null",
+          source: name);
+    }
+  }
+
+  static void doLuaDidUpdateWidget(String name, Widget oldW) {
+    LuaType _t = _ls.getGlobal(name);
+    if (_t == LuaType.luaTable) {
+      var fieldType = _ls.getField(-1, "didUpdateWidget");
+      if (fieldType == LuaType.luaFunction) {
+        Userdata userdata = _ls.newUserdata<Widget>();
+        userdata.data = oldW;
+        _ls.pCall(1, 0, 1);
+      }
+      _ls.pop(1);
+    } else {
+      throw ParameterError(
+          name: "doLuaDidUpdateWidget $name",
+          type: "not Luatable",
+          expected: "expected null",
+          source: name);
+    }
   }
 
   static T findViewByName<T extends Widget>(String name) {

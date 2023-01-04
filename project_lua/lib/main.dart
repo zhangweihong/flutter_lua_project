@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
     return FutureBuilder(
         future: LuaManager.initLuaState(fromNet: false, allLua: [
           "assets/lua/dkjson.lua",
-          "assets/lua/app.lua",
           "assets/lua/component/my_stateful_widget.lua",
-          "assets/lua/component/my_stateless_widget.lua"
+          "assets/lua/component/my_stateless_widget.lua",
+          "assets/lua/page/test_page1.lua",
+          "assets/lua/page/test_pageview.lua",
+          "assets/lua/app.lua",
         ]),
         builder: (context, snapshot) {
           if (snapshot.data != null) {

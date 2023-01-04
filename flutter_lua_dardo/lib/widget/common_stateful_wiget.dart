@@ -29,7 +29,7 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
     }
   }
 
-  void loadLuaContent() async {
+  void loadLuaContent() {
     if (!LuaManager.checkLuaLoaded(widget.path)) {
       LuaManager.loadLuaContent(widget.path);
       register();
@@ -56,7 +56,6 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
   }
 
   int _updateState(LuaState ls) {
-    print(widget.path + "_updateState");
     setState(() {
       if (ls.getTop() > 0) {
         var filedType = ls.getField(-1, "callback");
@@ -72,7 +71,37 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    FlutterWidget.doLuaDispose(widget.name);
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    FlutterWidget.doLuaDeactivate(widget.name);
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    FlutterWidget.doLuaActivate(widget.name);
+  }
+
+  @override
+  void didUpdateWidget(covariant CommonStatefulWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    FlutterWidget.doLuaDidUpdateWidget(widget.name, oldWidget);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    FlutterWidget.doLuaDidChangeDependencies(widget.name);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FlutterWidget.doLuaViewByName<Widget>(widget.name, widget.path);
+    return FlutterWidget.doLuaBuild<Widget>(widget.name, widget.path, context);
   }
 }

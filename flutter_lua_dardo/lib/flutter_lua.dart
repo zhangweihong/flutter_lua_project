@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/common/async_fun.dart';
 import 'package:flutter_lua_dardo/common/file.dart';
+import 'package:flutter_lua_dardo/common/nav.dart';
 import 'package:lua_dardo/lua.dart';
 
 class FlutterUtils {
@@ -11,6 +12,7 @@ class FlutterUtils {
     ls.register("delayFun", AsyncFun.delayFun);
     ls.register("readFile", OpFile.readFile);
     ls.register("saveFile", OpFile.saveFile);
+    ls.register("navPush", Nav.navPush);
   }
 
   static int _debugPrintWrap(LuaState ls) {
@@ -20,9 +22,9 @@ class FlutterUtils {
       while (ls.getTop() > 0) {
         var s = ls.toStr2(-1);
         if (i == 0) {
-          str = str + s;
+          str = s + str;
         } else {
-          str = str + "    " + s;
+          str = s + "    " + str;
         }
         i++;
         ls.pop(1);
@@ -41,9 +43,9 @@ class FlutterUtils {
       while (ls.getTop() > 0) {
         var s = ls.toStr2(-1);
         if (i == 0) {
-          str = str + s;
+          str = s + str;
         } else {
-          str = str + "    " + s;
+          str = s + "    " + str;
         }
         i++;
         ls.pop(1);

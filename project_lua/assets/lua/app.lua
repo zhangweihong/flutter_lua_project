@@ -1,5 +1,5 @@
 app = {};
-require("assets/lua/dkjson.lua")
+require("assets/lua/dkjson.lua")--加载json库
 local a = 1;
 function app.init()
 	print("app.init");
@@ -12,7 +12,7 @@ function app.init()
 			print("asyncFun callback")
 			print(os.time())
 		end
-	});
+	})
 	readFile({
 		path = "D:\\Download\\2434.wb",
 		callback = function (exists,value)
@@ -38,13 +38,15 @@ function app.init()
 			print(a)
 
 		end
-	});
+	})
 	debugPrint("DKJson",DKJson.encode({aa = 1}))
-end;
-
-
-
-function app.build()
+end
+local pageController = PageController({
+	initialPage = 0,
+	keepPage = true,
+	viewportFraction = 1
+})
+function app.build(ctx)
 	return Scaffold:new({
 		appBar = AppBar:new({
 			title = Text:new("标题", {
@@ -134,17 +136,33 @@ function app.build()
 						}),
 						onPressed = function()
 							print("ElevatedButton onPressed");
+							navPush({
+								ctx = ctx,
+								widget = CommonStatelessWidget:new({
+									widgetName = "test_page1",
+									path = "assets/lua/page/test_page1.lua"
+								})
+							})
 						end,
 						onLongPress = function()
 							print("ElevatedButton onLongPress");
 						end
 					}),
-					FittedBox:new({
-						child = Image.asset("assets/img/R-C.jfif",{
-							width = sp(320),
-							height = sp(60),
-							fit = BoxFit.contain
+					-- ClipRRect:new({
+					-- 	child = Image.asset("assets/img/R-C.jfif",{
+					-- 		width = sp(320),
+					-- 		height = sp(60),
+					-- 		fit = BoxFit.contain
+					-- 	}),
+					-- 	borderRadius = BorderRadius.all(20)
+					-- }),
+					ClipRRect:new({
+						child = Container:new({
+							color = Color('#f00'),
+							width = 80,
+							height = 80
 						}),
+						borderRadius = BorderRadius.all(20)
 					})
 				}
 			}),
@@ -157,6 +175,6 @@ function app.build()
 				color = Color("#ffffff")
 			})
 		})
-	});
-end;
-return app;
+	})
+end
+return app
