@@ -22,10 +22,16 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
   void initState() {
     super.initState();
     loadLuaContent(); //注册初始化函数
-    var type = LuaManager.luaState.getField(-1, "initState");
-    if (type == LuaType.luaFunction) {
-      //呼叫lua的initState
-      LuaManager.luaState?.pCall(0, 0, 1);
+    LuaType _t = LuaManager.luaState.getGlobal(widget.name);
+    if (_t == LuaType.luaTable) {
+      if (LuaManager.luaState.getTop() > 0) {
+        var type = LuaManager.luaState.getField(-1, "initState");
+        if (type == LuaType.luaFunction) {
+          //呼叫lua的initState
+          LuaManager.luaState.pCall(0, 0, 1);
+        }
+        LuaManager.luaState.pop(1);
+      }
     }
   }
 

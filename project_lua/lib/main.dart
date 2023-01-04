@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
           "assets/lua/component/my_stateless_widget.lua",
           "assets/lua/page/test_page1.lua",
           "assets/lua/page/test_pageview.lua",
+          "assets/lua/page/test_stf.lua",
           "assets/lua/app.lua",
         ]),
         builder: (context, snapshot) {
