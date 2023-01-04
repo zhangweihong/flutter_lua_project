@@ -30,9 +30,9 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
           //呼叫lua的initState
           LuaManager.luaState.pCall(0, 0, 1);
         }
-        LuaManager.luaState.pop(1);
       }
     }
+    LuaManager.luaState.setTop(0);
   }
 
   void loadLuaContent() {
@@ -48,8 +48,8 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
     };
 
     if (LuaManager.luaState != null) {
-      bool is_t = LuaManager.luaState.isTable(-1);
-      if (is_t) {
+      LuaType _t = LuaManager.luaState.getGlobal(widget.name);
+      if (_t == LuaType.luaTable) {
         LuaManager.luaState.setFuncs(_r, 0);
       } else {
         throw ParameterError(
@@ -58,6 +58,7 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
             expected: "Common Stateful Expected",
             source: "CommonStatefulWidget");
       }
+      LuaManager.luaState.setTop(0);
     }
   }
 

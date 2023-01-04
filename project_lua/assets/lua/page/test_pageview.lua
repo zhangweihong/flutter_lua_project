@@ -16,8 +16,8 @@ function test_pageview.build(ctx)
                         children = {
                             Container:new({
                                 color = Color('#000'),
-                                width = 100,
-                                height = 100,
+                                width = sp(300),
+                                height = sp(200),
                                 child = Text:new("111111111",{
                                     textAlign = TextAlign.left,
                                     style = {

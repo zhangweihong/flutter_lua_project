@@ -414,7 +414,7 @@
 		"scope": "lua",
 		"prefix": "Color",
 		"body": [
-			"Color('#fff')"
+			"Color('#ffffffff')"
 		],
 		"description": "Color"
 	},
@@ -895,6 +895,22 @@
 			"navPush({\n\tctx = $1,\n\twidget = $2\n})"
 		],
 		"description": "navPush()"
+	},
+	"navReplaceAndRemoveAll()": {
+		"scope": "lua",
+		"prefix": "navReplaceAndRemoveAll()",
+		"body": [
+			"navReplaceAndRemoveAll({\n\tctx = $1,\n\twidget = $2\n})"
+		],
+		"description": "navReplaceAndRemoveAll()"
+	},
+	"navReplace()": {
+		"scope": "lua",
+		"prefix": "navReplace()",
+		"body": [
+			"navReplace({\n\tctx = $1,\n\twidget = $2\n})"
+		],
+		"description": "navReplace()"
 	},
 
 

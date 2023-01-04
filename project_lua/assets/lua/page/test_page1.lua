@@ -16,7 +16,7 @@ function test_page1.build(ctx)
                         style = {
                             fontSize = sp(20),
                             fontWeight = FontWeight.w400,
-                            color = Color('#0ff')
+                            color = Color('#C71585')
                         }
                     }),
                     ElevatedButton:new({

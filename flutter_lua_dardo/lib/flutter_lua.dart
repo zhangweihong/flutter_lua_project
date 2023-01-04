@@ -13,6 +13,8 @@ class FlutterUtils {
     ls.register("readFile", OpFile.readFile);
     ls.register("saveFile", OpFile.saveFile);
     ls.register("navPush", Nav.navPush);
+    ls.register("navReplace", Nav.navReplace);
+    ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
   }
 
   static int _debugPrintWrap(LuaState ls) {

@@ -132,9 +132,9 @@ class LuaManager {
     if (_state == null) {
       _state = LuaState.newState();
       // 加载标准库
-      _state?.openLibs();
+      _state.openLibs();
     }
-    _state?.register("require", _requireWrap);
+    _state.register("require", _requireWrap);
     FlutterWidget.open(_state);
     await _loadAllLuaContent(fromNet: fromNet, allLua: allLua);
     return true;

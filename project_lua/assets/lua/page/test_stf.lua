@@ -6,13 +6,24 @@ end
 function test_stf.build(ctx)
     return Scaffold:new({
         body = Container:new({
-            child = Text:new("Test_stf",{
-                textAlign = TextAlign.left,
-                style = {
-                    fontSize = sp(20),
-                    fontWeight = FontWeight.w400,
-                    color = Color('#000')
-                }
+            child = ElevatedButton:new({
+                child = Text:new("Test_stf",{
+                    textAlign = TextAlign.left,
+                    style = {
+                        fontSize = sp(20),
+                        fontWeight = FontWeight.w400,
+                        color = Color('#FF00FF')
+                    }
+                }),
+                onPressed = function ()
+                    navReplaceAndRemoveAll({
+                        ctx = ctx,
+                        widget = CommonStatelessWidget:new({
+                            widgetName = "app",
+                            path = "assets/lua/app.lua"
+                        })
+                    })
+                end
             })
         }),
         appBar = AppBar:new({
