@@ -43,8 +43,18 @@ class FlutterElevatedButton {
       ls.pop(1);
     }
 
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata userdata = ls.newUserdata<ElevatedButton>();
     userdata.data = ElevatedButton(
+      key: key,
       onLongPress: long_pressId != -1
           ? () {
               ls.rawGetI(lua_registryindex, long_pressId);

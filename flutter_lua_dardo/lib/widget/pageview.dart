@@ -2,38 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/widget/axis.dart';
+import 'package:flutter_lua_dardo/widget/commonoverscrollbehavior.dart';
 import 'package:flutter_lua_dardo/widget/drag_start_behavior.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
-
-class OverScrollBehavior extends MaterialScrollBehavior {
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
-
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    switch (getPlatform(context)) {
-      case TargetPlatform.iOS:
-        return child;
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-        return GlowingOverscrollIndicator(
-          child: child,
-          //不显示头部水波纹
-          showLeading: false,
-          //不显示尾部水波纹
-          showTrailing: false,
-          axisDirection: axisDirection,
-          color: Theme.of(context).accentColor,
-        );
-      default:
-        return child;
-    }
-  }
-}
 
 class FlutterPageController {
   static void register(LuaState ls) {
@@ -44,28 +15,29 @@ class FlutterPageController {
 
   static int _jumpTo(LuaState ls) {
     if (ls.getTop() > 0) {
-      if (ls.isUserdata(1)) {
-        PageController controller = ls.toUserdata(1).data as PageController;
+      if (ls.isNumber(-1)) {
         double value;
-        if (ls.isNumber(-1)) {
-          value = ls.toNumberX(-1);
-          ls.pop(2);
+        value = ls.toNumberX(-1);
+        ls.pop(1);
+        if (ls.isUserdata(-1)) {
+          PageController controller = ls.toUserdata(1).data as PageController;
+          ls.pop(1);
           controller.jumpTo(value);
         } else {
           ls.pop(1);
           throw ParameterError(
-              name: 'PageJumpTo Value',
+              name: 'PageJumpTo controller',
               type: "",
               expected: "PageController",
-              source: "PageController PageJumpTo Value");
+              source: "PageController PageJumpTo controller");
         }
       } else {
         ls.pop(1);
         throw ParameterError(
-            name: 'PageJumpTo controller',
+            name: 'PageJumpTo Value',
             type: "",
             expected: "PageController",
-            source: "PageController PageJumpTo controller");
+            source: "PageController PageJumpTo Value");
       }
     }
     return 0;
@@ -73,28 +45,29 @@ class FlutterPageController {
 
   static int _jumpToPage(LuaState ls) {
     if (ls.getTop() > 0) {
-      if (ls.isUserdata(1)) {
-        PageController controller = ls.toUserdata(1).data as PageController;
+      if (ls.isNumber(-1)) {
         int value = 0;
-        if (ls.isNumber(-1)) {
-          value = ls.toIntegerX(-1);
-          ls.pop(2);
+        value = ls.toIntegerX(-1);
+        ls.pop(1);
+        if (ls.isUserdata(-1)) {
+          PageController controller = ls.toUserdata(1).data as PageController;
+          ls.pop(1);
           controller.jumpToPage(value);
         } else {
           ls.pop(1);
           throw ParameterError(
-              name: 'PageJumpToPage Value',
+              name: 'PageJumpToPage controller',
               type: "",
               expected: "PageController",
-              source: "PageController PageJumpToPage Value");
+              source: "PageController PageJumpToPage controller");
         }
       } else {
         ls.pop(1);
         throw ParameterError(
-            name: 'PageJumpToPage controller',
+            name: 'PageJumpToPage Value',
             type: "",
             expected: "PageController",
-            source: "PageController PageJumpToPage controller");
+            source: "PageController PageJumpToPage Value");
       }
     }
     return 0;
@@ -227,7 +200,16 @@ class FlutterPageView {
     fieldType = ls.getField(-1, "physics");
     var physics = AlwaysScrollableScrollPhysics();
     if (fieldType == LuaType.luaUserdata) {
-      physics = ls.toUserdata(-1).data as AlwaysScrollableScrollPhysics;
+      physics = ls.toUserdata(-1).data as ScrollPhysics;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
       ls.pop(1);
     } else {
       ls.pop(1);
@@ -235,6 +217,7 @@ class FlutterPageView {
 
     Userdata userdata = ls.newUserdata<Widget>();
     userdata.data = PageView(
+        key: key,
         children: children,
         dragStartBehavior: dragStartBehavior,
         allowImplicitScrolling: allowImplicitScrolling,

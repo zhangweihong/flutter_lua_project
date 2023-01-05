@@ -19,7 +19,7 @@ class FlutterEdgeInsets {
   }
 
   static int _edgeInsetOnly(LuaState ls) {
-    double top, left, bottom, right = 0;
+    double top = 0.0, left = 0.0, bottom = 0.0, right = 0.0;
     var fieldType = ls.getField(-1, "top");
     if (fieldType == LuaType.luaNumber) {
       top = ls.toNumberX(-1);

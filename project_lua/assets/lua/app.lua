@@ -41,11 +41,7 @@ function app.init()
 	})
 	debugPrint("DKJson",DKJson.encode({aa = 1}))
 end
-local pageController = PageController({
-	initialPage = 0,
-	keepPage = true,
-	viewportFraction = 1
-})
+
 function app.build(ctx)
 	return Scaffold:new({
 		appBar = AppBar:new({
@@ -115,9 +111,10 @@ function app.build(ctx)
 					-- 		end
 					-- 	})
 					-- }),
-					-- Icon:new(Icons.ac_unit, {
-					-- 	color = Color("#ff0000")
-					-- }),
+					Icon:new(Icons.ac_unit, {
+						size = sp(10),
+						color = Color("#ff0000")
+					}),
 					-- IconButton:new({
 					-- 	icon = Icon:new(Icons.ac_unit, {
 					-- 		color = Color("#0000ff")
@@ -157,6 +154,7 @@ function app.build(ctx)
 					-- 	borderRadius = BorderRadius.all(20)
 					-- }),
 					ClipRRect:new({
+						clipBehavior = Clip.antiAlias,
 						child = Container:new({
 							color = Color('#f00'),
 							width = 80,

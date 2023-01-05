@@ -57,8 +57,18 @@ class FlutterGestureDetector {
             source: "FlutterGestureDetector _newGestureDetector");
       }
 
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata u = ls.newUserdata<GestureDetector>();
       u.data = GestureDetector(
+          key: key,
           child: child,
           onDoubleTap: onDTapId != -1
               ? () {

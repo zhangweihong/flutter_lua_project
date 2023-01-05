@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/widget/box_fit.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
@@ -97,24 +98,34 @@ class FlutterImage {
             source: "FlutterImage _assetText");
       }
 
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata u = ls.newUserdata<Image>();
       switch (type) {
         case _Image.asset:
-          u.data = Image.asset(first, width: width, height: height, fit: fit);
+          u.data = Image.asset(first,
+              key: key, width: width, height: height, fit: fit);
           break;
         case _Image.file:
-          u.data =
-              Image.file(File(first), width: width, height: height, fit: fit);
+          u.data = Image.file(File(first),
+              key: key, width: width, height: height, fit: fit);
           break;
         case _Image.network:
-          u.data = Image.network(first, width: width, height: height, fit: fit);
+          u.data = Image.network(first,
+              key: key, width: width, height: height, fit: fit);
           break;
         default:
           break;
       }
-
-      ls.getMetatableAux('ImageClass');
-      ls.setMetatable(-2);
+      // ls.getMetatableAux('ImageClass');
+      // ls.setMetatable(-2);
     }
     return 1;
   }

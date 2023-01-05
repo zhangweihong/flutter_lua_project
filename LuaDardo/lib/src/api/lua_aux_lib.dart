@@ -56,6 +56,7 @@ abstract class LuaAuxLib {
   void openLibs();
 
   int ref(int t);
+  int refNoPop(int t);
   void unRef(int t, int ref);
 
   void requireF(String modname, DartFunction openf, bool glb);

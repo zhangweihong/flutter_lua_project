@@ -45,9 +45,19 @@ class FlutterInWell {
             source: "FlutterGestureDetector _newGestureDetector");
       }
 
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata u = ls.newUserdata<InkWell>();
       if (onDTapId != -1) {
         u.data = InkWell(
+            key: key,
             child: child,
             onDoubleTap: onDTapId != -1
                 ? () {

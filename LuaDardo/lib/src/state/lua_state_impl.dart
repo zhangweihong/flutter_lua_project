@@ -1218,6 +1218,27 @@ class LuaStateImpl implements LuaState, LuaVM {
     return _ref;
   }
 
+  int refNoPop(int t) {
+    int _ref;
+    if (isNil(-1)) {
+      return -1; /* 'nil' has a unique fixed reference */
+    }
+    t = absIndex(t);
+    rawGetI(t, 0); /* get first free element */
+    _ref = toInteger(-1); /* ref = t[freelist] */
+    if (_ref != 0) {
+      /* any free element? */
+      rawGetI(t, _ref); /* remove it from list */
+      rawSetI(t, 0); /* (t[freelist] = t[ref]) */
+    } else
+      /* no free elements */
+      _ref = rawLen(t) + 1;
+    /* get a new reference */
+
+    rawSetI(t, _ref);
+    return _ref;
+  }
+
   void unRef(int t, int ref) {
     if (ref >= 0) {
       t = absIndex(t);

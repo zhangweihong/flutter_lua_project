@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/lua_manager.dart';
-import 'package:flutter_lua_dardo/widget/common_stateless_wiget.dart';
+import 'package:flutter_lua_dardo/widget/common_stateless_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
           "assets/lua/page/test_page1.lua",
           "assets/lua/page/test_pageview.lua",
           "assets/lua/page/test_stf.lua",
+          "assets/lua/page/test_listview.lua",
+          "assets/lua/page/test_listview_builder.lua",
+          "assets/lua/page/test_listview_custom.lua",
+          "assets/lua/page/test_listview_sp.lua",
+          "assets/lua/page/test_gridview.lua",
           "assets/lua/app.lua",
         ]),
         builder: (context, snapshot) {

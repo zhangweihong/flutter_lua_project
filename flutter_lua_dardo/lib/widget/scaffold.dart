@@ -12,8 +12,8 @@ class FlutterScaffold {
     if (ls.getTop() > 0) {
       Widget body = null;
       Widget appbar = null;
-      var fieldTye = ls.getField(-1, "body");
-      if (fieldTye == LuaType.luaUserdata) {
+      var fieldType = ls.getField(-1, "body");
+      if (fieldType == LuaType.luaUserdata) {
         body = ls.toUserdata(-1).data as Widget;
         ls.pop(1);
       } else {
@@ -24,8 +24,8 @@ class FlutterScaffold {
             expected: "FlutterScaffold body null",
             source: "FlutterScaffold");
       }
-      fieldTye = ls.getField(-1, "appBar");
-      if (fieldTye == LuaType.luaUserdata) {
+      fieldType = ls.getField(-1, "appBar");
+      if (fieldType == LuaType.luaUserdata) {
         appbar = ls.toUserdata(-1).data as AppBar;
         ls.pop(1);
       } else {
@@ -33,8 +33,18 @@ class FlutterScaffold {
         ls.pop(1);
       }
 
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata userdata = ls.newUserdata<Scaffold>();
       userdata.data = Scaffold(
+        key: key,
         body: body,
         appBar: appbar,
       );

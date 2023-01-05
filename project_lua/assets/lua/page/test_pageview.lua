@@ -1,4 +1,9 @@
 test_pageview = {}
+local pageController = PageController({
+	initialPage = 0,
+	keepPage = true,
+	viewportFraction = 1
+})
 function test_pageview.init()
 
 end

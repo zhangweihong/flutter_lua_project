@@ -91,7 +91,6 @@ class FlutterFlex {
         if (ls.rawGetI(-1, i) == LuaType.luaUserdata) {
           children.add(ls.toUserdata(-1).data as Widget);
         }
-
         ls.pop(1);
       }
     } else if (fieldType == LuaType.luaNil) {
@@ -105,9 +104,19 @@ class FlutterFlex {
           source: subclass + " newFlex");
     }
 
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata u = ls.newUserdata<T>();
     if (T == Column) {
       u.data = Column(
+        key: key,
         children: children,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
@@ -115,6 +124,7 @@ class FlutterFlex {
       );
     } else if (T == Row) {
       u.data = Row(
+        key: key,
         children: children,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,

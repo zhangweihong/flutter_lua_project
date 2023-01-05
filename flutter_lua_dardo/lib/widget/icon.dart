@@ -28,7 +28,6 @@ class FlutterIcon {
             expected: "FlutterIcon Error",
             source: "");
       }
-      ls.pop(1);
     } else {
       ls.pop(1);
       throw ParameterError(
@@ -51,9 +50,20 @@ class FlutterIcon {
         _color = ls.toUserdata(-1).data as Color;
       }
       ls.pop(1);
+
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata userdata = ls.newUserdata<Icon>();
       userdata.data = Icon(
         first,
+        key: key,
         size: _size,
         color: _color,
       );

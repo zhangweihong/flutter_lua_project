@@ -80,6 +80,22 @@
 		],
 		"description": "Alignment.bottomRight"
 	},
+	"Axis.horizontal": {
+		"scope": "lua",
+		"prefix": "Axis.horizontal",
+		"body": [
+			"Axis.horizontal"
+		],
+		"description": "Axis.horizontal"
+	},
+	"Axis.vertical": {
+		"scope": "lua",
+		"prefix": "Axis.vertical",
+		"body": [
+			"Axis.vertical"
+		],
+		"description": "Axis.vertical"
+	},
 	"AppBar:new": {
 		"scope": "lua",
 		"prefix": "AppBar:new",
@@ -149,9 +165,17 @@
 		"scope": "lua",
 		"prefix": "ClipRRect:new",
 		"body": [
-			"ClipRRect:new({\n\tchild = $1,\n\tborderRadius = $2\n})"
+			"ClipRRect:new({\n\tchild = $1,\n\tborderRadius = $2,\n\tclipBehavior = $3\n})"
 		],
 		"description": "ClipRRect:new"
+	},
+	"clipBehavior": {
+		"scope": "lua",
+		"prefix": "clipBehavior",
+		"body": [
+			"clipBehavior"
+		],
+		"description": "clipBehavior"
 	},
 	"crossAxisAlignment = ": {
 		"scope": "lua",
@@ -264,6 +288,38 @@
 			"BoxFit.scaleDown"
 		],
 		"description": "BoxFit.scaleDown"
+	},
+	"Clip.none": {
+		"scope": "lua",
+		"prefix": "Clip.none",
+		"body": [
+			"Clip.none"
+		],
+		"description": "Clip.none"
+	},
+	"Clip.hardEdge": {
+		"scope": "lua",
+		"prefix": "Clip.hardEdge",
+		"body": [
+			"Clip.hardEdge"
+		],
+		"description": "Clip.hardEdge"
+	},
+	"Clip.antiAlias": {
+		"scope": "lua",
+		"prefix": "Clip.antiAlias",
+		"body": [
+			"Clip.antiAlias"
+		],
+		"description": "Clip.antiAlias"
+	},
+	"Clip.antiAliasWithSaveLayer": {
+		"scope": "lua",
+		"prefix": "Clip.antiAliasWithSaveLayer",
+		"body": [
+			"Clip.antiAliasWithSaveLayer"
+		],
+		"description": "Clip.antiAliasWithSaveLayer"
 	},
 	"CrossAxisAlignment.start": {
 		"scope": "lua",
@@ -494,7 +550,7 @@
 		"scope": "lua",
 		"prefix": "Container:new",
 		"body": [
-			"Container:new({\n\tchild = $1\n})"
+			"Container:new({\n\tchild = $1,\n\tmargin = $2,\n\tpadding = $3,\n\tdecoration = $4\n})"
 		],
 		"description": "Container:new"
 	},
@@ -911,6 +967,185 @@
 			"navReplace({\n\tctx = $1,\n\twidget = $2\n})"
 		],
 		"description": "navReplace()"
+	},
+	"ScrollController()": {
+		"scope": "lua",
+		"prefix": "ScrollController()",
+		"body": [
+			"ScrollController({\n\tinitialScrollOffset = 0$1,\n\tkeepScrollOffset = true$2,\n\tdebugLabel = $3\n})"
+		],
+		"description": "ScrollController()"
+	},
+	"GlobalKey()": {
+		"scope": "lua",
+		"prefix": "GlobalKey()",
+		"body": [
+			"GlobalKey({\n\tdebugLabel = nil$1\n})"
+		],
+		"description": "GlobalKey()"
+	},
+	"SliverGridDelegateWithFixedCrossAxisCount()": {
+		"scope": "lua",
+		"prefix": "SliverGridDelegateWithFixedCrossAxisCount()",
+		"body": [
+			"SliverGridDelegateWithFixedCrossAxisCount({\n\tcrossAxisCount = $1,\n\tchildAspectRatio = 1.0$2,\n\tmainAxisSpacing = 0.0$3,\n\tcrossAxisSpacing = 0.0$4,\n\tmainAxisExtent = nil$5\n})"
+		],
+		"description": "SliverGridDelegateWithFixedCrossAxisCount()"
+	},
+	"SliverChildBuilderDelegate()": {
+		"scope": "lua",
+		"prefix": "SliverChildBuilderDelegate()",
+		"body": [
+			"SliverChildBuilderDelegate({\n\tbuilder = function (_ctx,index)\n\treturn null\nend$1\n,\n\tchildCount = nil$2,\n\taddAutomaticKeepAlives = true$3,\n\taddRepaintBoundaries = true$4,\n\taddSemanticIndexes = true$5,\n\tsemanticIndexOffset = 0$6,\n\tsemanticIndexOffset = 0$7,\n\tsemanticIndexCallback = function(w,index)\nreturn 0\n\tend\n})"
+		],
+		"description": "SliverChildBuilderDelegate()"
+	},
+	"ListView:new": {
+		"scope": "lua",
+		"prefix": "ListView:new()",
+		"body": [
+			"ListView:new({\n\tscrollDirection = Axis.vertical$1,\n\treverse = false$2,",
+			"\tcontroller = nil$3,",
+			"\tprimary = false$4,",
+			"\tphysics = nil$4,",
+			"\tshrinkWrap = false$5,",
+			"\tpadding = nil$6,",
+			"\taddAutomaticKeepAlives = true$7,",
+			"\taddRepaintBoundaries = true$8,",
+			"\taddSemanticIndexes = true$9,",
+			"\tcacheExtent = nil$10,",
+			"\tchildren = {}$11,",
+			"\tsemanticChildCount = nil$12,",
+			"\tdragStartBehavior = DragStartBehavior.start$13,",
+			"\tkeyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual$14,",
+			"\trestorationId = nil$14,",
+			"\tclipBehavior = Clip.hardEdge$15",
+			"})"
+		],
+		"description": "ListView:new()"
+	},
+	"ListView:builder": {
+		"scope": "lua",
+		"prefix": "ListView:builder()",
+		"body": [
+			"ListView:builder({\n\tscrollDirection = Axis.vertical$1,\n\treverse = false$2,",
+			"\tcontroller = nil$3,",
+			"\tprimary = false$4,",
+			"\tphysics = nil$16,",
+			"\tshrinkWrap = false$5,",
+			"\tpadding = nil$6,",
+			"\taddAutomaticKeepAlives = true$7,",
+			"\taddRepaintBoundaries = true$8,",
+			"\taddSemanticIndexes = true$9,",
+			"\tcacheExtent = nil$10,",
+			"\titemBuilder = function (_ctx,index)--item Widget builder \n\t\treturn\n\tend$11,",
+			"\titemCount = nil$16,",
+			"\tsemanticChildCount = nil$12,",
+			"\tdragStartBehavior = DragStartBehavior.start$13,",
+			"\tkeyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual$14,",
+			"\trestorationId = nil$14,",
+			"\tclipBehavior = Clip.hardEdge$15",
+			"})"
+		],
+		"description": "ListView:builder()"
+	},
+	"ListView:separated": {
+		"scope": "lua",
+		"prefix": "ListView:separated()",
+		"body": [
+			"ListView:separated({\n\tscrollDirection = Axis.vertical$1,\n\treverse = false$2,",
+			"\tcontroller = nil$3,",
+			"\tprimary = false$4,",
+			"\tphysics = nil$16,",
+			"\tshrinkWrap = false$5,",
+			"\tpadding = nil$6,",
+			"\taddAutomaticKeepAlives = true$7,",
+			"\taddRepaintBoundaries = true$8,",
+			"\taddSemanticIndexes = true$9,",
+			"\tcacheExtent = nil$10,",
+			"\titemBuilder = function (_ctx,index)--item Widget builder \n\t\treturn\n\tend$11,",
+			"\tseparatorBuilder = function (_ctx,index)--item Widget builder \n\t\treturn\n\tend$11,",
+			"\titemCount = nil$16,",
+			"\tsemanticChildCount = nil$12,",
+			"\tdragStartBehavior = DragStartBehavior.start$13,",
+			"\tkeyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual$14,",
+			"\trestorationId = nil$14,",
+			"\tclipBehavior = Clip.hardEdge$15",
+			"})"
+		],
+		"description": "ListView:builder()"
+	},
+	"ListView:custom": {
+		"scope": "lua",
+		"prefix": "ListView:custom()",
+		"body": [
+			"ListView:custom({",
+			"\tscrollDirection = Axis.vertical$1,",
+			"\treverse = false$2,",
+			"\tcontroller = nil$3,",
+			"\tprimary = false$4,",
+			"\tphysics = nil$16,",
+			"\tshrinkWrap = false$5,",
+			"\tpadding = nil$6,",
+			"\tchildrenDelegate = SliverChildBuilderDelegate(function(_ctx,index)--返回item Widget",
+			"\t\treturn nil",
+			"\tend,{",
+			"\t\tchildCount = nil,",
+			"\t\taddAutomaticKeepAlives = true,",
+			"\t\taddRepaintBoundaries = true,",
+			"\t\taddSemanticIndexes = true,",
+			"\t\tsemanticIndexOffset = 0,",
+			"\t\tsemanticIndexCallback = function(w,index)--返回semantic index",
+			"\t\t\treturn nil",
+			"\t\tend",
+			"\t}),",
+			"\titemExtent = nil$8,",
+			"\tprototypeItem = nil$9,",
+			"\tcacheExtent = nil$10,",
+			"\tsemanticChildCount = nil$12,",
+			"\tdragStartBehavior = DragStartBehavior.start$13,",
+			"\tkeyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual$14,",
+			"\trestorationId = nil$14,",
+			"\tclipBehavior = Clip.hardEdge$15",
+			"})"
+		],
+		"description": "ListView:custom()"
+	},
+	"GridView:builder": {
+		"scope": "lua",
+		"prefix": "GridView:builder()",
+		"body": [
+			"GridView:builder({",
+			"\tscrollDirection = Axis.vertical$1,",
+			"\treverse = false$2,",
+			"\tcontroller = nil$3,",
+			"\tprimary = false$4,",
+			"\tphysics = nil$16,",
+			"\tshrinkWrap = false$5,",
+			"\tpadding = nil$6,",
+			"\tgridDelegate = nil$18,",
+			"\titemBuilder = function (_ctx,index)--item Widget builder \n\t\treturn\n\tend$11,",
+			"\titemCount = nil$16,",
+			"\taddAutomaticKeepAlives = true$7,",
+			"\taddRepaintBoundaries = true$8,",
+			"\taddSemanticIndexes = true$9,",
+			"\tcacheExtent = nil$10,",
+			"\tsemanticChildCount = nil$12,",
+			"\tdragStartBehavior = DragStartBehavior.start$13,",
+			"\tkeyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual$14,",
+			"\trestorationId = nil$14,",
+			"\tclipBehavior = Clip.hardEdge$15",
+			"})"
+		],
+		"description": "GridView:builder()"
+	},
+	"CommonOverScrollBehaviorWidget()": {
+		"scope": "lua",
+		"prefix": "CommonOverScrollBehaviorWidget()",
+		"body": [
+			"CommonOverScrollBehaviorWidget({\n\tchild = $1\n})"
+		],
+		"description": "CommonOverScrollBehaviorWidget()"
 	},
 
 

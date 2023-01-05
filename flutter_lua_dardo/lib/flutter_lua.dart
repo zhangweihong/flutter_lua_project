@@ -14,7 +14,22 @@ class FlutterUtils {
     ls.register("saveFile", OpFile.saveFile);
     ls.register("navPush", Nav.navPush);
     ls.register("navReplace", Nav.navReplace);
+    ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
+  }
+
+  static int _globalKey(LuaState ls) {
+    var debugLabel;
+
+    var filedType = ls.getField(-1, "debugLabel");
+    if (filedType == LuaType.luaString) {
+      debugLabel = ls.toStr(-1);
+    }
+    ls.pop(1);
+
+    Userdata userdata = ls.newUserdata<GlobalKey>();
+    userdata.data = GlobalKey(debugLabel: debugLabel);
+    return 1;
   }
 
   static int _debugPrintWrap(LuaState ls) {

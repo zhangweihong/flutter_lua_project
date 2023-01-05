@@ -38,15 +38,26 @@ class FlutterIconButton {
             source: "");
       }
       ls.pop(1);
+
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata userdata = ls.newUserdata<IconButton>();
       userdata.data = IconButton(
+          key: key,
           iconSize: iconSize,
-          onPressed: () {
-            if (pressId != -1) {
-              ls.rawGetI(lua_registryindex, pressId);
-              ls.pCall(0, 0, 1);
-            }
-          },
+          onPressed: pressId != -1
+              ? () {
+                  ls.rawGetI(lua_registryindex, pressId);
+                  ls.pCall(0, 0, 1);
+                }
+              : null,
           icon: icon);
     }
 

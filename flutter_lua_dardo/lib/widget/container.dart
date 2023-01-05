@@ -61,6 +61,15 @@ class FlutterContainer {
     } else {
       ls.pop(1);
     }
+
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
     // BoxConstraints constraints =
     //     BoxConstraints.tightFor(width: width, height: height);
     fieldType = ls.getField(-1, "decoration");
@@ -76,6 +85,7 @@ class FlutterContainer {
       }
       Userdata userdata = ls.newUserdata<Widget>();
       userdata.data = Container(
+        key: key,
         child: child,
         margin: margin,
         padding: padding,
@@ -89,6 +99,7 @@ class FlutterContainer {
       Userdata userdata = ls.newUserdata<Widget>();
 
       userdata.data = Container(
+        key: key,
         alignment: alignment,
         // constraints: constraints,
         width: width,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
+import 'package:flutter_lua_dardo/widget/clip.dart';
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
 
 class FlutterClipRRect {
@@ -33,10 +34,30 @@ class FlutterClipRRect {
       ls.pop(1);
     }
 
+    fieldType = ls.getField(-1, "clipBehavior");
+    var clip = Clip.none;
+    if (fieldType == LuaType.luaNumber) {
+      clip = FlutterClip.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata userdata = ls.newUserdata<Widget>();
     userdata.data = ClipRRect(
+      key: key,
       borderRadius: radius,
       child: child,
+      clipBehavior: clip,
     );
 
     return 1;
