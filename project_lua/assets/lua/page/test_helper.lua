@@ -54,7 +54,69 @@ function test_helper.build(ctx)
                             print("aesEncode",de)
                         end,
                     }),
-                })
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("test appMode",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF8C00')
+                            }
+                        }),
+                        onPressed = function ()
+                            local appMode = Helper.appMode
+                            print("appMode",appMode)
+                        end,
+                    }),
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("test appPltform",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF8C00')
+                            }
+                        }),
+                        onPressed = function ()
+                            local appPltform = Helper.appPltform
+                            print("appPltform",appPltform)
+                        end,
+                    }),
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("test setOrientations",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF8C00')
+                            }
+                        }),
+                        onPressed = function ()
+                            Helper:setOrientations({DeviceOrientation.portraitDown})
+                        end,
+                    }),
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("test setEnabledSystemUIMode",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF8C00')
+                            }
+                        }),
+                        onPressed = function ()
+                            Helper:setEnabledSystemUIMode(SystemUiMode.manual,{overlays = {SystemUiOverlay.top}})
+                        end,
+                    }),
+                }),
             },
             mainAxisAlignment = MainAxisAlignment.start,
             crossAxisAlignment = CrossAxisAlignment.start

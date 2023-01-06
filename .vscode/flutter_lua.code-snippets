@@ -1171,6 +1171,126 @@
 		],
 		"description": "Helper:aseDecode()"
 	},
+	"Helper:setOrientations()": {
+		"scope": "lua",
+		"prefix": "Helper:setOrientations()",
+		"body": [
+			"Helper:setOrientations({$1})",
+		],
+		"description": "Helper:setOrientations()"
+	},
+	"Helper:setEnabledSystemUIMode()": {
+		"scope": "lua",
+		"prefix": "Helper:setEnabledSystemUIMode()",
+		"body": [
+			"Helper:setEnabledSystemUIMode(SystemUiMode.manual,{overlays = {}})",
+		],
+		"description": "Helper:setEnabledSystemUIMode()"
+	},
+	"SystemUiOverlay.top": {
+		"scope": "lua",
+		"prefix": "SystemUiOverlay.top",
+		"body": [
+			"SystemUiOverlay.top",
+		],
+		"description": "SystemUiOverlay.top"
+	},
+	"SystemUiOverlay.bottom": {
+		"scope": "lua",
+		"prefix": "SystemUiOverlay.bottom",
+		"body": [
+			"SystemUiOverlay.bottom",
+		],
+		"description": "SystemUiOverlay.bottom"
+	},
+	"SystemUiMode.leanBack": {
+		"scope": "lua",
+		"prefix": "SystemUiMode.leanBack",
+		"body": [
+			"SystemUiMode.leanBack",
+		],
+		"description": "SystemUiMode.leanBack"
+	},
+	"SystemUiMode.immersive": {
+		"scope": "lua",
+		"prefix": "SystemUiMode.immersive",
+		"body": [
+			"SystemUiMode.immersive",
+		],
+		"description": "SystemUiMode.immersive"
+	},
+	"SystemUiMode.immersiveSticky": {
+		"scope": "lua",
+		"prefix": "SystemUiMode.immersiveSticky",
+		"body": [
+			"SystemUiMode.immersiveSticky",
+		],
+		"description": "SystemUiMode.immersiveSticky"
+	},
+	"SystemUiMode.edgeToEdge": {
+		"scope": "lua",
+		"prefix": "SystemUiMode.edgeToEdge",
+		"body": [
+			"SystemUiMode.edgeToEdge",
+		],
+		"description": "SystemUiMode.edgeToEdge"
+	},
+	"SystemUiMode.manual": {
+		"scope": "lua",
+		"prefix": "SystemUiMode.manual",
+		"body": [
+			"SystemUiMode.manual",
+		],
+		"description": "SystemUiMode.manual"
+	},
+	"Helper.appMode": {
+		"scope": "lua",
+		"prefix": "Helper.appMode",
+		"body": [
+			"Helper.appMode",
+		],
+		"description": "Helper.appMode"
+	},
+	"Helper.appPltform": {
+		"scope": "lua",
+		"prefix": "Helper.appPltform",
+		"body": [
+			"Helper.appPltform",
+		],
+		"description": "Helper.appPltform"
+	},
+	"DeviceOrientation.portraitUp": {
+		"scope": "lua",
+		"prefix": "DeviceOrientation.portraitUp",
+		"body": [
+			"DeviceOrientation.portraitUp",
+		],
+		"description": "DeviceOrientation.portraitUp"
+	},
+	"DeviceOrientation.landscapeLeft": {
+		"scope": "lua",
+		"prefix": "DeviceOrientation.landscapeLeft",
+		"body": [
+			"DeviceOrientation.landscapeLeft",
+		],
+		"description": "DeviceOrientation.landscapeLeft"
+	},
+	"DeviceOrientation.portraitDown": {
+		"scope": "lua",
+		"prefix": "DeviceOrientation.portraitDown",
+		"body": [
+			"DeviceOrientation.portraitDown",
+		],
+		"description": "DeviceOrientation.portraitDown"
+	},
+	"DeviceOrientation.landscapeRight": {
+		"scope": "lua",
+		"prefix": "DeviceOrientation.landscapeRight",
+		"body": [
+			"DeviceOrientation.landscapeRight",
+		],
+		"description": "DeviceOrientation.landscapeRight"
+	},
 
 
 

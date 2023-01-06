@@ -1,18 +1,89 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_lua_dardo/index.dart';
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt/encrypt.dart' as Encrypt;
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
+import 'package:flutter_lua_dardo/widget/deviceorientation.dart';
 
 import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
+import 'package:flutter_lua_dardo/widget/systemuimode.dart';
+import 'package:flutter_lua_dardo/widget/systemuioverlay.dart';
 
 class FlutterHelper {
   static const Map<String, DartFunction> _HelperWrap = {
     "md5": _md5,
     "aesEncode": _aesEncode,
-    "aesDecode": _aesDecode
+    "aesDecode": _aesDecode,
+    "setOrientations": _setPreferredOrientations,
+    "setEnabledSystemUIMode": _setEnabledSystemUIMode,
   };
 
   static const Map<String, DartFunction> _HelperMembers = {"id": null};
+
+  static int _setEnabledSystemUIMode(LuaState ls) {
+    if (ls.getTop() > 0) {
+      SystemUiMode mode = SystemUiMode.manual;
+      if (ls.isInteger(-2)) {
+        mode = FlutterSystemUiMode.get(ls.toIntegerX(-2));
+      } else {
+        throw ParameterError(
+            name: 'SystemChrome.setEnabledSystemUIMode',
+            type: "",
+            expected: "",
+            source: "setEnabledSystemUIMode value null");
+      }
+      var fieldType = ls.getField(-1, "overlays");
+      List<SystemUiOverlay> overlays;
+      if (fieldType == LuaType.luaTable) {
+        overlays = List.empty(growable: true);
+        var len = ls.len2(-1);
+        for (int i = 1; i <= len; i++) {
+          if (ls.rawGetI(-1, i) == LuaType.luaNumber) {
+            overlays.add(FlutterSystemUiOverlay.get(ls.toIntegerX(-1)));
+          }
+          ls.pop(1);
+        }
+      } else {
+        throw ParameterError(
+            name: 'SystemChrome.setEnabledSystemUIMode overlays',
+            type: "",
+            expected: "",
+            source: "setEnabledSystemUIMode overlays value null");
+      }
+      ls.setTop(0);
+      SystemChrome.setEnabledSystemUIMode(mode, overlays: overlays);
+    }
+    return 0;
+  }
+
+  static int _setPreferredOrientations(LuaState ls) {
+    List<DeviceOrientation> oLs = List.empty(growable: true);
+    if (ls.getTop() > 0) {
+      if (ls.isTable(-1)) {
+        var len = ls.len2(-1);
+        for (int i = 1; i <= len; i++) {
+          if (ls.rawGetI(-1, i) == LuaType.luaNumber) {
+            oLs.add(FlutterDeviceOrientation.get(ls.toIntegerX(-1)));
+          }
+          ls.pop(1);
+        }
+        ls.pop(1);
+      }
+
+      SystemChrome.setPreferredOrientations(oLs);
+    } else {
+      throw ParameterError(
+          name: 'SystemChrome.setPreferredOrientations',
+          type: "",
+          expected: "",
+          source: "setPreferredOrientations value null");
+    }
+    ls.setTop(0);
+    return 0;
+  }
 
   static int _md5(LuaState ls) {
     if (ls.getTop() > 0) {
@@ -74,11 +145,12 @@ class FlutterHelper {
       }
       ls.pop(1);
 
-      final _key = Key.fromUtf8(key);
-      final encrypter =
-          Encrypter(AES(_key, mode: AESMode.cbc, padding: "PKCS7"));
+      final _key = Encrypt.Key.fromUtf8(key);
+      final encrypter = Encrypt.Encrypter(
+          Encrypt.AES(_key, mode: Encrypt.AESMode.cbc, padding: "PKCS7"));
 
-      String en = encrypter.encrypt(content, iv: IV.fromUtf8(iv)).base64;
+      String en =
+          encrypter.encrypt(content, iv: Encrypt.IV.fromUtf8(iv)).base64;
       ls.pushString(en);
     } else {
       throw ParameterError(
@@ -131,11 +203,11 @@ class FlutterHelper {
             source: "_aesEncode content empty");
       }
       ls.pop(1);
-      final _key = Key.fromUtf8(key);
-      final encrypter =
-          Encrypter(AES(_key, mode: AESMode.cbc, padding: "PKCS7"));
+      final _key = Encrypt.Key.fromUtf8(key);
+      final encrypter = Encrypt.Encrypter(
+          Encrypt.AES(_key, mode: Encrypt.AESMode.cbc, padding: "PKCS7"));
 
-      String de = encrypter.decrypt64(content, iv: IV.fromUtf8(iv));
+      String de = encrypter.decrypt64(content, iv: Encrypt.IV.fromUtf8(iv));
       ls.pushString(de);
     } else {
       throw ParameterError(
@@ -148,13 +220,43 @@ class FlutterHelper {
     return 1;
   }
 
+  static void _setField(LuaState ls) {
+    String mode = "dev";
+    if (kReleaseMode) {
+      mode = "release";
+    } else {
+      mode = "dev";
+    }
+    ls.pushString(mode);
+    ls.setField(-2, "appMode");
+
+    String plt = "win";
+    if (Platform.isWindows) {
+      plt = "win";
+    } else if (Platform.isMacOS) {
+      plt = "mac";
+    } else if (Platform.isIOS) {
+      plt = "ios";
+    } else if (Platform.isAndroid) {
+      plt = "android";
+    } else if (Platform.isFuchsia) {
+      plt = "fuchsia";
+    } else if (Platform.isLinux) {
+      plt = "linux";
+    } else {
+      plt = "win";
+    }
+    ls.pushString(plt);
+    ls.setField(-2, "appPltform");
+  }
+
   static int _openHelperLib(LuaState ls) {
     ls.newMetatable("HelperClass");
     ls.pushValue(-1);
     ls.setField(-2, "__index");
     ls.setFuncs(_HelperMembers, 0);
-
     ls.newLib(_HelperWrap);
+    _setField(ls);
     return 1;
   }
 

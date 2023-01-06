@@ -41,8 +41,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               builder: (context, child) {
-                FlutterWidget.init(
-                    context, const Size(750, 1334), Orientation.portrait);
+                FlutterWidget.init(context, const Size(750, 1334));
                 return Material(
                   child: child,
                 );
@@ -66,8 +65,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               builder: (context, child) {
-                FlutterWidget.init(
-                    context, const Size(1334, 750), Orientation.landscape);
+                FlutterWidget.init(context, const Size(1334, 750));
                 return Material(
                   child: child,
                 );

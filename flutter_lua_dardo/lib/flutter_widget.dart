@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/flutter_lua.dart';
 import 'package:flutter_lua_dardo/widget/alignment.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_lua_dardo/widget/clip.dart';
 import 'package:flutter_lua_dardo/widget/clip_rrect.dart';
 import 'package:flutter_lua_dardo/widget/common_widget.dart';
 import 'package:flutter_lua_dardo/widget/commonoverscrollbehavior.dart';
+import 'package:flutter_lua_dardo/widget/deviceorientation.dart';
 import 'package:flutter_lua_dardo/widget/drag_start_behavior.dart';
 import 'package:flutter_lua_dardo/widget/fittedbox.dart';
 import 'package:flutter_lua_dardo/widget/gridview.dart';
@@ -46,6 +48,8 @@ import 'package:flutter_lua_dardo/widget/sliverchildbuilderdelegate.dart';
 import 'package:flutter_lua_dardo/widget/slivergriddelegatewithfixedcrossaxiscount.dart';
 import 'package:flutter_lua_dardo/widget/stack.dart';
 import 'package:flutter_lua_dardo/widget/stackfit.dart';
+import 'package:flutter_lua_dardo/widget/systemuimode.dart';
+import 'package:flutter_lua_dardo/widget/systemuioverlay.dart';
 import 'package:flutter_lua_dardo/widget/text.dart';
 import 'package:flutter_lua_dardo/widget/text_align.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -100,6 +104,9 @@ class FlutterWidget {
     FlutterCommonOverScrollBehavior.require(ls);
     FlutterClipRRect.require(ls);
     FlutterClip.require(ls);
+    FlutterSystemUiMode.require(ls);
+    FlutterSystemUiOverlay.require(ls);
+    FlutterDeviceOrientation.require(ls);
     FlutterCommonStatefulWidget.require(ls);
     FlutterCommonStatelessWidget.require(ls);
     FlutterUtils.open(ls);
@@ -236,7 +243,7 @@ class FlutterWidget {
         "please check the function name in the Lua script.");
   }
 
-  static init(BuildContext context, Size size, Orientation orientation) {
+  static init(BuildContext context, Size size) {
     //初始化
     ScreenUtil.init(
       context,
