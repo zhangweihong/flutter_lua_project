@@ -239,5 +239,6 @@ class OpFile {
       }
     }
     ls.setTop(0);
+    return 0;
   }
 }

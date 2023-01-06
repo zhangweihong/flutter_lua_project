@@ -16,8 +16,9 @@ class FlutterUtils {
     ls.register("deleteFile", OpFile.deleteFile);
     ls.register("existsFile", OpFile.existsFile);
     ls.register("navPush", Nav.navPush);
-    ls.register("GlobalKey", _globalKey);
     ls.register("navReplace", Nav.navReplace);
+    ls.register("navPop", Nav.navPop);
+    ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
   }

@@ -136,6 +136,14 @@
 		],
 		"description": "existsFile()"
 	},
+	"Helper:showDlg()": {
+		"scope": "lua",
+		"prefix": "Helper:showDlg()",
+		"body": [
+			"Helper:showDlg({\n\tchild = $1,\n\tcontext = ctx$2,,\n\tbarrierDismissible = false$2\n})"
+		],
+		"description": "Helper:showDlg()"
+	},
 	"saveFile()": {
 		"scope": "lua",
 		"prefix": "saveFile()",
@@ -967,6 +975,14 @@
 			"navPush({\n\tctx = $1,\n\twidget = $2\n})"
 		],
 		"description": "navPush()"
+	},
+	"navPop()": {
+		"scope": "lua",
+		"prefix": "navPop()",
+		"body": [
+			"navPop({\n\tctx = $1\n})"
+		],
+		"description": "navPop()"
 	},
 	"navReplaceAndRemoveAll()": {
 		"scope": "lua",

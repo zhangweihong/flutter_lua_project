@@ -4,8 +4,8 @@ class AsyncFun {
   static int asyncFun(LuaState ls) {
     try {
       var fieldType = ls.getField(-1, "task");
-      var funId;
-      var funCallBackId;
+      var funId = -1;
+      var funCallBackId = -1;
       if (fieldType == LuaType.luaFunction) {
         funId = ls.ref(lua_registryindex);
       }

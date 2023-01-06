@@ -74,6 +74,23 @@ class Nav {
     return 0;
   }
 
+  static int navPop(LuaState ls) {
+    BuildContext context;
+    if (ls.isUserdata(-1)) {
+      context = ls.toUserdata(-1).data as BuildContext;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+      throw ParameterError(
+          name: "navPop context Null",
+          type: "navPop",
+          expected: "navPop",
+          source: "navPop context Null");
+    }
+    Navigator.pop(context);
+    return 0;
+  }
+
   static int navReplaceAndRemoveAll(LuaState ls) {
     var fieldType = ls.getField(-1, "ctx");
     BuildContext context;

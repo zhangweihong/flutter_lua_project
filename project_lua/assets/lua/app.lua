@@ -11,28 +11,28 @@ function app.init()
 			print("asyncFun callback",os.time())
 		end
 	})
-	readFile({
-		path = "D:\\Download\\2434.wb",
-		async = false,
-		callback = function (exists,value)
-			print("readFile",exists,value)
-		end
-	})
-	existsFile({
-		path = "D:\\Download\\2434.wb",
-		async = false,
-		callback = function(exists)
-			print("existsFile",exists)
-		end
-	})
-	saveFile({
-		path = "D:\\Download\\2345.wb",
-		async = false,
-		content = "我是2345",
-		callback = function (flag,msg)
-			print("saveFile",flag,msg)
-		end
-	})
+	-- readFile({
+	-- 	path = "D:\\Download\\2434.wb",
+	-- 	async = false,
+	-- 	callback = function (exists,value)
+	-- 		print("readFile",exists,value)
+	-- 	end
+	-- })
+	-- existsFile({
+	-- 	path = "D:\\Download\\2434.wb",
+	-- 	async = false,
+	-- 	callback = function(exists)
+	-- 		print("existsFile",exists)
+	-- 	end
+	-- })
+	-- saveFile({
+	-- 	path = "D:\\Download\\2345.wb",
+	-- 	async = false,
+	-- 	content = "我是2345",
+	-- 	callback = function (flag,msg)
+	-- 		print("saveFile",flag,msg)
+	-- 	end
+	-- })
 	print("_delayFun start",os.time())
 	delayFun({
 		task = function ()

@@ -117,6 +117,43 @@ function test_helper.build(ctx)
                         end,
                     }),
                 }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("test showdlg",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF8C00')
+                            }
+                        }),
+                        onPressed = function ()
+                            Helper:showDlg({
+                                child = GestureDetector:new({
+                                    child = Container:new({
+                                        alignment = Alignment.center,
+                                        decoration = BoxDecoration:new({
+                                            color = Color('#00ff0000'),
+                                        }),
+                                        child = Container:new({
+                                            decoration = BoxDecoration:new({
+                                                color = Color('#00ff00'),
+                                                borderRadius = BorderRadius.all(20)
+                                            }),
+                                            width = sp(100),
+                                            height = sp(100),
+                                        })
+                                    }),
+                                    onTap = function ()
+                                        navPop(ctx)
+                                    end,
+                                }),
+                                context = ctx,
+                                barrierDismissible = false
+                            })
+                        end,
+                    }),
+                }),
             },
             mainAxisAlignment = MainAxisAlignment.start,
             crossAxisAlignment = CrossAxisAlignment.start

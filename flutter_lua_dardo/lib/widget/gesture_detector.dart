@@ -70,6 +70,7 @@ class FlutterGestureDetector {
       u.data = GestureDetector(
           key: key,
           child: child,
+          
           onDoubleTap: onDTapId != -1
               ? () {
                   if (onDTapId != -1) {

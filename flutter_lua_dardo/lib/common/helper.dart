@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:encrypt/encrypt.dart' as Encrypt;
@@ -19,6 +20,7 @@ class FlutterHelper {
     "aesDecode": _aesDecode,
     "setOrientations": _setPreferredOrientations,
     "setEnabledSystemUIMode": _setEnabledSystemUIMode,
+    "showDlg": _showDlg
   };
 
   static const Map<String, DartFunction> _HelperMembers = {"id": null};
@@ -218,6 +220,81 @@ class FlutterHelper {
     }
 
     return 1;
+  }
+
+  static int _showDlg(LuaState ls) {
+    var fieldType = ls.getField(-1, "child");
+    Widget child;
+    if (fieldType == LuaType.luaUserdata) {
+      child = ls.toUserdata(-1).data as Widget;
+    } else {
+      throw ParameterError(
+          name: 'showDlg',
+          type: "",
+          expected: "",
+          source: "showDlg child empty");
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "context");
+    BuildContext context;
+    if (fieldType == LuaType.luaUserdata) {
+      context = ls.toUserdata(-1).data as BuildContext;
+    } else {
+      throw ParameterError(
+          name: 'showDlg',
+          type: "",
+          expected: "",
+          source: "showDlg context empty");
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "barrierDismissible");
+    bool barrierDismissible = true;
+    if (fieldType == LuaType.luaBoolean) {
+      barrierDismissible = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "useSafeArea");
+    bool useSafeArea = true;
+    if (fieldType == LuaType.luaBoolean) {
+      useSafeArea = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "useRootNavigator");
+    bool useRootNavigator = true;
+    if (fieldType == LuaType.luaBoolean) {
+      useRootNavigator = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "barrierLabel");
+    String barrierLabel;
+    if (fieldType == LuaType.luaString) {
+      barrierLabel = ls.toStr(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "barrierColor");
+    Color barrierColor = Colors.black54;
+    if (fieldType == LuaType.luaUserdata) {
+      barrierColor = ls.toUserdata(-1).data as Color;
+    }
+    ls.pop(1);
+
+    showDialog(
+        context: context,
+        barrierDismissible: barrierDismissible,
+        barrierLabel: barrierLabel,
+        barrierColor: barrierColor,
+        useSafeArea: useSafeArea,
+        useRootNavigator: useRootNavigator,
+        builder: (ctx) {
+          return child;
+        });
+    return 0;
   }
 
   static void _setField(LuaState ls) {
