@@ -5,7 +5,7 @@ end;
 function my_stateless_widget.build(ctx)
 	return Container:new({
 		width = sp(300),
-		height = sp(100),
+		height = sp(60),
 		decoration = BoxDecoration:new({
 			color = Color("#f00"),
 		}),
@@ -21,7 +21,7 @@ function my_stateless_widget.build(ctx)
 						}),
 					}),
 					left = 100,
-					top = 100
+					top = 30
 				}),
 				Text:new("my_stateless_widget Stack 1", {
 					style = {

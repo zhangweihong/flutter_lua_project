@@ -20,7 +20,7 @@ function test_page1.build(ctx)
                         }
                     }),
                     ElevatedButton:new({
-                        child = Text:new("Next",{
+                        child = Text:new("Next test_pageview",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),

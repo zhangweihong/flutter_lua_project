@@ -16,7 +16,7 @@ class FlutterSliverGridDelegateWithFixedCrossAxisCount {
         crossAxisCount = ls.toIntegerX(-1);
       } else {
         throw ParameterError(
-            name: 'crossAxisCount',
+            name: 'SliverGridDelegateWithFixedCrossAxisCount',
             type: ls.typeName(fieldType),
             expected: "double",
             source:

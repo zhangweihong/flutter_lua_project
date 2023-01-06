@@ -9,7 +9,7 @@ function test_stf.build(ctx)
             children = {
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Back To Home",{
+                        child = Text:new("Back To Home",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -30,7 +30,7 @@ function test_stf.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Next ListView",{
+                        child = Text:new("Next ListView",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -51,7 +51,7 @@ function test_stf.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Next ListViewBuilder",{
+                        child = Text:new("Next ListViewBuilder",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -72,7 +72,7 @@ function test_stf.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Next ListViewCustom",{
+                        child = Text:new("Next ListViewCustom",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -93,7 +93,7 @@ function test_stf.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Next ListViewSeparated",{
+                        child = Text:new("Next ListViewSeparated",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -114,7 +114,7 @@ function test_stf.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("Test_stf Next GridViewBuilder",{
+                        child = Text:new("Next GridViewBuilder",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),
@@ -128,6 +128,27 @@ function test_stf.build(ctx)
                                 widget = CommonStatelessWidget:new({
                                     widgetName = "test_gridview",
                                     path = "assets/lua/page/test_gridview.lua"
+                                })
+                            })
+                        end
+                    })
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("Next TestHelper",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF00FF')
+                            }
+                        }),
+                        onPressed = function ()
+                            navPush({
+                                ctx = ctx,
+                                widget = CommonStatelessWidget:new({
+                                    widgetName = "test_helper",
+                                    path = "assets/lua/page/test_helper.lua"
                                 })
                             })
                         end

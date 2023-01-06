@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/common/async_fun.dart';
 import 'package:flutter_lua_dardo/common/file.dart';
+import 'package:flutter_lua_dardo/common/helper.dart';
 import 'package:flutter_lua_dardo/common/nav.dart';
 import 'package:lua_dardo/lua.dart';
 
@@ -16,6 +17,7 @@ class FlutterUtils {
     ls.register("navReplace", Nav.navReplace);
     ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
+    FlutterHelper.require(ls);
   }
 
   static int _globalKey(LuaState ls) {

@@ -15,20 +15,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: LuaManager.initLuaState(fromNet: false, allLua: [
-          "assets/lua/dkjson.lua",
-          "assets/lua/component/my_stateful_widget.lua",
-          "assets/lua/component/my_stateless_widget.lua",
-          "assets/lua/page/test_page1.lua",
-          "assets/lua/page/test_pageview.lua",
-          "assets/lua/page/test_stf.lua",
-          "assets/lua/page/test_listview.lua",
-          "assets/lua/page/test_listview_builder.lua",
-          "assets/lua/page/test_listview_custom.lua",
-          "assets/lua/page/test_listview_sp.lua",
-          "assets/lua/page/test_gridview.lua",
-          "assets/lua/app.lua",
-        ]),
+        future: LuaManager.initLuaState(
+            fromNet: false,
+            registerFunc: (LuaState ls) {}, //注册自定义的Dart To Lua
+            allLua: [
+              "assets/lua/dkjson.lua",
+              "assets/lua/component/my_stateful_widget.lua",
+              "assets/lua/component/my_stateless_widget.lua",
+              "assets/lua/page/test_page1.lua",
+              "assets/lua/page/test_pageview.lua",
+              "assets/lua/page/test_stf.lua",
+              "assets/lua/page/test_listview.lua",
+              "assets/lua/page/test_listview_builder.lua",
+              "assets/lua/page/test_listview_custom.lua",
+              "assets/lua/page/test_listview_sp.lua",
+              "assets/lua/page/test_gridview.lua",
+              "assets/lua/page/test_helper.lua",
+              "assets/lua/app.lua",
+            ]),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
             return MaterialApp(

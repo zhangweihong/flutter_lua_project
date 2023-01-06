@@ -20,7 +20,10 @@ class LuaManager {
   /**
    * 初始化luastate
    */
-  static initLuaState({bool fromNet = false, List<String> allLua}) async {
+  static initLuaState(
+      {bool fromNet = false,
+      Function(LuaState) registerFunc = null,
+      List<String> allLua}) async {
     _luaContentMap = <String, String>{};
     if (_state == null) {
       _state = LuaState.newState();
@@ -29,6 +32,9 @@ class LuaManager {
     }
     _state.register("require", _requireWrap);
     FlutterWidget.open(_state);
+    if (registerFunc != null) {
+      registerFunc(_state);
+    }
     await _loadAllLuaContent(fromNet: fromNet, allLua: allLua);
     return true;
   }

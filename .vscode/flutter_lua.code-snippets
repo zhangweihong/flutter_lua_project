@@ -932,7 +932,7 @@
 		"scope": "lua",
 		"prefix": "stl",
 		"body": [
-			"stl$1 = {}\nfunction stl$2.init()\n\nend\nfunction stl$3.build(ctx)\n\nend\nreturn stl$4\n"
+			"stl$1 = {}\nfunction stl$2.init()\n\nend\nfunction stl$3.build(ctx)\n\treturn nil\nend\nreturn stl$4\n"
 		],
 		"description": "stl"
 	},
@@ -940,7 +940,7 @@
 		"scope": "lua",
 		"prefix": "stf",
 		"body": [
-			"stf$1 = {}\nfunction stf$2.initState()\n\nend\nfunction stf$3.build(ctx)\n\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
+			"stf$1 = {}\nfunction stf$2.initState()\n\nend\nfunction stf$3.build(ctx)\n\treturn nil\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
 		],
 		"description": "stf"
 	},
@@ -1146,6 +1146,30 @@
 			"CommonOverScrollBehaviorWidget({\n\tchild = $1\n})"
 		],
 		"description": "CommonOverScrollBehaviorWidget()"
+	},
+	"Helper:md5()": {
+		"scope": "lua",
+		"prefix": "Helper:md5()",
+		"body": [
+			"Helper:md5($1)"
+		],
+		"description": "Helper:md5()"
+	},
+	"Helper:aesEncode()": {
+		"scope": "lua",
+		"prefix": "Helper:aesEncode()",
+		"body": [
+			"Helper:aesEncode({key = $1,iv = $2,content = $3})",
+		],
+		"description": "Helper:aesEncode()"
+	},
+	"Helper:aseDecode()": {
+		"scope": "lua",
+		"prefix": "Helper:aseDecode()",
+		"body": [
+			"Helper:aseDecode({key = $1,iv = $2,content = $3})",
+		],
+		"description": "Helper:aseDecode()"
 	},
 
 

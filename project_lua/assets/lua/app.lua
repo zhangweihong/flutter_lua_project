@@ -125,7 +125,7 @@ function app.build(ctx)
 					-- 	end
 					-- }),
 					ElevatedButton:new({
-						child = Text:new("ElevatedButton", {
+						child = Text:new("Next test_page1", {
 							style = {
 								fontSize = sp(10),
 								fontWeight = FontWeight.w400
@@ -161,6 +161,16 @@ function app.build(ctx)
 							height = 80
 						}),
 						borderRadius = BorderRadius.all(20)
+					}),
+					ElevatedButton:new({
+						child = Image.network("https://ts1.cn.mm.bing.net/th/id/R-C.824b5f6af98d4c0d953eb620fc9fd8fb?rik=bB%2bBx%2fQ5hRfEDA&riu=http%3a%2f%2fpic.weather.com.cn%2fimages%2fcn%2fphoto%2f2020%2f11%2f25%2f20201125142909EB135C7306F256639DAE3032660F23B2.jpg&ehk=XJQ2HWGz25TYiBycQA9TDuPLaB4cUYikEYfTFgIymT8%3d&risl=&pid=ImgRaw&r=0",{
+							width = sp(50),
+							height = sp(50),
+							fit = BoxFit.cover
+						}),
+						onPressed = function ()
+							print("ElevatedButton Image")
+						end
 					})
 				}
 			}),

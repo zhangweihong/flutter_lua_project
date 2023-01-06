@@ -7,7 +7,7 @@ function my_stateful_widget.build(ctx)
 	return Container:new({
 		child = GestureDetector:new({
 			child = Container:new({
-				height = sp(100),
+				height = sp(50),
 				width = sp(200),
 				alignment = Alignment.center,
 				child = Text:new("my_stateful_widget ".. count, {
