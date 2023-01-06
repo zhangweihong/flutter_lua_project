@@ -124,17 +124,33 @@
 		"scope": "lua",
 		"prefix": "readFile()",
 		"body": [
-			"readFile({\n\tpath = $1,\n\tcallback = $2\n})"
+			"readFile({\n\tpath = $1,\n\tasync = true$2,\n\tcallback = function(exists,value)\n\tend\n})"
 		],
 		"description": "readFile()"
+	},
+	"existsFile()": {
+		"scope": "lua",
+		"prefix": "existsFile()",
+		"body": [
+			"existsFile({\n\tpath = $1,\n\tasync = true$2,\n\tcallback = function(exists)\n\tend\n})"
+		],
+		"description": "existsFile()"
 	},
 	"saveFile()": {
 		"scope": "lua",
 		"prefix": "saveFile()",
 		"body": [
-			"saveFile({\n\tpath = $1,\n\tcontent = $2,\n\tcallback = $3\n})"
+			"saveFile({\n\tpath = $1,\n\tasync = true$2,\n\tcontent = $2,\n\tcallback = function(flag,msg)\n\tend$3\n})"
 		],
 		"description": "saveFile()"
+	},
+	"deleteFile()": {
+		"scope": "lua",
+		"prefix": "deleteFile()",
+		"body": [
+			"deleteFile({\n\tpath = $1,\n\tasync = true$2,\n\trecursive = false,\n\tcallback = $3\n})"
+		],
+		"description": "deleteFile()"
 	},
 	"Column:new": {
 		"scope": "lua",

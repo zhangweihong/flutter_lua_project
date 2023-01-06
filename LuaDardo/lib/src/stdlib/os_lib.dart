@@ -46,8 +46,7 @@ class OSLib {
   static int _osTime(LuaState ls) {
     if (ls.isNoneOrNil(1)) {
       /* called without args? */
-      var t =
-          DateTime.now().millisecondsSinceEpoch ~/ 1000; /* get current time */
+      var t = DateTime.now().millisecondsSinceEpoch; /* get current time */
       ls.pushInteger(t);
     } else {
       ls.checkType(1, LuaType.luaTable);
@@ -58,9 +57,7 @@ class OSLib {
       var month = _getField(ls, "month", -1);
       var year = _getField(ls, "year", -1);
       // todo: isdst
-      var t =
-          DateTime(year, month, day, hour, min, sec).millisecondsSinceEpoch ~/
-              1000;
+      var t = DateTime(year, month, day, hour, min, sec).millisecondsSinceEpoch;
       ls.pushInteger(t);
     }
     return 1;

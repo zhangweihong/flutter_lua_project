@@ -5,37 +5,42 @@ function app.init()
 	print("app.init");
 	asyncFun({
 		task = function ()
-			print("asyncFun")
-			print(os.time())
+			print("asyncFun start",os.time())
 		end,
 		callback = function ()
-			print("asyncFun callback")
-			print(os.time())
+			print("asyncFun callback",os.time())
 		end
 	})
 	readFile({
 		path = "D:\\Download\\2434.wb",
+		async = false,
 		callback = function (exists,value)
-			print(exists,value)
+			print("readFile",exists,value)
+		end
+	})
+	existsFile({
+		path = "D:\\Download\\2434.wb",
+		async = false,
+		callback = function(exists)
+			print("existsFile",exists)
 		end
 	})
 	saveFile({
 		path = "D:\\Download\\2345.wb",
+		async = false,
 		content = "我是2345",
-		callback = function (flag,reason)
-			print(flag,reason)
+		callback = function (flag,msg)
+			print("saveFile",flag,msg)
 		end
 	})
+	print("_delayFun start",os.time())
 	delayFun({
 		task = function ()
-			print("_delayFun")
-			print(os.time())
+			print("_delayFun task start",os.time())
 		end,
-		time = 1500,
+		time = 2500,
 		callback = function ()
-			print("_delayFun callback")
-			print(os.time())
-			print(a)
+			print("_delayFun task finish",os.time(),a)
 
 		end
 	})

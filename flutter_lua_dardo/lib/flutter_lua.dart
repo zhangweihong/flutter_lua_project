@@ -13,9 +13,11 @@ class FlutterUtils {
     ls.register("delayFun", AsyncFun.delayFun);
     ls.register("readFile", OpFile.readFile);
     ls.register("saveFile", OpFile.saveFile);
+    ls.register("deleteFile", OpFile.deleteFile);
+    ls.register("existsFile", OpFile.existsFile);
     ls.register("navPush", Nav.navPush);
-    ls.register("navReplace", Nav.navReplace);
     ls.register("GlobalKey", _globalKey);
+    ls.register("navReplace", Nav.navReplace);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
   }

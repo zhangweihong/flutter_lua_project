@@ -13,7 +13,7 @@ class AsyncFun {
       if (fieldType == LuaType.luaFunction) {
         funCallBackId = ls.ref(lua_registryindex);
       }
-      Future.microtask(() {
+      Future.microtask(() async {
         if (funId != -1) {
           ls.rawGetI(lua_registryindex, funId);
           ls.pCall(0, 0, 1);
@@ -54,7 +54,7 @@ class AsyncFun {
       } else {
         ls.pop(1);
       }
-      Future.delayed(Duration(milliseconds: time), () {
+      Future.delayed(Duration(milliseconds: time), () async {
         if (funId != -1) {
           ls.rawGetI(lua_registryindex, funId);
           ls.pCall(0, 0, 1);
