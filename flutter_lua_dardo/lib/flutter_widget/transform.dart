@@ -36,7 +36,7 @@ class FlutterTransform {
       fieldType = ls.getField(-1, "child");
       Widget child;
       if (fieldType == LuaType.luaUserdata) {
-        child = ls.toUserdata(-1) as Widget;
+        child = ls.toUserdata(-1).data as Widget;
       }
       ls.pop(1);
 
@@ -61,8 +61,18 @@ class FlutterTransform {
       }
       ls.pop(1);
 
+      fieldType = ls.getField(-1, "key");
+      GlobalKey key;
+      if (fieldType == LuaType.luaUserdata) {
+        key = ls.toUserdata(-1).data as GlobalKey;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
       Userdata userdata = ls.newUserdata<Transform>();
       userdata.data = Transform(
+          key: key,
           transform: transform,
           alignment: alignment,
           origin: origin,
@@ -75,7 +85,7 @@ class FlutterTransform {
   }
 
   static int _openTextLib(LuaState ls) {
-    ls.newMetatable("Transformlass");
+    ls.newMetatable("TransformClass");
     ls.pushValue(-1);
     ls.setField(-2, "__index");
     ls.setFuncs(_TransformMembers, 0);

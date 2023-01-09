@@ -586,6 +586,14 @@
 		],
 		"description": "Center:new"
 	},
+	"SafeArea:new": {
+		"scope": "lua",
+		"prefix": "SafeArea:new",
+		"body": [
+			"SafeArea:new({\n\tchild = $1\n})"
+		],
+		"description": "SafeArea:new"
+	},
 	"Matrix4.skew": {
 		"scope": "lua",
 		"prefix": "Matrix4.skew",
@@ -673,6 +681,14 @@
 			"PageView:new({\n\tchildren = $1,\n\tcontroller = $2,\n\tonPageChanged = $3\n})"
 		],
 		"description": "PageView:new"
+	},
+	"Visibility:new": {
+		"scope": "lua",
+		"prefix": "Visibility:new",
+		"body": [
+			"Visibility:new({\n\tchild = $1,\n\tvisible = true$2\n})"
+		],
+		"description": "Visibility:new"
 	},
 	"BouncingScrollPhysics()": {
 		"scope": "lua",

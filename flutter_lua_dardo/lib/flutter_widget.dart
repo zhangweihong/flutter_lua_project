@@ -20,6 +20,7 @@ import 'package:flutter_lua_dardo/flutter_widget/fittedbox.dart';
 import 'package:flutter_lua_dardo/flutter_widget/gridview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/listview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/pageview.dart';
+import 'package:flutter_lua_dardo/flutter_widget/safearea.dart';
 import 'package:flutter_lua_dardo/flutter_widget/scrollcontroller.dart';
 import 'package:flutter_lua_dardo/flutter_widget/scrollphysics.dart';
 import 'package:flutter_lua_dardo/flutter_widget/scrollview_keyboard_dismissbehavior.dart';
@@ -55,6 +56,7 @@ import 'package:flutter_lua_dardo/flutter_widget/systemuimode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/systemuioverlay.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text_align.dart';
+import 'package:flutter_lua_dardo/flutter_widget/visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lua_dardo/lua.dart';
 
@@ -109,7 +111,9 @@ class FlutterWidget {
     FlutterScrollPhysics.require(ls);
     FlutterCommonOverScrollBehavior.require(ls);
     FlutterClipRRect.require(ls);
+    FlutterSafeArea.require(ls);
     FlutterClip.require(ls);
+    FlutterVisibility.require(ls);
     FlutterSystemUiMode.require(ls);
     FlutterSystemUiOverlay.require(ls);
     FlutterDeviceOrientation.require(ls);
