@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_lua_dardo/flutter_widget/common_stateless_widget.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/index.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_lua_dardo/lua_manager.dart';
-import 'package:flutter_lua_dardo/widget/common_stateless_widget.dart';
 
 void main() {
   runApp(const MyApp());

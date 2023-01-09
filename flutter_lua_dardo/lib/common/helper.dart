@@ -7,11 +7,11 @@ import 'package:flutter_lua_dardo/index.dart';
 import 'package:encrypt/encrypt.dart' as Encrypt;
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
-import 'package:flutter_lua_dardo/widget/deviceorientation.dart';
+import 'package:flutter_lua_dardo/flutter_widget/deviceorientation.dart';
 
-import 'package:flutter_lua_dardo/widget/parameter_exception.dart';
-import 'package:flutter_lua_dardo/widget/systemuimode.dart';
-import 'package:flutter_lua_dardo/widget/systemuioverlay.dart';
+import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
+import 'package:flutter_lua_dardo/flutter_widget/systemuimode.dart';
+import 'package:flutter_lua_dardo/flutter_widget/systemuioverlay.dart';
 
 class FlutterHelper {
   static const Map<String, DartFunction> _HelperWrap = {

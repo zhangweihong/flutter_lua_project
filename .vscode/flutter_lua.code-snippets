@@ -574,15 +574,95 @@
 		"scope": "lua",
 		"prefix": "Container:new",
 		"body": [
-			"Container:new({\n\tchild = $1,\n\tmargin = $2,\n\tpadding = $3,\n\tdecoration = $4\n})"
+			"Container:new({\n\tchild = $1,\n\tmargin = $2,\n\tpadding = $3,\n\tdecoration = $4,\n\tforegroundDecoration = nil$5,\n\talignment = nil$6\n})"
 		],
 		"description": "Container:new"
+	},
+	"Center:new": {
+		"scope": "lua",
+		"prefix": "Center:new",
+		"body": [
+			"Center:new({\n\tchild = $1,\n\twidthFactor = $2,\n\theightFactor = $3\n})"
+		],
+		"description": "Center:new"
+	},
+	"Matrix4.skew": {
+		"scope": "lua",
+		"prefix": "Matrix4.skew",
+		"body": [
+			"Matrix4.skew({\n\talpha = $1,\n\tbeta = $2})"
+		],
+		"description": "Matrix4.skew"
+	},
+	"Matrix4.skewX": {
+		"scope": "lua",
+		"prefix": "Matrix4.skewX",
+		"body": [
+			"Matrix4.skewX({\n\talpha = $1})"
+		],
+		"description": "Matrix4.skewX"
+	},
+	"Matrix4.skewY": {
+		"scope": "lua",
+		"prefix": "Matrix4.skewY",
+		"body": [
+			"Matrix4.skewY({\n\tbeta = $1})"
+		],
+		"description": "Matrix4.skewY"
+	},
+	"Matrix4.diagonal3Values": {
+		"scope": "lua",
+		"prefix": "Matrix4.diagonal3Values",
+		"body": [
+			"Matrix4.diagonal3Values({\n\tx = $1,\n\ty = $2,\n\tz = $3})"
+		],
+		"description": "Matrix4.diagonal3Values"
+	},
+	"Matrix4.rotationX": {
+		"scope": "lua",
+		"prefix": "Matrix4.rotationX",
+		"body": [
+			"Matrix4.rotationX($1)"
+		],
+		"description": "Matrix4.rotationX"
+	},
+	"Matrix4.rotationY": {
+		"scope": "lua",
+		"prefix": "Matrix4.rotationY",
+		"body": [
+			"Matrix4.rotationY($1)"
+		],
+		"description": "Matrix4.rotationY"
+	},
+	"Matrix4.rotationZ": {
+		"scope": "lua",
+		"prefix": "Matrix4.rotationZ",
+		"body": [
+			"Matrix4.rotationZ($1)"
+		],
+		"description": "Matrix4.rotationZ"
+	},
+	"Matrix4.translationValues": {
+		"scope": "lua",
+		"prefix": "Matrix4.translationValues",
+		"body": [
+			"Matrix4.translationValues({x = $1,y = $2,z = $3})"
+		],
+		"description": "Matrix4.translationValues"
+	},
+	"Matrix4.solve": {
+		"scope": "lua",
+		"prefix": "Matrix4.solve",
+		"body": [
+			"Matrix4.solve({A = $1,x = $2,b = $3})"
+		],
+		"description": "Matrix4.solve"
 	},
 	"Stack:new": {
 		"scope": "lua",
 		"prefix": "Stack:new",
 		"body": [
-			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft\n})"
+			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft$2\n})"
 		],
 		"description": "Stack:new"
 	},

@@ -18,9 +18,34 @@ class FlutterUtils {
     ls.register("navPush", Nav.navPush);
     ls.register("navReplace", Nav.navReplace);
     ls.register("navPop", Nav.navPop);
+    ls.register("Offset", _OffsetWrap);
     ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
+  }
+
+  static int _OffsetWrap(LuaState ls) {
+    if (ls.getTop() > 0) {
+      double dx = 0;
+      double dy = 0;
+
+      var fieldType = ls.getField(-1, "dx");
+      if (fieldType == LuaType.luaNumber) {
+        dx = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "dy");
+      if (fieldType == LuaType.luaNumber) {
+        dy = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      Userdata userdata = ls.newUserdata<Offset>();
+      userdata.data = Offset(dx, dy);
+    }
+
+    return 1;
   }
 
   static int _globalKey(LuaState ls) {

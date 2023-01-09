@@ -119,7 +119,7 @@ function test_helper.build(ctx)
                 }),
                 Container:new({
                     child = ElevatedButton:new({
-                        child = Text:new("test showdlg",{
+                        child = Text:new("test Dlg",{
                             textAlign = TextAlign.left,
                             style = {
                                 fontSize = sp(20),

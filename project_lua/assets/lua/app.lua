@@ -89,13 +89,20 @@ function app.build(ctx)
 			}),
 			child = Column:new({
 				children = {
-					CommonStatefulWidget:new({
-						widgetName = "my_stateful_widget",
-						path = "assets/lua/component/my_stateful_widget.lua"
+					Center:new({
+						child = CommonStatefulWidget:new({
+							widgetName = "my_stateful_widget",
+							path = "assets/lua/component/my_stateful_widget.lua"
+						}),
+						-- widthFactor = 3,
+						-- heightFactor = 
 					}),
-					CommonStatelessWidget:new({
-						widgetName = "my_stateless_widget",
-						path = "assets/lua/component/my_stateless_widget.lua"
+					Align:new({
+						child = CommonStatelessWidget:new({
+							widgetName = "my_stateless_widget",
+							path = "assets/lua/component/my_stateless_widget.lua"
+						}),
+						alignment = Alignment.centerLeft
 					}),
 					Text:new("字体", {
 						style = {
