@@ -174,6 +174,27 @@ function test_stf.build(ctx)
                             })
                         end
                     })
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("Next test_ani",{
+                            textAlign = TextAlign.left,
+                            style = {
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF00FF')
+                            }
+                        }),
+                        onPressed = function ()
+                            navPush({
+                                ctx = ctx,
+                                widget = CommonStatefulWidget:new({
+                                    widgetName = "test_ani",
+                                    path = "assets/lua/page/test_ani.lua"
+                                })
+                            })
+                        end
+                    })
                 })
             },
             mainAxisAlignment = MainAxisAlignment.start,

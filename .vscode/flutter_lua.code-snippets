@@ -1060,7 +1060,7 @@
 		"scope": "lua",
 		"prefix": "stf",
 		"body": [
-			"stf$1 = {}\nfunction stf$2.initState()\n\nend\nfunction stf$3.build(ctx)\n\treturn nil\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
+			"stf$1 = {}\nfunction stf$2.initState(_state,_tickerProvider)\n\nend\nfunction stf$3.build(ctx)\n\treturn nil\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
 		],
 		"description": "stf"
 	},
@@ -1071,6 +1071,70 @@
 			"navPush({\n\tctx = $1,\n\twidget = $2\n})"
 		],
 		"description": "navPush()"
+	},
+	"AnimationStatusListenerAdd()": {
+		"scope": "lua",
+		"prefix": "AnimationStatusListenerAdd()",
+		"body": [
+			"local listener = AnimationStatusListenerAdd({\n\tcontroller = $1,\n\tlistener = function(status)\n\tend\n})"
+		],
+		"description": "AnimationStatusListenerAdd()"
+	},
+	"AnimationStatusListenerRemove()": {
+		"scope": "lua",
+		"prefix": "AnimationStatusListenerRemove()",
+		"body": [
+			"AnimationStatusListenerRemove({\n\tcontroller = $1,\n\tlistener = $2\n})"
+		],
+		"description": "AnimationStatusListenerRemove()"
+	},
+	"AnimationControllerForward()": {
+		"scope": "lua",
+		"prefix": "AnimationControllerForward()",
+		"body": [
+			"AnimationControllerForward({\n\tcontroller = $1,\n\tfrom = nil$2\n})"
+		],
+		"description": "AnimationControllerForward()"
+	},
+	"AnimationControllerReverse()": {
+		"scope": "lua",
+		"prefix": "AnimationControllerReverse()",
+		"body": [
+			"AnimationControllerReverse({\n\tcontroller = $1,\n\tfrom = nil$2\n})"
+		],
+		"description": "AnimationControllerReverse()"
+	},
+	"AnimationControllerStop()": {
+		"scope": "lua",
+		"prefix": "AnimationControllerStop()",
+		"body": [
+			"AnimationControllerStop({\n\tcontroller = $1,\n\tcanceled = true$2\n})"
+		],
+		"description": "AnimationControllerStop()"
+	},
+	"CurvedAnimation()": {
+		"scope": "lua",
+		"prefix": "CurvedAnimation()",
+		"body": [
+			"CurvedAnimation({\n\tparent = $1,\n\tcurve = $2,\n\treverseCurve = nil$3\n})"
+		],
+		"description": "CurvedAnimation()"
+	},
+	"AnimationControllerReset()": {
+		"scope": "lua",
+		"prefix": "AnimationControllerReset()",
+		"body": [
+			"AnimationControllerReset({\n\tcontroller = $1\n})"
+		],
+		"description": "AnimationControllerReset()"
+	},
+	"AnimationControllerResync()": {
+		"scope": "lua",
+		"prefix": "AnimationControllerResync()",
+		"body": [
+			"AnimationControllerResync({\n\tcontroller = $1,\n\tvsync = $2\n})"
+		],
+		"description": "AnimationControllerResync()"
 	},
 	"navPop()": {
 		"scope": "lua",
@@ -1103,6 +1167,14 @@
 			"ScrollController({\n\tinitialScrollOffset = 0$1,\n\tkeepScrollOffset = true$2,\n\tdebugLabel = $3\n})"
 		],
 		"description": "ScrollController()"
+	},
+	"AnimationController()": {
+		"scope": "lua",
+		"prefix": "AnimationController()",
+		"body": [
+			"AnimationController({\n\tdurationMilliseconds = 500$1,\n\tvsync = $2\n})"
+		],
+		"description": "AnimationController()"
 	},
 	"GlobalKey()": {
 		"scope": "lua",
@@ -1419,6 +1491,304 @@
 		],
 		"description": "DeviceOrientation.landscapeRight"
 	},
+	"Curves.linear": {
+		"scope": "lua",
+		"prefix": "Curves.linear",
+		"body": [
+			"Curves.linear",
+		],
+		"description": "Curves.linear"
+	},
+	"Curves.decelerate": {
+		"scope": "lua",
+		"prefix": "Curves.decelerate",
+		"body": [
+			"Curves.decelerate",
+		],
+		"description": "Curves.decelerate"
+	},
+	"Curves.bounceIn": {
+		"scope": "lua",
+		"prefix": "Curves.bounceIn",
+		"body": [
+			"Curves.bounceIn",
+		],
+		"description": "Curves.bounceIn"
+	},
+	"Curves.bounceInOut": {
+		"scope": "lua",
+		"prefix": "Curves.bounceInOut",
+		"body": [
+			"Curves.bounceInOut",
+		],
+		"description": "Curves.bounceInOut"
+	},
+	"Curves.bounceOut": {
+		"scope": "lua",
+		"prefix": "Curves.bounceOut",
+		"body": [
+			"Curves.bounceOut",
+		],
+		"description": "Curves.bounceOut"
+	},
+	"Curves.ease": {
+		"scope": "lua",
+		"prefix": "Curves.ease",
+		"body": [
+			"Curves.ease",
+		],
+		"description": "Curves.ease"
+	},
+	"Curves.easeIn": {
+		"scope": "lua",
+		"prefix": "Curves.easeIn",
+		"body": [
+			"Curves.easeIn",
+		],
+		"description": "Curves.linear"
+	},
+	"Curves.easeInBack": {
+		"scope": "lua",
+		"prefix": "Curves.easeInBack",
+		"body": [
+			"Curves.easeInBack",
+		],
+		"description": "Curves.linear"
+	},
+	"Curves.easeInCirc": {
+		"scope": "lua",
+		"prefix": "Curves.easeInCirc",
+		"body": [
+			"Curves.easeInCirc",
+		],
+		"description": "Curves.easeInCirc"
+	},
+	"Curves.easeInCubic": {
+		"scope": "lua",
+		"prefix": "Curves.easeInCubic",
+		"body": [
+			"Curves.easeInCubic",
+		],
+		"description": "Curves.easeInCubic"
+	},
+	"Curves.easeInExpo": {
+		"scope": "lua",
+		"prefix": "Curves.easeInExpo",
+		"body": [
+			"Curves.easeInExpo",
+		],
+		"description": "Curves.easeInExpo"
+	},
+	"Curves.easeInOut": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOut",
+		"body": [
+			"Curves.easeInOut",
+		],
+		"description": "Curves.easeInOut"
+	},
+	"Curves.easeInOutBack": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutBack",
+		"body": [
+			"Curves.easeInOutBack",
+		],
+		"description": "Curves.easeInOutBack"
+	},
+	"Curves.easeInOutCirc": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutCirc",
+		"body": [
+			"Curves.easeInOutCirc",
+		],
+		"description": "Curves.easeInOutCirc"
+	},
+	"Curves.easeInOutCubic": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutCubic",
+		"body": [
+			"Curves.easeInOutCubic",
+		],
+		"description": "Curves.easeInOutCubic"
+	},
+	"Curves.easeInOutCubicEmphasized": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutCubicEmphasized",
+		"body": [
+			"Curves.easeInOutCubicEmphasized",
+		],
+		"description": "Curves.easeInOutCubicEmphasized"
+	},
+	"Curves.easeInOutExpo": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutExpo",
+		"body": [
+			"Curves.easeInOutExpo",
+		],
+		"description": "Curves.easeInOutExpo"
+	},
+	"Curves.easeInOutQuad": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutQuad",
+		"body": [
+			"Curves.easeInOutQuad",
+		],
+		"description": "Curves.easeInOutQuad"
+	},
+
+	"Curves.easeInOutSine": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutSine",
+		"body": [
+			"Curves.easeInOutSine",
+		],
+		"description": "Curves.easeInOutSine"
+	},
+	"Curves.easeInQuad": {
+		"scope": "lua",
+		"prefix": "Curves.easeInQuad",
+		"body": [
+			"Curves.easeInQuad",
+		],
+		"description": "Curves.easeInQuad"
+	},
+	"Curves.easeInQuart": {
+		"scope": "lua",
+		"prefix": "Curves.easeInQuart",
+		"body": [
+			"Curves.easeInQuart",
+		],
+		"description": "Curves.easeInQuart"
+	},
+	"Curves.easeInOutQuint": {
+		"scope": "lua",
+		"prefix": "Curves.easeInOutQuint",
+		"body": [
+			"Curves.easeInOutQuint",
+		],
+		"description": "Curves.easeInOutQuint"
+	},
+	"Curves.easeInToLinear": {
+		"scope": "lua",
+		"prefix": "Curves.easeInToLinear",
+		"body": [
+			"Curves.easeInToLinear",
+		],
+		"description": "Curves.easeInToLinear"
+	},
+	"Curves.easeOut": {
+		"scope": "lua",
+		"prefix": "Curves.easeOut",
+		"body": [
+			"Curves.easeOut",
+		],
+		"description": "Curves.easeOut"
+	},
+	"Curves.easeOutBack": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutBack",
+		"body": [
+			"Curves.easeOutBack",
+		],
+		"description": "Curves.easeOutBack"
+	},
+	"Curves.easeOutCirc": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutCirc",
+		"body": [
+			"Curves.easeOutCirc",
+		],
+		"description": "Curves.easeOutCirc"
+	},
+	"Curves.easeOutCubic": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutCubic",
+		"body": [
+			"Curves.easeOutCubic",
+		],
+		"description": "Curves.easeOutCubic"
+	},
+	"Curves.easeOutExpo": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutExpo",
+		"body": [
+			"Curves.easeOutExpo",
+		],
+		"description": "Curves.easeOutExpo"
+	},
+	"Curves.easeOutQuad": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutQuad",
+		"body": [
+			"Curves.easeOutQuad",
+		],
+		"description": "Curves.easeOutQuad"
+	},
+	"Curves.easeOutQuart": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutQuart",
+		"body": [
+			"Curves.easeOutQuart",
+		],
+		"description": "Curves.easeOutQuart"
+	},
+	"Curves.easeOutSine": {
+		"scope": "lua",
+		"prefix": "Curves.easeOutSine",
+		"body": [
+			"Curves.easeOutSine",
+		],
+		"description": "Curves.easeOutSine"
+	},
+	"Curves.elasticIn": {
+		"scope": "lua",
+		"prefix": "Curves.elasticIn",
+		"body": [
+			"Curves.elasticIn",
+		],
+		"description": "Curves.elasticIn"
+	},
+	"Curves.elasticInOut": {
+		"scope": "lua",
+		"prefix": "Curves.elasticInOut",
+		"body": [
+			"Curves.elasticInOut",
+		],
+		"description": "Curves.elasticInOut"
+	},
+	"Curves.elasticOut": {
+		"scope": "lua",
+		"prefix": "Curves.elasticOut",
+		"body": [
+			"Curves.elasticOut",
+		],
+		"description": "Curves.elasticOut"
+	},
+	"Curves.fastLinearToSlowEaseIn": {
+		"scope": "lua",
+		"prefix": "Curves.fastLinearToSlowEaseIn",
+		"body": [
+			"Curves.fastLinearToSlowEaseIn",
+		],
+		"description": "Curves.fastLinearToSlowEaseIn"
+	},
+	"Curves.linearToEaseOut": {
+		"scope": "lua",
+		"prefix": "Curves.linearToEaseOut",
+		"body": [
+			"Curves.linearToEaseOut",
+		],
+		"description": "Curves.linearToEaseOut"
+	},
+	"Curves.slowMiddle": {
+		"scope": "lua",
+		"prefix": "Curves.slowMiddle",
+		"body": [
+			"Curves.slowMiddle",
+		],
+		"description": "Curves.slowMiddle"
+	}
+	
 
 
 

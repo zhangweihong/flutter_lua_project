@@ -443,6 +443,16 @@ class LuaStateImpl implements LuaState, LuaVM {
   }
 
   @override
+  LuaTable createValuesTable(Map<String, LuaTable> values) {
+    LuaTable tb = LuaTable(0, values.length);
+    values.forEach((key, value) {
+      tb.put(key, values[key]);
+    });
+    _stack.push(tb);
+    return tb;
+  }
+
+  @override
   LuaType getField(int idx, String k) {
     Object t = _stack.get(idx);
     return _getTable(t, k, false);
@@ -820,7 +830,7 @@ class LuaStateImpl implements LuaState, LuaVM {
     } catch (e) {
       if (msgh != 0) {
         print(e.toString());
-        throw e;
+          throw e;
       }
       while (_stack != caller) {
         _popLuaStack();

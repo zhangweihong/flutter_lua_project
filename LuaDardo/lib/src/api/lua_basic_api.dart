@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:lua_dardo/src/state/lua_table.dart';
+
 import '../state/lua_userdata.dart';
 
 import 'lua_type.dart';
@@ -111,6 +113,7 @@ abstract class LuaBasicAPI {
   Userdata newUserdata<T>();
 
   void createTable(int nArr, int nRec);
+  LuaTable createValuesTable(Map<String, LuaTable> values);
 
   LuaType getTable(int idx);
 

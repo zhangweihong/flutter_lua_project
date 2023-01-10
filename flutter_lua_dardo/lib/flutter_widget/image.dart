@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/alignment.dart';
+import 'package:flutter_lua_dardo/flutter_widget/blendmode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/box_fit.dart';
+import 'package:flutter_lua_dardo/flutter_widget/filterquality.dart';
+import 'package:flutter_lua_dardo/flutter_widget/imagerepeat.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 
@@ -105,20 +109,301 @@ class FlutterImage {
       } else {
         ls.pop(1);
       }
+      fieldType = ls.getField(-1, "alignment");
+      Alignment alignment = Alignment.center;
+      if (fieldType == LuaType.luaUserdata) {
+        alignment = FlutterAlignment.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "repeat");
+      ImageRepeat repeat = ImageRepeat.noRepeat;
+      if (fieldType == LuaType.luaNumber) {
+        repeat = FlutterImageRepeat.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
 
+      fieldType = ls.getField(-1, "frameBuilder");
+      int frameBuilderId = -1;
+      if (fieldType == LuaType.luaFunction) {
+        frameBuilderId = ls.ref(-1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "loadingBuilder");
+      int loadingBuilderId = -1;
+      if (fieldType == LuaType.luaFunction) {
+        loadingBuilderId = ls.ref(-1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "errorBuilder");
+      int errorBuilderId = -1;
+      if (fieldType == LuaType.luaFunction) {
+        errorBuilderId = ls.ref(-1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "color");
+      Color color;
+      if (fieldType == LuaType.luaUserdata) {
+        color = ls.toUserdata(-1).data as Color;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "colorBlendMode");
+      BlendMode colorBlendMode;
+      if (fieldType == LuaType.luaNumber) {
+        colorBlendMode = FlutterBlendMode.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "excludeFromSemantics");
+      bool excludeFromSemantics = false;
+      if (fieldType == LuaType.luaBoolean) {
+        excludeFromSemantics = ls.toBoolean(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "semanticLabel");
+      String semanticLabel;
+      if (fieldType == LuaType.luaBoolean) {
+        semanticLabel = ls.toStr(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "matchTextDirection");
+      bool matchTextDirection = false;
+      if (fieldType == LuaType.luaBoolean) {
+        matchTextDirection = ls.toBoolean(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "gaplessPlayback");
+      bool gaplessPlayback = false;
+      if (fieldType == LuaType.luaBoolean) {
+        gaplessPlayback = ls.toBoolean(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "isAntiAlias");
+      bool isAntiAlias = false;
+      if (fieldType == LuaType.luaBoolean) {
+        isAntiAlias = ls.toBoolean(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "filterQuality");
+      FilterQuality filterQuality = FilterQuality.none;
+      if (fieldType == LuaType.luaNumber) {
+        filterQuality = FlutterFilterQuality.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "scale");
+      double scale = 1.0;
+      if (fieldType == LuaType.luaNumber) {
+        scale = ls.toNumberX(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "cacheWidth");
+      int cacheWidth;
+      if (fieldType == LuaType.luaNumber) {
+        cacheWidth = ls.toIntegerX(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "cacheHeight");
+      int cacheHeight;
+      if (fieldType == LuaType.luaNumber) {
+        cacheHeight = ls.toIntegerX(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+
+      fieldType = ls.getField(-1, "opacity");
+      var opacity;
+      if (fieldType == LuaType.luaUserdata) {
+        opacity = ls.toUserdata(-1).data as Animation<double>;
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
       Userdata u = ls.newUserdata<Image>();
       switch (type) {
         case _Image.asset:
           u.data = Image.asset(first,
-              key: key, width: width, height: height, fit: fit);
+              alignment: alignment,
+              repeat: repeat,
+              semanticLabel: semanticLabel,
+              colorBlendMode: colorBlendMode,
+              filterQuality: filterQuality,
+              color: color,
+              scale: scale,
+              opacity: opacity,
+              matchTextDirection: matchTextDirection,
+              gaplessPlayback: gaplessPlayback,
+              isAntiAlias: isAntiAlias,
+              excludeFromSemantics: excludeFromSemantics,
+              frameBuilder: frameBuilderId != -1
+                  ? (_context, _child, _frame, _wasSynchronouslyLoaded) {
+                      ls.rawGetI(lua_registryindex, frameBuilderId);
+                      Userdata userdata1 = ls.newUserdata<BuildContext>();
+                      userdata1.data = _context;
+                      Userdata userdata2 = ls.newUserdata<Widget>();
+                      userdata2.data = _child;
+                      ls.pushInteger(_frame);
+                      ls.pushBoolean(_wasSynchronouslyLoaded);
+                      ls.pCall(4, 1, 1);
+                      Widget w;
+                      if (ls.isUserdata(-1)) {
+                        w = ls.toUserdata(-1).data as Widget;
+                        ls.setTop(0);
+                      }
+                      return w;
+                    }
+                  : null,
+              key: key,
+              width: width,
+              height: height,
+              cacheWidth: cacheWidth,
+              cacheHeight: cacheHeight,
+              fit: fit);
           break;
         case _Image.file:
           u.data = Image.file(File(first),
-              key: key, width: width, height: height, fit: fit);
+              key: key,
+              alignment: alignment,
+              repeat: repeat,
+              semanticLabel: semanticLabel,
+              colorBlendMode: colorBlendMode,
+              filterQuality: filterQuality,
+              color: color,
+              scale: scale,
+              matchTextDirection: matchTextDirection,
+              opacity: opacity,
+              gaplessPlayback: gaplessPlayback,
+              isAntiAlias: isAntiAlias,
+              excludeFromSemantics: excludeFromSemantics,
+              frameBuilder: frameBuilderId != -1
+                  ? (_context, _child, _frame, _wasSynchronouslyLoaded) {
+                      ls.rawGetI(lua_registryindex, frameBuilderId);
+                      Userdata userdata1 = ls.newUserdata<BuildContext>();
+                      userdata1.data = _context;
+                      Userdata userdata2 = ls.newUserdata<Widget>();
+                      userdata2.data = _child;
+                      ls.pushInteger(_frame);
+                      ls.pushBoolean(_wasSynchronouslyLoaded);
+                      ls.pCall(4, 1, 1);
+                      Widget w;
+                      if (ls.isUserdata(-1)) {
+                        w = ls.toUserdata(-1).data as Widget;
+                        ls.setTop(0);
+                      }
+                      return w;
+                    }
+                  : null,
+              width: width,
+              height: height,
+              cacheWidth: cacheWidth,
+              cacheHeight: cacheHeight,
+              fit: fit);
           break;
         case _Image.network:
           u.data = Image.network(first,
-              key: key, width: width, height: height, fit: fit);
+              key: key,
+              alignment: alignment,
+              repeat: repeat,
+              semanticLabel: semanticLabel,
+              colorBlendMode: colorBlendMode,
+              filterQuality: filterQuality,
+              color: color,
+              scale: scale,
+              opacity: opacity,
+              matchTextDirection: matchTextDirection,
+              gaplessPlayback: gaplessPlayback,
+              isAntiAlias: isAntiAlias,
+              excludeFromSemantics: excludeFromSemantics,
+              errorBuilder: errorBuilderId != -1
+                  ? (_context, _err, _stackTrace) {
+                      Widget w;
+                      ls.rawGetI(lua_registryindex, errorBuilderId);
+                      Userdata userdata1 = ls.newUserdata<BuildContext>();
+                      userdata1.data = _context;
+                      ls.pushString(_err.toString());
+                      ls.pushString(_stackTrace.toString());
+                      ls.pCall(3, 1, 1);
+                      if (ls.isUserdata(-1)) {
+                        w = ls.toUserdata(-1).data as Widget;
+                        ls.setTop(0);
+                      }
+                      return w;
+                    }
+                  : null,
+              loadingBuilder: loadingBuilderId != -1
+                  ? (_context, _child, _chunkEvent) {
+                      Widget w;
+                      ls.rawGetI(lua_registryindex, loadingBuilderId);
+                      Userdata userdata1 = ls.newUserdata<BuildContext>();
+                      userdata1.data = _context;
+                      Userdata userdata2 = ls.newUserdata<Widget>();
+                      userdata2.data = _child;
+                      ls.pCall(2, 1, 1);
+                      if (ls.isUserdata(-1)) {
+                        w = ls.toUserdata(-1).data as Widget;
+                        ls.setTop(0);
+                      }
+                      return w;
+                    }
+                  : null,
+              frameBuilder: frameBuilderId != -1
+                  ? (_context, _child, _frame, _wasSynchronouslyLoaded) {
+                      ls.rawGetI(lua_registryindex, frameBuilderId);
+                      Userdata userdata1 = ls.newUserdata<BuildContext>();
+                      userdata1.data = _context;
+                      Userdata userdata2 = ls.newUserdata<Widget>();
+                      userdata2.data = _child;
+                      ls.pushInteger(_frame);
+                      ls.pushBoolean(_wasSynchronouslyLoaded);
+                      ls.pCall(4, 1, 1);
+                      Widget w;
+                      if (ls.isUserdata(-1)) {
+                        w = ls.toUserdata(-1).data as Widget;
+                        ls.setTop(0);
+                      }
+                      return w;
+                    }
+                  : null,
+              width: width,
+              height: height,
+              cacheWidth: cacheWidth,
+              cacheHeight: cacheHeight,
+              fit: fit);
           break;
         default:
           break;

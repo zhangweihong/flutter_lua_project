@@ -17,7 +17,8 @@ class CommonStatefulWidget extends StatefulWidget {
   _CommonStatefulWidgetState createState() => _CommonStatefulWidgetState();
 }
 
-class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
+class _CommonStatefulWidgetState extends State<CommonStatefulWidget>
+    with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -28,7 +29,12 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget> {
         var type = LuaManager.luaState.getField(-1, "initState");
         if (type == LuaType.luaFunction) {
           //呼叫lua的initState
-          LuaManager.luaState.pCall(0, 0, 1);
+          Userdata userdata1 = LuaManager.luaState.newUserdata<State>();
+          userdata1.data = this;
+          Userdata userdata2 =
+              LuaManager.luaState.newUserdata<TickerProvider>();
+          userdata2.data = this;
+          LuaManager.luaState.pCall(2, 0, 1);
         }
       }
     }
