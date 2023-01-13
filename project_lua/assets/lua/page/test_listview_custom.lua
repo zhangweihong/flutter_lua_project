@@ -27,11 +27,11 @@ function test_listview_custom.build(ctx)
                         }),
                         child = Text:new("SliverChildBuilderDelegate"..index,{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff00ff')
-                            }
+                            })
                         })
                     })
                 end,

@@ -1160,6 +1160,30 @@
 		],
 		"description": "navReplace()"
 	},
+	"Size()": {
+		"scope": "lua",
+		"prefix": "Size()",
+		"body": [
+			"Size({\n\twidth = $1,\n\theight = $2\n})"
+		],
+		"description": "Size()"
+	},
+	"TextStyle()": {
+		"scope": "lua",
+		"prefix": "TextStyle()",
+		"body": [
+			"TextStyle({\n\tcolor = $1,\n\tfontWeight = $2,\n\tfontSize = $3\n})"
+		],
+		"description": "TextStyle()"
+	},
+	"PreferredSize()": {
+		"scope": "lua",
+		"prefix": "PreferredSize()",
+		"body": [
+			"PreferredSize({\n\tchild = $1,\n\tpreferredSize = $2\n})"
+		],
+		"description": "PreferredSize()"
+	},
 	"ScrollController()": {
 		"scope": "lua",
 		"prefix": "ScrollController()",
@@ -1183,6 +1207,14 @@
 			"GlobalKey({\n\tdebugLabel = nil$1\n})"
 		],
 		"description": "GlobalKey()"
+	},
+	"Transform()": {
+		"scope": "lua",
+		"prefix": "Transform()",
+		"body": [
+			"Transform({\n\ttransform = nil$1,\n\torigin = nil$2,,\n\tchild = nil$3\n})"
+		],
+		"description": "Transform()"
 	},
 	"SliverGridDelegateWithFixedCrossAxisCount()": {
 		"scope": "lua",
@@ -1787,7 +1819,71 @@
 			"Curves.slowMiddle",
 		],
 		"description": "Curves.slowMiddle"
-	}
+	},
+	"TextDirection.rtl": {
+		"scope": "lua",
+		"prefix": "TextDirection.rtl",
+		"body": [
+			"TextDirection.rtl",
+		],
+		"description": "TextDirection.rtl"
+	},
+	"TextDirection.ltr": {
+		"scope": "lua",
+		"prefix": "TextDirection.ltr",
+		"body": [
+			"TextDirection.ltr",
+		],
+		"description": "TextDirection.ltr"
+	},
+	"FontStyle.normal": {
+		"scope": "lua",
+		"prefix": "FontStyle.normal",
+		"body": [
+			"FontStyle.normal",
+		],
+		"description": "FontStyle.normal"
+	},
+	"FontStyle.italic": {
+		"scope": "lua",
+		"prefix": "FontStyle.italic",
+		"body": [
+			"FontStyle.italic",
+		],
+		"description": "FontStyle.italic"
+	},
+	"TextBaseline.alphabetic": {
+		"scope": "lua",
+		"prefix": "TextBaseline.alphabetic",
+		"body": [
+			"TextBaseline.alphabetic",
+		],
+		"description": "TextBaseline.alphabetic"
+	},
+	"TextBaseline.ideographic": {
+		"scope": "lua",
+		"prefix": "TextBaseline.ideographic",
+		"body": [
+			"TextBaseline.ideographic",
+		],
+		"description": "TextBaseline.ideographic"
+	},
+	"VerticalDirection.up": {
+		"scope": "lua",
+		"prefix": "VerticalDirection.up",
+		"body": [
+			"VerticalDirection.up",
+		],
+		"description": "VerticalDirection.up"
+	},
+	"VerticalDirection.down": {
+		"scope": "lua",
+		"prefix": "VerticalDirection.down",
+		"body": [
+			"VerticalDirection.down",
+		],
+		"description": "VerticalDirection.down"
+	},
 	
 
 

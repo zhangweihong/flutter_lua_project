@@ -11,11 +11,11 @@ function test_listview_builder.getItem(index)
             }),
             child = Text:new("item"..index,{
                 textAlign = TextAlign.left,
-                style = {
+                style = TextStyle:new({
                     fontSize = sp(20),
                     fontWeight = FontWeight.w400,
                     color = Color('#fff')
-                }
+                })
             }),
             decoration = BoxDecoration:new({
                 color = Color('#4B0082'),
@@ -28,11 +28,11 @@ function test_listview_builder.build(ctx)
         body = Container:new({
             -- child = Text:new("ListView",{
             --     textAlign = TextAlign.left,
-            --     style = {
+            --     style = TextStyle:new({
             --         fontSize = sp(20),
             --         fontWeight = FontWeight.w400,
             --         color = Color('#fff')
-            --     }
+            --     })
             -- })
             child = ListView:builder({
                 scrollDirection = Axis.vertical,

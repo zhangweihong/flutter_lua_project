@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/flutter_widget/cross_axis_align.dart';
 import 'package:flutter_lua_dardo/flutter_widget/main_axis_align.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
+import 'package:flutter_lua_dardo/flutter_widget/textbaseline.dart';
+import 'package:flutter_lua_dardo/flutter_widget/textdirection.dart';
+import 'package:flutter_lua_dardo/flutter_widget/verticaldirection.dart';
 import 'package:lua_dardo/lua.dart';
 
 import 'main_axis_size.dart';
@@ -113,6 +116,32 @@ class FlutterFlex {
       ls.pop(1);
     }
 
+    fieldType = ls.getField(-1, "textDirection");
+    TextDirection textDirection;
+    if (fieldType == LuaType.luaNumber) {
+      textDirection = FlutterTextDirection.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "verticalDirection");
+    VerticalDirection verticalDirection = VerticalDirection.down;
+    if (fieldType == LuaType.luaNumber) {
+      verticalDirection = FlutterVerticalDirection.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "textBaseline");
+    TextBaseline textBaseline;
+    if (fieldType == LuaType.luaNumber) {
+      textBaseline = FlutterTextBaseline.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata u = ls.newUserdata<T>();
     if (T == Column) {
       u.data = Column(
@@ -121,6 +150,9 @@ class FlutterFlex {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
+        textDirection: textDirection,
+        verticalDirection: verticalDirection,
+        textBaseline: textBaseline,
       );
     } else if (T == Row) {
       u.data = Row(
@@ -129,6 +161,9 @@ class FlutterFlex {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
+        textDirection: textDirection,
+        verticalDirection: verticalDirection,
+        textBaseline: textBaseline,
       );
     }
 

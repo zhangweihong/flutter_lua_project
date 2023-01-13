@@ -20,11 +20,11 @@ function test_listview_sp.build(ctx)
                 return Container:new({
                     child = Text:new("item builder"..index,{
                         textAlign = TextAlign.left,
-                        style = {
+                        style = TextStyle:new({
                             fontSize = sp(20),
                             fontWeight = FontWeight.w400,
                             color = Color('#FF00FF')
-                        }
+                        })
                     }),
                     margin = EdgeInsets.only({
                         top = 10,
@@ -40,11 +40,11 @@ function test_listview_sp.build(ctx)
                     child = Container:new({
                         child = Text:new("--------------",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FFD700')
-                            }
+                            })
                         })
                     })
                 })

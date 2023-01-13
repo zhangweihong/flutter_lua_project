@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/brightness.dart';
 import 'package:flutter_lua_dardo/index.dart';
-import 'package:flutter_lua_dardo/flutter_widget/init_widget.dart';
 
 class FlutterAppBar {
   static const className = "AppBarClass";
@@ -53,14 +53,105 @@ class FlutterAppBar {
     } else {
       ls.pop(1);
     }
+    fieldType = ls.getField(-1, "automaticallyImplyLeading");
+    bool automaticallyImplyLeading = true;
+    if (fieldType == LuaType.luaBoolean) {
+      automaticallyImplyLeading = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "flexibleSpace");
+    Widget flexibleSpace;
+    if (fieldType == LuaType.luaUserdata) {
+      flexibleSpace = ls.toUserdata(-1) as Widget;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "bottom");
+    var bottom;
+    if (fieldType == LuaType.luaUserdata) {
+      bottom = ls.toUserdata(-1) as PreferredSizeWidget;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "elevation");
+    double elevation;
+    if (fieldType == LuaType.luaNumber) {
+      elevation = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "scrolledUnderElevation");
+    double scrolledUnderElevation;
+    if (fieldType == LuaType.luaNumber) {
+      scrolledUnderElevation = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "shadowColor");
+    Color shadowColor;
+    if (fieldType == LuaType.luaUserdata) {
+      shadowColor = ls.toUserdata(-1) as Color;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "surfaceTintColor");
+    Color surfaceTintColor;
+    if (fieldType == LuaType.luaUserdata) {
+      shadowColor = ls.toUserdata(-1) as Color;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "backgroundColor");
+    Color backgroundColor;
+    if (fieldType == LuaType.luaUserdata) {
+      backgroundColor = ls.toUserdata(-1) as Color;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "foregroundColor");
+    Color foregroundColor;
+    if (fieldType == LuaType.luaUserdata) {
+      foregroundColor = ls.toUserdata(-1) as Color;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "brightness");
+    Brightness brightness;
+    if (fieldType == LuaType.luaUserdata) {
+      brightness = FlutterBrightness.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
 
     Userdata userdata = ls.newUserdata<AppBar>();
     userdata.data = AppBar(
-      key: key,
-      leading: leadingW,
-      title: titleW,
-      actions: actions,
-    );
+        key: key,
+        leading: leadingW,
+        automaticallyImplyLeading: automaticallyImplyLeading,
+        title: titleW,
+        actions: actions,
+        flexibleSpace: flexibleSpace,
+        bottom: bottom,
+        elevation: elevation,
+        scrolledUnderElevation: scrolledUnderElevation,
+        shadowColor: shadowColor,
+        surfaceTintColor: surfaceTintColor,
+        backgroundColor: backgroundColor,
+        foregroundColor: foregroundColor,
+        brightness: brightness);
     return 1;
   }
 

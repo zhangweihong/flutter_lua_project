@@ -23,11 +23,11 @@ function test_gridview.build(ctx)
                 return Container:new({
                     child = Text:new("itemBuilder"..index,{
                         textAlign = TextAlign.left,
-                        style = {
+                        style = TextStyle:new({
                             fontSize = sp(20),
                             fontWeight = FontWeight.w400,
                             color = Color('#7CFC00')
-                        }
+                        })
                     }),
                     margin = EdgeInsets.only({
                         top = 10,

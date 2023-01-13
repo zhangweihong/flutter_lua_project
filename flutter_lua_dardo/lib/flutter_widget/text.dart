@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lua_dardo/flutter_widget/font_weight.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text_align.dart';
 import 'package:lua_dardo/lua.dart';
 import 'parameter_exception.dart';
@@ -27,55 +26,9 @@ class FlutterText {
     }
     if (ls.getTop() > 0) {
       var fieldType = ls.getField(-1, "style");
-      double _fontSize = 14;
-      Color _colors = Colors.black;
-      FontWeight _fontWeight = FontWeight.normal;
-      String _fontFamily = "Arial";
-      if (fieldType == LuaType.luaTable) {
-        fieldType = ls.getField(-1, "fontSize");
-        if (fieldType == LuaType.luaNumber) {
-          _fontSize = ls.toNumberX(-1);
-          ls.pop(1);
-        } else {
-          ls.pop(1);
-          throw ParameterError(
-              name: 'fontSize',
-              type: 'TextStyleType',
-              expected: "String",
-              source: "FlutterText fontSize");
-        }
-        fieldType = ls.getField(-1, "fontWeight");
-        if (fieldType == LuaType.luaNumber) {
-          _fontWeight = FlutterFontWeight.get(ls.toIntegerX(-1));
-          ls.pop(1);
-        } else {
-          ls.pop(1);
-        }
-
-        fieldType = ls.getField(-1, "fontFamily");
-        if (fieldType == LuaType.luaString) {
-          _fontFamily = ls.toStr(-1);
-          ls.pop(1);
-        } else {
-          ls.pop(1);
-        }
-
-        fieldType = ls.getField(-1, "color");
-        if (fieldType == LuaType.luaUserdata) {
-          _colors = ls.toUserdata(-1).data as Color;
-          ls.pop(1);
-        } else {
-          ls.pop(1);
-        }
-      } else if (fieldType == LuaType.luaNil) {
-        ls.pop(1);
-      } else {
-        ls.pop(1);
-        throw ParameterError(
-            name: 'textStyle',
-            type: ls.typeName(fieldType),
-            expected: "style",
-            source: "Text");
+      var style;
+      if (fieldType == LuaType.luaUserdata) {
+        style = ls.toUserdata(-1).data as TextStyle;
       }
       ls.pop(1);
 
@@ -102,11 +55,7 @@ class FlutterText {
         first,
         key: key,
         textAlign: al,
-        style: TextStyle(
-            fontFamily: _fontFamily,
-            color: _colors,
-            fontSize: _fontSize,
-            fontWeight: _fontWeight),
+        style: style,
       );
     }
 

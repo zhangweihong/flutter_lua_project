@@ -11,11 +11,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Back To Home",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navReplaceAndRemoveAll({
@@ -32,11 +32,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next ListView",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -53,11 +53,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next ListViewBuilder",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -74,11 +74,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next ListViewCustom",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -95,11 +95,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next ListViewSeparated",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -116,11 +116,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next GridViewBuilder",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -137,11 +137,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next TestHelper",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -158,11 +158,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next test_safearea",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({
@@ -179,11 +179,11 @@ function test_stf.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("Next test_ani",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF00FF')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({

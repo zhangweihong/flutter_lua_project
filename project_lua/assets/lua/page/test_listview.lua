@@ -13,11 +13,11 @@ function test_listview.getItems()
             }),
             child = Text:new("item"..i,{
                 textAlign = TextAlign.left,
-                style = {
+                style = TextStyle:new({
                     fontSize = sp(20),
                     fontWeight = FontWeight.w400,
                     color = Color('#fff')
-                }
+                })
             }),
             decoration = BoxDecoration:new({
                 color = Color('#4B0082'),
@@ -32,11 +32,11 @@ function test_listview.build(ctx)
         body = Container:new({
             -- child = Text:new("ListView",{
             --     textAlign = TextAlign.left,
-            --     style = {
+            --     style = TextStyle:new({
             --         fontSize = sp(20),
             --         fontWeight = FontWeight.w400,
             --         color = Color('#fff')
-            --     }
+            --     })
             -- })
             child = CommonOverScrollBehaviorWidget({
                 child = ListView:new({

@@ -25,21 +25,21 @@ function test_pageview.build(ctx)
                                 height = sp(200),
                                 child = Text:new("111111111",{
                                     textAlign = TextAlign.left,
-                                    style = {
+                                    style = TextStyle:new({
                                         fontSize = sp(20),
                                         fontWeight = FontWeight.w400,
                                         color = Color('#fff')
-                                    }
+                                    })
                                 })
                             }),
                             ElevatedButton:new({
                                 child = Text:new("Next test_stf",{
                                     textAlign = TextAlign.left,
-                                    style = {
+                                    style = TextStyle:new({
                                         fontSize = sp(20),
                                         fontWeight = FontWeight.w400,
                                         color = Color('#f0f')
-                                    }
+                                    })
                                 }),
                                 onPressed = function ()
                                     navPush({
@@ -61,11 +61,11 @@ function test_pageview.build(ctx)
                         height = 100,
                         child = Text:new("2222222",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#fff')
-                            }
+                            })
                         })
                     }),
                 },

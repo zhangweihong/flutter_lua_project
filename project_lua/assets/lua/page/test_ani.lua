@@ -38,11 +38,11 @@ function test_ani.build(ctx)
                     ElevatedButton:new({
                         child = Text:new("test Forward",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff000000')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             AnimationControllerForward({
@@ -55,11 +55,11 @@ function test_ani.build(ctx)
                     ElevatedButton:new({
                         child = Text:new("test Reverse",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff000000')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             AnimationControllerReverse({
@@ -72,11 +72,11 @@ function test_ani.build(ctx)
                     ElevatedButton:new({
                         child = Text:new("test Stop",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff000000')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             AnimationControllerStop({
@@ -89,11 +89,11 @@ function test_ani.build(ctx)
                     ElevatedButton:new({
                         child = Text:new("test Reset",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff000000')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             AnimationControllerReset({
@@ -105,11 +105,11 @@ function test_ani.build(ctx)
                     ElevatedButton:new({
                         child = Text:new("test Remove Listener",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#ff000000')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             AnimationStatusListenerRemove({

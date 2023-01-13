@@ -51,21 +51,21 @@ function app.build(ctx)
 	return Scaffold:new({
 		appBar = AppBar:new({
 			title = Text:new("标题", {
-				style = {
+				style = TextStyle:new({
 					fontSize = sp(20),
 					color = Color("#ffffff"),
 					fontWeight = FontWeight.w400
-				}
+				})
 			}),
 			actions = {
 				InkWell:new({
 					child = Text:new("btn1",{
 						textAlign = TextAlign.left,
-						style = {
+						style = TextStyle:new({
 							fontSize = sp(20),
 							fontWeight = FontWeight.w400,
 							color = Color('#fff')
-						}
+						})
 					}),
 					onTap = function ()
 						print("ontap")
@@ -105,10 +105,10 @@ function app.build(ctx)
 						alignment = Alignment.centerLeft
 					}),
 					Text:new("字体", {
-						style = {
+						style = TextStyle:new({
 							fontSize = sp(30),
 							fontWeight = FontWeight.w400
-						}
+						})
 					}),
 					-- Container:new({
 					-- 	child = InkWell:new({
@@ -138,10 +138,10 @@ function app.build(ctx)
 					-- }),
 					ElevatedButton:new({
 						child = Text:new("Next test_page1", {
-							style = {
+							style = TextStyle:new({
 								fontSize = sp(10),
 								fontWeight = FontWeight.w400
-							}
+							})
 						}),
 						onPressed = function()
 							print("ElevatedButton onPressed");

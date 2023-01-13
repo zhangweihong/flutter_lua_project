@@ -13,20 +13,20 @@ function test_page1.build(ctx)
                 children = {
                     Text:new("Page1",{
                         textAlign = TextAlign.left,
-                        style = {
+                        style = TextStyle:new({
                             fontSize = sp(20),
                             fontWeight = FontWeight.w400,
                             color = Color('#C71585')
-                        }
+                        })
                     }),
                     ElevatedButton:new({
                         child = Text:new("Next test_pageview",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#fff')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             navPush({

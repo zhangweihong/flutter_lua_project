@@ -8,11 +8,11 @@ function test_safearea.build(ctx)
             body = Container:new({
                 child = Text:new("Test SafeArea",{
                     textAlign = TextAlign.left,
-                    style = {
+                    style = TextStyle:new({
                         fontSize = sp(20),
                         fontWeight = FontWeight.w400,
                         color = Color('#ff000000')
-                    }
+                    })
                 }),
                 -- margin = ,
                 -- padding = ,

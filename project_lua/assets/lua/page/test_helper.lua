@@ -10,11 +10,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test md5 str",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             local md5 = Helper:md5("abcdef")
@@ -26,11 +26,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test AESEncode",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             local en = Helper:aesEncode({key = "49ba59abbe56e057",iv = "49ba59abbe56e057",content = "i am aes"})
@@ -42,11 +42,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test AESDecode",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             local en = Helper:aesEncode({key = "49ba59abbe56e057",iv = "49ba59abbe56e057",content = "i am aes"})
@@ -59,11 +59,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test appMode",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             local appMode = Helper.appMode
@@ -75,11 +75,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test appPltform",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             local appPltform = Helper.appPltform
@@ -91,11 +91,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test setOrientations",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             Helper:setOrientations({DeviceOrientation.portraitDown})
@@ -106,11 +106,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test setEnabledSystemUIMode",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             Helper:setEnabledSystemUIMode(SystemUiMode.manual,{overlays = {SystemUiOverlay.top}})
@@ -121,11 +121,11 @@ function test_helper.build(ctx)
                     child = ElevatedButton:new({
                         child = Text:new("test Dlg",{
                             textAlign = TextAlign.left,
-                            style = {
+                            style = TextStyle:new({
                                 fontSize = sp(20),
                                 fontWeight = FontWeight.w400,
                                 color = Color('#FF8C00')
-                            }
+                            })
                         }),
                         onPressed = function ()
                             Helper:showDlg({

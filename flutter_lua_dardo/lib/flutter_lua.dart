@@ -19,6 +19,7 @@ class FlutterUtils {
     ls.register("navReplace", Nav.navReplace);
     ls.register("navPop", Nav.navPop);
     ls.register("Offset", _OffsetWrap);
+    ls.register("Size", _SizeWrap);
     ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
@@ -43,6 +44,30 @@ class FlutterUtils {
 
       Userdata userdata = ls.newUserdata<Offset>();
       userdata.data = Offset(dx, dy);
+    }
+
+    return 1;
+  }
+
+  static int _SizeWrap(LuaState ls) {
+    if (ls.getTop() > 0) {
+      double width = 0;
+      double height = 0;
+
+      var fieldType = ls.getField(-1, "width");
+      if (fieldType == LuaType.luaNumber) {
+        width = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "height");
+      if (fieldType == LuaType.luaNumber) {
+        height = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      Userdata userdata = ls.newUserdata<Offset>();
+      userdata.data = Size(width, height);
     }
 
     return 1;
