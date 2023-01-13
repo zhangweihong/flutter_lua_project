@@ -62,12 +62,14 @@ import 'package:flutter_lua_dardo/flutter_widget/sliverchildbuilderdelegate.dart
 import 'package:flutter_lua_dardo/flutter_widget/slivergriddelegatewithfixedcrossaxiscount.dart';
 import 'package:flutter_lua_dardo/flutter_widget/stack.dart';
 import 'package:flutter_lua_dardo/flutter_widget/stackfit.dart';
+import 'package:flutter_lua_dardo/flutter_widget/strutstyle.dart';
 import 'package:flutter_lua_dardo/flutter_widget/systemuimode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/systemuioverlay.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text_align.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textbaseline.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textdirection.dart';
+import 'package:flutter_lua_dardo/flutter_widget/textoverflow.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textstyle.dart';
 import 'package:flutter_lua_dardo/flutter_widget/verticaldirection.dart';
 import 'package:flutter_lua_dardo/flutter_widget/visibility.dart';
@@ -141,6 +143,8 @@ class FlutterWidget {
     FlutterCommonStatefulWidget.require(ls);
     FlutterCommonStatelessWidget.require(ls);
     FlutterTextDirection.require(ls);
+    FlutterStrutStyle.require(ls);
+    FlutterTextOverflow.require(ls);
     FlutterTextBaseline.require(ls);
     FlutterVerticalDirection.require(ls);
     FlutterPreferredSize.require(ls);

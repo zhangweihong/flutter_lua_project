@@ -1884,6 +1884,38 @@
 		],
 		"description": "VerticalDirection.down"
 	},
+	"TextOverflow.clip": {
+		"scope": "lua",
+		"prefix": "TextOverflow.clip",
+		"body": [
+			"TextOverflow.clip",
+		],
+		"description": "TextOverflow.clip"
+	},
+	"TextOverflow.fade": {
+		"scope": "lua",
+		"prefix": "TextOverflow.fade",
+		"body": [
+			"TextOverflow.fade",
+		],
+		"description": "TextOverflow.fade"
+	},
+	"TextOverflow.ellipsis": {
+		"scope": "lua",
+		"prefix": "TextOverflow.ellipsis",
+		"body": [
+			"TextOverflow.ellipsis",
+		],
+		"description": "TextOverflow.ellipsis"
+	},
+	"TextOverflow.visible": {
+		"scope": "lua",
+		"prefix": "TextOverflow.visible",
+		"body": [
+			"TextOverflow.visible",
+		],
+		"description": "TextOverflow.visible"
+	},
 	
 
 
