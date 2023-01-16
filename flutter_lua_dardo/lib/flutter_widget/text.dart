@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/flutter_widget/text_align.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textdirection.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textoverflow.dart';
+import 'package:flutter_lua_dardo/flutter_widget/textwidthbasis.dart';
 import 'package:lua_dardo/lua.dart';
 import 'parameter_exception.dart';
 
@@ -17,11 +18,11 @@ class FlutterText {
     if (ls.getTop() > 0) {
       var textSpan;
       if (ls.isUserdata(-2)) {
-        textSpan = ls.toUserdata(-2) as InlineSpan;
+        textSpan = ls.toUserdata(-2).data as InlineSpan;
       } else {
         ls.pop(1);
         throw ParameterError(
-            name: 'first',
+            name: 'textSpan',
             type: '',
             expected: "String",
             source: "FlutterText _richText textSpan is null");
@@ -73,10 +74,34 @@ class FlutterText {
       } else {
         ls.pop(1);
       }
+      fieldType = ls.getField(-1, "textWidthBasis");
+      var textWidthBasis;
+      if (fieldType == LuaType.luaNumber) {
+        textWidthBasis = FlutterTextWidthBasis.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
       fieldType = ls.getField(-1, "maxLines");
       var maxLines;
       if (fieldType == LuaType.luaNumber) {
         maxLines = ls.toIntegerX(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "semanticsLabel");
+      var semanticsLabel;
+      if (fieldType == LuaType.luaString) {
+        semanticsLabel = ls.toStr(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "textScaleFactor");
+      var textScaleFactor;
+      if (fieldType == LuaType.luaNumber) {
+        textScaleFactor = ls.toNumberX(-1);
         ls.pop(1);
       } else {
         ls.pop(1);
@@ -95,7 +120,10 @@ class FlutterText {
       u.data = Text.rich(
         textSpan,
         key: key,
+        semanticsLabel: semanticsLabel,
+        textWidthBasis: textWidthBasis,
         softWrap: softWrap,
+        textScaleFactor: textScaleFactor,
         style: style,
         textAlign: al,
         strutStyle: strutStyle,

@@ -110,6 +110,19 @@ function app.build(ctx)
 							fontWeight = FontWeight.w400
 						})
 					}),
+					Text.rich(
+						TextSpan:new({
+						text = "Rich Text",
+						-- children = ,
+						-- style = 
+					}),{
+						style = TextStyle:new({
+							color = Color('#ffff0000'),
+							-- fontWeight = ,
+							fontSize = sp(20)
+						}),
+						textAlign = TextAlign.center 
+					}),
 					-- Container:new({
 					-- 	child = InkWell:new({
 					-- 		child = Text:new("InkWell", {

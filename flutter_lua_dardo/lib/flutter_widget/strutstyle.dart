@@ -4,11 +4,11 @@ import 'package:flutter_lua_dardo/flutter_widget/fontstyle.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
 class FlutterStrutStyle {
-  static const Map<String, DartFunction> _TextStyleWrap = {
+  static const Map<String, DartFunction> _StrutStyleWrap = {
     "new": _newStrutStyle,
   };
 
-  static const Map<String, DartFunction> _TextStyleMembers = {"id": null};
+  static const Map<String, DartFunction> _StrutStyleMembers = {"id": null};
 
   static int _newStrutStyle(LuaState ls) {
     var fieldType = ls.getField(-1, "fontSize");
@@ -111,18 +111,18 @@ class FlutterStrutStyle {
     return 1;
   }
 
-  static int _openTextStyleLib(LuaState ls) {
-    ls.newMetatable("TextStyleClass");
+  static int _openStrutStyleLib(LuaState ls) {
+    ls.newMetatable("StrutStyleClass");
     ls.pushValue(-1);
     ls.setField(-2, "__index");
-    ls.setFuncs(_TextStyleMembers, 0);
+    ls.setFuncs(_StrutStyleMembers, 0);
 
-    ls.newLib(_TextStyleWrap);
+    ls.newLib(_StrutStyleWrap);
     return 1;
   }
 
   static void require(LuaState ls) {
-    ls.requireF("TextStyle", _openTextStyleLib, true);
+    ls.requireF("StrutStyle", _openStrutStyleLib, true);
     ls.pop(1);
   }
 }

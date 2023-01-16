@@ -1916,6 +1916,14 @@
 		],
 		"description": "TextOverflow.visible"
 	},
+	"Text.rich()": {
+		"scope": "lua",
+		"prefix": "Text.rich()",
+		"body": [
+			"Text.rich(\n\tTextSpan:new({\n\ttext = $2,\n\tchildren = $3,\n\tstyle = $4\n}),{\n\tstyle = $5,\n\ttextAlign = $6\n})",
+		],
+		"description": "Text.rich()"
+	},
 	
 
 
