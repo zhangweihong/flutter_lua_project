@@ -283,6 +283,12 @@ class FlutterHelper {
       barrierColor = ls.toUserdata(-1).data as Color;
     }
     ls.pop(1);
+    fieldType = ls.getField(-1, "anchorPoint");
+    var anchorPoint;
+    if (fieldType == LuaType.luaUserdata) {
+      anchorPoint = ls.toUserdata(-1).data as Offset;
+    }
+    ls.pop(1);
 
     showDialog(
         context: context,
@@ -291,6 +297,7 @@ class FlutterHelper {
         barrierColor: barrierColor,
         useSafeArea: useSafeArea,
         useRootNavigator: useRootNavigator,
+        anchorPoint: anchorPoint,
         builder: (ctx) {
           return child;
         });

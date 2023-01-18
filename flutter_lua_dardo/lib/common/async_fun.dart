@@ -9,7 +9,7 @@ class AsyncFun {
       if (fieldType == LuaType.luaFunction) {
         funId = ls.ref(lua_registryindex);
       }
-      fieldType = ls.getField(-1, "callback");
+      fieldType = ls.getField(-1, "complete");
       if (fieldType == LuaType.luaFunction) {
         funCallBackId = ls.ref(lua_registryindex);
       }
@@ -41,7 +41,7 @@ class AsyncFun {
       } else {
         ls.pop(1);
       }
-      fieldType = ls.getField(-1, "callback");
+      fieldType = ls.getField(-1, "complete");
       if (fieldType == LuaType.luaFunction) {
         funCallBackId = ls.ref(lua_registryindex);
       } else {

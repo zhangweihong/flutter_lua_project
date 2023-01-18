@@ -25,10 +25,10 @@ class Nav {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: "NavPush next Null",
+          name: "NavPush widget Null",
           type: "NavPush",
           expected: "NavPush",
-          source: "NavPush next Null");
+          source: "NavPush widget Null");
     }
     Navigator.push(context, MaterialPageRoute<void>(
       builder: (BuildContext context) {
@@ -47,10 +47,10 @@ class Nav {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: "NavPush context Null",
+          name: "NavPush ctx Null",
           type: "NavPush",
           expected: "NavPush",
-          source: "NavPush context Null");
+          source: "NavPush ctx Null");
     }
     fieldType = ls.getField(-1, "widget");
     Widget w;
@@ -60,10 +60,10 @@ class Nav {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: "NavPush next Null",
-          type: "NavPush",
-          expected: "NavPush",
-          source: "NavPush next Null");
+          name: "NavReplace widget Null",
+          type: "NavReplace",
+          expected: "NavReplace",
+          source: "NavReplace widget Null");
     }
     Navigator.pushReplacement(context, MaterialPageRoute<void>(
       builder: (BuildContext context) {
@@ -99,10 +99,10 @@ class Nav {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: "NavPush context Null",
-          type: "NavPush",
-          expected: "NavPush",
-          source: "NavPush context Null");
+          name: "NavReplaceAndRemoveAll ctx Null",
+          type: "NavReplaceAndRemoveAll",
+          expected: "NavReplaceAndRemoveAll",
+          source: "NavReplaceAndRemoveAll ctx Null");
     }
     fieldType = ls.getField(-1, "widget");
     Widget w;
@@ -112,10 +112,10 @@ class Nav {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: "NavPush next Null",
-          type: "NavPush",
-          expected: "NavPush",
-          source: "NavPush next Null");
+          name: "NavReplaceAndRemoveAll widget Null",
+          type: "NavReplaceAndRemoveAll",
+          expected: "NavReplaceAndRemoveAll",
+          source: "NavReplaceAndRemoveAll widget Null");
     }
     Navigator.pushAndRemoveUntil(context, MaterialPageRoute<void>(
       builder: (BuildContext context) {

@@ -158,10 +158,73 @@ class FlutterText {
       }
       ls.pop(1);
 
+      fieldType = ls.getField(-1, "strutStyle");
+      var strutStyle;
+      if (fieldType == LuaType.luaUserdata) {
+        strutStyle = ls.toUserdata(-1).data as StrutStyle;
+      }
+      ls.pop(1);
+
       fieldType = ls.getField(-1, "textAlign");
-      TextAlign al = TextAlign.left;
+      TextAlign al;
       if (fieldType == LuaType.luaNumber) {
         al = FlutterTextAlign.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "softWrap");
+      bool softWrap;
+      if (fieldType == LuaType.luaBoolean) {
+        softWrap = ls.toBoolean(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "textDirection");
+      var textDirection;
+      if (fieldType == LuaType.luaNumber) {
+        textDirection = FlutterTextDirection.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "overflow");
+      var overflow;
+      if (fieldType == LuaType.luaNumber) {
+        overflow = FlutterTextOverflow.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "textWidthBasis");
+      var textWidthBasis;
+      if (fieldType == LuaType.luaNumber) {
+        textWidthBasis = FlutterTextWidthBasis.get(ls.toIntegerX(-1));
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "maxLines");
+      var maxLines;
+      if (fieldType == LuaType.luaNumber) {
+        maxLines = ls.toIntegerX(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "semanticsLabel");
+      var semanticsLabel;
+      if (fieldType == LuaType.luaString) {
+        semanticsLabel = ls.toStr(-1);
+        ls.pop(1);
+      } else {
+        ls.pop(1);
+      }
+      fieldType = ls.getField(-1, "textScaleFactor");
+      var textScaleFactor;
+      if (fieldType == LuaType.luaNumber) {
+        textScaleFactor = ls.toNumberX(-1);
         ls.pop(1);
       } else {
         ls.pop(1);
@@ -180,8 +243,16 @@ class FlutterText {
       u.data = Text(
         first,
         key: key,
-        textAlign: al,
+        semanticsLabel: semanticsLabel,
+        textWidthBasis: textWidthBasis,
+        softWrap: softWrap,
+        textScaleFactor: textScaleFactor,
         style: style,
+        textAlign: al,
+        strutStyle: strutStyle,
+        textDirection: textDirection,
+        overflow: overflow,
+        maxLines: maxLines,
       );
     }
 

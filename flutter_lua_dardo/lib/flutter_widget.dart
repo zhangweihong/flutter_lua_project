@@ -27,6 +27,7 @@ import 'package:flutter_lua_dardo/flutter_widget/fittedbox.dart';
 import 'package:flutter_lua_dardo/flutter_widget/fontstyle.dart';
 import 'package:flutter_lua_dardo/flutter_widget/gridview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/imagerepeat.dart';
+import 'package:flutter_lua_dardo/flutter_widget/opacity.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textspan.dart';
 import 'package:flutter_lua_dardo/flutter_widget/listview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/pageview.dart';
@@ -155,6 +156,7 @@ class FlutterWidget {
     FlutterBrightness.require(ls);
     FlutterFontStyle.require(ls);
     FlutterTextStyle.require(ls);
+    FlutterOpacity.require(ls);
     FlutterUtils.open(ls);
     registerUtil();
   }

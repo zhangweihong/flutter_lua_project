@@ -108,57 +108,57 @@
 		"scope": "lua",
 		"prefix": "asyncFun()",
 		"body": [
-			"asyncFun({\n\ttask = $1,\n\tcallback = $2\n})"
+			"asyncFun({\n\ttask = $1,--异步函数task\n\tcomplete = $2--异步then操作\n})"
 		],
-		"description": "asyncFun()"
+		"description": "asyncFun() 异步操作"
 	},
 	"delayFun()": {
 		"scope": "lua",
 		"prefix": "delayFun()",
 		"body": [
-			"delayFun({\n\ttask = $1,\n\ttime = $2,\n\tcallback = $3\n})"
+			"delayFun({\n\ttask = $1,--异步函数task\n\ttime = $2--延迟执行的毫秒,\n\tcomplete = $3--异步then操作\n})"
 		],
-		"description": "delayFun()"
+		"description": "delayFun() 延迟执行函数"
 	},
 	"readFile()": {
 		"scope": "lua",
 		"prefix": "readFile()",
 		"body": [
-			"readFile({\n\tpath = $1,\n\tasync = true$2,\n\tcallback = function(exists,value)\n\tend\n})"
+			"readFile({\n\tpath = $1,--文件的绝对路径\n\tasync = true$2,--是否进行异步操作\n\tcallback = function(exists,value)--读取完成的返回exists是否存在，value是读取文件的字符串\n\tend\n})"
 		],
-		"description": "readFile()"
+		"description": "readFile() 读取文件"
 	},
 	"existsFile()": {
 		"scope": "lua",
 		"prefix": "existsFile()",
 		"body": [
-			"existsFile({\n\tpath = $1,\n\tasync = true$2,\n\tcallback = function(exists)\n\tend\n})"
+			"existsFile({\n\tpath = $1,--文件的绝对路径\n\tasync = true$2,--是否进行异步操作\n\tcallback = function(exists)--完成的返回exists是否存在\n\tend\n})"
 		],
-		"description": "existsFile()"
+		"description": "existsFile() 是否存在文件"
 	},
 	"Helper:showDlg()": {
 		"scope": "lua",
 		"prefix": "Helper:showDlg()",
 		"body": [
-			"Helper:showDlg({\n\tchild = $1,\n\tcontext = ctx$2,,\n\tbarrierDismissible = false$2\n})"
+			"Helper:showDlg({\n\tchild = $1,--弹框的widget\n\tcontext = ctx$2,--上下文\n\tbarrierDismissible = false$2--点击自动消失\n})"
 		],
-		"description": "Helper:showDlg()"
+		"description": "Helper:showDlg() 全局弹框Dlg"
 	},
 	"saveFile()": {
 		"scope": "lua",
 		"prefix": "saveFile()",
 		"body": [
-			"saveFile({\n\tpath = $1,\n\tasync = true$2,\n\tcontent = $2,\n\tcallback = function(flag,msg)\n\tend$3\n})"
+			"saveFile({\n\tpath = $1,--文件的绝对路径\n\tasync = true$2,--是否进行异步操作\n\tcontent = $2,--将要保存的字符串\n\tcallback = function(flag,msg)--保存的返回值flag是否保存成功，msg保存的提示信息\n\tend$3\n})"
 		],
-		"description": "saveFile()"
+		"description": "saveFile() 保存字符串到文件"
 	},
 	"deleteFile()": {
 		"scope": "lua",
 		"prefix": "deleteFile()",
 		"body": [
-			"deleteFile({\n\tpath = $1,\n\tasync = true$2,\n\trecursive = false,\n\tcallback = $3\n})"
+			"deleteFile({\n\tpath = $1,--文件的绝对路径\n\tasync = true$2,--是否进行异步操作\n\trecursive = true,--是否递归操作\n\tcallback = $3--删除完成回调\n})"
 		],
-		"description": "deleteFile()"
+		"description": "deleteFile() 删除文件"
 	},
 	"Column:new": {
 		"scope": "lua",
@@ -1052,25 +1052,25 @@
 		"scope": "lua",
 		"prefix": "stl",
 		"body": [
-			"stl$1 = {}\nfunction stl$2.init()\n\nend\nfunction stl$3.build(ctx)\n\treturn nil\nend\nreturn stl$4\n"
+			"stl$1 = {}\nfunction stl$2.init()--初始化操作\n\nend\nfunction stl$3.build(ctx)--widget的build\n\treturn nil\nend\nreturn stl$4\n"
 		],
-		"description": "stl"
+		"description": "stl 无状态的widget"
 	},
 	"stf": {
 		"scope": "lua",
 		"prefix": "stf",
 		"body": [
-			"stf$1 = {}\nfunction stf$2.initState(_state,_tickerProvider)\n\nend\nfunction stf$3.build(ctx)\n\treturn nil\nend\nfunction stf$3.dispose()\n\nend\nreturn stf$4\n"
+			"stf$1 = {}\nfunction stf$2.initState(_state,_tickerProvider)--状态初始化_state是当前widget的状态，_tickerProvider是ticker\n\nend\nfunction stf$3.build(ctx)--进行build操作\n\treturn nil--返回widget\nend\nfunction stf$3.dispose()--widget 销毁\n\nend\nreturn stf$4\n"
 		],
-		"description": "stf"
+		"description": "stf 有状态的widget"
 	},
 	"navPush()": {
 		"scope": "lua",
 		"prefix": "navPush()",
 		"body": [
-			"navPush({\n\tctx = $1,\n\twidget = $2\n})"
+			"navPush({\n\tctx = $1,--上下文\n\twidget = $2--push的widget\n})"
 		],
-		"description": "navPush()"
+		"description": "navPush() 路由push"
 	},
 	"AnimationStatusListenerAdd()": {
 		"scope": "lua",
@@ -1140,9 +1140,9 @@
 		"scope": "lua",
 		"prefix": "navPop()",
 		"body": [
-			"navPop({\n\tctx = $1\n})"
+			"navPop({\n\tctx = $1--上下文\n})"
 		],
-		"description": "navPop()"
+		"description": "navPop() 弹出路由"
 	},
 	"navReplaceAndRemoveAll()": {
 		"scope": "lua",
@@ -1156,9 +1156,9 @@
 		"scope": "lua",
 		"prefix": "navReplace()",
 		"body": [
-			"navReplace({\n\tctx = $1,\n\twidget = $2\n})"
+			"navReplace({\n\tctx = $1,--上下文\n\twidget = $2--替换的当前的widget\n})"
 		],
-		"description": "navReplace()"
+		"description": "navReplace() 路由替换"
 	},
 	"Size()": {
 		"scope": "lua",
@@ -1176,6 +1176,14 @@
 		],
 		"description": "TextStyle()"
 	},
+	"StrutStyle()": {
+		"scope": "lua",
+		"prefix": "StrutStyle()",
+		"body": [
+			"StrutStyle({\n\tfontFamily = $1,\n\tfontWeight = $2,\n\tfontSize = $3\n})"
+		],
+		"description": "StrutStyle()"
+	},
 	"PreferredSize()": {
 		"scope": "lua",
 		"prefix": "PreferredSize()",
@@ -1183,6 +1191,14 @@
 			"PreferredSize({\n\tchild = $1,\n\tpreferredSize = $2\n})"
 		],
 		"description": "PreferredSize()"
+	},
+	"Offset()": {
+		"scope": "lua",
+		"prefix": "Offset()",
+		"body": [
+			"Offset({\n\tdx = $1,\n\tdy = $2\n})"
+		],
+		"description": "Offset()"
 	},
 	"ScrollController()": {
 		"scope": "lua",

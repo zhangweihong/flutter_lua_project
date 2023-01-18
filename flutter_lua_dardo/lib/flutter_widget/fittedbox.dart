@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/clip.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/flutter_widget/alignment.dart';
 import 'package:flutter_lua_dardo/flutter_widget/box_fit.dart';
@@ -52,14 +53,22 @@ class FlutterFittedBox {
     } else {
       ls.pop(1);
     }
+    fieldType = ls.getField(-1, "clipBehavior");
+    var clipBehavior = Clip.none;
+    if (fieldType == LuaType.luaNumber) {
+      clipBehavior = FlutterClip.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
 
     Userdata userdata = ls.newUserdata<Widget>();
     userdata.data = FittedBox(
-      key: key,
-      child: child,
-      fit: fit,
-      alignment: alignment,
-    );
+        key: key,
+        child: child,
+        fit: fit,
+        alignment: alignment,
+        clipBehavior: clipBehavior);
     return 1;
   }
 
