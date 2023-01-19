@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/alignment.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
-class FlutterCenter {
-  static const Map<String, DartFunction> _CenterWrap = {"new": _newCenter};
+class FlutterFractionallySizedBox {
+  static const Map<String, DartFunction> _FractionallySizedBoxWrap = {
+    "new": _newContainer
+  };
 
-  static const Map<String, DartFunction> _CenterMembers = {"id": null};
+  static const Map<String, DartFunction> _FractionallySizedBoxMembers = {
+    "id": null
+  };
 
-  static int _newCenter(LuaState ls) {
+  static int _newContainer(LuaState ls) {
     var fieldType = ls.getField(-1, "key");
     GlobalKey key;
     if (fieldType == LuaType.luaUserdata) {
@@ -24,6 +29,15 @@ class FlutterCenter {
     } else {
       ls.pop(1);
     }
+
+    fieldType = ls.getField(-1, "alignment");
+    var alignment = Alignment.center;
+    if (fieldType == LuaType.luaNumber) {
+      alignment = FlutterAlignment.get(ls.toIntegerX(-1));
+    } else if (fieldType == LuaType.luaUserdata) {
+      alignment = ls.toUserdata(-1).data as Alignment;
+    }
+    ls.pop(1);
 
     double widthFactor = null;
     fieldType = ls.getField(-1, "widthFactor");
@@ -44,26 +58,27 @@ class FlutterCenter {
     }
 
     Userdata userdata = ls.newUserdata<Widget>();
-    userdata.data = Center(
+    userdata.data = FractionallySizedBox(
         key: key,
         child: child,
+        alignment: alignment,
         widthFactor: widthFactor,
         heightFactor: heightFactor);
     return 1;
   }
 
-  static int _openCenterLib(LuaState ls) {
-    ls.newMetatable("CenterClass");
+  static int _openFractionallySizedBoxLib(LuaState ls) {
+    ls.newMetatable("FractionallySizedBoxClass");
     ls.pushValue(-1);
     ls.setField(-2, "__index");
-    ls.setFuncs(_CenterMembers, 0);
+    ls.setFuncs(_FractionallySizedBoxMembers, 0);
 
-    ls.newLib(_CenterWrap);
+    ls.newLib(_FractionallySizedBoxWrap);
     return 1;
   }
 
   static void require(LuaState ls) {
-    ls.requireF("Center", _openCenterLib, true);
+    ls.requireF("FractionallySizedBox", _openFractionallySizedBoxLib, true);
     ls.pop(1);
   }
 }

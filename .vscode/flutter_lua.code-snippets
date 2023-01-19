@@ -8,6 +8,14 @@
 		],
 		"description": "Align:new"
 	},
+	"Alignment:new": {
+		"scope": "lua",
+		"prefix": "Alignment:new",
+		"body": [
+			"Alignment:new({\n\tx = $1,\n\ty = $2\n})"
+		],
+		"description": "Alignment:new"
+	},
 	"Alignment.topLeft": {
 		"scope": "lua",
 		"prefix": "Alignment.topLeft",
@@ -192,6 +200,14 @@
 			"ClipRRect:new({\n\tchild = $1,\n\tborderRadius = $2,\n\tclipBehavior = $3\n})"
 		],
 		"description": "ClipRRect:new"
+	},
+	"AspectRatio:new": {
+		"scope": "lua",
+		"prefix": "AspectRatio:new",
+		"body": [
+			"AspectRatio:new({\n\tchild = $1,\n\taspectRatio = $2\n})"
+		],
+		"description": "AspectRatio:new"
 	},
 	"clipBehavior": {
 		"scope": "lua",
@@ -586,6 +602,46 @@
 		],
 		"description": "Center:new"
 	},
+	"EventBus:add": {
+		"scope": "lua",
+		"prefix": "EventBus:add",
+		"body": [
+			"EventBus:add({\n\tevent = function(args)--注册一个全局的函数，args为一个Luatable\n\t\t$1\n\tend,\n\tname = $2--全局函数名\n})"
+		],
+		"description": "EventBus:add"
+	},
+	"EventBus:remove": {
+		"scope": "lua",
+		"prefix": "EventBus:remove",
+		"body": [
+			"EventBus:remove({name = $1})--使用全局函数名移除当前的函数"
+		],
+		"description": "EventBus:remove"
+	},
+	"EventBus:call": {
+		"scope": "lua",
+		"prefix": "EventBus:call",
+		"body": [
+			"EventBus:call({--调用已经注册的函数\n\tname = $1,\n\targs = {$2}--函数需要的参数\n})"
+		],
+		"description": "EventBus:call"
+	},
+	"FractionallySizedBox:new": {
+		"scope": "lua",
+		"prefix": "FractionallySizedBox:new",
+		"body": [
+			"FractionallySizedBox:new({\n\tchild = $1,\n\twidthFactor = $2,\n\theightFactor = $3,\n\talignment = $4\n})"
+		],
+		"description": "FractionallySizedBox:new"
+	},
+	"SizedBox:new": {
+		"scope": "lua",
+		"prefix": "SizedBox:new",
+		"body": [
+			"SizedBox:new({\n\tchild = $1,\n\twidth = $2,\n\theight = $3\n})"
+		],
+		"description": "SizedBox:new"
+	},
 	"SafeArea:new": {
 		"scope": "lua",
 		"prefix": "SafeArea:new",
@@ -754,6 +810,30 @@
 		],
 		"description": "Positioned:new"
 	},
+	"Positioned:fromRect":{
+		"scope": "lua",
+		"prefix": "Positioned:fromRect",
+		"body": [
+			"Positioned:fromRect({\n\tchild = $1,\n\trect = $2\n})"
+		],
+		"description": "Positioned:fromRect"
+	},
+	"Positioned:fill":{
+		"scope": "lua",
+		"prefix": "Positioned:fill",
+		"body": [
+			"Positioned:fill({\n\tchild = $1,\n\tleft = $2,\n\ttop = $3,\n\tright = $3,\n\tbottom = $4\n})"
+		],
+		"description": "Positioned:fill"
+	},
+	"Positioned:directional":{
+		"scope": "lua",
+		"prefix": "Positioned:directional",
+		"body": [
+			"Positioned:directional({\n\tchild = $1,\n\ttextDirection = $2,\n\tstart = nil,\n\ttop = nil,\n\t_end = nil,\n\tbottom = nil,\n\twidth = nil,\n\theight = nil\n})"
+		],
+		"description": "Positioned:directional"
+	},
 	"width =": {
 		"scope": "lua",
 		"prefix": "width =",
@@ -906,7 +986,7 @@
 		"scope": "lua",
 		"prefix": "Text:new",
 		"body": [
-			"Text:new($1,{\n\ttextAlign = TextAlign.left,\n\tstyle = {\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#fff')\n\t}\n})"
+			"Text:new($1,{\n\ttextAlign = TextAlign.left,\n\tstyle = TextStyle:new({\n\t\tfontSize = sp(20),\n\t\tfontWeight = FontWeight.w400,\n\t\tcolor = Color('#ff000000')\n\t})\n})"
 		],
 		"description": "Text:new"
 	},
@@ -1168,13 +1248,13 @@
 		],
 		"description": "Size()"
 	},
-	"TextStyle()": {
+	"TextStyle:new()": {
 		"scope": "lua",
-		"prefix": "TextStyle()",
+		"prefix": "TextStyle:new()",
 		"body": [
-			"TextStyle({\n\tcolor = $1,\n\tfontWeight = $2,\n\tfontSize = $3\n})"
+			"TextStyle:new({\n\tcolor = $1,\n\tfontWeight = $2,\n\tfontSize = $3\n})"
 		],
-		"description": "TextStyle()"
+		"description": "TextStyle:new()"
 	},
 	"StrutStyle()": {
 		"scope": "lua",
@@ -1199,6 +1279,22 @@
 			"Offset({\n\tdx = $1,\n\tdy = $2\n})"
 		],
 		"description": "Offset()"
+	},
+	"Spacer:new()": {
+		"scope": "lua",
+		"prefix": "Spacer()",
+		"body": [
+			"Spacer:new({\n\tflex = 1\n})"
+		],
+		"description": "Spacer()"
+	},
+	"FractionalOffset()": {
+		"scope": "lua",
+		"prefix": "FractionalOffset()",
+		"body": [
+			"FractionalOffset({\n\tdx = $1,\n\tdy = $2\n})"
+		],
+		"description": "FractionalOffset()"
 	},
 	"ScrollController()": {
 		"scope": "lua",
@@ -1939,6 +2035,190 @@
 			"Text.rich(\n\tTextSpan:new({\n\ttext = $2,\n\tchildren = $3,\n\tstyle = $4\n}),{\n\tstyle = $5,\n\ttextAlign = $6\n})",
 		],
 		"description": "Text.rich()"
+	},
+	"Rect.fromLTRB": {
+		"scope": "lua",
+		"prefix": "Rect.fromLTRB",
+		"body": [
+			"Rect.fromLTRB({\n\tleft = $1,\n\ttop = $2,\n\tright = $3,\n\tbottom = $4\n})"
+		],
+		"description": "Rect.fromLTRB"
+	},
+	"Rect.fromLTWH": {
+		"scope": "lua",
+		"prefix": "Rect.fromLTWH",
+		"body": [
+			"Rect.fromLTWH({\n\tleft = $1,\n\ttop = $2,\n\twidth = $3,\n\theight = $4\n})"
+		],
+		"description": "Rect.fromLTWH"
+	},
+	"Rect.fromCircle": {
+		"scope": "lua",
+		"prefix": "Rect.fromCircle",
+		"body": [
+			"Rect.fromCircle({\n\tcenter = $1,\n\tradius = $2\n})"
+		],
+		"description": "Rect.fromCircle"
+	},
+	"Rect.fromCenter": {
+		"scope": "lua",
+		"prefix": "Rect.fromCenter",
+		"body": [
+			"Rect.fromCenter({\n\tcenter = $1,\n\twidth = $2,\n\theight = $3\n})"
+		],
+		"description": "Rect.fromCenter"
+	},
+	"Rect.fromPoints": {
+		"scope": "lua",
+		"prefix": "Rect.fromPoints",
+		"body": [
+			"Rect.fromPoints({\n\ta = $1,\n\tb = $2\n})"
+		],
+		"description": "Rect.fromPoints"
+	},
+	"BorderStyle.none": {
+		"scope": "lua",
+		"prefix": "BorderStyle.none",
+		"body": [
+			"BorderStyle.none"
+		],
+		"description": "BorderStyle.none"
+	},
+	"BorderStyle.solid": {
+		"scope": "lua",
+		"prefix": "BorderStyle.solid",
+		"body": [
+			"BorderStyle.solid"
+		],
+		"description": "BorderStyle.solid"
+	},
+	"BorderSide:new()": {
+		"scope": "lua",
+		"prefix": "BorderSide:new()",
+		"body": [
+			"BorderSide:new({\n\tcolor = $1,\n\twidth = 1.0,\n\tstyle = $2\n})"
+		],
+		"description": "BorderSide:new()"
+	},
+	"RoundedRectangleBorder:new()": {
+		"scope": "lua",
+		"prefix": "RoundedRectangleBorder:new()",
+		"body": [
+			"RoundedRectangleBorder:new({\n\tside = $1,\n\tborderRadius = $2\n})"
+		],
+		"description": "RoundedRectangleBorder:new()"
+	},
+	"ButtonStyle:new()": {
+		"scope": "lua",
+		"prefix": "ButtonStyle:new()",
+		"body": [
+			"ButtonStyle:new({\n\ttextStyle = $1,\n\tbackgroundColor = $2,\n\tshape = $3,\n\tanimationDurationMilliSec = $4\n})"
+		],
+		"description": "ButtonStyle:new()"
+	},
+	"SharedPreferences:setString()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:setString()",
+		"body": [
+			"SharedPreferences:setString({key = $1,value = $2})--设置字符串"
+		],
+		"description": "SharedPreferences:setString()"
+	},
+	"SharedPreferences:setInt()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:setInt()",
+		"body": [
+			"SharedPreferences:setInt({key = $1,value = $2})--设置一个int"
+		],
+		"description": "SharedPreferences:setInt()"
+	},
+	"SharedPreferences:setDouble()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:setDouble()",
+		"body": [
+			"SharedPreferences:setDouble({key = $1,value = $2})--设置double"
+		],
+		"description": "SharedPreferences:setDouble()"
+	},
+	"SharedPreferences:setBool()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:setBool()",
+		"body": [
+			"SharedPreferences:setBool({key = $1,value = $2})--设置bool值"
+		],
+		"description": "SharedPreferences:setBool()"
+	},
+	"SharedPreferences:setStringList()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:setStringList()",
+		"body": [
+			"SharedPreferences:setStringList({key = $1,value = $2})--设置String的luatable"
+		],
+		"description": "SharedPreferences:setStringList()"
+	},
+	"SharedPreferences:getString()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:getString()",
+		"body": [
+			"SharedPreferences:getString({key = $1})--获取string"
+		],
+		"description": "SharedPreferences:getString()"
+	},
+	"SharedPreferences:getInt()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:getInt()",
+		"body": [
+			"SharedPreferences:getInt({key = $1})--获取int"
+		],
+		"description": "SharedPreferences:getInt()"
+	},
+	"SharedPreferences:getDouble()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:getDouble()",
+		"body": [
+			"SharedPreferences:getDouble({key = $1})--获取一个double"
+		],
+		"description": "SharedPreferences:getDouble()"
+	},
+	"SharedPreferences:getBool()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:getBool()",
+		"body": [
+			"SharedPreferences:getBool({key = $1})--获取key所指的bool"
+		],
+		"description": "SharedPreferences:getBool()"
+	},
+	"SharedPreferences:getStringList()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:getStringList()",
+		"body": [
+			"SharedPreferences:getStringList({key = $1})--获取Luatable"
+		],
+		"description": "SharedPreferences:getStringList()"
+	},
+	"SharedPreferences:remove()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:remove()",
+		"body": [
+			"SharedPreferences:remove({key = $1})--移除某个key"
+		],
+		"description": "SharedPreferences:remove()"
+	},
+	"SharedPreferences:clear()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:clear()",
+		"body": [
+			"SharedPreferences:clear()--清除所有key"
+		],
+		"description": "SharedPreferences:clear()"
+	},
+	"SharedPreferences:containsKey()": {
+		"scope": "lua",
+		"prefix": "SharedPreferences:containsKey()",
+		"body": [
+			"SharedPreferences:containsKey({key = $1})--返回bool"
+		],
+		"description": "SharedPreferences:containsKey()"
 	},
 	
 

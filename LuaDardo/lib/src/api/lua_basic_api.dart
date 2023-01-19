@@ -89,6 +89,7 @@ abstract class LuaBasicAPI {
   void pushInteger(int n);
 
   void pushNumber(double n);
+  void pushLuaTable(LuaTable tb);
 
   void pushString(String s);
 

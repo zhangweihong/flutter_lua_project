@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 
 class FlutterAlignment {
@@ -21,8 +22,44 @@ class FlutterAlignment {
       ls.pushInteger(i);
       ls.setField(-2, _members[i]);
     }
-
+    ls.setFuncs(_alignmentMembers, 0);
     ls.setGlobal("Alignment");
+  }
+
+  static const Map<String, DartFunction> _alignmentMembers = {
+    "new": _newAlignment
+  };
+
+  static int _newAlignment(LuaState ls) {
+    var fieldType = ls.getField(-1, "x");
+    var x;
+    if (fieldType == LuaType.luaNumber) {
+      x = ls.toNumberX(-1);
+    } else {
+      throw ParameterError(
+          name: "Alignment",
+          type: "",
+          expected: "Alignment x is null",
+          source: "");
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "y");
+    var y;
+    if (fieldType == LuaType.luaNumber) {
+      y = ls.toNumberX(-1);
+    } else {
+      throw ParameterError(
+          name: "Alignment",
+          type: "",
+          expected: "Alignment y is null",
+          source: "");
+    }
+    ls.pop(1);
+
+    Userdata userdata = ls.newUserdata<Alignment>();
+    userdata.data = Alignment(x, y);
+    return 1;
   }
 
   static AlignmentGeometry get(int idx) {

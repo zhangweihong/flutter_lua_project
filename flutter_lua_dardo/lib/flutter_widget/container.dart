@@ -57,10 +57,10 @@ class FlutterContainer {
     var alignment;
     if (fieldType == LuaType.luaNumber) {
       alignment = FlutterAlignment.get(ls.toIntegerX(-1));
-      ls.pop(1);
-    } else {
-      ls.pop(1);
+    } else if (fieldType == LuaType.luaUserdata) {
+      alignment = ls.toUserdata(-1).data as Alignment;
     }
+    ls.pop(1);
 
     fieldType = ls.getField(-1, "key");
     GlobalKey key;
@@ -97,6 +97,8 @@ class FlutterContainer {
     Alignment transformAlignment;
     if (fieldType == LuaType.luaNumber) {
       transformAlignment = FlutterAlignment.get(ls.toIntegerX(-1));
+    } else if (fieldType == LuaType.luaUserdata) {
+      transformAlignment = ls.toUserdata(-1).data as Alignment;
     }
     ls.pop(1);
 

@@ -211,6 +211,11 @@ class LuaStateImpl implements LuaState, LuaVM {
   }
 
   @override
+  void pushLuaTable(LuaTable tb) {
+    _stack.push(tb);
+  }
+
+  @override
   void pushValue(int idx) {
     _stack.push(_stack.get(idx));
   }
@@ -830,7 +835,7 @@ class LuaStateImpl implements LuaState, LuaVM {
     } catch (e) {
       if (msgh != 0) {
         print(e.toString());
-          throw e;
+        throw e;
       }
       while (_stack != caller) {
         _popLuaStack();

@@ -12,15 +12,8 @@ class FlutterSizedBox {
     Widget child = null;
     if (fieldType == LuaType.luaUserdata) {
       child = ls.toUserdata(-1).data as Widget;
-      ls.pop(1);
-    } else {
-      ls.pop(1);
-      throw ParameterError(
-          name: 'FlutterSizedBox child',
-          type: ls.typeName(fieldType),
-          expected: "SizedBox child",
-          source: "FlutterSizedBox child not Widget");
     }
+    ls.pop(1);
     double width = null;
     fieldType = ls.getField(-1, "width");
     if (fieldType == LuaType.luaNumber) {

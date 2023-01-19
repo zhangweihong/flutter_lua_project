@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
               "assets/lua/page/test_helper.lua",
               "assets/lua/page/test_safearea.lua",
               "assets/lua/page/test_ani.lua",
+              "assets/lua/page/test_positioned.lua",
+              "assets/lua/page/test_share_preferences.lua",
               "assets/lua/app.lua",
             ]),
         builder: (context, snapshot) {

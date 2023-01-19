@@ -19,11 +19,11 @@ function my_stateful_widget.build(ctx)
 							alignment = Alignment.center,
 							child = Text:new("my_stateful_widget ".. count, {
 								textAlign = TextAlign.center,
-								style = {
+								style = TextStyle:new({
 									fontSize = sp(20),
 									fontWeight = FontWeight.w400,
 									color = Color('#fff')
-								}
+								})
 							}),
 							decoration = BoxDecoration:new({
 								color = Color('#9400D3'),

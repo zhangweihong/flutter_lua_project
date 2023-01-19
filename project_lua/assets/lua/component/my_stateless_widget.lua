@@ -14,20 +14,20 @@ function my_stateless_widget.build(ctx)
 				Positioned:new({
 					child = Container:new({
 						child = Text:new("my_stateless_widget Stack 2", {
-							style = {
+							style = TextStyle:new({
 								fontSize = sp(10),
 								fontWeight = FontWeight.w400
-							}
+							})
 						}),
 					}),
 					left = 100,
 					top = 30
 				}),
 				Text:new("my_stateless_widget Stack 1", {
-					style = {
+					style = TextStyle:new({
 						fontSize = sp(10),
 						fontWeight = FontWeight.w400
-					}
+					})
 				})
 			},
 			fit = StackFit.expand,

@@ -45,6 +45,14 @@ function app.init()
 		end
 	})
 	debugPrint("DKJson",DKJson.encode({aa = 1}))
+
+	EventBus:add({
+		event = function(args)
+			print("lua test global event args",args.abc)
+			return 123
+		end,
+		name = "testEvent1"
+	})
 end
 
 function app.build(ctx)
@@ -102,7 +110,10 @@ function app.build(ctx)
 							widgetName = "my_stateless_widget",
 							path = "assets/lua/component/my_stateless_widget.lua"
 						}),
-						alignment = Alignment.centerLeft
+						alignment = Alignment:new({
+							x = 0.8,
+							y = 0.2
+						}) --Alignment.centerLeft
 					}),
 					Text:new("字体", {
 						style = TextStyle:new({
@@ -149,6 +160,94 @@ function app.build(ctx)
 					-- 		print("IconButton");
 					-- 	end
 					-- }),
+					
+					-- ClipRRect:new({
+					-- 	child = Image.asset("assets/img/R-C.jfif",{
+					-- 		width = sp(320),
+					-- 		height = sp(60),
+					-- 		fit = BoxFit.contain
+					-- 	}),
+					-- 	borderRadius = BorderRadius.all(20)
+					-- }),
+					ClipRRect:new({
+						clipBehavior = Clip.antiAlias,
+						child = Container:new({
+							color = Color('#f00'),
+							width = sp(30),
+							height = sp(30),
+							child = Image.network("https://ts1.cn.mm.bing.net/th/id/R-C.824b5f6af98d4c0d953eb620fc9fd8fb?rik=bB%2bBx%2fQ5hRfEDA&riu=http%3a%2f%2fpic.weather.com.cn%2fimages%2fcn%2fphoto%2f2020%2f11%2f25%2f20201125142909EB135C7306F256639DAE3032660F23B2.jpg&ehk=XJQ2HWGz25TYiBycQA9TDuPLaB4cUYikEYfTFgIymT8%3d&risl=&pid=ImgRaw&r=0",{
+								fit = BoxFit.cover
+							})
+						}),
+						borderRadius = BorderRadius.all(20)
+					}),
+
+					SizedBox:new({
+						height = sp(30)
+					}),
+					
+					-- ElevatedButton:new({
+					-- 	child = Image.network("https://ts1.cn.mm.bing.net/th/id/R-C.824b5f6af98d4c0d953eb620fc9fd8fb?rik=bB%2bBx%2fQ5hRfEDA&riu=http%3a%2f%2fpic.weather.com.cn%2fimages%2fcn%2fphoto%2f2020%2f11%2f25%2f20201125142909EB135C7306F256639DAE3032660F23B2.jpg&ehk=XJQ2HWGz25TYiBycQA9TDuPLaB4cUYikEYfTFgIymT8%3d&risl=&pid=ImgRaw&r=0",{
+					-- 		width = sp(50),
+					-- 		height = sp(50),
+					-- 		fit = BoxFit.cover
+					-- 	}),
+					-- 	onPressed = function ()
+					-- 		print("ElevatedButton Image")
+					-- 	end
+					-- }),
+					ElevatedButton:new({
+						child = Text:new("Test call Eventbus", {
+							style = TextStyle:new({
+								fontSize = sp(10),
+								fontWeight = FontWeight.w400
+							})
+						}),
+						style = ButtonStyle:new({
+							-- textStyle = ,
+							backgroundColor = Color('#ffff1100'),
+							shape = RoundedRectangleBorder:new({
+								-- side = ,
+								borderRadius = BorderRadius.all(30)
+							}),
+							-- animationDurationMilliSec = 
+						}),
+						onPressed = function()
+							local ret = EventBus:call({
+								name = "testEvent1",
+								args = {
+									abc = "abc"
+								}
+							})
+							print("event ret",ret)						
+						end
+					}),
+					ElevatedButton:new({
+						child = Text:new("Test Sharedpreferences", {
+							style = TextStyle:new({
+								fontSize = sp(10),
+								fontWeight = FontWeight.w400
+							})
+						}),
+						style = ButtonStyle:new({
+							-- textStyle = ,
+							backgroundColor = Color('#ffff1100'),
+							shape = RoundedRectangleBorder:new({
+								-- side = ,
+								borderRadius = BorderRadius.all(30)
+							}),
+							-- animationDurationMilliSec = 
+						}),
+						onPressed = function()
+							navPush({
+								ctx = ctx,--上下文
+								widget = CommonStatefulWidget:new({
+                                    widgetName = "test_share_preferences",
+                                    path = "assets/lua/page/test_share_preferences.lua"
+                                })--push的widget
+							})				
+						end
+					}),
 					ElevatedButton:new({
 						child = Text:new("Next test_page1", {
 							style = TextStyle:new({
@@ -168,33 +267,6 @@ function app.build(ctx)
 						end,
 						onLongPress = function()
 							print("ElevatedButton onLongPress");
-						end
-					}),
-					-- ClipRRect:new({
-					-- 	child = Image.asset("assets/img/R-C.jfif",{
-					-- 		width = sp(320),
-					-- 		height = sp(60),
-					-- 		fit = BoxFit.contain
-					-- 	}),
-					-- 	borderRadius = BorderRadius.all(20)
-					-- }),
-					ClipRRect:new({
-						clipBehavior = Clip.antiAlias,
-						child = Container:new({
-							color = Color('#f00'),
-							width = 80,
-							height = 80
-						}),
-						borderRadius = BorderRadius.all(20)
-					}),
-					ElevatedButton:new({
-						child = Image.network("https://ts1.cn.mm.bing.net/th/id/R-C.824b5f6af98d4c0d953eb620fc9fd8fb?rik=bB%2bBx%2fQ5hRfEDA&riu=http%3a%2f%2fpic.weather.com.cn%2fimages%2fcn%2fphoto%2f2020%2f11%2f25%2f20201125142909EB135C7306F256639DAE3032660F23B2.jpg&ehk=XJQ2HWGz25TYiBycQA9TDuPLaB4cUYikEYfTFgIymT8%3d&risl=&pid=ImgRaw&r=0",{
-							width = sp(50),
-							height = sp(50),
-							fit = BoxFit.cover
-						}),
-						onPressed = function ()
-							print("ElevatedButton Image")
 						end
 					})
 				}

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_lua_dardo/common/async_fun.dart';
+import 'package:flutter_lua_dardo/common/event_bus.dart';
 import 'package:flutter_lua_dardo/common/file.dart';
 import 'package:flutter_lua_dardo/common/helper.dart';
 import 'package:flutter_lua_dardo/common/nav.dart';
@@ -19,10 +20,12 @@ class FlutterUtils {
     ls.register("navReplace", Nav.navReplace);
     ls.register("navPop", Nav.navPop);
     ls.register("Offset", _OffsetWrap);
+    ls.register("FractionalOffset", _FractionalOffsetWrap);
     ls.register("Size", _SizeWrap);
     ls.register("GlobalKey", _globalKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
+    FlutterEventBus.require(ls);
   }
 
   static int _OffsetWrap(LuaState ls) {
@@ -46,6 +49,29 @@ class FlutterUtils {
       userdata.data = Offset(dx, dy);
     }
 
+    return 1;
+  }
+
+  static int _FractionalOffsetWrap(LuaState ls) {
+    if (ls.getTop() > 0) {
+      double dx = 0;
+      double dy = 0;
+
+      var fieldType = ls.getField(-1, "dx");
+      if (fieldType == LuaType.luaNumber) {
+        dx = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "dy");
+      if (fieldType == LuaType.luaNumber) {
+        dy = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      Userdata userdata = ls.newUserdata<Offset>();
+      userdata.data = Offset(dx, dy);
+    }
     return 1;
   }
 
@@ -101,7 +127,7 @@ class FlutterUtils {
         i++;
         ls.pop(1);
       }
-      debugPrint(str);
+      debugPrint("Lua: $str");
     } catch (e) {
       throw e;
     }
@@ -122,7 +148,7 @@ class FlutterUtils {
         i++;
         ls.pop(1);
       }
-      print(str);
+      print("Lua：$str");
     } catch (e) {
       throw e;
     }

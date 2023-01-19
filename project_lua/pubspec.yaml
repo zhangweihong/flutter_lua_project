@@ -77,6 +77,8 @@ flutter:
     - assets/lua/page/test_helper.lua
     - assets/lua/page/test_safearea.lua
     - assets/lua/page/test_ani.lua
+    - assets/lua/page/test_positioned.lua
+    - assets/lua/page/test_share_preferences.lua
     - assets/img/R-C.jfif
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg

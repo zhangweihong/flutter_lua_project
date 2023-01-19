@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/clip.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 
@@ -43,6 +44,22 @@ class FlutterElevatedButton {
       ls.pop(1);
     }
 
+    int hoverId = -1;
+    fieldType = ls.getField(-1, "onHover");
+    if (fieldType == LuaType.luaFunction) {
+      hoverId = ls.ref(lua_registryindex);
+    } else {
+      ls.pop(1);
+    }
+
+    int focusId = -1;
+    fieldType = ls.getField(-1, "onFocusChange");
+    if (fieldType == LuaType.luaFunction) {
+      focusId = ls.ref(lua_registryindex);
+    } else {
+      ls.pop(1);
+    }
+
     fieldType = ls.getField(-1, "key");
     GlobalKey key;
     if (fieldType == LuaType.luaUserdata) {
@@ -51,10 +68,38 @@ class FlutterElevatedButton {
     } else {
       ls.pop(1);
     }
+    fieldType = ls.getField(-1, "autofocus");
+    bool autofocus = false;
+    if (fieldType == LuaType.luaBoolean) {
+      autofocus = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+    fieldType = ls.getField(-1, "clipBehavior");
+    Clip clipBehavior = Clip.none;
+    if (fieldType == LuaType.luaNumber) {
+      clipBehavior = FlutterClip.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "style");
+    ButtonStyle style;
+    if (fieldType == LuaType.luaUserdata) {
+      style = ls.toUserdata(-1).data as ButtonStyle;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
 
     Userdata userdata = ls.newUserdata<ElevatedButton>();
     userdata.data = ElevatedButton(
       key: key,
+      autofocus: autofocus,
+      clipBehavior: clipBehavior,
+      style: style,
       onLongPress: long_pressId != -1
           ? () {
               ls.rawGetI(lua_registryindex, long_pressId);
@@ -65,6 +110,20 @@ class FlutterElevatedButton {
           ? () {
               ls.rawGetI(lua_registryindex, pressId);
               ls.pCall(0, 0, 1);
+            }
+          : null,
+      onHover: hoverId != -1
+          ? (h) {
+              ls.rawGetI(lua_registryindex, hoverId);
+              ls.pushBoolean(h);
+              ls.pCall(1, 0, 1);
+            }
+          : null,
+      onFocusChange: focusId != -1
+          ? (f) {
+              ls.rawGetI(lua_registryindex, focusId);
+              ls.pushBoolean(f);
+              ls.pCall(1, 0, 1);
             }
           : null,
       child: child,

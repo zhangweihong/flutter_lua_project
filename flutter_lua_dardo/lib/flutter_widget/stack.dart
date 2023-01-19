@@ -38,10 +38,10 @@ class FlutterStack {
     fieldType = ls.getField(-1, "alignment");
     if (fieldType == LuaType.luaNumber) {
       alignment = FlutterAlignment.get(ls.toIntegerX(-1));
-      ls.pop(1);
-    } else {
-      ls.pop(1);
+    } else if (fieldType == LuaType.luaUserdata) {
+      alignment = ls.toUserdata(-1).data as Alignment;
     }
+    ls.pop(1);
 
     fieldType = ls.getField(-1, "fit");
     var fit = StackFit.loose;
