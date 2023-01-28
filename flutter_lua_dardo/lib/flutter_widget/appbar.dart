@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/flutter_widget/brightness.dart';
+import 'package:flutter_lua_dardo/flutter_widget/icontheme.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
 class FlutterAppBar {
@@ -136,22 +137,153 @@ class FlutterAppBar {
       ls.pop(1);
     }
 
+    fieldType = ls.getField(-1, "iconTheme");
+    IconThemeData iconTheme;
+    if (fieldType == LuaType.luaUserdata) {
+      iconTheme = ls.toUserdata(-1).data as IconThemeData;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "actionsIconTheme");
+    IconThemeData actionsIconTheme;
+    if (fieldType == LuaType.luaUserdata) {
+      actionsIconTheme = ls.toUserdata(-1).data as IconThemeData;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "primary");
+    bool primary = true;
+    if (fieldType == LuaType.luaBoolean) {
+      primary = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "centerTitle");
+    bool centerTitle;
+    if (fieldType == LuaType.luaBoolean) {
+      centerTitle = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "excludeHeaderSemantics");
+    bool excludeHeaderSemantics = false;
+    if (fieldType == LuaType.luaBoolean) {
+      excludeHeaderSemantics = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "titleSpacing");
+    double titleSpacing;
+    if (fieldType == LuaType.luaNumber) {
+      titleSpacing = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "toolbarOpacity");
+    double toolbarOpacity = 1.0;
+    if (fieldType == LuaType.luaNumber) {
+      toolbarOpacity = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "bottomOpacity");
+    double bottomOpacity = 1.0;
+    if (fieldType == LuaType.luaNumber) {
+      bottomOpacity = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "toolbarHeight");
+    double toolbarHeight;
+    if (fieldType == LuaType.luaNumber) {
+      toolbarHeight = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "leadingWidth");
+    double leadingWidth;
+    if (fieldType == LuaType.luaNumber) {
+      leadingWidth = ls.toNumberX(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "backwardsCompatibility");
+    bool backwardsCompatibility;
+    if (fieldType == LuaType.luaBoolean) {
+      backwardsCompatibility = ls.toBoolean(-1);
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "toolbarTextStyle");
+    var toolbarTextStyle;
+    if (fieldType == LuaType.luaUserdata) {
+      toolbarTextStyle = ls.toUserdata(-1).data as TextStyle;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "titleTextStyle");
+    var titleTextStyle;
+    if (fieldType == LuaType.luaUserdata) {
+      titleTextStyle = ls.toUserdata(-1).data as TextStyle;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata userdata = ls.newUserdata<AppBar>();
     userdata.data = AppBar(
-        key: key,
-        leading: leadingW,
-        automaticallyImplyLeading: automaticallyImplyLeading,
-        title: titleW,
-        actions: actions,
-        flexibleSpace: flexibleSpace,
-        bottom: bottom,
-        elevation: elevation,
-        scrolledUnderElevation: scrolledUnderElevation,
-        shadowColor: shadowColor,
-        surfaceTintColor: surfaceTintColor,
-        backgroundColor: backgroundColor,
-        foregroundColor: foregroundColor,
-        brightness: brightness);
+      key: key,
+      leading: leadingW,
+      automaticallyImplyLeading: automaticallyImplyLeading,
+      title: titleW,
+      actions: actions,
+      flexibleSpace: flexibleSpace,
+      bottom: bottom,
+      elevation: elevation,
+      scrolledUnderElevation: scrolledUnderElevation,
+      shadowColor: shadowColor,
+      surfaceTintColor: surfaceTintColor,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
+      brightness: brightness,
+      iconTheme: iconTheme,
+      actionsIconTheme: actionsIconTheme,
+      primary: primary,
+      centerTitle: centerTitle,
+      excludeHeaderSemantics: excludeHeaderSemantics,
+      titleSpacing: titleSpacing,
+      toolbarOpacity: toolbarOpacity,
+      bottomOpacity: bottomOpacity,
+      toolbarHeight: toolbarHeight,
+      leadingWidth: leadingWidth,
+      backwardsCompatibility: backwardsCompatibility,
+      toolbarTextStyle: toolbarTextStyle,
+      titleTextStyle: titleTextStyle,
+    );
     return 1;
   }
 

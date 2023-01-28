@@ -2220,7 +2220,206 @@
 		],
 		"description": "SharedPreferences:containsKey()"
 	},
-	
+	"FloatingActionButtonLocation.startTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.startTop",
+		"body": [
+			"FloatingActionButtonLocation.startTop",
+		],
+		"description": "FloatingActionButtonLocation.startTop"
+	},
+	"FloatingActionButtonLocation.miniStartTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniStartTop",
+		"body": [
+			"FloatingActionButtonLocation.miniStartTop",
+		],
+		"description": "FloatingActionButtonLocation.miniStartTop"
+	},
+	"FloatingActionButtonLocation.centerTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.centerTop",
+		"body": [
+			"FloatingActionButtonLocation.centerTop",
+		],
+		"description": "FloatingActionButtonLocation.centerTop"
+	},
+	"FloatingActionButtonLocation.miniCenterTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniCenterTop",
+		"body": [
+			"FloatingActionButtonLocation.miniCenterTop",
+		],
+		"description": "FloatingActionButtonLocation.miniCenterTop"
+	},
+	"FloatingActionButtonLocation.endTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.endTop",
+		"body": [
+			"FloatingActionButtonLocation.endTop",
+		],
+		"description": "FloatingActionButtonLocation.endTop"
+	},
+	"FloatingActionButtonLocation.miniEndTop": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniEndTop",
+		"body": [
+			"FloatingActionButtonLocation.miniEndTop",
+		],
+		"description": "FloatingActionButtonLocation.miniEndTop"
+	},
+	"FloatingActionButtonLocation.startFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.startFloat",
+		"body": [
+			"FloatingActionButtonLocation.startFloat",
+		],
+		"description": "FloatingActionButtonLocation.startFloat"
+	},
+	"FloatingActionButtonLocation.miniStartFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniStartFloat",
+		"body": [
+			"FloatingActionButtonLocation.miniStartFloat",
+		],
+		"description": "FloatingActionButtonLocation.miniStartFloat"
+	},
+	"FloatingActionButtonLocation.centerFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.centerFloat",
+		"body": [
+			"FloatingActionButtonLocation.centerFloat",
+		],
+		"description": "FloatingActionButtonLocation.centerFloat"
+	},
+	"FloatingActionButtonLocation.miniCenterFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniCenterFloat",
+		"body": [
+			"FloatingActionButtonLocation.miniCenterFloat",
+		],
+		"description": "FloatingActionButtonLocation.miniCenterFloat"
+	},
+	"FloatingActionButtonLocation.endFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.endFloat",
+		"body": [
+			"FloatingActionButtonLocation.endFloat",
+		],
+		"description": "FloatingActionButtonLocation.endFloat"
+	},
+	"FloatingActionButtonLocation.miniEndFloat": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniEndFloat",
+		"body": [
+			"FloatingActionButtonLocation.miniEndFloat",
+		],
+		"description": "FloatingActionButtonLocation.miniEndFloat"
+	},
+	"FloatingActionButtonLocation.startDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.startDocked",
+		"body": [
+			"FloatingActionButtonLocation.startDocked",
+		],
+		"description": "FloatingActionButtonLocation.startDocked"
+	},
+	"FloatingActionButtonLocation.miniStartDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniStartDocked",
+		"body": [
+			"FloatingActionButtonLocation.miniStartDocked",
+		],
+		"description": "FloatingActionButtonLocation.miniStartDocked"
+	},
+	"FloatingActionButtonLocation.centerDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.centerDocked",
+		"body": [
+			"FloatingActionButtonLocation.centerDocked",
+		],
+		"description": "FloatingActionButtonLocation.centerDocked"
+	},
+	"FloatingActionButtonLocation.miniCenterDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniCenterDocked",
+		"body": [
+			"FloatingActionButtonLocation.miniCenterDocked",
+		],
+		"description": "FloatingActionButtonLocation.miniCenterDocked"
+	},
+	"FloatingActionButtonLocation.endDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.endDocked",
+		"body": [
+			"FloatingActionButtonLocation.endDocked",
+		],
+		"description": "FloatingActionButtonLocation.endDocked"
+	},
+	"FloatingActionButtonLocation.miniEndDocked": {
+		"scope": "lua",
+		"prefix": "FloatingActionButtonLocation.miniEndDocked",
+		"body": [
+			"FloatingActionButtonLocation.miniEndDocked",
+		],
+		"description": "FloatingActionButtonLocation.miniEndDocked"
+	},
+	"Shadow:new()": {
+		"scope": "lua",
+		"prefix": "Shadow:new()",
+		"body": [
+			"Shadow:new({\n\tcolor = Color(#ff000000)$1,\n\toffset = Offset.zero$2,\n\tblurRadius = 0.0$3\n})--新建shadow"
+		],
+		"description": "Shadow:new()"
+	},
+	"IconThemeData:new()": {
+		"scope": "lua",
+		"prefix": "IconThemeData:new()",
+		"body": [
+			"IconThemeData:new({\n\tcolor = Color(#ff000000),\n\topacity = 1.0,\n\tsize = 24.0,shadows = {}\n})--新建IconThemeData"
+		],
+		"description": "IconThemeData:new()"
+	},
+	"CommonState:new()": {
+		"scope": "lua",
+		"prefix": "CommonState:new()",
+		"body": [
+			"CommonState:new({\n\tstateKey = $1,\n\tvalue = {$2}\n})--新建一个state"
+		],
+		"description": "CommonState:new()"
+	},
+	"CommonState:notify()": {
+		"scope": "lua",
+		"prefix": "CommonState:notify()",
+		"body": [
+			"CommonState:notify({stateKey = $1})--广播state"
+		],
+		"description": "CommonState:notify()"
+	},
+	"CommonCusumerWidget:new()": {
+		"scope": "lua",
+		"prefix": "CommonCusumerWidget:new()",
+		"body": [
+			"CommonCusumerWidget:new({\n\tstateKey = $1,\n\tchild = $2,\n\tbuilder = function (_ctx,_tb,_child)\n\t\treturn _child\n\tend\n})--CusumerWidget"
+		],
+		"description": "CommonCusumerWidget:new()"
+	},
+	"Provider:set()": {
+		"scope": "lua",
+		"prefix": "Provider:set()",
+		"body": [
+			"Provider:set({\n\tcontext = $1,\n\tvalue = $2,\n\tstateKey = $3,\n\tlisten = false$4\n})--CusumerWidget"
+		],
+		"description": "Provider:set()"
+	},
+	"Provider:get()": {
+		"scope": "lua",
+		"prefix": "Provider:get()",
+		"body": [
+			"Provider:get({\n\tcontext = $1,\n\tstateKey = $2,\n\tlisten = false$3\n})--CusumerWidget"
+		],
+		"description": "Provider:get()"
+	},
 
 
 

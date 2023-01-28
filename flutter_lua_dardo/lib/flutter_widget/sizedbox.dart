@@ -14,6 +14,7 @@ class FlutterSizedBox {
       child = ls.toUserdata(-1).data as Widget;
     }
     ls.pop(1);
+    
     double width = null;
     fieldType = ls.getField(-1, "width");
     if (fieldType == LuaType.luaNumber) {
