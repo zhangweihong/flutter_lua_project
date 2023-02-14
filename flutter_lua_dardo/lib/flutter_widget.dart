@@ -15,6 +15,9 @@ import 'package:flutter_lua_dardo/flutter_widget/border.dart';
 import 'package:flutter_lua_dardo/flutter_widget/borderradius.dart';
 import 'package:flutter_lua_dardo/flutter_widget/borderside.dart';
 import 'package:flutter_lua_dardo/flutter_widget/borderstyle.dart';
+import 'package:flutter_lua_dardo/flutter_widget/bottomnavigationbar.dart';
+import 'package:flutter_lua_dardo/flutter_widget/bottomnavigationbarItem.dart';
+import 'package:flutter_lua_dardo/flutter_widget/bottomnavigationbartype.dart';
 import 'package:flutter_lua_dardo/flutter_widget/box_fit.dart';
 import 'package:flutter_lua_dardo/flutter_widget/boxdecoration.dart';
 import 'package:flutter_lua_dardo/flutter_widget/brightness.dart';
@@ -181,6 +184,9 @@ class FlutterWidget {
     FlutterCommonCusumerWidget.require(ls);
     FlutterSharedPreferences.require(ls);
     FlutterFractionallySizedBox.require(ls);
+    FlutterBottomNavigationBar.require(ls);
+    FLutterBottomNavigationBarItem.require(ls);
+    FlutterBottomNavigationBarType.require(ls);
     FlutterUtils.open(ls);
     registerUtil();
   }

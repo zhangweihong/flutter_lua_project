@@ -247,7 +247,7 @@ class FlutterCommonState with ChangeNotifier {
 
   static const Map<String, DartFunction> _CommonStateMembers = {"id": null};
 
-  static FlutterCommonState state (){
+  static FlutterCommonState state() {
     return _state;
   }
 

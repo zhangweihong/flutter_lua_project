@@ -68,6 +68,13 @@ class FlutterScaffold {
       }
       ls.pop(1);
 
+      fieldType = ls.getField(-1, "bottomNavigationBar");
+      Widget bottomNavigationBar;
+      if (fieldType == LuaType.luaUserdata) {
+        bottomNavigationBar = ls.toUserdata(-1).data as Widget;
+      }
+      ls.pop(1);
+
       fieldType = ls.getField(-1, "onEndDrawerChanged");
       int onEndDrawerChangedId = -1;
       if (fieldType == LuaType.luaFunction) {
@@ -99,6 +106,7 @@ class FlutterScaffold {
                 ls.pCall(1, 0, 1);
               }
             : null,
+        bottomNavigationBar: bottomNavigationBar,
       );
     }
 

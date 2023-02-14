@@ -930,7 +930,7 @@
 		"scope": "lua",
 		"prefix": "Icon:new",
 		"body": [
-			"Icon:new({$1,\n\tsize = $2,\n\tcolor = $3\n})"
+			"Icon:new($1,{\n\tsize = $2,\n\tcolor = $3\n})"
 		],
 		"description": "Icon:new"
 	},
@@ -978,7 +978,7 @@
 		"scope": "lua",
 		"prefix": "Scaffold:new",
 		"body": [
-			"Scaffold:new({\n\tbody = $1,\n\tappBar = $2\n})"
+			"Scaffold:new({\n\tbody = $1,\n\tappBar = $2,\n\tbottomNavigationBar = $2\n})"
 		],
 		"description": "Scaffold:new"
 	},
@@ -1062,6 +1062,14 @@
 			".initState()"
 		],
 		"description": ".initState()"
+	},
+	".setState()": {
+		"scope": "lua",
+		"prefix": ".setState()",
+		"body": [
+			".setState({\n\tcallback = function()\n\t$1\n\tend\n})"
+		],
+		"description": ".setState()"
 	},
 	".build()": {
 		"scope": "lua",
@@ -2404,6 +2412,14 @@
 		],
 		"description": "CommonCusumerWidget:new()"
 	},
+	"BottomNavigationBarItem:new()": {
+		"scope": "lua",
+		"prefix": "BottomNavigationBarItem:new()",
+		"body": [
+			"BottomNavigationBarItem:new({\n\ticon = $1,\n\tlabel = $2,\n\tbackgroundColor = $3,\n\ttooltip = $4\n})"
+		],
+		"description": "BottomNavigationBarItem:new()"
+	},
 	"Provider:set()": {
 		"scope": "lua",
 		"prefix": "Provider:set()",
@@ -2419,6 +2435,30 @@
 			"Provider:get({\n\tcontext = $1,\n\tstateKey = $2,\n\tlisten = false$3\n})--CusumerWidget"
 		],
 		"description": "Provider:get()"
+	},
+	"FlutterBottomNavigationBarType.fixed": {
+		"scope": "lua",
+		"prefix": "FlutterBottomNavigationBarType.fixed",
+		"body": [
+			"FlutterBottomNavigationBarType.fixed"
+		],
+		"description": "FlutterBottomNavigationBarType.fixed"
+	},
+	"FlutterBottomNavigationBarType.shifting": {
+		"scope": "lua",
+		"prefix": "FlutterBottomNavigationBarType.shifting",
+		"body": [
+			"FlutterBottomNavigationBarType.shifting"
+		],
+		"description": "FlutterBottomNavigationBarType.shifting"
+	},
+	"BottomNavigationBar:new()": {
+		"scope": "lua",
+		"prefix": "BottomNavigationBar:new()",
+		"body": [
+			"BottomNavigationBar:new({\n\titems = {$1},\n\tcurrentIndex = $2,\n\tonTap = function (index)\t\n\tend\n})"
+		],
+		"description": "BottomNavigationBar:new()"
 	},
 
 

@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
                 "assets/lua/page/test_share_preferences.lua",
                 "assets/lua/app.lua",
                 "assets/lua/page/test_consumer.lua",
+                "assets/lua/page/test_bottomnavigationbar.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
