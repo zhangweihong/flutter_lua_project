@@ -18,7 +18,10 @@ class FlutterBorderRadius {
   }
 
   static int _borderRadiusOnly(LuaState ls) {
-    double tl, tr, bl, br = 0;
+    double tl = 0;
+    double tr = 0;
+    double bl = 0;
+    double br = 0;
     var fieldType = ls.getField(-1, "topLeft");
     if (fieldType == LuaType.luaNumber) {
       tl = ls.toNumberX(-1);

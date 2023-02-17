@@ -647,7 +647,7 @@ scanvalue = function(str, pos, nullval, objectmeta, arraymeta)
         return number, pend + 1
       end
     end
-    pstart, pend = strfind(str, "^%a%w*", pos)
+    pstart, pend = strfind(str, "^%w*", pos)--这里%a在dart中无法解析直接使用%w
     if pstart then
       local name = strsub(str, pstart, pend)
       if name == "true" then
@@ -671,7 +671,6 @@ local function optionalmetatables(...)
 end
 
 function json.decode(str, pos, nullval, ...)
-
   local objectmeta, arraymeta = optionalmetatables(...)
   return scanvalue(str, pos, nullval, objectmeta, arraymeta)
 end

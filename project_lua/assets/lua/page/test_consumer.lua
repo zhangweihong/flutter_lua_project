@@ -8,6 +8,7 @@ function test_consumer.init()--初始化操作
         }
     })--新建一个state
 end
+
 function test_consumer.build(ctx)--widget的build
     return Scaffold:new({
         body = Container:new({
@@ -24,11 +25,11 @@ function test_consumer.build(ctx)--widget的build
                         }),
                         onPressed = function ()
                             Provider:set({
+                                stateKey = "test_consumer",
                                 context = ctx,
                                 value = {
                                     aa = 2
                                 },
-                                stateKey = "test_consumer",
                                 listen = false
                             })
                             CommonState:notify({stateKey = "test_consumer"})--广播state

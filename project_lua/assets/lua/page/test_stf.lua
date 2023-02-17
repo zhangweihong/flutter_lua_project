@@ -258,6 +258,27 @@ function test_stf.build(ctx)
                             })
                         end
                     })
+                }),
+                Container:new({
+                    child = ElevatedButton:new({
+                        child = Text:new("Next test_dkjson",{
+                            textAlign = TextAlign.left,
+                            style = TextStyle:new({
+                                fontSize = sp(20),
+                                fontWeight = FontWeight.w400,
+                                color = Color('#FF00FF')
+                            })
+                        }),
+                        onPressed = function ()
+                            navPush({
+                                ctx = ctx,
+                                widget = CommonStatelessWidget:new({
+                                    widgetName = "test_dkjson",
+                                    path = "assets/lua/page/test_dkjson.lua"
+                                })
+                            })
+                        end
+                    })
                 })
             },
             mainAxisAlignment = MainAxisAlignment.start,
