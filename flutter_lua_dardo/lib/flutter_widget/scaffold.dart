@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/drag_start_behavior.dart';
 import 'package:flutter_lua_dardo/flutter_widget/floatingactionbuttonlocation.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
@@ -75,6 +77,91 @@ class FlutterScaffold {
       }
       ls.pop(1);
 
+      fieldType = ls.getField(-1, "bottomSheet");
+      Widget bottomSheet;
+      if (fieldType == LuaType.luaUserdata) {
+        bottomSheet = ls.toUserdata(-1).data as Widget;
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "backgroundColor");
+      var backgroundColor;
+      if (fieldType == LuaType.luaUserdata) {
+        backgroundColor = ls.toUserdata(-1).data as Color;
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "resizeToAvoidBottomInset");
+      var resizeToAvoidBottomInset;
+      if (fieldType == LuaType.luaBoolean) {
+        resizeToAvoidBottomInset = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "primary");
+      var primary = true;
+      if (fieldType == LuaType.luaBoolean) {
+        primary = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "extendBody");
+      var extendBody = false;
+      if (fieldType == LuaType.luaBoolean) {
+        extendBody = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "extendBodyBehindAppBar");
+      var extendBodyBehindAppBar = false;
+      if (fieldType == LuaType.luaBoolean) {
+        extendBodyBehindAppBar = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "drawerScrimColor");
+      var drawerScrimColor;
+      if (fieldType == LuaType.luaUserdata) {
+        drawerScrimColor = ls.toUserdata(-1).data as Color;
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "drawerEdgeDragWidth");
+      var drawerEdgeDragWidth;
+      if (fieldType == LuaType.luaNumber) {
+        drawerEdgeDragWidth = ls.toNumberX(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "drawerEnableOpenDragGesture");
+      var drawerEnableOpenDragGesture = true;
+      if (fieldType == LuaType.luaBoolean) {
+        drawerEnableOpenDragGesture = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "endDrawerEnableOpenDragGesture");
+      var endDrawerEnableOpenDragGesture = true;
+      if (fieldType == LuaType.luaBoolean) {
+        endDrawerEnableOpenDragGesture = ls.toBoolean(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "restorationId");
+      var restorationId;
+      if (fieldType == LuaType.luaString) {
+        restorationId = ls.toStr(-1);
+      }
+      ls.pop(1);
+
+      fieldType = ls.getField(-1, "drawerDragStartBehavior");
+      var drawerDragStartBehavior = DragStartBehavior.start;
+      if (fieldType == LuaType.luaNumber) {
+        drawerDragStartBehavior =
+            FlutterDragStartBehavior.get(ls.toIntegerX(-1));
+      }
+      ls.pop(1);
+
       fieldType = ls.getField(-1, "onEndDrawerChanged");
       int onEndDrawerChangedId = -1;
       if (fieldType == LuaType.luaFunction) {
@@ -107,6 +194,18 @@ class FlutterScaffold {
               }
             : null,
         bottomNavigationBar: bottomNavigationBar,
+        bottomSheet: bottomSheet,
+        backgroundColor: backgroundColor,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        primary: primary,
+        drawerDragStartBehavior: drawerDragStartBehavior,
+        extendBody: extendBody,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
+        drawerScrimColor: drawerScrimColor,
+        drawerEdgeDragWidth: drawerEdgeDragWidth,
+        drawerEnableOpenDragGesture: drawerEnableOpenDragGesture,
+        endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture,
+        restorationId: restorationId,
       );
     }
 
