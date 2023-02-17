@@ -23,6 +23,7 @@ class LuaManager {
   static initLuaState(
       {bool fromNet = false,
       Function(LuaState) registerFunc = null,
+      String host = "",
       List<String> allLua}) async {
     _luaContentMap = <String, String>{};
     if (_state == null) {
@@ -35,38 +36,17 @@ class LuaManager {
     if (registerFunc != null) {
       registerFunc(_state);
     }
-    await _loadAllLuaContent(fromNet: fromNet, allLua: allLua);
+    await _loadAllLuaContent(fromNet: fromNet, host: host, allLua: allLua);
     return true;
   }
 
-  static _loadAllLuaContent({bool fromNet = false, List<String> allLua}) async {
-    //为了测试方便现阶段 本地加载 后期考虑网络缓存后加载
-    if (!fromNet) {
-      if (allLua == null) {
-        allLua = List.empty(growable: true);
-      }
-      for (String item in allLua) {
-        // String src = await rootBundle.loadString("assets/$item");
-        // if (src.isNotEmpty) {
-        //   _luaContentMap[item] = src;
-        // } else {
-        //   throw ParameterError(
-        //     name: item,
-        //     type: "$item is empty",
-        //     source: "",
-        //     expected: 'File Content Is empty',
-        //   );
-        // }
-        await dynamicLoadLuaContent(fromNet: false, luaPath: item);
-      }
-    } else {
-      // var dir = await getApplicationDocumentsDirectory();
-      // String luaPath = dir.path + "/lua/";
-      // var _luaNetArry = []; //从网络中获取到最新的资源列表
-      // Directory luaDir = Directory(luaPath);
-      // luaDir.listSync().forEach((element) {
-      //   print(element.path); // 使用  _luaNetArry 和 本地的脚本进行比对
-      // });
+  static _loadAllLuaContent(
+      {bool fromNet = false, String host = "", List<String> allLua}) async {
+    if (allLua == null) {
+      allLua = List.empty(growable: true);
+    }
+    for (String item in allLua) {
+      await dynamicLoadLuaContent(fromNet: false, luaPath: item);
     }
   }
 

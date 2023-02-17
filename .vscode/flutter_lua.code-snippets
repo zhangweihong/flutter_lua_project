@@ -2372,6 +2372,38 @@
 		],
 		"description": "FloatingActionButtonLocation.miniEndDocked"
 	},
+	"ResponseType.json": {
+		"scope": "lua",
+		"prefix": "ResponseType.json",
+		"body": [
+			"ResponseType.json",
+		],
+		"description": "ResponseType.json"
+	},
+	"ResponseType.stream": {
+		"scope": "lua",
+		"prefix": "ResponseType.stream",
+		"body": [
+			"ResponseType.stream",
+		],
+		"description": "ResponseType.stream"
+	},
+	"ResponseType.plain": {
+		"scope": "lua",
+		"prefix": "ResponseType.plain",
+		"body": [
+			"ResponseType.plain",
+		],
+		"description": "ResponseType.plain"
+	},
+	"ResponseType.bytes": {
+		"scope": "lua",
+		"prefix": "ResponseType.bytes",
+		"body": [
+			"ResponseType.bytes",
+		],
+		"description": "ResponseType.bytes"
+	},
 	"Shadow:new()": {
 		"scope": "lua",
 		"prefix": "Shadow:new()",
@@ -2459,6 +2491,23 @@
 			"BottomNavigationBar:new({\n\titems = {$1},\n\tcurrentIndex = $2,\n\tonTap = function (index)\t\n\tend\n})"
 		],
 		"description": "BottomNavigationBar:new()"
+	},
+	"NetAgent:SetOptions()": {
+		"scope": "lua",
+		"prefix": "NetAgent:SetOptions()",
+		"body": [
+			"NetAgent:SetOptions({\n\tconnectTimeout = 15000,\n\treceiveTimeout = 15000,\n\tsendTimeout = 6000*3,\n\tbaseUrl = $1\n})"
+		],
+		"description": "NetAgent:SetOptions()"
+	},
+
+	"NetAgent:Fetch()": {
+		"scope": "lua",
+		"prefix": "NetAgent:Fetch()",
+		"body": [
+			"NetAgent:Fetch({\n\turl = '$1',\n\tmethod = 'POST',\n\thost = nil,\n\tparams = {$2},\n\theader = {$3},\n\tformData = {$4},\n\tcontentType = 'application/json',\n\tresponseType = ResponseType.json,\n\tcallback = function (res)\n\n\t$5end\n})"
+		],
+		"description": "NetAgent:Fetch()"
 	},
 
 

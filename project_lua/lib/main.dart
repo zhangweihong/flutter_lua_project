@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       child: FutureBuilder(
           future: LuaManager.initLuaState(
               fromNet: false,
+              host: null,
               registerFunc: (LuaState ls) {}, //注册自定义的Dart To Lua
               allLua: [
                 "assets/lua/dkjson.lua",
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
                 "assets/lua/page/test_consumer.lua",
                 "assets/lua/page/test_bottomnavigationbar.lua",
                 "assets/lua/page/test_dkjson.lua",
+                "assets/lua/page/test_netagent.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
