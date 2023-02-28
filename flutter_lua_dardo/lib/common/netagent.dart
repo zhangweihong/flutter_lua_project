@@ -225,6 +225,8 @@ class FlutterNetAgent {
       if (callbackId != -1) {
         ls.rawGetI(lua_registryindex, callbackId);
         LuaTable tb = LuaTable(0, 3);
+        var data = res.data;
+        print(data.runtimeType);
         tb.put("statusCode", res.statusCode);
         tb.put("data", res.data);
         tb.put("statusMessage", res.statusMessage);

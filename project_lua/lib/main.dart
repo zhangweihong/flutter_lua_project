@@ -51,6 +51,9 @@ class MyApp extends StatelessWidget {
                 "assets/lua/page/test_bottomnavigationbar.lua",
                 "assets/lua/page/test_dkjson.lua",
                 "assets/lua/page/test_netagent.lua",
+                "assets/lua/page/test_sig_scrollview.lua",
+                "assets/lua/page/test_clipboard.lua",
+                "assets/lua/page/test_widgetbinding.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {

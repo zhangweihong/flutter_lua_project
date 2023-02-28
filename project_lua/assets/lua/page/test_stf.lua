@@ -308,6 +308,69 @@ function test_stf.build(ctx)
                                     })
                                 end
                             })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_sig_scorllview",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({
+                                        ctx = ctx,
+                                        widget = CommonStatelessWidget:new({
+                                            widgetName = "test_sig_scrollview",
+                                            path = "assets/lua/page/test_sig_scrollview.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_clipboard",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({
+                                        ctx = ctx,
+                                        widget = CommonStatelessWidget:new({
+                                            widgetName = "test_clipboard",
+                                            path = "assets/lua/page/test_clipboard.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_widgetbinding",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_widgetbinding",
+                                            path = "assets/lua/page/test_widgetbinding.lua"
+                                        })
+                                    })
+                                end
+                            })
                         })
                     },
                     mainAxisAlignment = MainAxisAlignment.start,

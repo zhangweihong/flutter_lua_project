@@ -42,6 +42,7 @@ import 'package:flutter_lua_dardo/flutter_widget/rect.dart';
 import 'package:flutter_lua_dardo/flutter_widget/responsetype.dart';
 import 'package:flutter_lua_dardo/flutter_widget/roundedrectangleborder.dart';
 import 'package:flutter_lua_dardo/flutter_widget/shadow.dart';
+import 'package:flutter_lua_dardo/flutter_widget/singlechild_scrollview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/spacer.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textspan.dart';
 import 'package:flutter_lua_dardo/flutter_widget/listview.dart';
@@ -187,6 +188,7 @@ class FlutterWidget {
     FlutterSharedPreferences.require(ls);
     FlutterResponseType.require(ls);
     FlutterNetAgent.require(ls);
+    FlutterSingleChildScrollView.require(ls);
     FlutterFractionallySizedBox.require(ls);
     FlutterBottomNavigationBar.require(ls);
     FLutterBottomNavigationBarItem.require(ls);

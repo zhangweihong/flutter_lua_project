@@ -726,7 +726,7 @@
 		"scope": "lua",
 		"prefix": "Stack:new",
 		"body": [
-			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft$2\n})"
+			"Stack:new({\n\tchildren = $1,\n\talignment = Alignment.topLeft$2,\n\tfit = StackFit.loose$3\n})"
 		],
 		"description": "Stack:new"
 	},
@@ -1136,6 +1136,22 @@
 		],
 		"description": "fontFamily = "
 	},
+	"persistentFrameCallback": {
+		"scope": "lua",
+		"prefix": "persistentFrameCallback",
+		"body": [
+			"persistentFrameCallback"
+		],
+		"description": "persistentFrameCallback"
+	},
+	"postFrameCallback": {
+		"scope": "lua",
+		"prefix": "postFrameCallback",
+		"body": [
+			"postFrameCallback"
+		],
+		"description": "postFrameCallback"
+	},
 	"stl": {
 		"scope": "lua",
 		"prefix": "stl",
@@ -1148,7 +1164,29 @@
 		"scope": "lua",
 		"prefix": "stf",
 		"body": [
-			"stf$1 = {}\nfunction stf$2.initState(_state,_tickerProvider)--状态初始化_state是当前widget的状态，_tickerProvider是ticker\n\nend\nfunction stf$3.build(ctx)--进行build操作\n\treturn nil--返回widget\nend\nfunction stf$3.dispose()--widget 销毁\n\nend\nreturn stf$4\n"
+			"stf$1 = {}",
+			"function stf$2.initState(_state,_tickerProvider)--状态初始化_state是当前widget的状态，_tickerProvider是ticker",
+			"\t",
+			"end",
+			"",
+			"--function test_widgetbinding.persistentFrameCallback(time)",
+    		"--\tprint('persistentFrameCallback',time)",
+			"--end",
+			"",
+			"--function test_widgetbinding.postFrameCallback(time)",
+    		"--\tprint('postFrameCallback',time)",
+			"--end",
+			"",
+			"function stf$3.build(ctx)--进行build操作",
+			"\treturn nil--返回widget",
+			"end",
+			"",
+			"function stf$3.dispose()--widget 销毁",
+			"\t",
+			"end",
+			"",
+			"",
+			"return stf$4\n"
 		],
 		"description": "stf 有状态的widget"
 	},
@@ -2509,6 +2547,119 @@
 		],
 		"description": "NetAgent:Fetch()"
 	},
+	"AlignmentDirectional.topStart": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.topStart",
+		"body": [
+			"AlignmentDirectional.topStart"
+		],
+		"description": "AlignmentDirectional.topStart"
+	},
+	"AlignmentDirectional.topCenter": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.topCenter",
+		"body": [
+			"AlignmentDirectional.topCenter"
+		],
+		"description": "AlignmentDirectional.topCenter"
+	},
+	"AlignmentDirectional.topEnd": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.topEnd",
+		"body": [
+			"AlignmentDirectional.topEnd"
+		],
+		"description": "AlignmentDirectional.topEnd"
+	},
+	"AlignmentDirectional.centerStart": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.centerStart",
+		"body": [
+			"AlignmentDirectional.centerStart"
+		],
+		"description": "AlignmentDirectional.centerStart"
+	},
+	"AlignmentDirectional.center": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.center",
+		"body": [
+			"AlignmentDirectional.center"
+		],
+		"description": "AlignmentDirectional.center"
+	},
+	"AlignmentDirectional.centerEnd": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.centerEnd",
+		"body": [
+			"AlignmentDirectional.centerEnd"
+		],
+		"description": "AlignmentDirectional.centerEnd"
+	},
+	"AlignmentDirectional.bottomStart": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.bottomStart",
+		"body": [
+			"AlignmentDirectional.bottomStart"
+		],
+		"description": "AlignmentDirectional.bottomStart"
+	},
+	"AlignmentDirectional.bottomCenter": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.bottomCenter",
+		"body": [
+			"AlignmentDirectional.bottomCenter"
+		],
+		"description": "AlignmentDirectional.bottomCenter"
+	},
+	"AlignmentDirectional.bottomEnd": {
+		"scope": "lua",
+		"prefix": "AlignmentDirectional.bottomEnd",
+		"body": [
+			"AlignmentDirectional.bottomEnd"
+		],
+		"description": "AlignmentDirectional.bottomEnd"
+	},
+	"SingleChildScrollView:new()": {
+		"scope": "lua",
+		"prefix": "SingleChildScrollView:new()",
+		"body": [
+			"SingleChildScrollView:new({\n\tchild = $1,\n\tcontroller = $2\n})"
+		],
+		"description": "SingleChildScrollView:new()"
+	},
+	"Helper:setClipboard()": {
+		"scope": "lua",
+		"prefix": "Helper:setClipboard()",
+		"body": [
+			"Helper:setClipboard($1)"
+		],
+		"description": "Helper:setClipboard()"
+	},
+	"Helper:getClipboard()": {
+		"scope": "lua",
+		"prefix": "Helper:getClipboard()",
+		"body": [
+			"Helper:getClipboard({\n\tformat = 'text/plain',\n\tcallback = function (value)\n\t\t$1\n\tend\n})"
+		],
+		"description": "Helper:getClipboard()"
+	},
+	"WidgetBinding:addPersistentFrameCallback()": {
+		"scope": "lua",
+		"prefix": "WidgetBinding:addPersistentFrameCallback()",
+		"body": [
+			"WidgetBinding:addPersistentFrameCallback({\n\tcallback = function (time)\n\t\t$1\n\tend\n})"
+		],
+		"description": "WidgetBinding:addPersistentFrameCallback()"
+	},
+	"WidgetBinding:addPostFrameCallback()": {
+		"scope": "lua",
+		"prefix": "WidgetBinding:addPostFrameCallback()",
+		"body": [
+			"WidgetBinding:addPostFrameCallback({\n\tcallback = function (time)\n\t\t$1\n\tend\n})"
+		],
+		"description": "WidgetBinding:addPostFrameCallback()"
+	},
+	
 
 
 

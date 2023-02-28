@@ -18,7 +18,7 @@ function test_netagent.build(ctx)--widget的build
                         }),
                         onPressed = function ()
                             NetAgent:Fetch({
-                                url = 'https://www.baidu.com',
+                                url = 'https://cn.bing.com/',
                                 method = 'GET',
                                 host = nil,
                                 params = {},

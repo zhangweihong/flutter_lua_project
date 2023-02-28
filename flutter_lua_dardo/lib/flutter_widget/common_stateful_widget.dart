@@ -35,6 +35,42 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget>
               LuaManager.luaState.newUserdata<TickerProvider>();
           userdata2.data = this;
           LuaManager.luaState.pCall(2, 0, 1);
+        } else {
+          LuaManager.luaState.pop(1);
+        }
+
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+        int persistentFId = -1;
+        type = LuaManager.luaState.getField(-1, "persistentFrameCallback");
+        if (type == LuaType.luaFunction) {
+          persistentFId = LuaManager.luaState.ref(lua_registryindex);
+        } else {
+          LuaManager.luaState.pop(1);
+        }
+
+        int postFId = -1;
+        type = LuaManager.luaState.getField(-1, "postFrameCallback");
+        if (type == LuaType.luaFunction) {
+          postFId = LuaManager.luaState.ref(lua_registryindex);
+        } else {
+          LuaManager.luaState.pop(1);
+        }
+
+        if (postFId != -1 || persistentFId != -1) {
+          if (postFId != -1) {
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              LuaManager.luaState.rawGetI(lua_registryindex, postFId);
+              LuaManager.luaState.pushInteger(timeStamp.inMilliseconds);
+              LuaManager.luaState.pCall(1, 0, 1);
+              if (persistentFId != -1) {
+                WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
+                  LuaManager.luaState.rawGetI(lua_registryindex, persistentFId);
+                  LuaManager.luaState.pushInteger(timeStamp.inMilliseconds);
+                  LuaManager.luaState.pCall(1, 0, 1);
+                });
+              }
+            });
+          }
         }
       }
     }

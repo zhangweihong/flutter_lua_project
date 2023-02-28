@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/alignmentdirectional.dart';
+import 'package:flutter_lua_dardo/flutter_widget/clip.dart';
+import 'package:flutter_lua_dardo/flutter_widget/textdirection.dart';
 import 'package:flutter_lua_dardo/index.dart';
 import 'package:flutter_lua_dardo/flutter_widget/alignment.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
@@ -61,9 +64,32 @@ class FlutterStack {
       ls.pop(1);
     }
 
+    fieldType = ls.getField(-1, "clipBehavior");
+    Clip clipBehavior = Clip.hardEdge;
+    if (fieldType == LuaType.luaNumber) {
+      clipBehavior = FlutterClip.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
+    fieldType = ls.getField(-1, "textDirection");
+    TextDirection textDirection;
+    if (fieldType == LuaType.luaNumber) {
+      textDirection = FlutterTextDirection.get(ls.toIntegerX(-1));
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     Userdata userdata = ls.newUserdata<Widget>();
-    userdata.data =
-        Stack(key: key, children: children, fit: fit, alignment: alignment);
+    userdata.data = Stack(
+        key: key,
+        textDirection: textDirection,
+        children: children,
+        clipBehavior: clipBehavior,
+        fit: fit,
+        alignment: alignment);
     return 1;
   }
 

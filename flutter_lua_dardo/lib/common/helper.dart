@@ -20,10 +20,47 @@ class FlutterHelper {
     "aesDecode": _aesDecode,
     "setOrientations": _setPreferredOrientations,
     "setEnabledSystemUIMode": _setEnabledSystemUIMode,
-    "showDlg": _showDlg
+    "showDlg": _showDlg,
+    "setClipboard": _setClipboard,
+    "getClipboard": _getClipboard,
   };
 
   static const Map<String, DartFunction> _HelperMembers = {"id": null};
+
+  static int _setClipboard(LuaState ls) {
+    if (ls.getTop() > 0) {
+      if (ls.isString(-1)) {
+        Clipboard.setData(ClipboardData(text: ls.toStr(-1)));
+        ls.pop(1);
+      }
+    }
+    return 0;
+  }
+
+  static int _getClipboard(LuaState ls) {
+    var filedType = ls.getField(-1, "format");
+    String format = "text/plain";
+    if (filedType == LuaType.luaString) {
+      format = ls.toStr(-1);
+    }
+    ls.pop(1);
+
+    filedType = ls.getField(-1, "callback");
+    int callbackId = -1;
+    if (filedType == LuaType.luaFunction) {
+      callbackId = ls.ref(lua_registryindex);
+      Clipboard.getData(format).then((value) {
+        if (callbackId != -1) {
+          ls.rawGetI(lua_registryindex, callbackId);
+          ls.pushString(value.text);
+          ls.pCall(1, 0, 1);
+        }
+      });
+    } else {
+      ls.pop(1);
+    }
+    return 0;
+  }
 
   static int _setEnabledSystemUIMode(LuaState ls) {
     if (ls.getTop() > 0) {

@@ -126,3 +126,56 @@ class FlutterCommonStatefulWidget {
     ls.pop(1);
   }
 }
+
+// class FlutterWidgetBinding {
+//   static const Map<String, DartFunction> _sbWrap = {
+//     "addPersistentFrameCallback": _addPersistentFrameCallback,
+//     "addPostFrameCallback": _addPostFrameCallback,
+//   };
+
+//   static int _addPersistentFrameCallback(LuaState ls) {
+//     int pFcallBackId = -1;
+//     var fieldType = ls.getField(-1, "callback");
+//     if (fieldType == LuaType.luaFunction) {
+//       pFcallBackId = ls.ref(lua_registryindex);
+//       if (pFcallBackId != -1) {
+//         WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
+//           ls.rawGetI(lua_registryindex, pFcallBackId);
+//           ls.pushInteger(timeStamp.inMilliseconds);
+//           ls.pCall(1, 0, 1);
+//         });
+//       }
+//     } else {
+//       ls.pop(1);
+//     }
+//     return 0;
+//   }
+
+//   static int _addPostFrameCallback(LuaState ls) {
+//     int pFcallBackId = -1;
+//     var fieldType = ls.getField(-1, "callback");
+//     if (fieldType == LuaType.luaFunction) {
+//       pFcallBackId = ls.ref(lua_registryindex);
+//       if (pFcallBackId != -1) {
+//         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+//           ls.rawGetI(lua_registryindex, pFcallBackId);
+//           ls.pushInteger(timeStamp.inMilliseconds);
+//           ls.pCall(1, 0, 1);
+//         });
+//       }
+//     } else {
+//       ls.pop(1);
+//     }
+//     return 0;
+//   }
+
+//   static int _openWidgetBinding(LuaState ls) {
+//     ls.newLib(_sbWrap);
+//     return 1;
+//   }
+
+//   static void require(LuaState ls) {
+//     ls.requireF("WidgetBinding", _openWidgetBinding, true);
+//     ls.pop(1);
+//   }
+// }
