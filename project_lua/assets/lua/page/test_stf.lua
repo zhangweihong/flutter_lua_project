@@ -371,6 +371,156 @@ function test_stf.build(ctx)
                                     })
                                 end
                             })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_showtimepicker",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_showtimepicker",
+                                            path = "assets/lua/page/test_showtimepicker.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_datepicker",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_datepicker",
+                                            path = "assets/lua/page/test_datepicker.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        })
+                        ,
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_checkbox",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_checkbox",
+                                            path = "assets/lua/page/test_checkbox.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        })
+                        ,
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_checkboxlisttile",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_checkboxlisttile",
+                                            path = "assets/lua/page/test_checkboxlisttile.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        })
+                        ,
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_radio",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_radio",
+                                            path = "assets/lua/page/test_radio.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        }) ,
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_radiolisttile",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_radiolisttile",
+                                            path = "assets/lua/page/test_radiolisttile.lua"
+                                        })
+                                    })
+                                end
+                            })
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_switch",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(20),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_switch",
+                                            path = "assets/lua/page/test_switch.lua"
+                                        })
+                                    })
+                                end
+                            })
                         })
                     },
                     mainAxisAlignment = MainAxisAlignment.start,

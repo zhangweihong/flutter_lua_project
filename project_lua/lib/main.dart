@@ -54,6 +54,13 @@ class MyApp extends StatelessWidget {
                 "assets/lua/page/test_sig_scrollview.lua",
                 "assets/lua/page/test_clipboard.lua",
                 "assets/lua/page/test_widgetbinding.lua",
+                "assets/lua/page/test_showtimepicker.lua",
+                "assets/lua/page/test_datepicker.lua",
+                "assets/lua/page/test_checkbox.lua",
+                "assets/lua/page/test_checkboxlisttile.lua",
+                "assets/lua/page/test_radio.lua",
+                "assets/lua/page/test_radiolisttile.lua",
+                "assets/lua/page/test_switch.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {

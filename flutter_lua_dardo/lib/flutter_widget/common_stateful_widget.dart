@@ -6,13 +6,11 @@ import 'package:flutter_lua_dardo/lua_manager.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 
 class CommonStatefulWidget extends StatefulWidget {
-  CommonStatefulWidget({
-    Key key,
-    this.name,
-    this.path,
-  }) : super(key: key);
+  CommonStatefulWidget({Key key, this.name, this.path, this.data})
+      : super(key: key);
   final String name;
   final String path;
+  final Object data;
   @override
   _CommonStatefulWidgetState createState() => _CommonStatefulWidgetState();
 }
@@ -34,12 +32,16 @@ class _CommonStatefulWidgetState extends State<CommonStatefulWidget>
           Userdata userdata2 =
               LuaManager.luaState.newUserdata<TickerProvider>();
           userdata2.data = this;
-          LuaManager.luaState.pCall(2, 0, 1);
+          if (widget.data is LuaTable) {
+            LuaManager.luaState.pushLuaTable(widget.data);
+          } else {
+            LuaManager.luaState.pushNil();
+          }
+          LuaManager.luaState.pCall(3, 0, 1);
         } else {
           LuaManager.luaState.pop(1);
         }
 
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
         int persistentFId = -1;
         type = LuaManager.luaState.getField(-1, "persistentFrameCallback");
         if (type == LuaType.luaFunction) {

@@ -1156,7 +1156,7 @@
 		"scope": "lua",
 		"prefix": "stl",
 		"body": [
-			"stl$1 = {}\nfunction stl$2.init()--初始化操作\n\nend\nfunction stl$3.build(ctx)--widget的build\n\treturn nil\nend\nreturn stl$4\n"
+			"stl$1 = {}\nfunction stl$1.init(_data)--初始化操作_data 为lua table的传参 \n\nend\nfunction stl$1.build(ctx)--widget的build\n\treturn nil$2\nend\nreturn stl$1\n"
 		],
 		"description": "stl 无状态的widget"
 	},
@@ -1165,28 +1165,28 @@
 		"prefix": "stf",
 		"body": [
 			"stf$1 = {}",
-			"function stf$2.initState(_state,_tickerProvider)--状态初始化_state是当前widget的状态，_tickerProvider是ticker",
-			"\t",
+			"function stf$1.initState(_state,_tickerProvider,_data)--状态初始化_state是当前widget的状态，_tickerProvider是ticker,_data为lua table传参",
+			"\t$5",
 			"end",
 			"",
-			"--function test_widgetbinding.persistentFrameCallback(time)",
+			"--function stf$1.persistentFrameCallback(time)",
     		"--\tprint('persistentFrameCallback',time)",
 			"--end",
 			"",
-			"--function test_widgetbinding.postFrameCallback(time)",
+			"--function stf$1.postFrameCallback(time)",
     		"--\tprint('postFrameCallback',time)",
 			"--end",
 			"",
-			"function stf$3.build(ctx)--进行build操作",
-			"\treturn nil--返回widget",
+			"function stf$1.build(ctx)--进行build操作",
+			"\treturn nil$2--返回widget",
 			"end",
 			"",
-			"function stf$3.dispose()--widget 销毁",
-			"\t",
+			"function stf$1.dispose()--widget 销毁",
+			"\t$3",
 			"end",
 			"",
 			"",
-			"return stf$4\n"
+			"return stf$1$4\n"
 		],
 		"description": "stf 有状态的widget"
 	},
@@ -2658,6 +2658,190 @@
 			"WidgetBinding:addPostFrameCallback({\n\tcallback = function (time)\n\t\t$1\n\tend\n})"
 		],
 		"description": "WidgetBinding:addPostFrameCallback()"
+	},
+	"TimePicker:show()": {
+		"scope": "lua",
+		"prefix": "TimePicker:show()",
+		"body": [
+			"TimePicker:show({\n\tcontext = ctx,\n\thour = 2,\n\tminute = 3,\n\tcancelText = '取消',\n\tconfirmText = '确定',\n\thelpText = '选择时间',\n\thourLabelText = '时',\n\tminuteLabelText = '分',\n\tcallback = function(h,m)\n\t\t$1\n\tend\n})"
+		],
+		"description": "TimePicker:show()"
+	},
+	"DatePicker:show()": {
+		"scope": "lua",
+		"prefix": "DatePicker:show()",
+		"body": [
+			"DatePicker:show({",
+			"\tcontext = ctx,",
+			"\tinitialDate = 1641484800000,",
+			"\tfirstDate = 1638288000000,",
+			"\tlastDate = 1677569226717,",
+			"\tcancelText = '取消',",
+			"\tconfirmText = '确定',",
+			"\thelpText = '选择时间',",
+			"\thourLabelText = '时',",
+			"\tminuteLabelText = '分',",
+			"\tcallback = function(time)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "DatePicker:show()",
+	},
+	"Checkbox:new()": {
+		"scope": "lua",
+		"prefix": "Checkbox:new()",
+		"body": [
+			"Checkbox:new({",
+			"\tvalue = false,",
+			"\tonChanged = function(value)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "Checkbox:new()",
+	},
+	"CheckboxListTile:new()": {
+		"scope": "lua",
+		"prefix": "CheckboxListTile:new()",
+		"body": [
+			"CheckboxListTile:new({",
+			"\tvalue = false,",
+			"\ttitle = nil$1,",
+			"\tsubtitle = nil$2,",
+			"\tcontrolAffinity = ListTileControlAffinity.leading$3,",
+			"\tonChanged = function(value)",
+			"\t\t$4",
+			"\tend\n})"
+		],
+		"description": "CheckboxListTile:new()",
+	},
+	"ListTileControlAffinity.leading": {
+		"scope": "lua",
+		"prefix": "ListTileControlAffinity.leading",
+		"body": [
+			"ListTileControlAffinity.leading"
+		],
+		"description": "ListTileControlAffinity.leading"
+	},
+	"ListTileControlAffinity.trailing": {
+		"scope": "lua",
+		"prefix": "ListTileControlAffinity.trailing",
+		"body": [
+			"ListTileControlAffinity.trailing"
+		],
+		"description": "ListTileControlAffinity.trailing"
+	},
+	"ListTileControlAffinity.platform": {
+		"scope": "lua",
+		"prefix": "ListTileControlAffinity.platform",
+		"body": [
+			"ListTileControlAffinity.platform"
+		],
+		"description": "ListTileControlAffinity.platform"
+	},
+	"TimePickerEntryMode.dial": {
+		"scope": "lua",
+		"prefix": "TimePickerEntryMode.dial",
+		"body": [
+			"TimePickerEntryMode.dial"
+		],
+		"description": "TimePickerEntryMode.dial"
+	},
+	"TimePickerEntryMode.input": {
+		"scope": "lua",
+		"prefix": "TimePickerEntryMode.input",
+		"body": [
+			"TimePickerEntryMode.input"
+		],
+		"description": "TimePickerEntryMode.input"
+	},
+	"DatePickerMode.day": {
+		"scope": "lua",
+		"prefix": "DatePickerMode.day",
+		"body": [
+			"DatePickerMode.day"
+		],
+		"description": "DatePickerMode.day"
+	},
+	"DatePickerMode.year": {
+		"scope": "lua",
+		"prefix": "DatePickerMode.year",
+		"body": [
+			"DatePickerMode.year"
+		],
+		"description": "DatePickerMode.year"
+	},
+	"DatePickerEntryMode.calendar": {
+		"scope": "lua",
+		"prefix": "DatePickerEntryMode.calendar",
+		"body": [
+			"DatePickerEntryMode.calendar"
+		],
+		"description": "DatePickerEntryMode.calendar"
+	},
+	"DatePickerEntryMode.input": {
+		"scope": "lua",
+		"prefix": "DatePickerEntryMode.input",
+		"body": [
+			"DatePickerEntryMode.input"
+		],
+		"description": "DatePickerEntryMode.input"
+	},
+	"DatePickerEntryMode.calendarOnly": {
+		"scope": "lua",
+		"prefix": "DatePickerEntryMode.calendarOnly",
+		"body": [
+			"DatePickerEntryMode.calendarOnly"
+		],
+		"description": "DatePickerEntryMode.calendarOnly"
+	},
+	"DatePickerEntryMode.inputOnly": {
+		"scope": "lua",
+		"prefix": "DatePickerEntryMode.inputOnly",
+		"body": [
+			"DatePickerEntryMode.inputOnly"
+		],
+		"description": "DatePickerEntryMode.inputOnly"
+	},
+	"Radio:new()": {
+		"scope": "lua",
+		"prefix": "Radio:new()",
+		"body": [
+			"Radio:new({",
+			"\tvalue = false,",
+			"\tgroupValue = false,",
+			"\tonChanged = function(value)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "Radio:new()",
+	},
+	"RadioListTile:new()": {
+		"scope": "lua",
+		"prefix": "RadioListTile:new()",
+		"body": [
+			"RadioListTile:new({",
+			"\tvalue = 1,",
+			"\ttgroupValue = 2,",
+			"\ttitle = nil$1,",
+			"\tsubtitle = nil$2,",
+			"\tcontrolAffinity = ListTileControlAffinity.leading$3,",
+			"\tonChanged = function(value)",
+			"\t\t$4",
+			"\tend\n})"
+		],
+		"description": "RadioListTile:new()",
+	},
+	"Switch:new()": {
+		"scope": "lua",
+		"prefix": "Switch:new()",
+		"body": [
+			"Switch:new({",
+			"\tvalue = false,",
+			"\tonChanged = function(value)",
+			"\t\t$4",
+			"\tend\n})"
+		],
+		"description": "Switch:new()",
 	},
 	
 

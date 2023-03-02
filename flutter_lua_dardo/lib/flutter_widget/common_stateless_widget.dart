@@ -7,9 +7,11 @@ import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 
 // ignore: must_be_immutable
 class CommonStatelessWidget extends StatelessWidget {
-  CommonStatelessWidget({Key key, this.name, this.path}) : super(key: key);
+  CommonStatelessWidget({Key key, this.name, this.path, this.data})
+      : super(key: key);
   final String name;
   final String path;
+  final Object data;
   void register() {
     Map<String, DartFunction> _wrap = {};
 
@@ -28,7 +30,12 @@ class CommonStatelessWidget extends StatelessWidget {
       var fieldType =
           LuaManager.luaState?.getField(-1, "init"); // 注册一次call Lua的 init
       if (fieldType == LuaType.luaFunction) {
-        LuaManager.luaState?.pCall(0, 0, 1);
+        if (data is LuaTable) {
+          LuaManager.luaState.pushLuaTable(data);
+        } else {
+          LuaManager.luaState.pushNil();
+        }
+        LuaManager.luaState?.pCall(1, 0, 1);
       }
       LuaManager.luaState?.pop(1);
     }
