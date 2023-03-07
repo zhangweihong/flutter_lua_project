@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/index.dart';
-import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 
 class FlutterSizedBox {
   static const Map<String, DartFunction> _SizedBoxWrap = {"new": _newSizedBox};
@@ -14,7 +13,7 @@ class FlutterSizedBox {
       child = ls.toUserdata(-1).data as Widget;
     }
     ls.pop(1);
-    
+
     double width = null;
     fieldType = ls.getField(-1, "width");
     if (fieldType == LuaType.luaNumber) {

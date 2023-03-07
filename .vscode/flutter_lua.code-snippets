@@ -197,7 +197,7 @@
 		"scope": "lua",
 		"prefix": "ClipRRect:new",
 		"body": [
-			"ClipRRect:new({\n\tchild = $1,\n\tborderRadius = $2,\n\tclipBehavior = $3\n})"
+			"ClipRRect:new({\n\t\tchild = $1,\n\t\tborderRadius = $2,\n\t\tclipBehavior = $3\n\t})"
 		],
 		"description": "ClipRRect:new"
 	},
@@ -537,6 +537,46 @@
 			"sp($1)"
 		],
 		"description": "sp()"
+	},
+	"w()": {
+		"scope": "lua",
+		"prefix": "w()",
+		"body": [
+			"w($1)"
+		],
+		"description": "w()"
+	},
+	"r()": {
+		"scope": "lua",
+		"prefix": "r()",
+		"body": [
+			"r($1)"
+		],
+		"description": "r()"
+	},
+	"sm()": {
+		"scope": "lua",
+		"prefix": "sm()",
+		"body": [
+			"sm($1)"
+		],
+		"description": "sm()"
+	},
+	"sw()": {
+		"scope": "lua",
+		"prefix": "sw()",
+		"body": [
+			"sw($1)"
+		],
+		"description": "sw()"
+	},
+	"h()": {
+		"scope": "lua",
+		"prefix": "h()",
+		"body": [
+			"h($1)"
+		],
+		"description": "h()"
 	},
 	"Border:new": {
 		"scope": "lua",
@@ -2843,6 +2883,466 @@
 		],
 		"description": "Switch:new()",
 	},
+	"Slider:new()": {
+		"scope": "lua",
+		"prefix": "Slider:new()",
+		"body": [
+			"Slider:new({",
+			"\tvalue = 0.2,",
+			"\tmin = 0,",
+			"\tmax = 1.0,",
+			"\tonChanged = function(value)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "Slider:new()",
+	},
+	"CircleAvatar:new()": {
+		"scope": "lua",
+		"prefix": "CircleAvatar:new()",
+		"body": [
+			"CircleAvatar:new({",
+			"\tchild = nil,",
+			"\tbackgroundImage = nil,",
+			"\tforegroundImage = nil,",
+			"\tbackgroundColor = nil,",
+			"\tforegroundColor = nil,",
+			"\tonChanged = function(value)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "CircleAvatar:new()",
+	},
+	"ClipRect:new": {
+		"scope": "lua",
+		"prefix": "ClipRect:new",
+		"body": [
+			"ClipRect:new({\n\tchild = $1,\n\tclipBehavior = $2\n})"
+		],
+		"description": "ClipRect:new"
+	},
+	"RectClipper()": {
+		"scope": "lua",
+		"prefix": "RectClipper()",
+		"body": [
+			"RectClipper({",
+			"\tcreateRect = function(width,height)",
+			"\t\treturn Rect.fromLTRB({\n\t\t\tleft = $1,\n\t\t\ttop = $2,\n\t\t\tright = $3,\n\t\t\tbottom = $4\n\t\t})",
+			"\tend",
+			"})",
+			
+		],
+		"description": "RectClipper()"
+	},
+	"RRectClipper()": {
+		"scope": "lua",
+		"prefix": "RRectClipper()",
+		"body": [
+			"RRectClipper({",
+			"\tcreateRRect = function(width,height)",
+			"\t\treturn RRect.fromLTRBXY({\n\t\t\tleft = $1,\n\t\t\ttop = $2,\n\t\t\tright = $3,\n\t\t\tbottom = $4,\n\t\t\tradiusX = 0$5,\n\t\t\tradiusY = 0$6\n\t\t})",
+			"\tend",
+			"})",
+			
+		],
+		"description": "RectClipper()"
+	},
+	"RRect.fromLTRBXY": {
+		"scope": "lua",
+		"prefix": "Rect.fromLTRBXY",
+		"body": [
+			"Rect.fromLTRBXY({\n\tleft = $1,\n\ttop = $2,\n\tright = $3,\n\tbottom = $4,\n\tradiusX = 0$5,\n\tradiusY = 0$6\n})"
+		],
+		"description": "Rect.fromLTRBXY"
+	},
+	"RRect.fromLTRBR": {
+		"scope": "lua",
+		"prefix": "Rect.fromLTRBR",
+		"body": [
+			"Rect.fromLTRBR({\n\tleft = $1,\n\ttop = $2,\n\twidth = $3,\n\theight = $4,\n\tradius = 0$5\n})"
+		],
+		"description": "Rect.fromLTRBR"
+	},
+	"RRect.fromRectXY": {
+		"scope": "lua",
+		"prefix": "Rect.fromRectXY",
+		"body": [
+			"Rect.fromRectXY({\n\trect = $1,\n\tradiusX = 0$2,\n\tradiusY = 0$3\n})"
+		],
+		"description": "Rect.fromRectXY"
+	},
+	"RRect.fromRectAndRadius": {
+		"scope": "lua",
+		"prefix": "Rect.fromRectAndRadius",
+		"body": [
+			"Rect.fromRectAndRadius({\n\trect = $1,\n\tradius = 0$2\n})"
+		],
+		"description": "Rect.fromRectAndRadius"
+	},
+	"RRect.fromLTRBAndCorners": {
+		"scope": "lua",
+		"prefix": "Rect.fromLTRBAndCorners",
+		"body": [
+			"Rect.fromLTRBAndCorners({\n\tleft = $1,\n\ttop = $2,\n\tright = $3,\n\tbottom = $4,\n\ttopLeft = 0$5,\n\ttopRight = 0$6,\n\tbottomRight = 0$7,\n\tbottomLeft = 0$8\n})"
+		],
+		"description": "Rect.fromLTRBAndCorners"
+	},
+	"RRect.fromRectAndCorners": {
+		"scope": "lua",
+		"prefix": "Rect.fromRectAndCorners",
+		"body": [
+			"Rect.fromRectAndCorners({\n\trect = $1,\n\ttopLeft = 0$2,\n\ttopRight = 0$3,\n\tbottomRight = 0$4,\n\tbottomLeft = 0$5\n})"
+		],
+		"description": "Rect.fromRectAndCorners"
+	},
+	"ClipPath:new()": {
+		"scope": "lua",
+		"prefix": "ClipPath:new()",
+		"body": [
+			"ClipPath:new({\n\tchild = $1,\n\tclipper = $2,\n\tclipBehavior = Clip.antiAlias\n})"
+		],
+		"description": "ClipPath:new()",
+	},
+	"PathClipper:new()": {
+		"scope": "lua",
+		"prefix": "PathClipper:new()",
+		"body": [
+			"PathClipper:new({",
+			"\tcreatePath = function(width,height)",
+			"\t\tlocal p = Path:new()",
+			"\t\treturn p",
+			"\tend",
+			"})"
+		],
+		"description": "PathClipper:new()",
+	},
+	"Path:new()": {
+		"scope": "lua",
+		"prefix": "Path:new()",
+		"body": [
+			"Path:new()--返回path的一个实例"
+		],
+		"description": "Path:new()",
+	},
+	"Path:setFillType()": {
+		"scope": "lua",
+		"prefix": "Path:setFillType()",
+		"body": [
+			"Path:setFillType({\n\tpath = $1,\n\tfillType = PathFillType.nonZero$2\n})--设置path类型"
+		],
+		"description": "Path:setFillType()",
+	},
+	"Path:getFillType()": {
+		"scope": "lua",
+		"prefix": "Path:getFillType()",
+		"body": [
+			"Path:getFillType()--获取path类型 整型"
+		],
+		"description": "Path:getFillType()",
+	},
+	"Path:moveTo()": {
+		"scope": "lua",
+		"prefix": "Path:moveTo()",
+		"body": [
+			"Path:moveTo({path = $1,x = $2,y = $3})--移动到一点"
+		],
+		"description": "Path:moveTo()",
+	},
+	"Path:relativeMoveTo()": {
+		"scope": "lua",
+		"prefix": "Path:relativeMoveTo()",
+		"body": [
+			"Path:relativeMoveTo({path = $1,dx = $2,dy = $3})--相对移动到一点"
+		],
+		"description": "Path:relativeMoveTo()",
+	},
+	"Path:lineTo()": {
+		"scope": "lua",
+		"prefix": "Path:lineTo()",
+		"body": [
+			"Path:lineTo({path = $1,x = $2,y = $3})--划线到一点"
+		],
+		"description": "Path:lineTo()",
+	},
+	"Path:relativeLineTo()": {
+		"scope": "lua",
+		"prefix": "Path:relativeLineTo()",
+		"body": [
+			"Path:relativeLineTo({path = $1,dx = $2,dy = $3})--相对划线到一点"
+		],
+		"description": "Path:relativeLineTo()",
+	},
+	"Path:quadraticBezierTo()": {
+		"scope": "lua",
+		"prefix": "Path:quadraticBezierTo()",
+		"body": [
+			"Path:quadraticBezierTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $2,\n\ty2 = $3\n})--二次贝塞尔"
+		],
+		"description": "Path:quadraticBezierTo()",
+	},
+	"Path:relativeQuadraticBezierTo()": {
+		"scope": "lua",
+		"prefix": "Path:relativeQuadraticBezierTo()",
+		"body": [
+			"Path:relativeQuadraticBezierTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $2,\n\ty2 = $3\n})--相对二次贝塞尔"
+		],
+		"description": "Path:relativeQuadraticBezierTo()",
+	},
+	"Path:cubicTo()": {
+		"scope": "lua",
+		"prefix": "Path:cubicTo()",
+		"body": [
+			"Path:cubicTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $4,\n\ty2 = $5,\n\tx3 = $6,\n\ty3 = $7\n})--相对三次贝塞尔"
+		],
+		"description": "Path:cubicTo()",
+	},
+	"Path:relativeCubicTo()": {
+		"scope": "lua",
+		"prefix": "Path:relativeCubicTo()",
+		"body": [
+			"Path:relativeCubicTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $4,\n\ty2 = $5,\n\tx3 = $6,\n\ty3 = $7\n})--相对三次贝塞尔"
+		],
+		"description": "Path:relativeCubicTo()",
+	},
+	"Path:conicTo()": {
+		"scope": "lua",
+		"prefix": "Path:conicTo()",
+		"body": [
+			"Path:conicTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $4,\n\ty2 = $5,\n\tw = $6\n})--二次曲线贝塞尔"
+		],
+		"description": "Path:conicTo()",
+	},
+	"Path:relativeConicTo()": {
+		"scope": "lua",
+		"prefix": "Path:relativeConicTo()",
+		"body": [
+			"Path:relativeConicTo({\n\tpath = $1,\n\tx1 = $2,\n\ty1 = $3,\n\tx2 = $4,\n\ty2 = $5,\n\tw = $6\n})--相对二次曲线贝塞尔"
+		],
+		"description": "Path:relativeConicTo()",
+	},
+	"Path:arcTo()": {
+		"scope": "lua",
+		"prefix": "Path:arcTo()",
+		"body": [
+			"Path:arcTo({\n\tpath = $1,\n\trect = $2,\n\tstartAngle = $3,\n\tsweepAngle = $4,\n\tforceMoveTo = $5--浮点型\n})--弧形"
+		],
+		"description": "Path:arcTo()",
+	},
+	"Path:arcToPoint()": {
+		"scope": "lua",
+		"prefix": "Path:arcToPoint()",
+		"body": [
+			"Path:arcToPoint({\n\tpath = $1,\n\tarcEnd = $2--offset类型,\n\tradius = $2--浮点,\n\trotation = $3--浮点,\n\tlargeArc = false$4--布尔,\n\tclockwise = false$5--布尔\n})--弧形到点"
+		],
+		"description": "Path:arcToPoint()",
+	},
+	"Path:relativeArcToPoint()": {
+		"scope": "lua",
+		"prefix": "Path:relativeArcToPoint()",
+		"body": [
+			"Path:relativeArcToPoint({\n\tpath = $1,\n\tarcEndDelta = $2--offset类型,\n\tradius = $3--浮点,\n\trotation = $4--浮点,\n\tlargeArc = false$5--布尔,\n\tclockwise = false$6--布尔\n})--弧形到点"
+		],
+		"description": "Path:relativeArcToPoint()",
+	},
+	"Path:addRect()": {
+		"scope": "lua",
+		"prefix": "Path:addRect()",
+		"body": [
+			"Path:addRect({\n\tpath = $1,\n\trect = $2,\n\tstartAngle = $3,\n\tsweepAngle = $4,\n\tforceMoveTo = $5--浮点型\n})"
+		],
+		"description": "Path:addRect()",
+	},
+	"Path:addOval()": {
+		"scope": "lua",
+		"prefix": "Path:addOval()",
+		"body": [
+			"Path:addOval({\n\tpath = $1,\n\toval = $2,\n\tstartAngle = $3,\n\tsweepAngle = $4,\n\tforceMoveTo = $5--浮点型\n})--"
+		],
+		"description": "Path:addOval()",
+	},
+	"Path:addPolygon()": {
+		"scope": "lua",
+		"prefix": "Path:addPolygon()",
+		"body": [
+			"Path:addPolygon({\n\tpath = $1,\n\tpoints = {}$2--offset数组,\n\tclose = $3--bool类型\n})--"
+		],
+		"description": "Path:addPolygon()",
+	},
+	"Path:addRRect()": {
+		"scope": "lua",
+		"prefix": "Path:addRRect()",
+		"body": [
+			"Path:addRRect({\n\tpath = $1,\n\trrect = {}$2--RRect类型\n})--"
+		],
+		"description": "Path:addRRect()",
+	},
+	"Path:addPath()": {
+		"scope": "lua",
+		"prefix": "Path:addPath()",
+		"body": [
+			"Path:addPath({\n\tpath = $1,\n\taddPath = {}$2--path类型,\n\toffset = $2--offset类型\n})--"
+		],
+		"description": "Path:addPath()",
+	},
+	"Path:extendWithPath()": {
+		"scope": "lua",
+		"prefix": "Path:extendWithPath()",
+		"body": [
+			"Path:extendWithPath({\n\tpath = $1,\n\taddPath = {}$2--path类型,\n\toffset = $2--offset类型\n})--"
+		],
+		"description": "Path:extendWithPath()",
+	},
+	"Path:close()": {
+		"scope": "lua",
+		"prefix": "Path:close()",
+		"body": [
+			"Path:close({\n\tpath = $1})--关闭"
+		],
+		"description": "Path:close()",
+	},
+	"Path:reset()": {
+		"scope": "lua",
+		"prefix": "Path:reset()",
+		"body": [
+			"Path:reset({\n\tpath = $1})--重置"
+		],
+		"description": "Path:reset()",
+	},
+	"Path:contains()": {
+		"scope": "lua",
+		"prefix": "Path:contains()",
+		"body": [
+			"Path:contains({\n\tpath = $1,\n\tpoint = $2\n})--包含"
+		],
+		"description": "Path:contains()",
+	},
+	"Path:getBounds()": {
+		"scope": "lua",
+		"prefix": "Path:getBounds()",
+		"body": [
+			"Path:getBounds({\n\tpath = $1})--获取大小范围"
+		],
+		"description": "Path:getBounds()",
+	},
+	"Path:combine()": {
+		"scope": "lua",
+		"prefix": "Path:combine()",
+		"body": [
+			"Path:combine({\n\toperation = $1,\n\toperation = PathOperation.difference$2,\n\tpath1 = $3,\n\tpath2 = $4\n})--融合path"
+		],
+		"description": "Path:combine()",
+	},
+	"Chip:new()": {
+		"scope": "lua",
+		"prefix": "Chip:new()",
+		"body": [
+			"Chip:new({",
+			"\tlabel = '',",
+			"\tavatar = nil,",
+			"\tlabelStyle = nil,",
+			"\tlabelPadding = nil,",
+			"\tdeleteIcon = nil,",
+			"\tonDeleted = function()",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "Chip:new()",
+	},
+	"DataTable:new()": {
+		"scope": "lua",
+		"prefix": "DataTable:new()",
+		"body": [
+			"DataTable:new({",
+			"\tcolumns = {},",
+			"\trows = {},",
+			"\tsortColumnIndex = nil,",
+			"\tonSelectAll = function(value)",
+			"\t\t$1",
+			"\tend\n})"
+		],
+		"description": "DataTable:new()",
+	},
+	"DataColumn:new()": {
+		"scope": "lua",
+		"prefix": "DataColumn:new()",
+		"body": [
+			"DataColumn:new({",
+			"\tlabel = $1,--widget 类型",
+			"\ttooltip = $2,",
+			"\tonSort = function(index,select)",
+			"\t\t$3",
+			"\tend\n})"
+		],
+		"description": "DataColumn:new()",
+	},
+	"DataCell:new()": {
+		"scope": "lua",
+		"prefix": "DataCell:new()",
+		"body": [
+			"DataCell:new({",
+			"\tchild = $1,--widget 类型",
+			"\tplaceholder = false$2,",
+			"\tshowEditIcon = false$3,",
+			"\tonTap = function()",
+			"\t\t$4",
+			"\tend,",
+			"\tonLongPress = function()",
+			"\t\t$5",
+			"\tend",
+			"})"
+		],
+		"description": "DataCell:new()",
+	},
+	"DataRow:new()": {
+		"scope": "lua",
+		"prefix": "DataRow:new()",
+		"body": [
+			"DataRow:new({",
+			"\tcells = {},--datacell 类型",
+			"\tselected = false$2,",
+			"\tonSelectChanged = function(value)",
+			"\t\t$3",
+			"\tend,",
+			"\tonLongPress = function()",
+			"\t\t$4",
+			"\tend",
+			"})"
+		],
+		"description": "DataRow:new()",
+	},
+	"TableBorder:new()": {
+		"scope": "lua",
+		"prefix": "TableBorder:new()",
+		"body": [
+			"TableBorder:new({",
+			"\ttop = BorderSide.none--BorderSide 类型",
+			"\tright = BorderSide.none",
+			"\tbottom = BorderSide.none",
+			"\tleft = BorderSide.none",
+			"\thorizontalInside = BorderSide.none",
+			"\tverticalInside = BorderSide.none",
+			"\tborderRadius = BorderRadius.all(0)",
+			"\tend",
+			"})"
+		],
+		"description": "TableBorder:new()",
+	},
+	"RawMaterialButton:new()": {
+		"scope": "lua",
+		"prefix": "RawMaterialButton:new()",
+		"body": [
+			"RawMaterialButton:new({",
+			"\tchild = $1,--widget 类型",
+			"\tonPressed = function()",
+			"\t\t$2",
+			"\tend,",
+			"})"
+		],
+		"description": "RawMaterialButton:new()",
+	},
+	
+	
+	
 	
 
 

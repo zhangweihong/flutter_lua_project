@@ -1,0 +1,43 @@
+{
+	// Place your flutter_lua_project 工作区 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"default flutter lua": {
+		"scope": "dart",
+		"prefix": "default flutter lua",
+		"body": [
+			"import 'package:flutter_lua_dardo/index.dart';",
+			"class Flutter$1 {",
+			"  static const Map<String, DartFunction> _$1Wrap = {",
+			"    'new': _new$1Wrap,",
+			"  };",
+			"",
+			"  static const Map<String, DartFunction> _$1Members = {'id': null};",
+			"",
+			"  static int _new$1Wrap(LuaState ls) {",
+			"    $2",
+			"    return 1;",
+			"  }",
+			"",
+			"  static int _open$1Lib(LuaState ls) {",
+			"    ls.newMetatable('$1Class');",
+			"    ls.pushValue(-1);",
+			"    ls.setField(-2, '__index');",
+			"    ls.setFuncs(_$1Members, 0);",
+			"    ls.newLib(_$1Wrap);",
+			"    return 1;",
+			"  }",
+			"  static void require(LuaState ls) {",
+			"    ls.requireF('$1', _open$1Lib, true);",
+			"    ls.pop(1);",
+			"  }",
+			"}",
+		],
+		"description": "default flutter lua"
+	}
+
+}

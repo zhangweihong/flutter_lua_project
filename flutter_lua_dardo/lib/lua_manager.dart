@@ -19,6 +19,7 @@ class LuaManager {
   static Map<String, bool> _luaLoadedMap = <String, bool>{};
   /**
    * 初始化luastate
+   * registerFunc 为自己注册的函数
    */
   static initLuaState(
       {bool fromNet = false,

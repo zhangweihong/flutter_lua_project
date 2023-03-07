@@ -243,7 +243,7 @@ function app.build(ctx)
 								ctx = ctx,--上下文
 								widget = CommonStatefulWidget:new({
                                     widgetName = "test_share_preferences",
-                                    path = "assets/lua/page/test_share_preferences.lua"
+                                    path = "assets/lua/test/test_share_preferences.lua"
                                 })--push的widget
 							})				
 						end
@@ -261,7 +261,7 @@ function app.build(ctx)
 								ctx = ctx,
 								widget = CommonStatelessWidget:new({
 									widgetName = "test_page1",
-									path = "assets/lua/page/test_page1.lua"
+									path = "assets/lua/test/test_page1.lua"
 								})
 							})
 						end,

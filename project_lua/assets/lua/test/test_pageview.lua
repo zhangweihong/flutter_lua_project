@@ -46,7 +46,7 @@ function test_pageview.build(ctx)
                                         ctx = ctx,
                                         widget = CommonStatefulWidget:new({
                                             widgetName = "test_stf",
-                                            path = "assets/lua/page/test_stf.lua"
+                                            path = "assets/lua/test/test_stf.lua"
                                         })
                                     })
                                 end,

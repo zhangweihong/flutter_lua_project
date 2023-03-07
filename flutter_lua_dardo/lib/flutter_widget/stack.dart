@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lua_dardo/flutter_widget/alignmentdirectional.dart';
+import 'package:flutter_lua_dardo/flutter_widget/alignment_directional.dart';
 import 'package:flutter_lua_dardo/flutter_widget/clip.dart';
 import 'package:flutter_lua_dardo/flutter_widget/textdirection.dart';
 import 'package:flutter_lua_dardo/index.dart';
@@ -18,7 +18,6 @@ class FlutterStack {
     var fieldType = ls.getField(-1, "children");
     if (fieldType == LuaType.luaTable) {
       var len = ls.len2(-1);
-
       for (int i = 1; i <= len; i++) {
         if (ls.rawGetI(-1, i) == LuaType.luaUserdata) {
           children.add(ls.toUserdata(-1).data as Widget);

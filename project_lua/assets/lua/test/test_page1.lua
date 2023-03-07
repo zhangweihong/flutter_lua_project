@@ -33,7 +33,7 @@ function test_page1.build(ctx)
                                 ctx = ctx,
                                 widget = CommonStatelessWidget:new({
 									widgetName = "test_pageview",
-									path = "assets/lua/page/test_pageview.lua"
+									path = "assets/lua/test/test_pageview.lua"
 								})
                             })
                         end,

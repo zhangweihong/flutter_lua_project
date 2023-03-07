@@ -23,6 +23,7 @@ class FlutterUtils {
     ls.register("FractionalOffset", _FractionalOffsetWrap);
     ls.register("Size", _SizeWrap);
     ls.register("GlobalKey", _globalKey);
+    ls.register("ValueKey", _valueKey);
     ls.register("navReplaceAndRemoveAll", Nav.navReplaceAndRemoveAll);
     FlutterHelper.require(ls);
     FlutterEventBus.require(ls);
@@ -110,6 +111,19 @@ class FlutterUtils {
 
     Userdata userdata = ls.newUserdata<GlobalKey>();
     userdata.data = GlobalKey(debugLabel: debugLabel);
+    return 1;
+  }
+
+  static int _valueKey(LuaState ls) {
+    Userdata userdata = ls.newUserdata<ValueKey>();
+    var value;
+
+    var filedType = ls.getField(-1, "value");
+    if (filedType == LuaType.luaString) {
+      value = ls.toStr(-1);
+    }
+    ls.pop(1);
+    userdata.data = ValueKey(value);
     return 1;
   }
 

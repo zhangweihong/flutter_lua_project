@@ -6,6 +6,7 @@ class MathLib {
     "random": _random,
     "randomseed": _randomseed,
     "max": _max,
+    "round": _round,
     "min": _min,
     "exp": _exp,
     "log": _log,
@@ -108,6 +109,12 @@ class MathLib {
   static int _exp(LuaState ls) {
     var x = ls.checkNumber(1);
     ls.pushNumber(math.pow(math.e, x));
+    return 1;
+  }
+
+  static int _round(LuaState ls) {
+    var x = ls.checkNumber(1);
+    ls.pushNumber(x.roundToDouble());
     return 1;
   }
 

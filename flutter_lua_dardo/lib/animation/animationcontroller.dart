@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lua_dardo/flutter_widget/animationbehavior.dart';
+import 'package:flutter_lua_dardo/flutter_widget/animation_behavior.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 import 'package:flutter_lua_dardo/index.dart';
 

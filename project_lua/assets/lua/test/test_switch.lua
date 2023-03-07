@@ -16,6 +16,11 @@ function test_switch.build(ctx)--进行build操作
         body = Container:new({
             child = Switch:new({
                 value = _switch,
+                activeThumbImage = Image.network("https://tse2-mm.cn.bing.net/th/id/OIP-C.FwcCcs9QgWK2BDmCLVYjYAHaJQ?pid=ImgDet&rs=1",{
+                    -- width = ,
+                    -- height = ,
+                    -- fit = 
+                }),
                 onChanged = function(value)
                     _switch = value
                     print("_switch",_switch)

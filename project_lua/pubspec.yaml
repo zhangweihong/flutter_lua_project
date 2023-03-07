@@ -49,7 +49,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+# following test: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -65,33 +65,41 @@ flutter:
     - assets/lua/dkjson.lua
     - assets/lua/component/my_stateful_widget.lua
     - assets/lua/component/my_stateless_widget.lua
-    - assets/lua/page/test_page1.lua
-    - assets/lua/page/test_pageview.lua
-    - assets/lua/page/test_stf.lua
-    - assets/lua/page/test_listview.lua
-    - assets/lua/page/test_listview_builder.lua
-    - assets/lua/page/test_listview_custom.lua
-    - assets/lua/page/test_listview_sp.lua
-    - assets/lua/page/test_gridview.lua
-    - assets/lua/page/test_helper.lua
-    - assets/lua/page/test_safearea.lua
-    - assets/lua/page/test_ani.lua
-    - assets/lua/page/test_positioned.lua
-    - assets/lua/page/test_share_preferences.lua
-    - assets/lua/page/test_consumer.lua
-    - assets/lua/page/test_bottomnavigationbar.lua
-    - assets/lua/page/test_dkjson.lua
-    - assets/lua/page/test_netagent.lua
-    - assets/lua/page/test_sig_scrollview.lua
-    - assets/lua/page/test_clipboard.lua
-    - assets/lua/page/test_widgetbinding.lua
-    - assets/lua/page/test_showtimepicker.lua
-    - assets/lua/page/test_datepicker.lua
-    - assets/lua/page/test_checkbox.lua
-    - assets/lua/page/test_checkboxlisttile.lua
-    - assets/lua/page/test_radio.lua
-    - assets/lua/page/test_radiolisttile.lua
-    - assets/lua/page/test_switch.lua
+    - assets/lua/test/test_page1.lua
+    - assets/lua/test/test_pageview.lua
+    - assets/lua/test/test_stf.lua
+    - assets/lua/test/test_listview.lua
+    - assets/lua/test/test_listview_builder.lua
+    - assets/lua/test/test_listview_custom.lua
+    - assets/lua/test/test_listview_sp.lua
+    - assets/lua/test/test_gridview.lua
+    - assets/lua/test/test_helper.lua
+    - assets/lua/test/test_safearea.lua
+    - assets/lua/test/test_ani.lua
+    - assets/lua/test/test_positioned.lua
+    - assets/lua/test/test_share_preferences.lua
+    - assets/lua/test/test_consumer.lua
+    - assets/lua/test/test_bottomnavigationbar.lua
+    - assets/lua/test/test_dkjson.lua
+    - assets/lua/test/test_netagent.lua
+    - assets/lua/test/test_sig_scrollview.lua
+    - assets/lua/test/test_clipboard.lua
+    - assets/lua/test/test_widgetbinding.lua
+    - assets/lua/test/test_showtimepicker.lua
+    - assets/lua/test/test_datepicker.lua
+    - assets/lua/test/test_checkbox.lua
+    - assets/lua/test/test_checkboxlisttile.lua
+    - assets/lua/test/test_radio.lua
+    - assets/lua/test/test_radiolisttile.lua
+    - assets/lua/test/test_switch.lua
+    - assets/lua/test/test_slider.lua
+    - assets/lua/test/test_circleavatar.lua
+    - assets/lua/test/test_rectclipper.lua
+    - assets/lua/test/test_r_rectclipper.lua
+    - assets/lua/test/test_path.lua
+    - assets/lua/test/test_chip.lua
+    - assets/lua/test/test_datatable.lua
+    - assets/lua/test/test_raw_mat_button.lua
     - assets/img/R-C.jfif
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg

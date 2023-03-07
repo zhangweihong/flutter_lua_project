@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lua_dardo/flutter_widget/bottomnavigationbartype.dart';
+import 'package:flutter_lua_dardo/flutter_widget/bottom_navigationbartype.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
 class FlutterBottomNavigationBar {

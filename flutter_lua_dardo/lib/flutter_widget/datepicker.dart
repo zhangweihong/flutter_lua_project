@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lua_dardo/flutter_widget/datepickerentrymode.dart';
-import 'package:flutter_lua_dardo/flutter_widget/datepickermode.dart';
+import 'package:flutter_lua_dardo/flutter_widget/datepicker_entrymode.dart';
+import 'package:flutter_lua_dardo/flutter_widget/datepicker_mode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
 import 'package:lua_dardo/lua.dart';
 

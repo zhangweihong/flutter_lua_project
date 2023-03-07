@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lua_dardo/flutter_widget/parameter_exception.dart';
-import 'package:flutter_lua_dardo/flutter_widget/timepickerentrymode.dart';
+import 'package:flutter_lua_dardo/flutter_widget/timepicker_entrymode.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
 class FlutterTimePicker {
