@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lua_dardo/flutter_widget/clip.dart';
 import 'package:flutter_lua_dardo/index.dart';
 
 class FlutterRawMaterialButton {
@@ -98,6 +99,48 @@ class FlutterRawMaterialButton {
     }
     ls.pop(1);
 
+    fieldType = ls.getField(-1, "elevation");
+    var elevation = 2.0;
+    if (fieldType == LuaType.luaNumber) {
+      elevation = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "focusElevation");
+    var focusElevation = 4.0;
+    if (fieldType == LuaType.luaNumber) {
+      focusElevation = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "hoverElevation");
+    var hoverElevation = 4.0;
+    if (fieldType == LuaType.luaNumber) {
+      hoverElevation = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "highlightElevation");
+    var highlightElevation = 8.0;
+    if (fieldType == LuaType.luaNumber) {
+      highlightElevation = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "disabledElevation");
+    var disabledElevation = 0.0;
+    if (fieldType == LuaType.luaNumber) {
+      disabledElevation = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "clipBehavior");
+    var clipBehavior = Clip.none;
+    if (fieldType == LuaType.luaNumber) {
+      clipBehavior = FlutterClip.get(ls.toIntegerX(-1));
+    }
+    ls.pop(1);
+
     ls.newUserdata().data = RawMaterialButton(
       key: key,
       onPressed: onPressedId != -1
@@ -126,6 +169,12 @@ class FlutterRawMaterialButton {
       hoverColor: hoverColor,
       highlightColor: highlightColor,
       splashColor: splashColor,
+      elevation: elevation,
+      focusElevation: focusElevation,
+      hoverElevation: hoverElevation,
+      highlightElevation: highlightElevation,
+      disabledElevation: disabledElevation,
+      clipBehavior: clipBehavior,
       padding: padding,
     );
     return 1;
