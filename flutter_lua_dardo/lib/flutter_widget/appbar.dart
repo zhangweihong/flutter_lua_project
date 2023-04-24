@@ -260,7 +260,7 @@ class FlutterAppBar {
       leading: leadingW,
       automaticallyImplyLeading: automaticallyImplyLeading,
       title: titleW,
-      actions: actions,
+      actions: actions, 
       flexibleSpace: flexibleSpace,
       bottom: bottom,
       elevation: elevation,

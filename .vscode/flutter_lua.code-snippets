@@ -3392,6 +3392,17 @@
 		],
 		"description": "PopupMenuButton:new()",
 	},
+	"Expanded:new()": {
+		"scope": "lua",
+		"prefix": "Expanded:new()",
+		"body": [
+			"Expanded:new({",
+			"\tchild = $1,",
+			"\tflex= 1,",
+			"})"
+		],
+		"description": "Expanded:new()",
+	},
 	
 	
 	
