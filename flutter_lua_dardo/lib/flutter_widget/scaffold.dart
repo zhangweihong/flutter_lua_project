@@ -22,7 +22,7 @@ class FlutterScaffold {
 
       fieldType = ls.getField(-1, "appBar");
       if (fieldType == LuaType.luaUserdata) {
-        appbar = ls.toUserdata(-1).data as AppBar;
+        appbar = ls.toUserdata(-1).data as PreferredSizeWidget;
       }
       ls.pop(1);
 

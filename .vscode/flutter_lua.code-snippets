@@ -273,6 +273,22 @@
 		],
 		"description": "StackFit.passthrough"
 	},
+	"PopupMenuPosition.over": {
+		"scope": "lua",
+		"prefix": "PopupMenuPosition.over",
+		"body": [
+			"PopupMenuPosition.over"
+		],
+		"description": "PopupMenuPosition.over"
+	},
+	"FlutterPopupMenuPosition.under": {
+		"scope": "lua",
+		"prefix": "FlutterPopupMenuPosition.under",
+		"body": [
+			"FlutterPopupMenuPosition.under"
+		],
+		"description": "FlutterPopupMenuPosition.under"
+	},
 	"BoxFit.fill": {
 		"scope": "lua",
 		"prefix": "BoxFit.fill",
@@ -3339,6 +3355,42 @@
 			"})"
 		],
 		"description": "RawMaterialButton:new()",
+	},
+	"TabController()": {
+		"scope": "lua",
+		"prefix": "TabController()",
+		"body": [
+			"TabController({\n\tinitialIndex = 0,\n\tanimationDuration = 1,\n\tvsync = _tickerProvider,\n\tlength = 0\n})"
+		],
+		"description": "TabController()"
+	},
+	"TabBar:new()": {
+		"scope": "lua",
+		"prefix": "TabBar:new()",
+		"body": [
+			"TabBar:new({",
+			"\ttabs = {$1},",
+			"\tcontroller = nil,",
+			"\tonTap = function(value)",
+			"\t\t$2",
+			"\tend,",
+			"})"
+		],
+		"description": "TabBar:new()",
+	},
+	"PopupMenuButton:new()": {
+		"scope": "lua",
+		"prefix": "PopupMenuButton:new()",
+		"body": [
+			"PopupMenuButton:new({",
+			"\titems = {$1},",
+			"\tchild = $2,",
+			"\tonSelected = function(value)",
+			"\t\t$3",
+			"\tend,",
+			"})"
+		],
+		"description": "PopupMenuButton:new()",
 	},
 	
 	

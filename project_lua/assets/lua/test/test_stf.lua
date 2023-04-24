@@ -696,6 +696,48 @@ function test_stf.build(ctx)
                                     })
                                 end
                             }),
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_tab_bars",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(12),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_tab_bars",
+                                            path = "assets/lua/test/test_tab_bars.lua"
+                                        })
+                                    })
+                                end
+                            }),
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_popupbutton",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(12),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_popupbutton",
+                                            path = "assets/lua/test/test_popupbutton.lua"
+                                        })
+                                    })
+                                end
+                            }),
                         })
                     },
                     mainAxisAlignment = MainAxisAlignment.start,

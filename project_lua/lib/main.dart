@@ -69,6 +69,8 @@ class MyApp extends StatelessWidget {
                 "assets/lua/test/test_chip.lua",
                 "assets/lua/test/test_datatable.lua",
                 "assets/lua/test/test_raw_mat_button.lua",
+                "assets/lua/test/test_tab_bars.lua",
+                "assets/lua/test/test_popupbutton.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {

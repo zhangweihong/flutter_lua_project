@@ -38,6 +38,15 @@ class FlutterSwitch {
           source: "FlutterSwitch  onChanged is null");
     }
 
+    fieldType = ls.getField(-1, "key");
+    GlobalKey key;
+    if (fieldType == LuaType.luaUserdata) {
+      key = ls.toUserdata(-1).data as GlobalKey;
+      ls.pop(1);
+    } else {
+      ls.pop(1);
+    }
+
     fieldType = ls.getField(-1, "activeColor");
     var activeColor;
     if (fieldType == LuaType.luaUserdata) {
@@ -137,6 +146,7 @@ class FlutterSwitch {
     ls.pop(1);
 
     ls.newUserdata().data = Switch(
+        key: key,
         value: value,
         onChanged: onChangedId != -1
             ? (value) {
