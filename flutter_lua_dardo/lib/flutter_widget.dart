@@ -41,6 +41,7 @@ import 'package:flutter_lua_dardo/flutter_widget/datepicker_entrymode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/datepicker_mode.dart';
 import 'package:flutter_lua_dardo/flutter_widget/device_orientation.dart';
 import 'package:flutter_lua_dardo/flutter_widget/drag_start_behavior.dart';
+import 'package:flutter_lua_dardo/flutter_widget/dropdown.dart';
 import 'package:flutter_lua_dardo/flutter_widget/filterquality.dart';
 import 'package:flutter_lua_dardo/flutter_widget/fittedbox.dart';
 import 'package:flutter_lua_dardo/flutter_widget/fontstyle.dart';
@@ -50,6 +51,7 @@ import 'package:flutter_lua_dardo/flutter_widget/icontheme.dart';
 import 'package:flutter_lua_dardo/flutter_widget/imagerepeat.dart';
 import 'package:flutter_lua_dardo/flutter_widget/layerlink.dart';
 import 'package:flutter_lua_dardo/flutter_widget/opacity.dart';
+import 'package:flutter_lua_dardo/flutter_widget/overlayer.dart';
 import 'package:flutter_lua_dardo/flutter_widget/path.dart';
 import 'package:flutter_lua_dardo/flutter_widget/pathfilltype.dart';
 import 'package:flutter_lua_dardo/flutter_widget/popup_menu_button_int.dart';
@@ -255,6 +257,11 @@ class FlutterWidget {
     FlutterCompositedTransformFollower.require(ls);
     FlutterDataCell.require(ls);
     FlutterDataTable.require(ls);
+    FlutterOverlayEntry.require(ls);
+    FlutterOverLayer.require(ls);
+    FlutterOverState.require(ls);
+    FlutterDropDown.require(ls);
+    FlutterDropdownMenuItem.require(ls);
     FlutterUtils.open(ls);
     registerUtil();
   }

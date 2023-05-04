@@ -171,6 +171,7 @@ class FlutterOverState {
   static const Map<String, DartFunction> _OverStateWrap = {
     'insert': _insertOverStateWrap,
     'insertAll': _insertAllOverStateWrap,
+    'rearrange': _rearrangeOverStateWrap,
   };
 
   static const Map<String, DartFunction> _OverStateMembers = {'id': null};
@@ -224,6 +225,61 @@ class FlutterOverState {
 
     _state.insertAll(
       entries,
+      below: below,
+      above: above,
+    );
+    return 0;
+  }
+
+  static int _rearrangeOverStateWrap(LuaState ls) {
+    OverlayState _state = null;
+    var fieldType = ls.getField(-1, "state");
+    if (fieldType == LuaType.luaUserdata) {
+      _state = ls.toUserdata(-1).data as OverlayState;
+    } else {
+      throw ParameterError(
+          name: "",
+          type: "",
+          expected: "OverlayState state is null",
+          source: "overlayer.dart");
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "newEntries");
+    var newEntries = List<OverlayEntry>.empty(growable: true);
+    if (fieldType == LuaType.luaTable) {
+      var len = ls.len2(-1);
+      for (int i = 1; i <= len; i++) {
+        if (ls.rawGetI(-1, i) == LuaType.luaUserdata) {
+          newEntries.add(ls.toUserdata(-1).data as OverlayEntry);
+        }
+        ls.pop(1);
+      }
+    } else {
+      throw ParameterError(
+          name: "",
+          type: "",
+          expected: "OverlayState newEntries is null",
+          source: "overlayer.dart");
+    }
+    ls.pop(1);
+
+    var below;
+    fieldType = ls.getField(-1, "below");
+    if (fieldType == LuaType.luaUserdata) {
+      below = ls.toUserdata(-1).data as OverlayEntry;
+    }
+    ls.pop(1);
+
+    var above;
+    fieldType = ls.getField(-1, "above");
+    if (fieldType == LuaType.luaUserdata) {
+      above = ls.toUserdata(-1).data as OverlayEntry;
+    }
+    ls.pop(1);
+
+    _state.rearrange(
+      newEntries,
       below: below,
       above: above,
     );

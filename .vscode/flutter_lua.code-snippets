@@ -3450,6 +3450,30 @@
 		],
 		"description": "Expanded:new()",
 	},
+	"DropDown:new()": {
+		"scope": "lua",
+		"prefix": "DropDown:new()",
+		"body": [
+			"DropDown:new({",
+			"\titems = {$1},",
+			"\tvalue = 0$2,",
+			"\tonChanged = function(index)",
+			"\t\t$3",
+			"\tend\n})"
+		],
+		"description": "DropDown:new()",
+	},
+	"DropdownMenuItem:new()": {
+		"scope": "lua",
+		"prefix": "DropdownMenuItem:new()",
+		"body": [
+			"DropdownMenuItem:new({",
+			"\tchild = $1,",
+			"\tvalue = 0$2,",
+			"})"
+		],
+		"description": "DropdownMenuItem:new()",
+	},
 	"LayerLink:new()": {
 		"scope": "lua",
 		"prefix": "LayerLink:new()",
