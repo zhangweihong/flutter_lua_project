@@ -738,6 +738,27 @@ function test_stf.build(ctx)
                                     })
                                 end
                             }),
+                        }),
+                        Container:new({
+                            child = ElevatedButton:new({
+                                child = Text:new("Next test_composited_transform_target",{
+                                    textAlign = TextAlign.left,
+                                    style = TextStyle:new({
+                                        fontSize = sp(12),
+                                        fontWeight = FontWeight.w400,
+                                        color = Color('#FF00FF')
+                                    })
+                                }),
+                                onPressed = function ()
+                                    navPush({   
+                                        ctx = ctx,
+                                        widget = CommonStatefulWidget:new({
+                                            widgetName = "test_composited_transform_target",
+                                            path = "assets/lua/test/test_composited_transform_target.lua"
+                                        })
+                                    })
+                                end
+                            }),
                         })
                     },
                     mainAxisAlignment = MainAxisAlignment.start,

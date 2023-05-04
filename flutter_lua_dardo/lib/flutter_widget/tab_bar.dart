@@ -81,7 +81,7 @@ class FlutterTabBar {
     } else {
       ls.pop(1);
       throw ParameterError(
-          name: 'FlutterTabBar Error',
+          name: 'FlutterTabBar tabs is null',
           type: ls.typeName(fieldType),
           expected: "",
           source: "tab_bar.dart");
@@ -91,6 +91,12 @@ class FlutterTabBar {
     fieldType = ls.getField(-1, "controller");
     if (fieldType == LuaType.luaUserdata) {
       controller = ls.toUserdata(-1).data as TabController;
+    } else {
+      throw ParameterError(
+          name: 'FlutterTabBar controller is null',
+          type: ls.typeName(fieldType),
+          expected: "",
+          source: "tab_bar.dart");
     }
     ls.pop(1);
 

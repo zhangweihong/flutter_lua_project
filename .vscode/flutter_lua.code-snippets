@@ -3392,6 +3392,53 @@
 		],
 		"description": "PopupMenuButton:new()",
 	},
+	"OverlayEntry:new()": {
+		"scope": "lua",
+		"prefix": "OverlayEntry:new()",
+		"body": [
+			"OverlayEntry:new({",
+			"\tmaintainState = false$1,",
+			"\topaque = false$2,",
+			"\tbuilder = function(context)",
+			"\t\t$3",
+			"\tend,",
+			"})"
+		],
+		"description": "OverlayEntry:new()",
+	},
+	"Overlay:new()": {
+		"scope": "lua",
+		"prefix": "Overlay:new()",
+		"body": [
+			"Overlay:new({",
+			"\tinitialEntries = {$1},",
+			"\tclipBehavior = Clip.hardEdge,",
+			"})"
+		],
+		"description": "Overlay:new()",
+	},
+	"OverlayState:insert()": {
+		"scope": "lua",
+		"prefix": "OverlayState:insert()",
+		"body": [
+			"OverlayState:insert({",
+			"\tstate = $1,",
+			"\tentry = $2,",
+			"})"
+		],
+		"description": "OverlayState:insert()",
+	},
+	"OverlayState:insertAll()": {
+		"scope": "lua",
+		"prefix": "OverlayState:insertAll()",
+		"body": [
+			"OverlayState:insertAll({",
+			"\tstate = $1,",
+			"\tentries = $2,",
+			"})"
+		],
+		"description": "OverlayState:insertAll()",
+	},
 	"Expanded:new()": {
 		"scope": "lua",
 		"prefix": "Expanded:new()",
@@ -3403,7 +3450,38 @@
 		],
 		"description": "Expanded:new()",
 	},
-	
+	"LayerLink:new()": {
+		"scope": "lua",
+		"prefix": "LayerLink:new()",
+		"body": [
+			"LayerLink:new()"
+		],
+		"description": "LayerLink:new()",
+	},
+	"CompositedTransformTarget:new()": {
+		"scope": "lua",
+		"prefix": "CompositedTransformTarget:new()",
+		"body": [
+			"CompositedTransformTarget:new({",
+			"\tchild = $1,",
+			"\tlink = $2,",
+			"})"
+		],
+		"description": "CompositedTransformTarget:new()",
+	},
+	"CompositedTransformFollower:new()": {
+		"scope": "lua",
+		"prefix": "CompositedTransformFollower:new()",
+		"body": [
+			"CompositedTransformFollower:new({",
+			"\tchild = $1,",
+			"\tlink = $2,",
+			"\ttargetAnchor = Alignment.bottomCenter$3,",
+			"\toffset = $4,",
+			"})"
+		],
+		"description": "CompositedTransformFollower:new()",
+	},
 	
 	
 	

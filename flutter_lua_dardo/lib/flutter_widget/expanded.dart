@@ -15,7 +15,7 @@ class FlutterExpanded {
     if (fieldType != LuaType.luaUserdata) {
       child = ls.toUserdata(-1).data as Widget;
     } else {
-      ParameterError(
+      throw ParameterError(
           expected: "FlutterExpanded child is null",
           type: "",
           name: "",
