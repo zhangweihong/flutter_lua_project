@@ -160,10 +160,143 @@ class FlutterDropDown {
     }
     ls.pop(1);
 
+    fieldType = ls.getField(-1, "iconSize");
+    double iconSize = 24.0;
+    if (fieldType == LuaType.luaNumber) {
+      iconSize = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "itemHeight");
+    double itemHeight = 48.0;
+    if (fieldType == LuaType.luaNumber) {
+      itemHeight = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "menuMaxHeight");
+    double menuMaxHeight;
+    if (fieldType == LuaType.luaNumber) {
+      menuMaxHeight = ls.toNumberX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "isDense");
+    bool isDense = false;
+    if (fieldType == LuaType.luaBoolean) {
+      isDense = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "enableFeedback");
+    bool enableFeedback = false;
+    if (fieldType == LuaType.luaBoolean) {
+      enableFeedback = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "alignment");
+    var alignment = AlignmentDirectional.centerStart;
+    if (fieldType == LuaType.luaNumber) {
+      alignment = FlutterAlignment.get(ls.toIntegerX(-1));
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "autofocus");
+    bool autofocus = false;
+    if (fieldType == LuaType.luaBoolean) {
+      autofocus = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "isExpanded");
+    bool isExpanded = false;
+    if (fieldType == LuaType.luaBoolean) {
+      isExpanded = ls.toBoolean(-1);
+    }
+    ls.pop(1);
+
     fieldType = ls.getField(-1, "hint");
     Widget hint;
     if (fieldType == LuaType.luaUserdata) {
       hint = ls.toUserdata(-1).data as Widget;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "disabledHint");
+    Widget disabledHint;
+    if (fieldType == LuaType.luaUserdata) {
+      disabledHint = ls.toUserdata(-1).data as Widget;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "underline");
+    Widget underline;
+    if (fieldType == LuaType.luaUserdata) {
+      underline = ls.toUserdata(-1).data as Widget;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "icon");
+    Widget icon;
+    if (fieldType == LuaType.luaUserdata) {
+      icon = ls.toUserdata(-1).data as Widget;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "dropdownColor");
+    Color dropdownColor;
+    if (fieldType == LuaType.luaUserdata) {
+      dropdownColor = ls.toUserdata(-1).data as Color;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "iconDisabledColor");
+    Color iconDisabledColor;
+    if (fieldType == LuaType.luaUserdata) {
+      iconDisabledColor = ls.toUserdata(-1).data as Color;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "borderRadius");
+    var borderRadius;
+    if (fieldType == LuaType.luaUserdata) {
+      borderRadius = ls.toUserdata(-1).data as BorderRadius;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "iconEnabledColor");
+    Color iconEnabledColor;
+    if (fieldType == LuaType.luaUserdata) {
+      iconEnabledColor = ls.toUserdata(-1).data as Color;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "focusColor");
+    Color focusColor;
+    if (fieldType == LuaType.luaUserdata) {
+      focusColor = ls.toUserdata(-1).data as Color;
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "onTap");
+    int onTapId = -1;
+    if (fieldType == LuaType.luaFunction) {
+      onTapId = ls.ref(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "elevation");
+    int elevation = 8;
+    if (fieldType == LuaType.luaNumber) {
+      elevation = ls.toIntegerX(-1);
+    }
+    ls.pop(1);
+
+    fieldType = ls.getField(-1, "style");
+    TextStyle style;
+    if (fieldType == LuaType.luaUserdata) {
+      style = ls.toUserdata(-1) as TextStyle;
     }
     ls.pop(1);
 
@@ -177,6 +310,29 @@ class FlutterDropDown {
       },
       value: value,
       hint: hint,
+      disabledHint: disabledHint,
+      elevation: elevation,
+      style: style,
+      underline: underline,
+      icon: icon,
+      iconSize: iconSize,
+      iconDisabledColor: iconDisabledColor,
+      iconEnabledColor: iconEnabledColor,
+      focusColor: focusColor,
+      itemHeight: itemHeight,
+      isDense: isDense,
+      isExpanded: isExpanded,
+      autofocus: autofocus,
+      dropdownColor: dropdownColor,
+      alignment: alignment,
+      enableFeedback: enableFeedback,
+      borderRadius: borderRadius,
+      onTap: onTapId != -1
+          ? () {
+              ls.rawGetI(lua_registryindex, onTapId);
+              ls.pCall(0, 0, 1);
+            }
+          : null,
       selectedItemBuilder: selectedItemBuilderId != -1
           ? (_context) {
               var items = List<Widget>.empty(growable: true);

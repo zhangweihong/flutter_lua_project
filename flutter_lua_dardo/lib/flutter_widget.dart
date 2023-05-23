@@ -50,6 +50,7 @@ import 'package:flutter_lua_dardo/flutter_widget/gridview.dart';
 import 'package:flutter_lua_dardo/flutter_widget/icontheme.dart';
 import 'package:flutter_lua_dardo/flutter_widget/imagerepeat.dart';
 import 'package:flutter_lua_dardo/flutter_widget/layerlink.dart';
+import 'package:flutter_lua_dardo/flutter_widget/material.dart';
 import 'package:flutter_lua_dardo/flutter_widget/opacity.dart';
 import 'package:flutter_lua_dardo/flutter_widget/overlayer.dart';
 import 'package:flutter_lua_dardo/flutter_widget/path.dart';
@@ -259,6 +260,8 @@ class FlutterWidget {
     FlutterDataTable.require(ls);
     FlutterOverlayEntry.require(ls);
     FlutterOverLayer.require(ls);
+    FlutterMaterialType.require(ls);
+    FlutterMaterial.require(ls);
     FlutterOverState.require(ls);
     FlutterDropDown.require(ls);
     FlutterDropdownMenuItem.require(ls);

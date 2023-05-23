@@ -3463,6 +3463,16 @@
 		],
 		"description": "DropDown:new()",
 	},
+	"Material:new()": {
+		"scope": "lua",
+		"prefix": "Material:new()",
+		"body": [
+			"Material:new({",
+			"\tchild = $1,",
+			"})"
+		],
+		"description": "Material:new()",
+	},
 	"DropdownMenuItem:new()": {
 		"scope": "lua",
 		"prefix": "DropdownMenuItem:new()",

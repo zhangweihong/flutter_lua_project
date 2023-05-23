@@ -73,6 +73,7 @@ class MyApp extends StatelessWidget {
                 "assets/lua/test/test_popupbutton.lua",
                 "assets/lua/test/test_composited_transform_target.lua",
                 "assets/lua/test/test_drop_down.lua",
+                "assets/lua/test/test_material.lua",
               ]),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
